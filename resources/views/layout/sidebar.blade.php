@@ -82,7 +82,7 @@
 
                     <!-- Tim Penjaminan Mutu -->
                     <li class="menu-item">
-                        <a href="{{ route('TimJAMU') }}" class="menu-link">
+                        <a href="" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-layout"></i>
                             <div data-i18n="TimJAMU">Tim Penjaminan Mutu</div>
                         </a>
@@ -93,45 +93,45 @@
                     </li>
                     <!-- 5 Poin -->
                     <li class="menu-item">
-                        <a href="{{ route('Penetapan') }}" class="menu-link menu-toggle">
+                        <a href="" class="menu-link menu-toggle">
                             <i class="menu-icon tf-icons bx bx-dock-top"></i>
                             <div data-i18n="Penetapan">Penetapan</div>
                         </a>
                         <ul class="menu-sub">
                             <li class="menu-item">
-                                <a href="{{ route('perangkat-spmi') }}" class="menu-link">
+                                <a href="" class="menu-link">
                                     <div data-i18n="Perangkat">Perangkat SPMI</div>
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="{{ route('standar-spmi') }}" class="menu-link">
+                                <a href="" class="menu-link">
                                     <div data-i18n="Standar">Standar Yang Ditetapkan Institusi</div>
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li class="menu-item">
-                        <a href="{{ route('Pelaksanaan') }}" class="menu-link">
+                        <a href="" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-collection"></i>
                             <div data-i18n="Pelaksanaan">Pelaksanaan</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="{{ route('Evaluasi') }}" class="menu-link">
+                        <a href="" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-crown"></i>
                             <div data-i18n="Evaluasi">Evaluasi</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="{{ route('Pengendalian') }}" class="menu-link">
+                        <a href="" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-table"></i>
                             <div data-i18n="Pengendalian">Pengendalian</div>
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="{{ route('Peningkatan') }}" class="menu-link">
+                        <a href="" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-table"></i>
-                            <div data-i18n="Pengendalian">Pengendalian</div>
+                            <div data-i18n="Pengendalian">Peningkatan</div>
                         </a>
                     </li>
                 </ul>
@@ -153,15 +153,11 @@
                     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
                         <!-- Search -->
                         <div class="navbar-nav align-items-center">
-                            <div class="nav-item d-flex align-items-center">
-                                <i class="bx bx-search fs-4 lh-0"></i>
-                                <input type="text" class="form-control border-0 shadow-none"/>
-                            </div>
+                            <div class="nav-item d-flex align-items-center">Dashboard</div>
                         </div>
                         <!-- /Search -->
 
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
-                            <!-- Place this tag where you want the button to render. -->
 
                             <!-- User -->
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
@@ -233,6 +229,7 @@
 
                 <!-- Content wrapper -->
                 <div class="content-wrapper">
+
                     <!-- Content -->
                     @yield('content')
                     <!-- / Content -->
