@@ -60,6 +60,7 @@
                             <link rel="icon" type="image/x-icon"
                                 href="{{ asset('sneat/assets/img/favicon/LOGO FIP.png') }}" />
                         </span>
+                        <img src="{{ asset('sneat/assets/img/favicon/LOGO FIP.png') }}" width="55" height="55">
                         <span class="app-brand-text demo menu-text fw-bolder ms-2 text-capitalize fs-4">SIJAMU
                             FIP</span>
                     </a>
@@ -84,7 +85,7 @@
                     <!-- Tim Penjaminan Mutu -->
                     <li class="menu-item">
                         <a href="" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-layout"></i>
+                            <i class='menu-icon tf-icons bx bxs-group bx-flip-horizontal bx-border-circle bx-xs' style='color:rgba(181,27,123,0.82)'></i>
                             <div data-i18n="TimJAMU">Tim Penjaminan Mutu</div>
                         </a>
 
@@ -95,7 +96,7 @@
                     <!-- 5 Poin -->
                     <li class="menu-item">
                         <a href="" class="menu-link menu-toggle">
-                            <i class="fa-solid fa-book"></i>
+                            <i class='menu-icon tf-icons bx bxs-book-bookmark'></i>
                             <div data-i18n="Penetapan">Penetapan</div>
                         </a>
                         <ul class="menu-sub">
@@ -113,25 +114,25 @@
                     </li>
                     <li class="menu-item">
                         <a href="" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-collection"></i>
+                            <i class="menu-icon tf-icons bx bxs-book-open"></i>
                             <div data-i18n="Pelaksanaan">Pelaksanaan</div>
                         </a>
                     </li>
                     <li class="menu-item">
                         <a href="" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-crown"></i>
+                            <i class="menu-icon tf-icons bx bx-task"></i>
                             <div data-i18n="Evaluasi">Evaluasi</div>
                         </a>
                     </li>
                     <li class="menu-item">
                         <a href="" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-table"></i>
+                            <i class="menu-icon tf-icons bx bx-sync bx-sm"></i>
                             <div data-i18n="Pengendalian">Pengendalian</div>
                         </a>
                     </li>
                     <li class="menu-item">
                         <a href="" class="menu-link">
-                            <i class="menu-icon tf-icons bx bx-table"></i>
+                            <i class="menu-icon tf-icons bx bx-bar-chart-alt bx-sm"></i>
                             <div data-i18n="Pengendalian">Peningkatan</div>
                         </a>
                     </li>
