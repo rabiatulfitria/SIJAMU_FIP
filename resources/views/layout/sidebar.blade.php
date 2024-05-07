@@ -22,6 +22,7 @@
         rel="stylesheet" />
 
     <!-- Icons. Uncomment required icon fonts -->
+    <script src="https://kit.fontawesome.com/221a90d938.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('sneat/assets/vendor/fonts/boxicons.css') }}" />
 
     <!-- Core CSS -->
@@ -94,7 +95,7 @@
                     <!-- 5 Poin -->
                     <li class="menu-item">
                         <a href="" class="menu-link menu-toggle">
-                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                            <i class="fa-solid fa-book"></i>
                             <div data-i18n="Penetapan">Penetapan</div>
                         </a>
                         <ul class="menu-sub">
