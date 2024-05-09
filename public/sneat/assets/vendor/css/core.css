@@ -15297,8 +15297,15 @@ html:not(.layout-menu-fixed) .menu-inner-shadow {
   padding: 0 1.5rem;
 }
 .layout-navbar.navbar-detached.container-xxl {
-  max-width: calc(1440px - calc(1.625rem * 2));
+  max-width: calc(1440px - calc(1.625rem * 2))
 }
+
+.layout-wrapper {
+  background-image: url('purple.jpg');
+  background-size: cover; /* untuk memastikan gambar mengisi seluruh area */
+  background-repeat: no-repeat; /* agar gambar tidak diulang */
+}
+
 .layout-navbar-fixed .layout-navbar.navbar-detached {
   width: calc(100% - calc(1.625rem * 2) - 16.25rem);
 }

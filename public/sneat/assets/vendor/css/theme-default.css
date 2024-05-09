@@ -645,7 +645,7 @@ a:hover {
 .layout-navbar-fixed .layout-page:before {
   -webkit-backdrop-filter: saturate(200%) blur(10px);
           backdrop-filter: saturate(200%) blur(10px);
-  background: rgba(245, 245, 249, 0.6);
+  background: rgba(227, 91, 227, 0.634);
 }
 
 .bg-menu-theme {

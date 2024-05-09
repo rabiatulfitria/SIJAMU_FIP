@@ -56,10 +56,6 @@
             <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
                 <div class="app-brand demo">
                     <a href="index.html" class="app-brand-link">
-                        <span class="app-brand-logo demo">
-                            <link rel="icon" type="image/x-icon"
-                                href="{{ asset('sneat/assets/img/favicon/LOGO FIP.png') }}" />
-                        </span>
                         <img src="{{ asset('sneat/assets/img/favicon/LOGO FIP.png') }}" width="55" height="55">
                         <span class="app-brand-text demo menu-text fw-bolder ms-2 text-capitalize fs-4">SIJAMU
                             FIP</span>
@@ -247,7 +243,7 @@
                                 <script>
                                     document.write(new Date().getFullYear());
                                 </script>
-                                | SIJAMU FIP
+                                | SI-Sistem Pinjaminan Mutu Internal Fakultas Ilmu Pendidikan Universitas Trunojoyo Madura
                             </div>
                         </div>
                     </footer>
