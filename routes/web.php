@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\timjamuController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +20,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+Route::get('/TimPenjaminanMutu', [timjamuController::class, 'index'])->name('TimJAMU');
+Route::get('/TimPenjaminanMutu/tambahTimJAMU', [timjamuController::class, 'create'])->name('tambahTimJAMU');
+Route::post('/TimPenjaminanMutu', [timjamuController::class, 'store']);
