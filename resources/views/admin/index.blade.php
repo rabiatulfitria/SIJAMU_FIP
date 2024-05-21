@@ -20,9 +20,9 @@
                             </div>
                         </div>
                     </div>
-                    <span>Sales</span>
-                    <h3 class="card-title text-nowrap mb-1">$4,679</h3>
-                    <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.42%</small>
+                    <span style="color: #007bff; font-size: 20px; font-weight:bold;">Penetapan</span>
+                    <h7 class="card-title text-nowrap mb-1">Ditetapkan oleh Perguruan Tinggi</h7>
+                    <small class="text-success fw-semibold"></small>
                 </div>
             </div>
         </div>
@@ -45,9 +45,9 @@
                             </div>
                         </div>
                     </div>
-                    <span>Sales</span>
-                    <h3 class="card-title text-nowrap mb-1">$4,679</h3>
-                    <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.42%</small>
+                    <span style="color: #007bff; font-size: 20px; font-weight:bold;">Pelaksanaan</span>
+                    <h7 class="card-title text-nowrap mb-1">Standar Pendidikan Tinggi</h7>
+                    <small class="text-success fw-semibold"></small>
                 </div>
             </div>
         </div>
@@ -70,9 +70,9 @@
                             </div>
                         </div>
                     </div>
-                    <span>Sales</span>
-                    <h3 class="card-title text-nowrap mb-1">$4,679</h3>
-                    <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.42%</small>
+                    <span style="color: #007bff; font-size: 20px; font-weight:bold;">Evaluasi</span>
+                    <h7 class="card-title text-nowrap mb-1">Pelaksanaan Standar Perguruan Tinggi</h7>
+                    <small class="text-success fw-semibold"></small>
                 </div>
             </div>
         </div>
@@ -95,9 +95,9 @@
                             </div>
                         </div>
                     </div>
-                    <span>Sales</span>
-                    <h3 class="card-title text-nowrap mb-1">$4,679</h3>
-                    <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.42%</small>
+                    <span style="color: #007bff; font-size: 20px; font-weight:bold;">Pengendalian</span>
+                    <h7 class="card-title text-nowrap mb-1">Standar Perguruan Tinggi</h7>
+                    <small class="text-success fw-semibold"></small>
                 </div>
             </div>
         </div>
@@ -120,9 +120,9 @@
                             </div>
                         </div>
                     </div>
-                    <span>Sales</span>
-                    <h3 class="card-title text-nowrap mb-1">$4,679</h3>
-                    <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.42%</small>
+                    <span style="color: #007bff; font-size: 20px; font-weight:bold;">Penigkatan</span>
+                    <h7 class="card-title text-nowrap mb-1">Standar Perguruan Tinggi</h7>
+                    <small class="text-success fw-semibold"></small>
                 </div>
             </div>
         </div>

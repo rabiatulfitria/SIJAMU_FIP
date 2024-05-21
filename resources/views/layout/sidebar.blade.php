@@ -79,7 +79,7 @@
                     </li>
 
                     <!-- Tim Penjaminan Mutu -->
-                    <li class="menu-item active">
+                    <li class="menu-item">
                         <a href="{{ route('TimJAMU') }}" class="menu-link">
                             <i class='menu-icon tf-icons bx bxs-group bx-flip-horizontal bx-border-circle bx-xs' style='color:rgba(181,27,123,0.82)'></i>
                             <div data-i18n="TimJAMU">Tim Penjaminan Mutu</div>
