@@ -1,13 +1,7 @@
 @extends('layout.sidebar')
 @section('content')
     <div class="demo-inline-spacing">
-        <button href="{{ route('tambahTimJAMU') }}" type="button" class="btn btn-outline-primary">Primary</button>
-        <button type="button" class="btn btn-outline-secondary">Secondary</button>
-        <button type="button" class="btn btn-outline-success">Success</button>
-        <button type="button" class="btn btn-outline-danger">Danger</button>
-        <button type="button" class="btn btn-outline-warning">Warning</button>
-        <button type="button" class="btn btn-outline-info">Info</button>
-        <button type="button" class="btn btn-outline-dark">Dark</button>
+        <button type="button" class="btn btn-outline-primary" onclick="window.location.href='{{ route('tambahTimJAMU') }}'">Tambah</button>
     </div>
     <div class="card">
         <h5 class="card-header">Light Table head</h5>
