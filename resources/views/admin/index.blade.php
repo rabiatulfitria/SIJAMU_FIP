@@ -5,8 +5,8 @@
             <div class="card">
                 <div class="card-body">
                     <div class="card-title d-flex align-items-start justify-content-between">
-                        <div class="avatar flex-shrink-0">
-                            <img src="{{ asset('sneat/assets/img/icons/unicons/wallet-info.png') }}" alt="Credit Card"
+                        <div class="avatar flex-shrink-0" style="width: 25px; height: 25px;">
+                            <img src="{{ asset('sneat/assets/img/icons/unicons/checklist.png') }}" alt="Credit Card"
                                 class="rounded" />
                         </div>
                         <div class="dropdown">
@@ -21,8 +21,8 @@
                         </div>
                     </div>
                     <span style="color: #007bff; font-size: 20px; font-weight:bold;">Penetapan</span>
-                    <h7 class="card-title text-nowrap mb-1">Ditetapkan oleh Perguruan Tinggi</h7>
-                    <small class="text-success fw-semibold"></small>
+                    <h1 class="card-title text-nowrap mb-1"></h1>
+                    <small class="text-gray fw-semibold">Ditetapkan oleh Perguruan Tinggi</small>
                 </div>
             </div>
         </div>
@@ -30,8 +30,8 @@
             <div class="card">
                 <div class="card-body">
                     <div class="card-title d-flex align-items-start justify-content-between">
-                        <div class="avatar flex-shrink-0">
-                            <img src="{{ asset('sneat/assets/img/icons/unicons/wallet-info.png') }}" alt="Credit Card"
+                        <div class="avatar flex-shrink-0" style="width: 25px; height: 25px;">
+                            <img src="{{ asset('sneat/assets/img/icons/unicons/checklist.png') }}" alt="Credit Card"
                                 class="rounded" />
                         </div>
                         <div class="dropdown">
@@ -46,8 +46,8 @@
                         </div>
                     </div>
                     <span style="color: #007bff; font-size: 20px; font-weight:bold;">Pelaksanaan</span>
-                    <h7 class="card-title text-nowrap mb-1">Standar Pendidikan Tinggi</h7>
-                    <small class="text-success fw-semibold"></small>
+                    <h1 class="card-title text-nowrap mb-1"></h1>
+                    <small class="text-gray fw-semibold">Standar Pendidikan Tinggi</small>
                 </div>
             </div>
         </div>
@@ -55,8 +55,8 @@
             <div class="card">
                 <div class="card-body">
                     <div class="card-title d-flex align-items-start justify-content-between">
-                        <div class="avatar flex-shrink-0">
-                            <img src="{{ asset('sneat/assets/img/icons/unicons/wallet-info.png') }}" alt="Credit Card"
+                        <div class="avatar flex-shrink-0" style="width: 25px; height: 25px;">
+                            <img src="{{ asset('sneat/assets/img/icons/unicons/caution-alert.png') }}" alt="Credit Card"
                                 class="rounded" />
                         </div>
                         <div class="dropdown">
@@ -71,8 +71,8 @@
                         </div>
                     </div>
                     <span style="color: #007bff; font-size: 20px; font-weight:bold;">Evaluasi</span>
-                    <h7 class="card-title text-nowrap mb-1">Pelaksanaan Standar Perguruan Tinggi</h7>
-                    <small class="text-success fw-semibold"></small>
+                    <h1 class="card-title text-nowrap mb-1"></h1>
+                    <small class="text-gray fw-semibold">Pelaksanaan Standar Perguruan Tinggi</small>
                 </div>
             </div>
         </div>
@@ -80,8 +80,8 @@
             <div class="card">
                 <div class="card-body">
                     <div class="card-title d-flex align-items-start justify-content-between">
-                        <div class="avatar flex-shrink-0">
-                            <img src="{{ asset('sneat/assets/img/icons/unicons/wallet-info.png') }}" alt="Credit Card"
+                        <div class="avatar flex-shrink-0" style="width: 25px; height: 25px;">
+                            <img src="{{ asset('sneat/assets/img/icons/unicons/checklist.png') }}" alt="Credit Card"
                                 class="rounded" />
                         </div>
                         <div class="dropdown">
@@ -96,8 +96,8 @@
                         </div>
                     </div>
                     <span style="color: #007bff; font-size: 20px; font-weight:bold;">Pengendalian</span>
-                    <h7 class="card-title text-nowrap mb-1">Standar Perguruan Tinggi</h7>
-                    <small class="text-success fw-semibold"></small>
+                    <h1 class="card-title text-nowrap mb-1"></h1>
+                    <small class="text-gray fw-semibold">Standar Perguruan Tinggi</small>
                 </div>
             </div>
         </div>
@@ -105,8 +105,8 @@
             <div class="card">
                 <div class="card-body">
                     <div class="card-title d-flex align-items-start justify-content-between">
-                        <div class="avatar flex-shrink-0">
-                            <img src="{{ asset('sneat/assets/img/icons/unicons/wallet-info.png') }}" alt="Credit Card"
+                        <div class="avatar flex-shrink-0" style="width: 25px; height: 25px;">
+                            <img src="{{ asset('sneat/assets/img/icons/unicons/caution-alert.png') }}" alt="Credit Card"
                                 class="rounded" />
                         </div>
                         <div class="dropdown">
@@ -121,8 +121,8 @@
                         </div>
                     </div>
                     <span style="color: #007bff; font-size: 20px; font-weight:bold;">Penigkatan</span>
-                    <h7 class="card-title text-nowrap mb-1">Standar Perguruan Tinggi</h7>
-                    <small class="text-success fw-semibold"></small>
+                    <h1 class="card-title text-nowrap mb-1"></h1>
+                    <small class="text-gray fw-semibold">Standar Perguruan Tinggi</small>
                 </div>
             </div>
         </div>
