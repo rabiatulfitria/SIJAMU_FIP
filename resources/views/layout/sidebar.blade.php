@@ -149,14 +149,16 @@
                     </div>
 
                     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-                        <!-- Search -->
-                        <div class="navbar-nav align-items-center">
-                            <div class="nav-item d-flex align-items-center">Dashboard</div>
-                        </div>
-                        <!-- /Search -->
+                        <ul class="navbar-nav align-items-center">
+                            <li class="nav-item d-flex align-items-center">
+                                <a href="{{ route('dashboard') }}" onclick="changeNavText('Penjaminan Mutu Internal Fakultas Ilmu Pendidikan')"></a>
+                            </li>
+                            <li class="nav-item d-flex align-items-center">
+                                <a href="{{ route('dashboard') }}" onclick="changeNavText('Jaminan Mutu Fakultas (JMF)')"></a>
+                            </li>
+                        </ul>
 
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
-
                             <!-- User -->
                             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);"
@@ -232,6 +234,12 @@
                     <div class="container-xxl flex-grow-1 container-p-y">
                         @yield('content')
                     </div>
+
+                    <script>
+                        function changeNavText(text) {
+                            $('#nav-text').text(text);
+                        }
+                    </script>
                     <!-- / Content -->
 
                     <!-- Footer -->
