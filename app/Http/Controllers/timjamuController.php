@@ -10,12 +10,12 @@ class timjamuController extends Controller
     public function index()
     {
         $jamutims = Timjamu::all();
-        return view('admin.timjamu', compact('jamutims'));
+        return view('User.admin.timjamu', compact('jamutims'));
     }
 
     public function create()
     {
-        return view('admin.tambahTimjamu');
+        return view('User.admin.tambahTimjamu');
     }
 
     public function store(Request $request)
