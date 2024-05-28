@@ -71,7 +71,7 @@
 
                 <ul class="menu-inner py-1">
                     <!-- Home -->
-                    <li class="menu-item active">
+                    <li class="menu-item {{ \Route::is('dashboard') ? 'active' : '' }}">
                         <a href="{{ route('dashboard') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
                             <div data-i18n="Home">Home</div>
@@ -79,7 +79,7 @@
                     </li>
 
                     <!-- Tim Penjaminan Mutu -->
-                    <li class="menu-item">
+                    <li class="menu-item {{ \Route::is('TimJAMU') ? 'active' : '' }}">
                         <a href="{{ route('TimJAMU') }}" class="menu-link">
                             <i class='menu-icon tf-icons bx bxs-group bx-flip-horizontal bx-border-circle bx-xs'
                                 style='color:rgba(181,27,123,0.82)'></i>
@@ -154,12 +154,6 @@
                     <div class="container-xxl flex-grow-1 container-p-y">
                         @yield('content')
                     </div>
-
-                    <script>
-                        function changeNavText(text) {
-                            $('#nav-text').text(text);
-                        }
-                    </script>
                     <!-- / Content -->
 
                     <!-- Footer -->
