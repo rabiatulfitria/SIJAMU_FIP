@@ -21,10 +21,10 @@ class timjamuController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'nip' => 'required',
             'name' => 'required',
             'email' => 'required|email|unique:jamutims',
             'PJ' => 'required',
-            'role' => 'required'
         ]);
 
         Timjamu::create($request->all());

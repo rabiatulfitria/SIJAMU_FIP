@@ -54,16 +54,6 @@
                         </a>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">
-                            <span class="d-flex align-items-center align-middle">
-                                <i class="flex-shrink-0 bx bx-credit-card me-2"></i>
-                                <span class="flex-grow-1 align-middle">Billing</span>
-                                <span
-                                    class="flex-shrink-0 badge badge-center rounded-pill bg-danger w-px-20 h-px-20">4</span>
-                            </span>
-                        </a>
-                    </li>
-                    <li>
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
@@ -90,7 +80,6 @@
                         <th>NIP</th>
                         <th>Nama</th>
                         <th>Email</th>
-                        <th>Username</th>
                         <th>Penanggung Jawab</th>
                     </tr>
                 </thead>
@@ -100,7 +89,6 @@
                         <td>19880823201803001</td>
                         <td>Muhamad Afif Effindi</td>
                         <td><span class="badge bg-label-primary me-1">@email.com</span></td>
-                        <td>timjamu</td>
                         <td>ketua penjaminan mutu</td>
                         <td>
                             <div class="dropdown">
@@ -123,7 +111,6 @@
                         <td>19880823201803001</td>
                         <td>Eriqa Pratiwi</td>
                         <td><span class="badge bg-label-primary me-1">@email.com</span></td>
-                        <td>timjamu</td>
                         <td>sekretaris penjaminan mutu</td>
                         <td>
                             <div class="dropdown">
@@ -146,7 +133,6 @@
                         <td>19880823201803001</td>
                         <td>Nilamsari Damayanti Fajrin</td>
                         <td><span class="badge bg-label-primary me-1">@email.com</span></td>
-                        <td>timjamu</td>
                         <td>... penjaminan mutu</td>
                         <td>
                             <div class="dropdown">
@@ -169,7 +155,6 @@
                         <td>19880823201803001</td>
                         <td>Ayyu Subhi Farahiba</td>
                         <td><span class="badge bg-label-primary me-1">@email.com</span></td>
-                        <td>timjamu</td>
                         <td>... penjaminan mutu</td>
                         <td>
                             <div class="dropdown">
@@ -192,7 +177,6 @@
                         <td>19880823201803001</td>
                         <td>Mochammad Yasir</td>
                         <td><span class="badge bg-label-primary me-1">@email.com</span></td>
-                        <td>timjamu</td>
                         <td>... penjaminan mutu</td>
                         <td>
                             <div class="dropdown">
@@ -215,7 +199,6 @@
                         <td>19880823201803001</td>
                         <td>Ana Naimatul Jannah</td>
                         <td><span class="badge bg-label-primary me-1">@email.com</span></td>
-                        <td>timjamu</td>
                         <td>... penjaminan mutu</td>
                         <td>
                             <div class="dropdown">
@@ -238,7 +221,6 @@
                         <td>19880823201803001</td>
                         <td>Fiyan Ilman Faqih</td>
                         <td><span class="badge bg-label-primary me-1">@email.com</span></td>
-                        <td>timjamu</td>
                         <td>... penjaminan mutu</td>
                         <td>
                             <div class="dropdown">
@@ -261,7 +243,6 @@
                         <td>19880823201803001</td>
                         <td>Puji Rahayu Ningsih</td>
                         <td><span class="badge bg-label-primary me-1">@email.com</span></td>
-                        <td>timjamu</td>
                         <td>... penjaminan mutu</td>
                         <td>
                             <div class="dropdown">
@@ -284,7 +265,6 @@
                         <td>19880823201803001</td>
                         <td>Wiwin Puspita Hadi</td>
                         <td><span class="badge bg-label-primary me-1">@email.com</span></td>
-                        <td>timjamu</td>
                         <td>... penjaminan mutu</td>
                         <td>
                             <div class="dropdown">
@@ -307,7 +287,6 @@
                         <td>19880823201803001</td>
                         <td>Fajar Luqman Tri Ariyanto</td>
                         <td><span class="badge bg-label-primary me-1">@email.com</span></td>
-                        <td>timjamu</td>
                         <td>... penjaminan mutu</td>
                         <td>
                             <div class="dropdown">
