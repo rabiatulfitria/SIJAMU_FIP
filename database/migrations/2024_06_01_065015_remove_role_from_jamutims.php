@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJamutimsTable extends Migration
+class RemoveRoleFromJamutims extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,8 @@ class CreateJamutimsTable extends Migration
      */
     public function up()
     {
-        Schema::create('jamutims', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('nip');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('PJ');
-            $table->timestamps();
-
+        Schema::table('jamutims', function (Blueprint $table) {
+            $table->dropColumn('role');
         });
     }
 
@@ -31,6 +25,8 @@ class CreateJamutimsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jamutims');
+        Schema::table('jamutims', function (Blueprint $table) {
+            $table->string('role');
+        });
     }
 }

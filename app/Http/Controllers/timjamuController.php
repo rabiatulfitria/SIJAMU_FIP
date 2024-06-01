@@ -29,6 +29,32 @@ class timjamuController extends Controller
 
         Timjamu::create($request->all());
 
-        return redirect('/TimPenjaminanMutu')->with('success', 'Tim JAMU created successfully.');
+        return redirect('/TimPenjaminanMutu')->with('success', 'Tim JAMU berhasil ditambahkan.');
+    }
+
+    public function edit( Timjamu $jamutims)
+    {
+        return view('User.admin.editTimjamu', compact('jamutims'));
+    }
+
+    public function update(Request $request, Timjamu $jamutims)
+    {
+        $request->validate([
+            'nip' => 'required',
+            'name' => 'required',
+            'email' => 'required|email|unique:jamutims',
+            'PJ' => 'required',
+        ]);
+
+        $jamutims->update($request->all());
+
+        return redirect('/TimPenjaminanMutu')->with('success', 'Tim JAMU berhasil diperbarui.');
+    }
+
+    public function destroy(Timjamu $jamutims)
+    {
+        $jamutims->delete();
+
+        return redirect('/TimPenjaminanMutu')->with('success', 'Tim JAMU berhasil dihapus.');
     }
 }

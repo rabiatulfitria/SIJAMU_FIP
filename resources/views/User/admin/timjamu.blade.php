@@ -84,226 +84,30 @@
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                    <tr>
-                        <td>1</td>
-                        <td>19880823201803001</td>
-                        <td>Muhamad Afif Effindi</td>
-                        <td><span class="badge bg-label-primary me-1">@email.com</span></td>
-                        <td>ketua penjaminan mutu</td>
-                        <td>
-                            <div class="dropdown">
-                              <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                <i class="bx bx-dots-vertical-rounded"></i>
-                              </button>
-                              <div class="dropdown-menu">
-                                <a class="dropdown-item" href="javascript:void(0);"
-                                  ><i class="bx bx-edit-alt me-1"></i> Edit</a
-                                >
-                                <a class="dropdown-item" href="javascript:void(0);"
-                                  ><i class="bx bx-trash me-1"></i> Delete</a
-                                >
-                              </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>19880823201803001</td>
-                        <td>Eriqa Pratiwi</td>
-                        <td><span class="badge bg-label-primary me-1">@email.com</span></td>
-                        <td>sekretaris penjaminan mutu</td>
-                        <td>
-                            <div class="dropdown">
-                              <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                <i class="bx bx-dots-vertical-rounded"></i>
-                              </button>
-                              <div class="dropdown-menu">
-                                <a class="dropdown-item" href="javascript:void(0);"
-                                  ><i class="bx bx-edit-alt me-1"></i> Edit</a
-                                >
-                                <a class="dropdown-item" href="javascript:void(0);"
-                                  ><i class="bx bx-trash me-1"></i> Delete</a
-                                >
-                              </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>19880823201803001</td>
-                        <td>Nilamsari Damayanti Fajrin</td>
-                        <td><span class="badge bg-label-primary me-1">@email.com</span></td>
-                        <td>... penjaminan mutu</td>
-                        <td>
-                            <div class="dropdown">
-                              <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                <i class="bx bx-dots-vertical-rounded"></i>
-                              </button>
-                              <div class="dropdown-menu">
-                                <a class="dropdown-item" href="javascript:void(0);"
-                                  ><i class="bx bx-edit-alt me-1"></i> Edit</a
-                                >
-                                <a class="dropdown-item" href="javascript:void(0);"
-                                  ><i class="bx bx-trash me-1"></i> Delete</a
-                                >
-                              </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>19880823201803001</td>
-                        <td>Ayyu Subhi Farahiba</td>
-                        <td><span class="badge bg-label-primary me-1">@email.com</span></td>
-                        <td>... penjaminan mutu</td>
-                        <td>
-                            <div class="dropdown">
-                              <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                <i class="bx bx-dots-vertical-rounded"></i>
-                              </button>
-                              <div class="dropdown-menu">
-                                <a class="dropdown-item" href="javascript:void(0);"
-                                  ><i class="bx bx-edit-alt me-1"></i> Edit</a
-                                >
-                                <a class="dropdown-item" href="javascript:void(0);"
-                                  ><i class="bx bx-trash me-1"></i> Delete</a
-                                >
-                              </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>19880823201803001</td>
-                        <td>Mochammad Yasir</td>
-                        <td><span class="badge bg-label-primary me-1">@email.com</span></td>
-                        <td>... penjaminan mutu</td>
-                        <td>
-                            <div class="dropdown">
-                              <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                <i class="bx bx-dots-vertical-rounded"></i>
-                              </button>
-                              <div class="dropdown-menu">
-                                <a class="dropdown-item" href="javascript:void(0);"
-                                  ><i class="bx bx-edit-alt me-1"></i> Edit</a
-                                >
-                                <a class="dropdown-item" href="javascript:void(0);"
-                                  ><i class="bx bx-trash me-1"></i> Delete</a
-                                >
-                              </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>19880823201803001</td>
-                        <td>Ana Naimatul Jannah</td>
-                        <td><span class="badge bg-label-primary me-1">@email.com</span></td>
-                        <td>... penjaminan mutu</td>
-                        <td>
-                            <div class="dropdown">
-                              <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                <i class="bx bx-dots-vertical-rounded"></i>
-                              </button>
-                              <div class="dropdown-menu">
-                                <a class="dropdown-item" href="javascript:void(0);"
-                                  ><i class="bx bx-edit-alt me-1"></i> Edit</a
-                                >
-                                <a class="dropdown-item" href="javascript:void(0);"
-                                  ><i class="bx bx-trash me-1"></i> Delete</a
-                                >
-                              </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>19880823201803001</td>
-                        <td>Fiyan Ilman Faqih</td>
-                        <td><span class="badge bg-label-primary me-1">@email.com</span></td>
-                        <td>... penjaminan mutu</td>
-                        <td>
-                            <div class="dropdown">
-                              <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                <i class="bx bx-dots-vertical-rounded"></i>
-                              </button>
-                              <div class="dropdown-menu">
-                                <a class="dropdown-item" href="javascript:void(0);"
-                                  ><i class="bx bx-edit-alt me-1"></i> Edit</a
-                                >
-                                <a class="dropdown-item" href="javascript:void(0);"
-                                  ><i class="bx bx-trash me-1"></i> Delete</a
-                                >
-                              </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>8</td>
-                        <td>19880823201803001</td>
-                        <td>Puji Rahayu Ningsih</td>
-                        <td><span class="badge bg-label-primary me-1">@email.com</span></td>
-                        <td>... penjaminan mutu</td>
-                        <td>
-                            <div class="dropdown">
-                              <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                <i class="bx bx-dots-vertical-rounded"></i>
-                              </button>
-                              <div class="dropdown-menu">
-                                <a class="dropdown-item" href="javascript:void(0);"
-                                  ><i class="bx bx-edit-alt me-1"></i> Edit</a
-                                >
-                                <a class="dropdown-item" href="javascript:void(0);"
-                                  ><i class="bx bx-trash me-1"></i> Delete</a
-                                >
-                              </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>9</td>
-                        <td>19880823201803001</td>
-                        <td>Wiwin Puspita Hadi</td>
-                        <td><span class="badge bg-label-primary me-1">@email.com</span></td>
-                        <td>... penjaminan mutu</td>
-                        <td>
-                            <div class="dropdown">
-                              <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                <i class="bx bx-dots-vertical-rounded"></i>
-                              </button>
-                              <div class="dropdown-menu">
-                                <a class="dropdown-item" href="javascript:void(0);"
-                                  ><i class="bx bx-edit-alt me-1"></i> Edit</a
-                                >
-                                <a class="dropdown-item" href="javascript:void(0);"
-                                  ><i class="bx bx-trash me-1"></i> Delete</a
-                                >
-                              </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>10</td>
-                        <td>19880823201803001</td>
-                        <td>Fajar Luqman Tri Ariyanto</td>
-                        <td><span class="badge bg-label-primary me-1">@email.com</span></td>
-                        <td>... penjaminan mutu</td>
-                        <td>
-                            <div class="dropdown">
-                              <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                <i class="bx bx-dots-vertical-rounded"></i>
-                              </button>
-                              <div class="dropdown-menu">
-                                <a class="dropdown-item" href="javascript:void(0);"
-                                  ><i class="bx bx-edit-alt me-1"></i> Edit</a
-                                >
-                                <a class="dropdown-item" href="javascript:void(0);"
-                                  ><i class="bx bx-trash me-1"></i> Delete</a
-                                >
-                              </div>
-                            </div>
-                        </td>
-                    </tr>
+                  @foreach ($jamutims as $row)
+                  <tr>
+                    <td>{{ $row->id }}</td>
+                    <td>{{ $row->nip }}</td>
+                    <td>{{ $row->name }}</td>
+                    <td><span class="badge bg-label-primary me-1">{{ $row->email }}</span></td>
+                    <td>{{ $row->PJ }}</td>
+                    <td>
+                        <div class="dropdown">
+                          <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                            <i class="bx bx-dots-vertical-rounded"></i>
+                          </button>
+                          <div class="dropdown-menu">
+                            <a class="dropdown-item" href="javascript:void(0);"
+                              ><i class="bx bx-edit-alt me-1"></i> Edit</a
+                            >
+                            <a class="dropdown-item" href="javascript:void(0);"
+                              ><i class="bx bx-trash me-1"></i> Delete</a
+                            >
+                          </div>
+                        </div>
+                    </td>
+                </tr>
+                  @endforeach
                 </tbody>
             </table>
         </div>
