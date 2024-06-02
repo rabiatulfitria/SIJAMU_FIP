@@ -64,7 +64,7 @@
                                     aria-describedby="basic-icon-default-fullname2" />
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Kirim</button>
+                        <button type="submit" class="btn btn-primary">{{ isset($jamutims) }}Kirim</button>
                     </form>
                 </div>
             </div>
