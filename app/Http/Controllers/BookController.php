@@ -4,17 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+//contoh controller books
 class BookController extends Controller
 {
     public function index()
     {
         $books = session()->get('books', []);
-        return view('books.index', compact('books'));
+        return view('booksContoh.index', compact('books'));
     }
 
     public function create()
     {
-        return view('books.form');
+        return view('booksContoh.form');
     }
 
     public function store(Request $request)
