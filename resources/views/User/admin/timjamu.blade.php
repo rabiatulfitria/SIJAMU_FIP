@@ -81,39 +81,43 @@
                         <th>Nama</th>
                         <th>Email</th>
                         <th>Penanggung Jawab</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                  @foreach ($jamutims as $row)
-                  <tr>
-                    <td>{{ $row->id }}</td>
-                    <td>{{ $row->nip }}</td>
-                    <td>{{ $row->name }}</td>
-                    <td><span class="badge bg-label-primary me-1">{{ $row->email }}</span></td>
-                    <td>{{ $row->PJ }}</td>
-                    <td>
-                        <div class="dropdown">
-                          <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                            <i class="bx bx-dots-vertical-rounded"></i>
-                          </button>
-                          <div class="dropdown-menu">
-                            <a class="dropdown-item" href="javascript:void(0);"
-                              ><i class="bx bx-edit-alt me-1"></i> Edit</a
-                            >
-                            <a class="dropdown-item" href="javascript:void(0);"
-                              ><i class="bx bx-trash me-1"></i> Delete</a
-                            >
-                          </div>
-                        </div>
-                    </td>
-                </tr>
-                  @endforeach
+                    @foreach ($jamutims as $row)
+                        <tr>
+                            <td>{{ $row->id }}</td>
+                            <td>{{ $row->nip }}</td>
+                            <td>{{ $row->name }}</td>
+                            <td><span class="badge bg-label-primary me-1">{{ $row->email }}</span></td>
+                            <td>{{ $row->PJ }}</td>
+                            <td>
+                                <div class="dropdown">
+                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                        data-bs-toggle="dropdown">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="{{ route('editTimJAMU', $jamutims->id) }}">
+                                            <i class="bx bx-edit-alt me-1"></i> Edit</a>
+                                        <a class="dropdown-item" href="{{ route('hapusTimJAMU', $jamutims->id) }}"
+                                            method="POST">
+                                            @csrf @method('DELETE')<i class="bx bx-trash me-1"></i> Delete</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
     </div>
     <div class="demo-inline-spacing" style="padding-left: 430px">
-        <button type="button" class="btn btn-primary" style="padding-left: 50px; padding-right: 50px" 
+        <button type="button" class="btn btn-primary" style="padding-left: 50px; padding-right: 50px"
             onclick="window.location.href='{{ route('tambahTimJAMU') }}'">Tambah</button>
+        @if (session('success'))
+            <div class="alert alert-success">{{ @session('success') }}</div>
+        @endif
     </div>
 @endsection
