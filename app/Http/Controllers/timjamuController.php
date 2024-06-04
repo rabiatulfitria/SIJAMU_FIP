@@ -22,7 +22,7 @@ class timjamuController extends Controller
     {
         $request->validate([
             'nip' => 'required',
-            'name' => 'required',
+            'nama' => 'required',
             'email' => 'required|email|unique:jamutims',
             'PJ' => 'required',
         ]);

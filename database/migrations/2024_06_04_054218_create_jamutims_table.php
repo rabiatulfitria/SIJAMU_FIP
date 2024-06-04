@@ -14,10 +14,10 @@ class CreateJamutimsTable extends Migration
     public function up()
     {
         Schema::create('jamutims', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('nip');
-            $table->string('name', 50);
-            $table->string('email', 50)->unique();
+            $table->integer('id', 11);
+            $table->integer('nip', 20);
+            $table->string('nama', 100);
+            $table->string('email', 100)->unique();
             $table->string('PJ', 50);
             $table->timestamps();
         });

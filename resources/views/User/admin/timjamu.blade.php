@@ -89,7 +89,7 @@
                         <tr>
                             <td>{{ $row->id }}</td>
                             <td>{{ $row->nip }}</td>
-                            <td>{{ $row->name }}</td>
+                            <td>{{ $row->nama }}</td>
                             <td><span class="badge bg-label-primary me-1">{{ $row->email }}</span></td>
                             <td>{{ $row->PJ }}</td>
                             <td>
