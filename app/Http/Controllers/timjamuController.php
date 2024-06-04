@@ -28,8 +28,9 @@ class timjamuController extends Controller
         ]);
 
         Timjamu::create($request->all());
+        // dd($request->all());
 
-        return redirect('/TimPenjaminanMutu')->with('success', 'Tim JAMU berhasil ditambahkan.');
+        return redirect()->route('TimJAMU')->with('success', 'Tim JAMU berhasil ditambahkan.');
     }
 
     public function edit( Timjamu $jamutims)
@@ -48,13 +49,13 @@ class timjamuController extends Controller
 
         $jamutims->update($request->all());
 
-        return redirect('/TimPenjaminanMutu')->with('success', 'Tim JAMU berhasil diperbarui.');
+        return redirect()->route('TimJAMU')->with('success', 'Tim JAMU berhasil diperbarui.');
     }
 
     public function destroy(Timjamu $jamutims)
     {
         $jamutims->delete();
 
-        return redirect('/TimPenjaminanMutu')->with('success', 'Tim JAMU berhasil dihapus.');
+        return redirect()->route('TimJAMU')->with('success', 'Tim JAMU berhasil dihapus.');
     }
 }

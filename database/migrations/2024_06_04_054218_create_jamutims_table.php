@@ -16,11 +16,10 @@ class CreateJamutimsTable extends Migration
         Schema::create('jamutims', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('nip');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('PJ');
+            $table->string('name', 50);
+            $table->string('email', 50)->unique();
+            $table->string('PJ', 50);
             $table->timestamps();
-
         });
     }
 
