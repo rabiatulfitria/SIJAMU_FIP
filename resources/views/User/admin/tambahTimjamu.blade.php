@@ -22,7 +22,7 @@
                     <h5 class="mb-0"></h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('jamutims.store') }}" method="POST">
+                    <form method="POST" action="{{ route('jamutims.store') }}">
                         @csrf
                         <div class="mb-3">
                             <label class="form-label" for="basic-icon-default-fullname">NIP</label>
@@ -30,6 +30,7 @@
                                 <span id="basic-icon-default-fullname2" class="input-group-text"><i
                                         class="bx bx-user"></i></span>
                                 <input type="text" class="form-control" id="basic-icon-default-fullname"
+                                    name="nip"
                                     placeholder="Nomor Induk Pegawai" aria-label=""
                                     aria-describedby="basic-icon-default-fullname2" />
                             </div>
@@ -40,6 +41,7 @@
                                 <span id="basic-icon-default-fullname2" class="input-group-text"><i
                                         class="bx bx-user"></i></span>
                                 <input type="text" class="form-control" id="basic-icon-default-fullname"
+                                    name="nama"
                                     placeholder="Nama Lengkap" aria-label=""
                                     aria-describedby="basic-icon-default-fullname2" />
                             </div>
@@ -50,6 +52,7 @@
                                 <span id="basic-icon-default-company2" class="input-group-text"><i
                                         class="bx bx-buildings"></i></span>
                                 <input type="text" id="basic-icon-default-company" class="form-control"
+                                    name="email"
                                     placeholder="@email.com" aria-label=""
                                     aria-describedby="basic-icon-default-company2" />
                             </div>
@@ -60,6 +63,7 @@
                                 <span id="" class="input-group-text"><i
                                         class="bx bx-id-card"></i></span>
                                 <input type="text" id="basic-icon-default-fullname2" class="form-control"
+                                    name="PJ"
                                     placeholder="Selaku" aria-label=""
                                     aria-describedby="basic-icon-default-fullname2" />
                             </div>
