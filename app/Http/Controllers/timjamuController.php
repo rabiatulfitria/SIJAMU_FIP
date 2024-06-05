@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Timjamu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class timjamuController extends Controller
 {
@@ -26,35 +27,48 @@ class timjamuController extends Controller
             'email' => 'required|email|unique:jamutims',
             'PJ' => 'required',
         ]);
-
-        Timjamu::create($request->all());
-        // dd($request->all());
+        
+        $dataBaru = new TimJamu;
+        $dataBaru->nip = $request['nip'];
+        $dataBaru->nama = $request['nama'];
+        $dataBaru->email = $request['email'];
+        $dataBaru->PJ = $request['PJ'];
+        $dataBaru->save();
 
         return redirect()->route('TimJAMU')->with('success', 'Tim JAMU berhasil ditambahkan.');
     }
 
-    public function edit( Timjamu $jamutims)
+    public function edit( String $id)
     {
-        return view('User.admin.editTimjamu', compact('jamutims'));
+        $data = TimJamu::where('id',$id)->first();
+        return view('User.admin.editTimjamu', [
+            'oldData' => $data
+        ]);
     }
 
-    public function update(Request $request, Timjamu $jamutims)
+    public function update(Request $request, String $id)
     {
+        $dataUpdate = TimJamu::find($id);
+
         $request->validate([
-            'nip' => 'required',
-            'name' => 'required',
-            'email' => 'required|email|unique:jamutims',
+            'nama' => 'required',
+            'email' => 'required|email',
             'PJ' => 'required',
         ]);
 
-        $jamutims->update($request->all());
+        $dataUpdate->nama = $request['nama'];
+        $dataUpdate->email = $request['email'];
+        $dataUpdate->PJ = $request['PJ'];
+        $dataUpdate->save();
+
 
         return redirect()->route('TimJAMU')->with('success', 'Tim JAMU berhasil diperbarui.');
     }
 
-    public function destroy(Timjamu $jamutims)
+    public function destroy(String $id)
     {
-        $jamutims->delete();
+        $dataDelete = TimJamu::findOrfail($id);
+        $dataDelete->delete();
 
         return redirect()->route('TimJAMU')->with('success', 'Tim JAMU berhasil dihapus.');
     }

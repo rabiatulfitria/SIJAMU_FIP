@@ -14,8 +14,8 @@ class CreateJamutimsTable extends Migration
     public function up()
     {
         Schema::create('jamutims', function (Blueprint $table) {
-            $table->integer('id', 11);
-            $table->integer('nip', 20);
+            $table->id();
+            $table->string('nip')->unique()->nullable();
             $table->string('nama', 100);
             $table->string('email', 100)->unique();
             $table->string('PJ', 50);

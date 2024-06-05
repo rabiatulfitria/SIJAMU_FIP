@@ -85,6 +85,7 @@
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
+                   
                     @foreach ($jamutims as $row)
                         <tr>
                             <td>{{ $row->id }}</td>
@@ -99,11 +100,17 @@
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="{{ route('editTimJAMU', $jamutims->id) }}">
+                                        <div>
+                                        <a class="dropdown-item" href="{{ route('editTimJAMU', $row->id) }}">
                                             <i class="bx bx-edit-alt me-1"></i> Edit</a>
-                                        <a class="dropdown-item" href="{{ route('hapusTimJAMU', $jamutims->id) }}"
-                                            method="POST">
-                                            @csrf @method('DELETE')<i class="bx bx-trash me-1"></i> Delete</a>
+                                        </div>
+                                        <div>
+                                            <form method="POST" action="/TimPenjaminanMutu/{{$row->id}}">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="dropdown-item"><i class="bx bx-trash me-1"></i> Delete</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </td>

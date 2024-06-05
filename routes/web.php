@@ -26,9 +26,10 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 // route untuk halaman menu Tim Penjaminan Mutu CRUD
 Route::get('/TimPenjaminanMutu', [timjamuController::class, 'index'])->name('TimJAMU');
 Route::get('/TimPenjaminanMutu/tambahTimJAMU', [timjamuController::class, 'create'])->name('tambahTimJAMU');
-Route::put('/TimPenjaminanMutu/{id}/editTimJAMU', [timjamuController::class, 'edit'])->name('editTimJAMU');
-Route::delete('/TimPenjaminanMutu/{id}', [timjamuController::class, 'timjamuController@destroy'])->name('hapusTimJAMU');
+Route::get('/TimPenjaminanMutu/editTimJAMU/{id}', [timjamuController::class, 'edit'])->name('editTimJAMU');
+Route::delete('/TimPenjaminanMutu/{id}', [timjamuController::class, 'destroy'])->name('hapusTimJAMU');
 Route::post('/TimPenjaminanMutu', [timjamuController::class, 'store'])->name('jamutims.store');
+Route::put('/TimPenjaminanMutu/{id}/updateTimJAMU', [timjamuController::class, 'update'])->name('updateTimJAMU');
 
 // contoh route untuk halaman menu Penetapan CRUD
 Route::get('/books', [BookController::class, 'index'])->name('books.index');

@@ -12,7 +12,6 @@
         <div class="nav-items d-flex align-item-center">Tambah Tim Jaminan Mutu Fakultas</div>
     </div>
 @endsection
-
 @section('content')
     <div class="row">
 
@@ -22,7 +21,7 @@
                     <h5 class="mb-0"></h5>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('editTimJAMU', $jamutims->id) }}" method="POST">
+                    <form method="POST" action="/TimPenjaminanMutu/{{$oldData->id}}/updateTimJAMU">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
@@ -31,18 +30,10 @@
                                 <span id="basic-icon-default-fullname2" class="input-group-text"><i
                                         class="bx bx-user"></i></span>
                                 <input type="text" class="form-control" id="basic-icon-default-fullname"
+                                    name="nama"
+                                    value="{{$oldData->nama}}"
                                     placeholder="Nama Lengkap" aria-label="John Doe"
                                     aria-describedby="basic-icon-default-fullname2" />
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label" for="basic-icon-default-company">Email</label>
-                            <div class="input-group input-group-merge">
-                                <span id="basic-icon-default-company2" class="input-group-text"><i
-                                        class="bx bx-buildings"></i></span>
-                                <input type="text" id="basic-icon-default-company" class="form-control"
-                                    placeholder="" aria-label="ACME Inc."
-                                    aria-describedby="basic-icon-default-company2" />
                             </div>
                         </div>
                         <div class="mb-3">
@@ -50,20 +41,24 @@
                             <div class="input-group input-group-merge">
                                 <span class="input-group-text"><i class="bx bx-envelope"></i></span>
                                 <input type="text" id="basic-icon-default-email" class="form-control"
+                                    name="email"
+                                    value="{{$oldData->email}}"
                                     placeholder="john.doe" aria-label="john.doe"
                                     aria-describedby="basic-icon-default-email2" />
-                                <span id="basic-icon-default-email2" class="input-group-text">@example.com</span>
+                                
                             </div>
                             <div class="form-text">You can use letters, numbers & periods</div>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="basic-icon-default-phone">Nomor Telepon</label>
+                            <label class="form-label" for="box-icon-id-card">Penanggung Jawab</label>
                             <div class="input-group input-group-merge">
-                                <span id="basic-icon-default-phone2" class="input-group-text"><i
-                                        class="bx bx-phone"></i></span>
-                                <input type="text" id="basic-icon-default-phone" class="form-control phone-mask"
-                                    placeholder="658 799 8941" aria-label="658 799 8941"
-                                    aria-describedby="basic-icon-default-phone2" />
+                                <span id="" class="input-group-text"><i
+                                        class="bx bx-id-card"></i></span>
+                                <input type="text" id="basic-icon-default-fullname2" class="form-control"
+                                    name="PJ"
+                                    value="{{$oldData->PJ}}"
+                                    placeholder="Selaku" aria-label=""
+                                    aria-describedby="basic-icon-default-fullname2" />
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Kirim</button>
