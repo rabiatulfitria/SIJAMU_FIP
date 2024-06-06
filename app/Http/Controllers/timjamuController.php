@@ -51,6 +51,7 @@ class timjamuController extends Controller
         $dataUpdate = TimJamu::find($id);
 
         $request->validate([
+            'nip' => 'required',
             'nama' => 'required',
             'email' => 'required|email',
             'PJ' => 'required',

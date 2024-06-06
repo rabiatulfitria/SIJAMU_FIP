@@ -25,6 +25,18 @@
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
+                            <label class="form-label" for="basic-icon-default-fullname">NIP</label>
+                            <div class="input-group input-group-merge">
+                                <span id="basic-icon-default-fullname2" class="input-group-text"><i
+                                        class="bx bx-user"></i></span>
+                                <input type="text" class="form-control" id="basic-icon-default-fullname"
+                                    name="nama"
+                                    value="{{$oldData->nip}}"
+                                    placeholder="Nomor Induk Pegawai" aria-label="John Doe"
+                                    aria-describedby="basic-icon-default-fullname2" />
+                            </div>
+                        </div>
+                        <div class="mb-3">
                             <label class="form-label" for="basic-icon-default-fullname">Nama</label>
                             <div class="input-group input-group-merge">
                                 <span id="basic-icon-default-fullname2" class="input-group-text"><i
@@ -47,7 +59,7 @@
                                     aria-describedby="basic-icon-default-email2" />
                                 
                             </div>
-                            <div class="form-text">You can use letters, numbers & periods</div>
+                            <div class="form-text"></div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="box-icon-id-card">Penanggung Jawab</label>
