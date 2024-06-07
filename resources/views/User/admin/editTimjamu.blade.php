@@ -30,7 +30,7 @@
                                 <span id="basic-icon-default-fullname2" class="input-group-text"><i
                                         class="bx bx-user"></i></span>
                                 <input type="text" class="form-control" id="basic-icon-default-fullname"
-                                    name="nama"
+                                    name="nip"
                                     value="{{$oldData->nip}}"
                                     placeholder="Nomor Induk Pegawai" aria-label="John Doe"
                                     aria-describedby="basic-icon-default-fullname2" />

@@ -21,7 +21,7 @@ Route::get('/', function () {
 });
 
 // route untuk halaman menu Home atau dashboard
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/Beranda', [DashboardController::class, 'index'])->name('BerandaSIJAMUFIP');
 
 // route untuk halaman menu Tim Penjaminan Mutu CRUD
 Route::get('/TimPenjaminanMutu', [timjamuController::class, 'index'])->name('TimJAMU');

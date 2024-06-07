@@ -57,6 +57,7 @@ class timjamuController extends Controller
             'PJ' => 'required',
         ]);
 
+        $dataUpdate->nip = $request['nip'];
         $dataUpdate->nama = $request['nama'];
         $dataUpdate->email = $request['email'];
         $dataUpdate->PJ = $request['PJ'];
@@ -64,13 +65,5 @@ class timjamuController extends Controller
 
 
         return redirect()->route('TimJAMU')->with('success', 'Tim JAMU berhasil diperbarui.');
-    }
-
-    public function destroy(String $id)
-    {
-        $dataDelete = TimJamu::findOrfail($id);
-        $dataDelete->delete();
-
-        return redirect()->route('TimJAMU')->with('success', 'Tim JAMU berhasil dihapus.');
     }
 }

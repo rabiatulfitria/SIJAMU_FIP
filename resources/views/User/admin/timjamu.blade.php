@@ -86,9 +86,9 @@
                 </thead>
                 <tbody class="table-border-bottom-0">
                    
-                    @foreach ($jamutims as $row)
+                    @foreach ($jamutims as $key => $row)
                         <tr>
-                            <td>{{ $row->id }}</td>
+                            <td>{{ $key + 1 }}</td>
                             <td>{{ $row->nip }}</td>
                             <td>{{ $row->nama }}</td>
                             <td><span class="badge bg-label-primary me-1">{{ $row->email }}</span></td>
@@ -104,13 +104,6 @@
                                         <a class="dropdown-item" href="{{ route('editTimJAMU', $row->id) }}">
                                             <i class="bx bx-edit-alt me-1"></i> Edit</a>
                                         </div>
-                                        <div>
-                                            <form method="POST" action="/TimPenjaminanMutu/{{$row->id}}">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="dropdown-item"><i class="bx bx-trash me-1"></i> Delete</button>
-                                            </form>
-                                        </div>
                                     </div>
                                 </div>
                             </td>
@@ -124,7 +117,19 @@
         <button type="button" class="btn btn-primary" style="padding-left: 50px; padding-right: 50px"
             onclick="window.location.href='{{ route('tambahTimJAMU') }}'">Tambah</button>
         @if (session('success'))
-            <div class="alert alert-success">{{ @session('success') }}</div>
+            <div class="alert alert-success" id="success-message">{{ @session('success') }}</div>
         @endif
     </div>
 @endsection
+
+<script>
+    // JavaScript untuk menghilangkan pesan success setelah beberapa waktu
+    document.addEventListener('DOMContentLoaded', function () {
+        var successMessage = document.getElementById('success-message');
+        if (successMessage) {
+            setTimeout(function () {
+                successMessage.style.display = 'none';
+            }, 3000); // Menghilangkan pesan setelah 3 detik
+        }
+    });
+</script>
