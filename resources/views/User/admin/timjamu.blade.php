@@ -117,19 +117,7 @@
         <button type="button" class="btn btn-primary" style="padding-left: 50px; padding-right: 50px"
             onclick="window.location.href='{{ route('tambahTimJAMU') }}'">Tambah</button>
         @if (session('success'))
-            <div class="alert alert-success" id="success-message">{{ @session('success') }}</div>
+            <div>{{ @session('success') }}</div>
         @endif
     </div>
 @endsection
-
-<script>
-    // JavaScript untuk menghilangkan pesan success setelah beberapa waktu
-    document.addEventListener('DOMContentLoaded', function () {
-        var successMessage = document.getElementById('success-message');
-        if (successMessage) {
-            setTimeout(function () {
-                successMessage.style.display = 'none';
-            }, 3000); // Menghilangkan pesan setelah 3 detik
-        }
-    });
-</script>

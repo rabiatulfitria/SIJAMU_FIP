@@ -48,6 +48,8 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
+    
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
@@ -74,7 +76,7 @@
                     <li class="menu-item {{ \Route::is('BerandaSIJAMUFIP') ? 'active' : '' }}">
                         <a href="{{ route('BerandaSIJAMUFIP') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                            <div data-i18n="Home">Home</div>
+                            <div data-i18n="Home">Beranda</div>
                         </a>
                     </li>
 

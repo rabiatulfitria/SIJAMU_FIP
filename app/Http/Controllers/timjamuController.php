@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Timjamu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class timjamuController extends Controller
 {
@@ -35,7 +36,8 @@ class timjamuController extends Controller
         $dataBaru->PJ = $request['PJ'];
         $dataBaru->save();
 
-        return redirect()->route('TimJAMU')->with('success', 'Tim JAMU berhasil ditambahkan.');
+        Alert::success('success', 'Tim JAMU berhasil ditambahkan.');
+        return redirect()->route('TimJAMU');
     }
 
     public function edit( String $id)
@@ -63,7 +65,7 @@ class timjamuController extends Controller
         $dataUpdate->PJ = $request['PJ'];
         $dataUpdate->save();
 
-
-        return redirect()->route('TimJAMU')->with('success', 'Tim JAMU berhasil diperbarui.');
+        Alert::success('success', 'Tim JAMU berhasil diperbarui.');
+        return redirect()->route('TimJAMU');
     }
 }

@@ -86,7 +86,6 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
                                 <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Delete</a>
                             </div>
                         </div>
                     </div>
@@ -111,7 +110,6 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
                                 <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Delete</a>
                             </div>
                         </div>
                     </div>
@@ -136,7 +134,6 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
                                 <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Delete</a>
                             </div>
                         </div>
                     </div>
@@ -161,7 +158,6 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
                                 <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Delete</a>
                             </div>
                         </div>
                     </div>
@@ -186,7 +182,6 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
                                 <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Delete</a>
                             </div>
                         </div>
                     </div>
