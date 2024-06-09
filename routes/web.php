@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\timjamuController;
-use App\Http\Controllers\BookController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookController;
+use App\Http\Controllers\timjamuController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\perangkatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,17 +28,14 @@ Route::get('/Beranda', [DashboardController::class, 'index'])->name('BerandaSIJA
 Route::get('/TimPenjaminanMutu', [timjamuController::class, 'index'])->name('TimJAMU');
 Route::get('/TimPenjaminanMutu/tambahTimJAMU', [timjamuController::class, 'create'])->name('tambahTimJAMU');
 Route::get('/TimPenjaminanMutu/editTimJAMU/{id}', [timjamuController::class, 'edit'])->name('editTimJAMU');
-Route::delete('/TimPenjaminanMutu/{id}', [timjamuController::class, 'destroy'])->name('hapusTimJAMU');
 Route::post('/TimPenjaminanMutu', [timjamuController::class, 'store'])->name('jamutims.store');
 Route::put('/TimPenjaminanMutu/{id}/updateTimJAMU', [timjamuController::class, 'update'])->name('updateTimJAMU');
 
-// contoh route untuk halaman menu Penetapan CRUD
-Route::get('/books', [BookController::class, 'index'])->name('books.index');
-Route::get('/books/create', [BookController::class, 'create'])->name('books.create');
-Route::post('/books', [BookController::class, 'store'])->name('books.store');
-Route::get('/books/{id}/edit', [BookController::class, 'edit'])->name('books.edit');
-Route::put('/books/{id}', [BookController::class, 'update'])->name('books.update');
-Route::delete('/books/{id}', [BookController::class, 'destroy'])->name('books.destroy');
+// route untuk halaman menu Penetapan CRUD -> Perangkat SPMI
+Route::get('/Penetapan/PerangkatSPMI', [perangkatController::class, 'index'])->name('penetapan');
+
+// route untuk halaman menu Penetapan CRUD -> Standar Yang Ditetapkan Institusi
+
 
 // route untuk halaman menu Pelaksanaan CRUD
 // route untuk halaman menu Evaluasi CRUD
