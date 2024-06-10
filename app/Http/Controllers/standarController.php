@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class perangkatController extends Controller
+class standarController extends Controller
 {
     public function index()
     {
         // $jamutims = Timjamu::all();
-        return view('User.admin.Penetapan.index1_penetapan');
+        return view('User.admin.Penetapan.index2_penetapan');
     }
 }

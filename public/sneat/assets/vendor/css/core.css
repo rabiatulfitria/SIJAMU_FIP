@@ -2106,6 +2106,18 @@ progress {
   border-color: #394859;
 }
 
+.table-purple {
+  --bs-table-bg: #ddbdfb;
+  --bs-table-striped-bg: #e681fd;
+  --bs-table-striped-color: #fff;
+  --bs-table-active-bg: #a974f3;
+  --bs-table-active-color: #fff;
+  --bs-table-hover-bg: #6b4985;
+  --bs-table-hover-color: #fff;
+  color: #fff;
+  border-color: #593957;
+}
+
 .table-responsive {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;

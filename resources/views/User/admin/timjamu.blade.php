@@ -74,7 +74,7 @@
         <h5 class="card-header">Tim Jaminan Mutu Fakultas dan Prodi Ilmu di Fakultas Ilmu Pendidikan</h5>
         <div class="table-responsive text-nowrap">
             <table class="table">
-                <thead class="table-light">
+                <thead class="table-purple">
                     <tr>
                         <th>No.</th>
                         <th>NIP</th>

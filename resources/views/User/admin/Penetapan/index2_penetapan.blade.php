@@ -11,8 +11,8 @@
         <div class="navbar-nav align-items-center">
             <div class="nav-items d-flex align-item-center">
                 <h5 style="font-weight: bold">Penetapan</h5>
-                <small class="text-gray fw-semibold">Perangkat SPMI</small>
             </div>
+            <span>Standar Yang Ditetapkan Institusi</span>
         </div>
 
         <ul class="navbar-nav flex-row align-items-center ms-auto">
@@ -74,10 +74,10 @@
 
 @section('content')
 <div class="card">
-    <h5 class="card-header">Light Table head</h5>
+    <h5 class="card-header">Bidang Pengaturan Standar</h5>
     <div class="table-responsive text-nowrap">
       <table class="table">
-        <thead class="table-light">
+        <thead class="table-purple">
           <tr>
             <th>Project</th>
             <th>Client</th>

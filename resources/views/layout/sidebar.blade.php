@@ -93,19 +93,19 @@
                         <span class="menu-header-text">PPEPP</span>
                     </li>
                     <!-- 5 Poin -->
-                    <li class="menu-item {{ \Route::is('perangkat') ? 'active' : '' }}">
-                        <a href="{{ route('perangkat') }}" class="menu-link menu-toggle">
+                    <li class="menu-item {{ \Route::is('penetapan*') ? 'active' : '' }}">
+                        <a href="{{ route('penetapan') }}" class="menu-link menu-toggle">
                             <i class='menu-icon tf-icons bx bxs-book-bookmark'></i>
                             <div data-i18n="Penetapan">Penetapan</div>
                         </a>
                         <ul class="menu-sub">
-                            <li class="menu-item {{ \Route::is('perangkat') ? 'active' : '' }}">
-                                <a href="{{ route('perangkat') }}" class="menu-link">
+                            <li class="menu-item {{ \Route::is('penetapan') ? 'active' : '' }}">
+                                <a href="{{ route('penetapan') }}" class="menu-link">
                                     <div data-i18n="Perangkat">Perangkat SPMI</div>
                                 </a>
                             </li>
-                            <li class="menu-item {{ \Route::is('standar') ? 'active' : '' }}">
-                                <a href="" class="menu-link">
+                            <li class="menu-item {{ \Route::is('penetapan.standar') ? 'active' : '' }}">
+                                <a href="{{ route('penetapan.standar') }}" class="menu-link">
                                     <div data-i18n="Standar">Standar Yang Ditetapkan Institusi</div>
                                 </a>
                             </li>

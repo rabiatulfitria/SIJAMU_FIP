@@ -5,6 +5,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\timjamuController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\perangkatController;
+use App\Http\Controllers\standarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +36,7 @@ Route::put('/TimPenjaminanMutu/{id}/updateTimJAMU', [timjamuController::class, '
 Route::get('/Penetapan/PerangkatSPMI', [perangkatController::class, 'index'])->name('penetapan');
 
 // route untuk halaman menu Penetapan CRUD -> Standar Yang Ditetapkan Institusi
-
+Route::get('/Penetapan/StandarInstitusi', [standarController::class, 'index'])->name('penetapan.standar');
 
 // route untuk halaman menu Pelaksanaan CRUD
 // route untuk halaman menu Evaluasi CRUD
