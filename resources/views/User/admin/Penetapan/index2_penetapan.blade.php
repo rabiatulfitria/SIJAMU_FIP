@@ -8,13 +8,9 @@
     </div>
 
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-        <div class="navbar-nav align-items-center">
-            <div class="nav-items d-flex align-item-center">
-                <h5 style="font-weight: bold">Penetapan</h5>
-            </div>
-            <span>Standar Yang Ditetapkan Institusi</span>
-        </div>
+        <div class="navbar-nav align-items-center" style="color: #007bff; font-size: 20px; font-weight:bold">Penetapan</div>
 
+        {{-- <small class="text-gray fw-semibold">Perangkat SPMI</small> --}}
         <ul class="navbar-nav flex-row align-items-center ms-auto">
             <!-- User -->
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
@@ -73,228 +69,164 @@
 @endsection
 
 @section('content')
-<div class="card">
-    <h5 class="card-header">Bidang Pengaturan Standar</h5>
-    <div class="table-responsive text-nowrap">
-      <table class="table">
-        <thead class="table-purple">
-          <tr>
-            <th>Project</th>
-            <th>Client</th>
-            <th>Users</th>
-            <th>Status</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody class="table-border-bottom-0">
-          <tr>
-            <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Angular Project</strong></td>
-            <td>Albert Cook</td>
-            <td>
-              <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                <li
-                  data-bs-toggle="tooltip"
-                  data-popup="tooltip-custom"
-                  data-bs-placement="top"
-                  class="avatar avatar-xs pull-up"
-                  title="Lilian Fuller"
-                >
-                  <img src="../assets/img/avatars/5.png" alt="Avatar" class="rounded-circle" />
-                </li>
-                <li
-                  data-bs-toggle="tooltip"
-                  data-popup="tooltip-custom"
-                  data-bs-placement="top"
-                  class="avatar avatar-xs pull-up"
-                  title="Sophia Wilkerson"
-                >
-                  <img src="../assets/img/avatars/6.png" alt="Avatar" class="rounded-circle" />
-                </li>
-                <li
-                  data-bs-toggle="tooltip"
-                  data-popup="tooltip-custom"
-                  data-bs-placement="top"
-                  class="avatar avatar-xs pull-up"
-                  title="Christina Parker"
-                >
-                  <img src="../assets/img/avatars/7.png" alt="Avatar" class="rounded-circle" />
-                </li>
-              </ul>
-            </td>
-            <td><span class="badge bg-label-primary me-1">Active</span></td>
-            <td>
-              <div class="dropdown">
-                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                  <i class="bx bx-dots-vertical-rounded"></i>
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="javascript:void(0);"
-                    ><i class="bx bx-edit-alt me-1"></i> Edit</a
-                  >
-                  <a class="dropdown-item" href="javascript:void(0);"
-                    ><i class="bx bx-trash me-1"></i> Delete</a
-                  >
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><i class="fab fa-react fa-lg text-info me-3"></i> <strong>React Project</strong></td>
-            <td>Barry Hunter</td>
-            <td>
-              <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                <li
-                  data-bs-toggle="tooltip"
-                  data-popup="tooltip-custom"
-                  data-bs-placement="top"
-                  class="avatar avatar-xs pull-up"
-                  title="Lilian Fuller"
-                >
-                  <img src="../assets/img/avatars/5.png" alt="Avatar" class="rounded-circle" />
-                </li>
-                <li
-                  data-bs-toggle="tooltip"
-                  data-popup="tooltip-custom"
-                  data-bs-placement="top"
-                  class="avatar avatar-xs pull-up"
-                  title="Sophia Wilkerson"
-                >
-                  <img src="../assets/img/avatars/6.png" alt="Avatar" class="rounded-circle" />
-                </li>
-                <li
-                  data-bs-toggle="tooltip"
-                  data-popup="tooltip-custom"
-                  data-bs-placement="top"
-                  class="avatar avatar-xs pull-up"
-                  title="Christina Parker"
-                >
-                  <img src="../assets/img/avatars/7.png" alt="Avatar" class="rounded-circle" />
-                </li>
-              </ul>
-            </td>
-            <td><span class="badge bg-label-success me-1">Completed</span></td>
-            <td>
-              <div class="dropdown">
-                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                  <i class="bx bx-dots-vertical-rounded"></i>
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="javascript:void(0);"
-                    ><i class="bx bx-edit-alt me-1"></i> Edit</a
-                  >
-                  <a class="dropdown-item" href="javascript:void(0);"
-                    ><i class="bx bx-trash me-1"></i> Delete</a
-                  >
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><i class="fab fa-vuejs fa-lg text-success me-3"></i> <strong>VueJs Project</strong></td>
-            <td>Trevor Baker</td>
-            <td>
-              <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                <li
-                  data-bs-toggle="tooltip"
-                  data-popup="tooltip-custom"
-                  data-bs-placement="top"
-                  class="avatar avatar-xs pull-up"
-                  title="Lilian Fuller"
-                >
-                  <img src="../assets/img/avatars/5.png" alt="Avatar" class="rounded-circle" />
-                </li>
-                <li
-                  data-bs-toggle="tooltip"
-                  data-popup="tooltip-custom"
-                  data-bs-placement="top"
-                  class="avatar avatar-xs pull-up"
-                  title="Sophia Wilkerson"
-                >
-                  <img src="../assets/img/avatars/6.png" alt="Avatar" class="rounded-circle" />
-                </li>
-                <li
-                  data-bs-toggle="tooltip"
-                  data-popup="tooltip-custom"
-                  data-bs-placement="top"
-                  class="avatar avatar-xs pull-up"
-                  title="Christina Parker"
-                >
-                  <img src="../assets/img/avatars/7.png" alt="Avatar" class="rounded-circle" />
-                </li>
-              </ul>
-            </td>
-            <td><span class="badge bg-label-info me-1">Scheduled</span></td>
-            <td>
-              <div class="dropdown">
-                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                  <i class="bx bx-dots-vertical-rounded"></i>
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="javascript:void(0);"
-                    ><i class="bx bx-edit-alt me-1"></i> Edit</a
-                  >
-                  <a class="dropdown-item" href="javascript:void(0);"
-                    ><i class="bx bx-trash me-1"></i> Delete</a
-                  >
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <i class="fab fa-bootstrap fa-lg text-primary me-3"></i> <strong>Bootstrap Project</strong>
-            </td>
-            <td>Jerry Milton</td>
-            <td>
-              <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                <li
-                  data-bs-toggle="tooltip"
-                  data-popup="tooltip-custom"
-                  data-bs-placement="top"
-                  class="avatar avatar-xs pull-up"
-                  title="Lilian Fuller"
-                >
-                  <img src="../assets/img/avatars/5.png" alt="Avatar" class="rounded-circle" />
-                </li>
-                <li
-                  data-bs-toggle="tooltip"
-                  data-popup="tooltip-custom"
-                  data-bs-placement="top"
-                  class="avatar avatar-xs pull-up"
-                  title="Sophia Wilkerson"
-                >
-                  <img src="../assets/img/avatars/6.png" alt="Avatar" class="rounded-circle" />
-                </li>
-                <li
-                  data-bs-toggle="tooltip"
-                  data-popup="tooltip-custom"
-                  data-bs-placement="top"
-                  class="avatar avatar-xs pull-up"
-                  title="Christina Parker"
-                >
-                  <img src="../assets/img/avatars/7.png" alt="Avatar" class="rounded-circle" />
-                </li>
-              </ul>
-            </td>
-            <td><span class="badge bg-label-warning me-1">Pending</span></td>
-            <td>
-              <div class="dropdown">
-                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                  <i class="bx bx-dots-vertical-rounded"></i>
-                </button>
-                <div class="dropdown-menu">
-                  <a class="dropdown-item" href="javascript:void(0);"
-                    ><i class="bx bx-edit-alt me-1"></i> Edit</a
-                  >
-                  <a class="dropdown-item" href="javascript:void(0);"
-                    ><i class="bx bx-trash me-1"></i> Delete</a
-                  >
-                </div>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="card">
+        <h5 class="card-header">Standar Yang Ditetapkan Institusi</h5>
+        <div class="table-responsive text-nowrap">
+            <table class="table">
+                <thead class="table-purple">
+                    <tr>
+                        <th style="padding-left: 35px">Nama Dokumen</th>
+                        <th style="padding-left: 30px">Status Dokumen</th>
+                        <th style="padding-left: 30px">Tautan</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                    {{-- @foreach --}}
+                    <tr>
+                        <td class="fab me-3" style="font-size: 13px">Kebijakan SPMI</td>
+                        <td>
+                            <input type="radio" name="selected_item" value="Ada"> Ada
+                            <span></span>
+                            <input type="radio" name="selected_item" value="Tidak Ada" style="margin-left: 1em"> Tidak Ada
+                        </td>
+                        <td><span class="badge bg-label-info me-1"><i class="bi bi-link-45deg">Dokumen</i></span></td>
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i>
+                                        Edit</a>
+                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
+                                        Delete</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fab me-3" style="font-size: 13px">Manual SPMI</td>
+                        <td>
+                            <input type="radio" name="selected_item" value="Ada"> Ada
+                            <span></span>
+                            <input type="radio" name="selected_item" value="Tidak Ada" style="margin-left: 1em"> Tidak Ada
+                        </td>
+                        <td><span class="badge bg-label-info me-1">Dokumen</span></td>
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i>
+                                        Edit</a>
+                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
+                                        Delete</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fab me-3" style="font-size: 13px">Standar UTM</td>
+                        <td>
+                            <input type="radio" name="selected_item" value="Ada"> Ada
+                            <span></span>
+                            <input type="radio" name="selected_item" value="Tidak Ada" style="margin-left: 1em"> Tidak
+                            Ada
+                        </td>
+                        <td><span class="badge bg-label-info me-1">Dokumen</span></td>
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                    data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="javascript:void(0);"><i
+                                            class="bx bx-edit-alt me-1"></i>
+                                        Edit</a>
+                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
+                                        Delete</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fab me-3" style="font-size: 13px">Formulir SPMI</td>
+                        <td>
+                            <input type="radio" name="selected_item" value="Ada"> Ada
+                            <span></span>
+                            <input type="radio" name="selected_item" value="Tidak Ada" style="margin-left: 1em"> Tidak
+                            Ada
+                        </td>
+                        <td><span class="badge bg-label-info me-1">Dokumen</span></td>
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                    data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="javascript:void(0);"><i
+                                            class="bx bx-edit-alt me-1"></i> Edit</a>
+                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
+                                        Delete</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fab me-3" style="font-size: 13px">Manual Prosedur</td>
+                        <td>
+                            <input type="radio" name="selected_item" value="Ada"> Ada
+                            <span></span>
+                            <input type="radio" name="selected_item" value="Tidak Ada" style="margin-left: 1em"> Tidak
+                            Ada
+                        </td>
+                        <td><span class="badge bg-label-info me-1">Dokumen</span></td>
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                    data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="javascript:void(0);"><i
+                                            class="bx bx-edit-alt me-1"></i> Edit</a>
+                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
+                                        Delete</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="fab me-3" style="font-size: 13px">Instruksi Kerja</td>
+                        <td>
+                            <input type="radio" name="selected_item" value="Ada"> Ada
+                            <span></span>
+                            <input type="radio" name="selected_item" value="Tidak Ada" style="margin-left: 1em"> Tidak
+                            Ada
+                        </td>
+                        <td><span class="badge bg-label-info me-1">Dokumen</span></td>
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                    data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="javascript:void(0);"><i
+                                            class="bx bx-edit-alt me-1"></i> Edit</a>
+                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
+                                        Delete</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    {{-- @endforeach --}}
+                </tbody>
+            </table>
+        </div>
     </div>
-  </div>
 @endsection
