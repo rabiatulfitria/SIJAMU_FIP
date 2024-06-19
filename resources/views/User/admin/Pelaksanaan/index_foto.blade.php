@@ -70,6 +70,11 @@
 @section('content')
     <div class="card">
         <h5 class="card-header">Standar Yang Ditetapkan Institusi</h5>
+        <div class="panel-body">
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="tab1info">Info 1</div>
+                <div class="tab-pane fade" id="tab2info">Info 2</div>
+            </div>
         <div class="table-responsive text-nowrap">
             <table class="table">
                 <thead class="table-purple">

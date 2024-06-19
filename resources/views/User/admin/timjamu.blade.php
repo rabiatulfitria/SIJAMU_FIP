@@ -76,7 +76,7 @@
             <table class="table">
                 <thead class="table-purple">
                     <tr>
-                        <th>No.</th>
+                        <th>No</th>
                         <th>NIP</th>
                         <th>Nama</th>
                         <th>Email</th>
