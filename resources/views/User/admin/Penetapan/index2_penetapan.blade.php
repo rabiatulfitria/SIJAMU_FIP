@@ -85,7 +85,7 @@
                     {{-- @foreach --}}
                     <tr>
                         <td>1</td>
-                        <td class="fab me-3" style="font-size: 13px">Standar Pendidikan Universitas Trunojoyo Madura</td>
+                        <td class=" me-3" style="font-size: 13px">Standar Pendidikan Universitas Trunojoyo Madura</td>
                         <td>
                             <input type="radio" name="selected_item" value="Ada"> Ada
                             <span></span>
@@ -108,7 +108,7 @@
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td class="fab me-3" style="font-size: 13px">Standar Penelitian Universitas Trunojoyo Madura</td>
+                        <td class=" me-3" style="font-size: 13px">Standar Penelitian Universitas Trunojoyo Madura</td>
                         <td>
                             <input type="radio" name="selected_item" value="Ada"> Ada
                             <span></span>
@@ -131,7 +131,7 @@
                     </tr>
                     <tr>
                         <td>3</td>
-                        <td class="fab me-3" style="font-size: 13px">Standar Pengabdian Kepada Masyarakat Universitas Trunojoyo Madura</td>
+                        <td class=" me-3" style="font-size: 13px">Standar Pengabdian Kepada Masyarakat Universitas Trunojoyo Madura</td>
                         <td>
                             <input type="radio" name="selected_item" value="Ada"> Ada
                             <span></span>
@@ -157,7 +157,7 @@
                     </tr>
                     <tr>
                         <td>4</td>
-                        <td class="fab me-3" style="font-size: 13px">Standar di aspek lainnya</td>
+                        <td class=" me-3" style="font-size: 13px">Standar di aspek lainnya</td>
                         <td>
                             <input type="radio" name="selected_item" value="Ada"> Ada
                             <span></span>
@@ -183,34 +183,7 @@
                     <tr>
                         <td></td>
                         <td>
-                            <li class="fab me-3" style="font-size: 13px">Standar Layanan Kemahasiswaan Universitas Trunojoyo Madura</li>
-                        </td>
-                        <td>
-                            <input type="radio" name="selected_item" value="Ada"> Ada
-                            <span></span>
-                            <input type="radio" name="selected_item" value="Tidak Ada" style="margin-left: 1em"> Tidak
-                            Ada
-                        </td>
-                        <td><span class="badge bg-label-info me-1">Dokumen</span></td>
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                    data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i
-                                            class="bx bx-edit-alt me-1"></i> Edit</a>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
-                                        Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <li class="fab me-3" style="font-size: 13px">Standar Layanan Kerjasama Universitas Trunoojoyo Madura</li>
+                            <li class=" me-3" style="font-size: 13px">Standar Layanan Kemahasiswaan Universitas Trunojoyo Madura</li>
                         </td>
                         <td>
                             <input type="radio" name="selected_item" value="Ada"> Ada
@@ -237,7 +210,34 @@
                     <tr>
                         <td></td>
                         <td>
-                            <li class="fab me-3" style="font-size: 13px">Standar Tata Kelola Universitas Trunojoyo Madura</li>
+                            <li class=" me-3" style="font-size: 13px">Standar Layanan Kerjasama Universitas Trunoojoyo Madura</li>
+                        </td>
+                        <td>
+                            <input type="radio" name="selected_item" value="Ada"> Ada
+                            <span></span>
+                            <input type="radio" name="selected_item" value="Tidak Ada" style="margin-left: 1em"> Tidak
+                            Ada
+                        </td>
+                        <td><span class="badge bg-label-info me-1">Dokumen</span></td>
+                        <td>
+                            <div class="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                    data-bs-toggle="dropdown">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="javascript:void(0);"><i
+                                            class="bx bx-edit-alt me-1"></i> Edit</a>
+                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
+                                        Delete</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <li class="me-3" style="font-size: 13px">Standar Tata Kelola Universitas Trunojoyo Madura</li>
                         </td>
                         <td>
                             <input type="radio" name="selected_item" value="Ada"> Ada

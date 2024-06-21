@@ -8,6 +8,7 @@
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         
@@ -115,8 +116,8 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="menu-item">
-                        <a href="" class="menu-link">
+                    <li class="menu-item {{ \Route::is('pelaksanaan.prodi') ? 'active' : '' }}">
+                        <a href="{{ route('pelaksanaan.prodi') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bxs-book-open"></i>
                             <div data-i18n="Pelaksanaan">Pelaksanaan</div>
                         </a>
@@ -211,6 +212,18 @@
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('#items-table').DataTable();
+        });
+    </script>
 </body>
 
 </html>
