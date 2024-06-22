@@ -69,201 +69,56 @@
 
 @section('content')
     <div class="card">
-        <h5 class="card-header">Standar Yang Ditetapkan Institusi</h5>
-        <div class="table-responsive text-nowrap">
-            <table class="table">
-                <thead class="table-purple">
-                    <tr>
-                        <th>No</th>
-                        <th style="padding-left: 20px">Nama Dokumen</th>
-                        <th style="padding-left: 30px">Status Dokumen</th>
-                        <th style="padding-left: 30px">Tautan</th>
-                        <th>Aksi</th>
-                    </tr>
-                </thead>
-                <tbody class="table-border-bottom-0">
-                    {{-- @foreach --}}
-                    <tr>
-                        <td>1</td>
-                        <td class="fab me-3" style="font-size: 13px">Standar Pendidikan Universitas Trunojoyo Madura</td>
-                        <td>
-                            <input type="radio" name="selected_item" value="Ada"> Ada
-                            <span></span>
-                            <input type="radio" name="selected_item" value="Tidak Ada" style="margin-left: 1em"> Tidak Ada
-                        </td>
-                        <td><span class="badge bg-label-info me-1"><i class="bi bi-link-45deg">Dokumen</i></span></td>
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i>
-                                        Edit</a>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
-                                        Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td class="fab me-3" style="font-size: 13px">Standar Penelitian Universitas Trunojoyo Madura</td>
-                        <td>
-                            <input type="radio" name="selected_item" value="Ada"> Ada
-                            <span></span>
-                            <input type="radio" name="selected_item" value="Tidak Ada" style="margin-left: 1em"> Tidak Ada
-                        </td>
-                        <td><span class="badge bg-label-info me-1">Dokumen</span></td>
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i>
-                                        Edit</a>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
-                                        Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td class="fab me-3" style="font-size: 13px">Standar Pengabdian Kepada Masyarakat Universitas Trunojoyo Madura</td>
-                        <td>
-                            <input type="radio" name="selected_item" value="Ada"> Ada
-                            <span></span>
-                            <input type="radio" name="selected_item" value="Tidak Ada" style="margin-left: 1em"> Tidak
-                            Ada
-                        </td>
-                        <td><span class="badge bg-label-info me-1">Dokumen</span></td>
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                    data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i
-                                            class="bx bx-edit-alt me-1"></i>
-                                        Edit</a>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
-                                        Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td class="fab me-3" style="font-size: 13px">Standar di aspek lainnya</td>
-                        <td>
-                            <input type="radio" name="selected_item" value="Ada"> Ada
-                            <span></span>
-                            <input type="radio" name="selected_item" value="Tidak Ada" style="margin-left: 1em"> Tidak
-                            Ada
-                        </td>
-                        <td><span class="badge bg-label-info me-1">Dokumen</span></td>
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                    data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i
-                                            class="bx bx-edit-alt me-1"></i> Edit</a>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
-                                        Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <li class="fab me-3" style="font-size: 13px">Standar Layanan Kemahasiswaan Universitas Trunojoyo Madura</li>
-                        </td>
-                        <td>
-                            <input type="radio" name="selected_item" value="Ada"> Ada
-                            <span></span>
-                            <input type="radio" name="selected_item" value="Tidak Ada" style="margin-left: 1em"> Tidak
-                            Ada
-                        </td>
-                        <td><span class="badge bg-label-info me-1">Dokumen</span></td>
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                    data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i
-                                            class="bx bx-edit-alt me-1"></i> Edit</a>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
-                                        Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <li class="fab me-3" style="font-size: 13px">Standar Layanan Kerjasama Universitas Trunoojoyo Madura</li>
-                        </td>
-                        <td>
-                            <input type="radio" name="selected_item" value="Ada"> Ada
-                            <span></span>
-                            <input type="radio" name="selected_item" value="Tidak Ada" style="margin-left: 1em"> Tidak
-                            Ada
-                        </td>
-                        <td><span class="badge bg-label-info me-1">Dokumen</span></td>
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                    data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i
-                                            class="bx bx-edit-alt me-1"></i> Edit</a>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
-                                        Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <li class="fab me-3" style="font-size: 13px">Standar Tata Kelola Universitas Trunojoyo Madura</li>
-                        </td>
-                        <td>
-                            <input type="radio" name="selected_item" value="Ada"> Ada
-                            <span></span>
-                            <input type="radio" name="selected_item" value="Tidak Ada" style="margin-left: 1em"> Tidak
-                            Ada
-                        </td>
-                        <td><span class="badge bg-label-info me-1">Dokumen</span></td>
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                    data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i
-                                            class="bx bx-edit-alt me-1"></i> Edit</a>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
-                                        Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    {{-- @endforeach --}}
-                </tbody>
-            </table>
+        <div class="nav-align-top mb-4">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
+                        data-bs-target="#navs-top-home" aria-controls="navs-top-home" aria-selected="true">
+                        Prodi
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                        data-bs-target="#navs-top-profile" aria-controls="navs-top-profile" aria-selected="false">
+                        Foto Kegiatan
+                    </button>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="navs-top-home" role="tabpanel">
+                    <p>
+                        Icing pastry pudding oat cake. Lemon drops cotton candy caramels cake caramels sesame snaps
+                        powder. Bear claw candy topping.
+                    </p>
+                    <p class="mb-0">
+                        Tootsie roll fruitcake cookie. Dessert topping pie. Jujubes wafer carrot cake jelly. Bonbon
+                        jelly-o jelly-o ice cream jelly beans candy canes cake bonbon. Cookie jelly beans marshmallow
+                        jujubes sweet.
+                    </p>
+                </div>
+                <div class="tab-pane fade" id="navs-top-profile" role="tabpanel">
+                    <p>
+                        Donut dragée jelly pie halvah. Danish gingerbread bonbon cookie wafer candy oat cake ice
+                        cream. Gummies halvah tootsie roll muffin biscuit icing dessert gingerbread. Pastry ice cream
+                        cheesecake fruitcake.
+                    </p>
+                    <p class="mb-0">
+                        Jelly-o jelly beans icing pastry cake cake lemon drops. Muffin muffin pie tiramisu halvah
+                        cotton candy liquorice caramels.
+                    </p>
+                </div>
+                <div class="tab-pane fade" id="navs-top-messages" role="tabpanel">
+                    <p>
+                        Oat cake chupa chups dragée donut toffee. Sweet cotton candy jelly beans macaroon gummies
+                        cupcake gummi bears cake chocolate.
+                    </p>
+                    <p class="mb-0">
+                        Cake chocolate bar cotton candy apple pie tootsie roll ice cream apple pie brownie cake. Sweet
+                        roll icing sesame snaps caramels danish toffee. Brownie biscuit dessert dessert. Pudding jelly
+                        jelly-o tart brownie jelly.
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

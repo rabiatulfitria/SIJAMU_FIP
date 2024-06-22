@@ -7124,12 +7124,12 @@ button:focus {
 }
 
 .nav-tabs .nav-item .nav-link {
-  color: #566a7f;
+  color: #007bff;
   border: 0;
   border-radius: 0;
 }
 .nav-tabs .nav-item .nav-link:hover, .nav-tabs .nav-item .nav-link:focus {
-  color: #566a7f;
+  color: #007bff;
 }
 .nav-tabs .nav-item .nav-link:not(.active) {
   background-color: #eceef1;

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-        
+
     <title>SIJAMU FIP | Sistem Penjaminan Mutu Internal FIP</title>
 
     <meta name="description" content="" />
@@ -54,7 +54,7 @@
 
 <body>
     @include('sweetalert::alert')
-    
+
     <!-- Layout wrapper -->
     <div class="layout-wrapper layout-content-navbar">
         <div class="layout-container">
@@ -220,10 +220,15 @@
     <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 
     <script>
-        $(document).ready(function(){
+        $(document).ready(function() {
             $('#items-table').DataTable();
         });
     </script>
+
+    {{-- <!-- JQuery dan Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> --}}
 </body>
 
 </html>

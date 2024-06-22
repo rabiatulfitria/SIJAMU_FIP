@@ -84,7 +84,7 @@
                 <tbody class="table-border-bottom-0">
                     {{-- @foreach --}}
                     <tr>
-                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>Kebijakan SPMI</strong></td>
+                        <td><i class="me-3"></i> <strong>Kebijakan SPMI</strong></td>
                         <td>
                             <input type="radio" name="selected_item" value="Ada"> Ada
                             <span></span>
@@ -106,7 +106,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><i class="fab fa-react fa-lg text-info me-3"></i> <strong>Manual SPMI</strong></td>
+                        <td><i class="me-3"></i> <strong>Manual SPMI</strong></td>
                         <td>
                             <input type="radio" name="selected_item" value="Ada"> Ada
                             <span></span>
@@ -128,7 +128,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><i class="fab fa-vuejs fa-lg text-success me-3"></i> <strong>Standar UTM</strong></td>
+                        <td><i class="me-3"></i> <strong>Standar UTM</strong></td>
                         <td>
                             <input type="radio" name="selected_item" value="Ada"> Ada
                             <span></span>
@@ -154,7 +154,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <i class="fab fa-bootstrap fa-lg text-primary me-3"></i> <strong>Formulir SPMI</strong>
+                            <i class="me-3"></i> <strong>Formulir SPMI</strong>
                         </td>
                         <td>
                             <input type="radio" name="selected_item" value="Ada"> Ada
@@ -180,7 +180,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <i class="fab fa-bootstrap fa-lg text-primary me-3"></i> <strong>Manual Prosedur</strong>
+                            <i class="me-3"></i> <strong>Manual Prosedur</strong>
                         </td>
                         <td>
                             <input type="radio" name="selected_item" value="Ada"> Ada
@@ -206,7 +206,7 @@
                     </tr>
                     <tr>
                         <td>
-                            <i class="fab fa-bootstrap fa-lg text-primary me-3"></i> <strong>Instruksi Kerja</strong>
+                            <i class="me-3"></i> <strong>Instruksi Kerja</strong>
                         </td>
                         <td>
                             <input type="radio" name="selected_item" value="Ada"> Ada
