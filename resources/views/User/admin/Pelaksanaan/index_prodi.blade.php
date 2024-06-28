@@ -85,7 +85,7 @@
                 </li>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane fade show active" id="navs-top-home" role="tabpanel">
+                <div class="tab-pane show active" id="navs-top-home" role="tabpanel">
                     <div class="card mt-3">
                         <div class="card-header">
                             <h5>profil program studi</h5>
