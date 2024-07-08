@@ -8,6 +8,8 @@ use App\Http\Controllers\evaluasiController;
 use App\Http\Controllers\perangkatController;
 use App\Http\Controllers\pelaksanaan1Controller;
 use App\Http\Controllers\pelaksanaan2Controller;
+use App\Http\Controllers\pengendalianController;
+use App\Http\Controllers\peningkatanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +48,10 @@ Route::get('/Pelaksanaan/Fakultas', [pelaksanaan2Controller::class, 'index'])->n
 
 // route untuk halaman menu Evaluasi CRUD
 Route::get('/Evaluasi/AuditMutuInternal',[evaluasiController::class, 'index'])->name('evaluasi');
+
 // route untuk halaman menu Pengendalian CRUD
+Route::get('/Pengendalian/Standar/RTM',[pengendalianController::class, 'index'])->name('pengendalian');
+
 // route untuk halaman menu Peningkatan CRUD
+Route::get('Peningkatan/StandarInstitusi',[peningkatanController::class, 'index'])->name('peningkatan');
 

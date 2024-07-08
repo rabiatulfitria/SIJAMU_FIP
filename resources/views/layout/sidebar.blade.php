@@ -128,14 +128,14 @@
                             <div data-i18n="Evaluasi">Evaluasi</div>
                         </a>
                     </li>
-                    <li class="menu-item">
-                        <a href="" class="menu-link">
+                    <li class="menu-item {{ \Route::is('pengendalian') ? 'active' : '' }}">
+                        <a href="{{ route('pengendalian') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-sync bx-sm"></i>
                             <div data-i18n="Pengendalian">Pengendalian</div>
                         </a>
                     </li>
-                    <li class="menu-item">
-                        <a href="" class="menu-link">
+                    <li class="menu-item {{ \Route::is('peningkatan') ? 'active' : '' }}">
+                        <a href="{{ route('peningkatan') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-bar-chart-alt bx-sm"></i>
                             <div data-i18n="Pengendalian">Peningkatan</div>
                         </a>
