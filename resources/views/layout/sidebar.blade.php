@@ -122,8 +122,8 @@
                             <div data-i18n="Pelaksanaan">Pelaksanaan</div>
                         </a>
                     </li>
-                    <li class="menu-item">
-                        <a href="" class="menu-link">
+                    <li class="menu-item {{ \Route::is('evaluasi') ? 'active' : '' }}">
+                        <a href="{{ route('evaluasi') }}" class="menu-link">
                             <i class="menu-icon tf-icons bx bx-task"></i>
                             <div data-i18n="Evaluasi">Evaluasi</div>
                         </a>

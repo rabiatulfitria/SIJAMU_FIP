@@ -68,7 +68,7 @@
 @endsection
 
 @section('content')
-    <div class="">
+    <div>
         <div class="nav-align-top mb-4">
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item">
@@ -78,18 +78,15 @@
                     </button>
                 </li>
                 <li class="nav-item">
-                    <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" href="{{ route('pelaksanaan.fotokegiatan') }}"
+                    <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" href="{{ route('pelaksanaan.fakultas') }}"
                         data-bs-target="#navs-top-profile" aria-controls="navs-top-profile" aria-selected="false">
-                        Foto Kegiatan
+                        Fakultas
                     </button>
                 </li>
             </ul>
             <div class="tab-content">
                 <div class="tab-pane show active" id="navs-top-home" role="tabpanel">
                     <div class="card mt-3">
-                        <div class="card-header">
-                            <h5>profil program studi</h5>
-                        </div>
                         <div class="card-body">
                             <table class="table table-bordered">
                                 <thead>
@@ -124,8 +121,10 @@
                     </div>
                 </div>
                 <div class="tab-pane fade" id="navs-top-profile" role="tabpanel">
+
                 </div>
             </div>
         </div>
     </div>
 @endsection
+
