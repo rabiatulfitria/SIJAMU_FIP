@@ -11,4 +11,5 @@ class pelaksanaan2Controller extends Controller
         // $jamutims = Timjamu::all();
         return view('User.admin.Pelaksanaan.index_fakultas');
     }
+    
 }

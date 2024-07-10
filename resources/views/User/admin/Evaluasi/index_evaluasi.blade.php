@@ -191,7 +191,7 @@
         </div>
     </div>
     <div class="demo-inline-spacing">
-        <button type="button" class="btn btn-primary"
+        <button type="button" class="btn btn-"
             onclick="window.location.href='{{ route('tambahTimJAMU') }}'">+ Tambah Dokumen AMI</button>
         @if (session('success'))
             <div>{{ @session('success') }}</div>
