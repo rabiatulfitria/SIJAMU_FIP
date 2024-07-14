@@ -82,15 +82,15 @@
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                    {{-- @foreach --}}
+                    @foreach ($perangkat as $row)
                     <tr>
-                        <td><i class="me-3"></i> <strong>Kebijakan SPMI</strong></td>
+                        <td><i class="me-3"></i> <strong>{{ $row->namaDokumen_penetapan }}</strong></td>
                         <td>
                             <input type="radio" name="selected_item" value="Ada"> Ada
                             <span></span>
                             <input type="radio" name="selected_item" value="Tidak Ada" style="margin-left: 1em"> Tidak Ada
                         </td>
-                        <td><span class="badge bg-label-info me-1"><i class="bi bi-link-45deg">Dokumen</i></span></td>
+                        <td><span class="badge bg-label-info me-1"><i class="bi bi-link-45deg">{{ $row->unggahDokumen_penetapan }}</i></span></td>
                         <td>
                             <div class="dropdown">
                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
@@ -99,138 +99,11 @@
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i>
                                         Edit</a>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
-                                        Delete</a>
                                 </div>
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td><i class="me-3"></i> <strong>Manual SPMI</strong></td>
-                        <td>
-                            <input type="radio" name="selected_item" value="Ada"> Ada
-                            <span></span>
-                            <input type="radio" name="selected_item" value="Tidak Ada" style="margin-left: 1em"> Tidak Ada
-                        </td>
-                        <td><span class="badge bg-label-info me-1">Dokumen</span></td>
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i>
-                                        Edit</a>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
-                                        Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><i class="me-3"></i> <strong>Standar UTM</strong></td>
-                        <td>
-                            <input type="radio" name="selected_item" value="Ada"> Ada
-                            <span></span>
-                            <input type="radio" name="selected_item" value="Tidak Ada" style="margin-left: 1em"> Tidak
-                            Ada
-                        </td>
-                        <td><span class="badge bg-label-info me-1">Dokumen</span></td>
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                    data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i
-                                            class="bx bx-edit-alt me-1"></i>
-                                        Edit</a>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
-                                        Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <i class="me-3"></i> <strong>Formulir SPMI</strong>
-                        </td>
-                        <td>
-                            <input type="radio" name="selected_item" value="Ada"> Ada
-                            <span></span>
-                            <input type="radio" name="selected_item" value="Tidak Ada" style="margin-left: 1em"> Tidak
-                            Ada
-                        </td>
-                        <td><span class="badge bg-label-info me-1">Dokumen</span></td>
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                    data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i
-                                            class="bx bx-edit-alt me-1"></i> Edit</a>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
-                                        Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <i class="me-3"></i> <strong>Manual Prosedur</strong>
-                        </td>
-                        <td>
-                            <input type="radio" name="selected_item" value="Ada"> Ada
-                            <span></span>
-                            <input type="radio" name="selected_item" value="Tidak Ada" style="margin-left: 1em"> Tidak
-                            Ada
-                        </td>
-                        <td><span class="badge bg-label-info me-1">Dokumen</span></td>
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                    data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i
-                                            class="bx bx-edit-alt me-1"></i> Edit</a>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
-                                        Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <i class="me-3"></i> <strong>Instruksi Kerja</strong>
-                        </td>
-                        <td>
-                            <input type="radio" name="selected_item" value="Ada"> Ada
-                            <span></span>
-                            <input type="radio" name="selected_item" value="Tidak Ada" style="margin-left: 1em"> Tidak
-                            Ada
-                        </td>
-                        <td><span class="badge bg-label-info me-1">Dokumen</span></td>
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                    data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i
-                                            class="bx bx-edit-alt me-1"></i> Edit</a>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
-                                        Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    {{-- @endforeach --}}
+                    @endforeach
                 </tbody>
             </table>
         </div>

@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('evaluasis', function (Blueprint $table) {
             $table->integer('id_evaluasi',false, true)->length(11)->autoIncrement();
-            $table->string('namaDokumen_evaluasi', 255);
-            $table->string('unggahDokumen_evaluasi', 255);
+            $table->string('namaDokumen_evaluasi', 1000);
+            $table->string('unggahDokumen_evaluasi', 1000);
             $table->timestamps();
         });
     }

@@ -11,62 +11,69 @@ class perangkatController extends Controller
     public function index()
     {
         $perangkat = Penetapan::where('level_penetapan', 'perangkatspmi')->get();
-        $standar = Penetapan::where('level_penetapan', 'standarinstitusi')->get();
 
-        return view('User.admin.Penetapan.perangkatspmi', compact('perangkat', 'standar'));
+        return view('User.admin.Penetapan.perangkatspmi', compact('perangkat'));
     }
 
-    public function create()
+    public function show($id_penetapan)
     {
-        return view('User.admin.Penetapan.tambah_perangkatspmi');
-    }
-
-    public function store(Request $request)
-    {
-        // $request->validate([
-        //     'nip' => 'required',
-        //     'nama' => 'required',
-        //     'email' => 'required|email|unique:jamutims',
-        //     'PJ' => 'required',
-        // ]);
+        $perangkat = Penetapan::findOrFail($id_penetapan);
+    
+        if ($perangkat->isPerangkatspmi()) {
+            
+            $create = function() { //closure
+                return view('User.admin.Penetapan.tambah_perangkatspmi');
+            };
+            return $create(); //panggil closure
         
-        // $dataBaru = new TimJamu;
-        // $dataBaru->nip = $request['nip'];
-        // $dataBaru->nama = $request['nama'];
-        // $dataBaru->email = $request['email'];
-        // $dataBaru->PJ = $request['PJ'];
-        // $dataBaru->save();
+            $store = function(Request $request) {
+                $request->validate([
+                    'level_penetapan' => 'required|in:perangkatspmi,standarinstitusi',
+                    'namaDokumen_penetapan' => 'required|string|max:1000',
+                    'unggahDokumen_penetapan' => 'require|mimes:docx,doc,xls,xlsx,pdf,url|max:2048'
+                ]);
+                
+                $dataBaru = new Penetapan;
+                $dataBaru->level_penetapan = $request['level_penetapan'];
+                $dataBaru->namaDokumen_penetapan = $request['namaDokumen_penetapan'];
+                $dataBaru->unggahDokumen_penetapan = $request['unggahDokumen_penetapan'];
+                $dataBaru->save();
+                
+                //fungsi untuk upload file ektsensi (docx,doc,danseterusnya)
+                //.......
+            };
+            return $store($request);
 
-        Alert::success('success', 'Tim JAMU berhasil ditambahkan.');
-        return redirect()->route('TimJAMU');
+            $edit = function(String $id_penetapan) {
+                $data = Penetapan::where('id', $id_penetapan)->first();
+                return view('User.admin.Penetapan.edit_perangkatspmi', [
+                    'oldData' => $data
+                ]);
+            };
+            return $edit($id_penetapan);
+
+            $update = function(Request $request, String $id_penetapan) {
+                $dataUpdate = Penetapan::find($id_penetapan);
+        
+                $request->validate([
+                    'level_penetapan' => 'required|in:perangkatspmi,standarinstitusi',
+                    'namaDokumen_penetapan' => 'required|string|max:1000',
+                    'unggahDokumen_penetapan' => 'require|string|max:1000'
+                ]);
+        
+                $dataUpdate->level_penetapan = $request['level_penetapan'];
+                $dataUpdate->namaDokumen_penetapan = $request['namaDokumen_penetapan'];
+                $dataUpdate->unggahDokumen_penetapan = $request['unggahDokumen_penetapan'];
+                $dataUpdate->save();
+        
+                Alert::success('success', 'dokumen berhasil diperbarui.');
+                return redirect()->route('penetapan');
+            };
+            return $update($request, $id_penetapan);
+    
+        } else {
+            // Logika untuk menonaktifkan submenu standarintitusi
+        }
     }
-
-    public function edit( String $id)
-    {
-        // $data = TimJamu::where('id',$id)->first();
-        // return view('User.admin.editTimjamu', [
-        //     'oldData' => $data
-        // ]);
-    }
-
-    public function update(Request $request, String $id)
-    {
-        // $dataUpdate = TimJamu::find($id);
-
-        // $request->validate([
-        //     'nip' => 'required',
-        //     'nama' => 'required',
-        //     'email' => 'required|email',
-        //     'PJ' => 'required',
-        // ]);
-
-        // $dataUpdate->nip = $request['nip'];
-        // $dataUpdate->nama = $request['nama'];
-        // $dataUpdate->email = $request['email'];
-        // $dataUpdate->PJ = $request['PJ'];
-        // $dataUpdate->save();
-
-        Alert::success('success', 'Tim JAMU berhasil diperbarui.');
-        return redirect()->route('TimJAMU');
-    }
+    
 }

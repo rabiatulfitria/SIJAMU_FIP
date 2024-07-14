@@ -12,12 +12,12 @@ class timjamuController extends Controller
     public function index()
     {
         $jamutims = Timjamu::all();
-        return view('User.admin.timjamu', compact('jamutims'));
+        return view('User.admin.TimJMF.timjamu', compact('jamutims'));
     }
 
     public function create()
     {
-        return view('User.admin.tambahTimjamu');
+        return view('User.admin.TimJMF.tambahTimjamu');
     }
 
     public function store(Request $request)
@@ -43,7 +43,7 @@ class timjamuController extends Controller
     public function edit( String $id)
     {
         $data = TimJamu::where('id',$id)->first();
-        return view('User.admin.editTimjamu', [
+        return view('User.admin.TimJMF.editTimjamu', [
             'oldData' => $data
         ]);
     }

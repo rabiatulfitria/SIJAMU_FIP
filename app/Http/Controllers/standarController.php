@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Penetapan;
 use Illuminate\Http\Request;
 
 class standarController extends Controller
 {
     public function index()
     {
-        // $jamutims = Timjamu::all();
-        return view('User.admin.Penetapan.index2_penetapan');
+        $standar = Penetapan::where('level_penetapan', 'standarinstitusi')->get();
+
+        return view('User.admin.Penetapan.standarinstitusi', compact('standar'));
     }
 }
