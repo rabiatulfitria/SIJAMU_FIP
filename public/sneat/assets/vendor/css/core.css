@@ -3883,6 +3883,15 @@ textarea.form-control-lg {
   padding: 1.5rem 1.5rem;
 }
 
+.left{
+  background-color: #fbf2fd;
+}
+
+.right{
+  background-color: #fbf2fd;
+  
+}
+
 .card-title {
   margin-bottom: 0.875rem;
 }

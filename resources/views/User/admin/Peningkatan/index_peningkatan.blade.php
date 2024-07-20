@@ -70,7 +70,7 @@
 @section('content')
     <div class="card">
         <h5 class="card-header">Peningkatan Standar Yang Ditetapkan Institusi</h5>
-        <div class="table-responsive text-nowrap">
+        <div class="table text-nowrap" id="horizontal-example">
             <table class="table">
                 <thead class="table-purple">
                     <tr>

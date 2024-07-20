@@ -73,59 +73,98 @@
         <div class="nav-align-top mb-4">
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item">
-                    <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab" href="{{ route('pelaksanaan.prodi') }}"
-                        data-bs-target="#navs-top-home" aria-controls="navs-top-home" aria-selected="true">
+                    <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
+                        href="{{ route('pelaksanaan.prodi') }}" data-bs-target="#navs-top-home"
+                        aria-controls="navs-top-home" aria-selected="true">
                         Prodi
                     </button>
                 </li>
                 <li class="nav-item">
-                    <button type="button" class="nav-link" role="tab" data-bs-toggle="tab" href="{{ route('pelaksanaan.fakultas') }}"
-                        data-bs-target="#navs-top-profile" aria-controls="navs-top-profile" aria-selected="false">
+                    <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                        href="{{ route('pelaksanaan.fakultas') }}" data-bs-target="#navs-top-profile"
+                        aria-controls="navs-top-profile" aria-selected="false">
                         Fakultas
                     </button>
                 </li>
             </ul>
             <div class="tab-content">
                 <div class="tab-pane show active" id="navs-top-home" role="tabpanel">
-                    <div class="card mt-3">
-                        <div class="card-body">
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Program Studi</th>
-                                        <th>2020</th>
-                                        <th>2021</th>
-                                        <th>2022</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {{-- @foreach ($programStudis as $programStudi) --}}
-                                    {{-- <tr>
+                {{-- <!-- Sub Standar --> ini nanti dijadikan yield(sidebar). Lalu elemennya di copas ke file Pelaksanaan/sidebar.blade.php --}}
+                <div class="col-md-6 col-sm-12">
+                    <div class="card overflow-hidden mb-4" style="height: 300px">
+                      <div class="card-body left" id="vertical-example"><b>Standar Proses Pembelajaran</b>
+                        <ul>
+                            <li><a href="Prodi/dokkurikulum">Dokumen Kurikulum</a></li>
+                            <li><a href="Prodi/rps">Rencana Pembelajaran Semester (RPS)</a></li>
+                            <li><a href="Prodi/rps">Rencana Pembelajaran Semester (RPS)</a></li>
+                            <li><a href="Prodi/rps">Rencana Pembelajaran Semester (RPS)</a></li>
+                            <li><a href="Prodi/rps">Rencana Pembelajaran Semester (RPS)</a></li>
+                            <li><a href="Prodi/rps">Rencana Pembelajaran Semester (RPS)</a></li>
+                            <li><a href="Prodi/rps">Rencana Pembelajaran Semester (RPS)</a></li>
+                            <li><a href="Prodi/rps">Rencana Pembelajaran Semester (RPS)</a></li>
+                            <li><a href="Prodi/rps">Rencana Pembelajaran Semester (RPS)</a></li>
+                            <li><a href="Prodi/rps">Rencana Pembelajaran Semester (RPS)</a></li>
+                            <li><a href="Prodi/rps">Rencana Pembelajaran Semester (RPS)</a></li>
+                            <li><a href="Prodi/rps">Rencana Pembelajaran Semester (RPS)</a></li>
+                            <li><a href="Prodi/rps">Rencana Pembelajaran Semester (RPS)</a></li>
+
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <!--/ Sub Standar -->
+  
+                  <!-- Tabel Unggah Dokumen Sub Standar -->
+                  <div class="col-md-6 col-sm-12">
+                    <div class="card overflow-hidden mb-4" style="height: 300px">
+                      <h5 class="card-header">Horizontal Scrollbar</h5>
+                      <div class="card-body" id="horizontal-example">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Program Studi</th>
+                                    <th>2020</th>
+                                    <th>2021</th>
+                                    <th>2022</th>
+                                    <th>2023</th>
+                                    <th>2024</th>
+                                    <th>dokumen</th>
+                                    <th>aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{-- @foreach ($programStudis as $programStudi) --}}
+                                {{-- <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $programStudi->name }} - {{ $programStudi->level }}</td>
                                             <td>{{ $programStudi->akreditasi_2020 }}</td>
                                             <td>{{ $programStudi->akreditasi_2021 }}</td>
                                             <td>{{ $programStudi->akreditasi_2022 }}</td>
                                         </tr> --}}
-                                    <tr>
-                                        <td>1</td>
-                                        <td>jsdbhdbnd xdsd djd xd</td>
-                                        <td>jsdbhdbnd</td>
-                                        <td>jsdbhdbnd</td>
-                                        <td>jsdbhdbnd</td>
-                                    </tr>
-                                    {{-- @endforeach --}}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab-pane fade" id="navs-top-profile" role="tabpanel">
+                                <tr>
+                                    <td>1</td>
+                                    <td>jsdbhdbnd xdsd djd xd</td>
+                                    <td>jsdbhdbnd</td>
+                                    <td>jsdbhdbnd</td>
+                                    <td>jsdbhdbnd</td>
+                                    <td>jsdbhdbnd</td>
+                                    <td>jsdbhdbnd</td>
+                                    <td>jsdbhdbnd</td>
+                                    <td>jsdbhdbnd</td>
+                                </tr>
+                                {{-- @endforeach --}}
+                            </tbody>
+                        </table>
 
+                      </div>
+                    </div>
+                  </div>
+                  <!--/ Tabel Unggah Dokumen Sub Standar -->
+  
                 </div>
             </div>
         </div>
     </div>
+    </div>
 @endsection
-
