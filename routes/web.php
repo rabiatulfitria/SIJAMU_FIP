@@ -23,7 +23,7 @@ use App\Http\Controllers\peningkatanController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('User.admin.index');
 });
 
 // route untuk halaman menu Home atau dashboard

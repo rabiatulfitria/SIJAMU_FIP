@@ -3884,11 +3884,11 @@ textarea.form-control-lg {
 }
 
 .left{
-  background-color: #fbf2fd;
+  background-color: #e0f3ff;
 }
 
 .right{
-  background-color: #fbf2fd;
+  background-color: #ffffff;
   
 }
 
@@ -6288,6 +6288,19 @@ a.invert-bg-dark:hover, a.invert-bg-dark:focus {
 .nav-align-left .table:not(.table-dark) td {
   border-color: #d9dee3;
 }
+
+/**/
+.custom-table-sm {
+  font-size: 12px; /* Atur ukuran font sesuai kebutuhan */
+  padding: 5px;    /* Atur padding sesuai kebutuhan */
+  margin: 0 auto;  /* Menjadikan tabel berada di tengah */
+}
+
+.custom-table-sm th,
+.custom-table-sm td {
+  padding: 5px; /* Atur padding sesuai kebutuhan */
+}
+
 
 .btn {
   cursor: pointer;

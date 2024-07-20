@@ -1,5 +1,5 @@
 @extends('User.admin.Pelaksanaan.sidebar')
-@section('content-dokumen')
+@section('tabel-unggah-dokumen')
     <div class="table-responsive text-nowrap">
         <table class="table">
             <thead class="table-purple">

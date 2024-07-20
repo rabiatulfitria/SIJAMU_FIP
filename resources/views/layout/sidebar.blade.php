@@ -50,6 +50,19 @@
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script src="{{ asset('sneat/assets/js/config.js') }}"></script>
+
+    <style>
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            font-size: 12px;
+        }
+        .dataTables_wrapper .dataTables_filter label {
+            font-size: 12px;
+        }
+        .dataTables_wrapper .dataTables_length label {
+            font-size: 12px;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -223,7 +236,16 @@
 
     <script>
         $(document).ready(function() {
-            $('#items-table').DataTable();
+            $('#Datatable').DataTable({
+                "language": {
+                    "paginate": {
+                        "previous": "Sebelumnya",
+                        "next": "Selanjutnya"
+                    },
+                    "search": "Cari:",
+                    "lengthMenu": "Tampilkan _MENU_ entri"
+                }
+            });
         });
     </script>
 
