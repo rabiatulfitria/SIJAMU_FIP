@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('pengendalians', function (Blueprint $table) {
             $table->integer('id_pengendalian',false, true)->length(11)->autoIncrement();
             $table->string('namaDokumen_pengendalian', 1000);
-            $table->string('unggahDokumen_pengendalian', 1000);
             $table->timestamps();
         });
     }

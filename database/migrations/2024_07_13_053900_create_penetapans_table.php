@@ -17,7 +17,6 @@ return new class extends Migration
             $table->integer('id_penetapan',false, true)->length(11)->autoIncrement();
             $table->enum('level_penetapan', ['perangkatspmi', 'standarinstitusi'])->default('perangkatspmi');
             $table->string('namaDokumen_penetapan', 1000);
-            $table->string('unggahDokumen_penetapan', 1000);
             $table->timestamps();
         });
     }

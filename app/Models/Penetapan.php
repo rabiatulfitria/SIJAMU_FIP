@@ -17,7 +17,6 @@ class Penetapan extends Model
     protected $fillable = [
         'level_penetapan',
         'namaDokumen_penetapan',
-        'unggahDokumen_penetapan',
     ];
 
     /**

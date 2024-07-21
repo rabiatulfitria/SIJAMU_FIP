@@ -30,7 +30,6 @@ class perangkatController extends Controller
                 $request->validate([
                     'level_penetapan' => 'required|in:perangkatspmi,standarinstitusi',
                     'namaDokumen_penetapan' => 'required|string|max:1000',
-                    'unggahDokumen_penetapan' => 'require|mimes:docx,doc,xls,xlsx,pdf,url|max:2048'
                 ]);
                 
                 $dataBaru = new Penetapan;
