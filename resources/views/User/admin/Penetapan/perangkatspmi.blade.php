@@ -86,14 +86,14 @@
                     <tr>
                         <td><i class="me-3"></i> <strong>{{ $row->namaDokumen_penetapan }}</strong></td>
                         <td></td>
-                        <td><span class="badge bg-label-info me-1"><i class="bi bi-link-45deg">{{ $row->PATHINFO_EXTENSION }}</i></span></td>
+                        <td><span class="badge bg-label-info me-1"><i class="bi bi-link-45deg">{{ $row->file_path }}</i></span></td>
                         <td>
                             <div class="dropdown">
                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i>
+                                    <a class="dropdown-item" href="{{ route('editDokumenPerangkat', $row->id_penetapan) }}"><i class="bx bx-edit-alt me-1"></i>
                                         Edit</a>
                                 </div>
                             </div>
@@ -106,7 +106,7 @@
     </div>
     <div class="demo-inline-spacing">
         <button type="button" class="btn btn-light"
-            onclick="window.location.href='{{ route('tambahTimJAMU') }}'">+ Tambah Dokumen</button>
+            onclick="window.location.href='{{ route('tambahDokumenPerangkat') }}'">+ Tambah Dokumen</button>
         @if (session('success'))
             <div>{{ @session('success') }}</div>
         @endif

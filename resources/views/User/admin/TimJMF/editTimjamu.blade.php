@@ -9,7 +9,7 @@
 
 <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
     <div class="navbar-nav align-items-center">
-        <div class="nav-items d-flex align-item-center">Tambah Tim Jaminan Mutu Fakultas</div>
+        <div class="nav-items d-flex align-item-center">Tim Jaminan Mutu Fakultas</div>
     </div>
 @endsection
 @section('content')
@@ -21,7 +21,7 @@
                     <h5 class="mb-0"></h5>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="/TimPenjaminanMutu/{{$oldData->id}}/updateTimJAMU">
+                    <form method="POST" action="/TimPenjaminanMutu/{{$oldData->id_penetapan}}/updateTimJAMU">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">
@@ -73,7 +73,7 @@
                                     aria-describedby="basic-icon-default-fullname2" />
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Kirim</button>
+                        <button type="submit" class="btn btn-primary">Ubah</button>
                     </form>
                 </div>
             </div>

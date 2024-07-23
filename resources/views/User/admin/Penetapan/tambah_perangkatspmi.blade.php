@@ -25,13 +25,13 @@
                         <form method="POST" action="{{ route('perangkat.store') }}">
                             @csrf
                             <div class="mb-3">
-                                <label class="form-label" for="basic-icon-default-fullname">Nama Dokumen</label>
+                                <label class="form-label" for="bx bx-file">Nama Dokumen</label>
                                 <div class="input-group input-group-merge">
                                     <span id="basic-icon-default-fullname2" class="input-group-text"><i
                                             class="bx bx-user"></i></span>
-                                    <input type="text" class="form-control" id="basic-icon-default-fullname"
-                                        name="nama" placeholder="Nama Lengkap" aria-label=""
-                                        aria-describedby="basic-icon-default-fullname2" />
+                                    <input type="text" class="form-control" id="bx bx-file"
+                                        name="namaDokumen_penetapan" placeholder="Nama Dokumen" aria-label=""
+                                        aria-describedby="bx bx-file" />
                                 </div>
                             </div>
                             <div class="form-check mt-3">
