@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Penetapan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class perangkatController extends Controller
@@ -28,23 +29,25 @@ class perangkatController extends Controller
         
             $store = function(Request $request) {
                 $request->validate([
-                    'level_penetapan' => 'required|in:perangkatspmi,standarinstitusi',
-                    'namaDokumen_penetapan' => 'required|string|max:1000',
+                    'level_penetapan' => 'required|in:perangkatspmi',
+                    'files.*' => 'required|mimes:doc,docx,xls,xlsx,url|max:2048'
                 ]);
                 
+                if($request->hasFile('files')){
+                    foreach ($request->file('files') as $file) {
+                        $namaDokumen = time() . '-' . $file->getClientOriginalName();
+                        $path = $file->storeAs('private', $namaDokumen);
+                    }
+                }
                 $dataBaru = new Penetapan;
                 $dataBaru->level_penetapan = $request['level_penetapan'];
                 $dataBaru->namaDokumen_penetapan = $request['namaDokumen_penetapan'];
-                $dataBaru->unggahDokumen_penetapan = $request['unggahDokumen_penetapan'];
-                $dataBaru->save();
-                
-                //fungsi untuk upload file ektsensi (docx,doc,danseterusnya)
-                //.......
+                $dataBaru->save();                
             };
             return $store($request);
 
             $edit = function(String $id_penetapan) {
-                $data = Penetapan::where('id', $id_penetapan)->first();
+                $data = Penetapan::where('id_penetapan', $id_penetapan)->first();
                 return view('User.admin.Penetapan.edit_perangkatspmi', [
                     'oldData' => $data
                 ]);
@@ -55,14 +58,12 @@ class perangkatController extends Controller
                 $dataUpdate = Penetapan::find($id_penetapan);
         
                 $request->validate([
-                    'level_penetapan' => 'required|in:perangkatspmi,standarinstitusi',
-                    'namaDokumen_penetapan' => 'required|string|max:1000',
-                    'unggahDokumen_penetapan' => 'require|string|max:1000'
+                    'level_penetapan' => 'required|in:perangkatspmi',
+                    'namaDokumen_penetapan' => 'required|string',
                 ]);
         
                 $dataUpdate->level_penetapan = $request['level_penetapan'];
                 $dataUpdate->namaDokumen_penetapan = $request['namaDokumen_penetapan'];
-                $dataUpdate->unggahDokumen_penetapan = $request['unggahDokumen_penetapan'];
                 $dataUpdate->save();
         
                 Alert::success('success', 'dokumen berhasil diperbarui.');
@@ -70,8 +71,6 @@ class perangkatController extends Controller
             };
             return $update($request, $id_penetapan);
     
-        } else {
-            // Logika untuk menonaktifkan submenu standarintitusi
         }
     }
     

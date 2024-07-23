@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('penetapans', function (Blueprint $table) {
             $table->integer('id_penetapan',false, true)->length(11)->autoIncrement();
             $table->enum('level_penetapan', ['perangkatspmi', 'standarinstitusi'])->default('perangkatspmi');
-            $table->string('namaDokumen_penetapan', 1000);
+            $table->string('namaDokumen_penetapan');
+            $table->string('file_path');
             $table->timestamps();
         });
     }

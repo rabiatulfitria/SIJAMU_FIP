@@ -39,6 +39,7 @@ Route::put('/TimPenjaminanMutu/{id}/updateTimJAMU', [timjamuController::class, '
 // route untuk halaman menu Penetapan CRUD -> Perangkat SPMI
 Route::get('/Penetapan/PerangkatSPMI', [perangkatController::class, 'index'])->name('penetapan');
 
+
 // route untuk halaman menu Penetapan CRUD -> Standar Yang Ditetapkan Institusi
 Route::get('/Penetapan/StandarInstitusi', [standarController::class, 'index'])->name('penetapan.standar');
 

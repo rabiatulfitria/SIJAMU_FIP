@@ -85,12 +85,8 @@
                     @foreach ($perangkat as $row)
                     <tr>
                         <td><i class="me-3"></i> <strong>{{ $row->namaDokumen_penetapan }}</strong></td>
-                        <td>
-                            <input type="radio" name="selected_item" value="Ada"> Ada
-                            <span></span>
-                            <input type="radio" name="selected_item" value="Tidak Ada" style="margin-left: 1em"> Tidak Ada
-                        </td>
-                        <td><span class="badge bg-label-info me-1"><i class="bi bi-link-45deg">{{ $row->unggahDokumen_penetapan }}</i></span></td>
+                        <td></td>
+                        <td><span class="badge bg-label-info me-1"><i class="bi bi-link-45deg">{{ $row->PATHINFO_EXTENSION }}</i></span></td>
                         <td>
                             <div class="dropdown">
                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
@@ -107,5 +103,12 @@
                 </tbody>
             </table>
         </div>
+    </div>
+    <div class="demo-inline-spacing">
+        <button type="button" class="btn btn-light"
+            onclick="window.location.href='{{ route('tambahTimJAMU') }}'">+ Tambah Dokumen</button>
+        @if (session('success'))
+            <div>{{ @session('success') }}</div>
+        @endif
     </div>
 @endsection
