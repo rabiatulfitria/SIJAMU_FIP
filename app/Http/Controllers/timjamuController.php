@@ -68,4 +68,13 @@ class timjamuController extends Controller
         Alert::success('success', 'Tim JAMU berhasil diperbarui.');
         return redirect()->route('TimJAMU');
     }
+
+    public function destroy(String $id)
+    {
+        $dataDelete = TimJamu::findOrfail($id);
+        $dataDelete->delete();
+
+        Alert::success('success', 'Tim JAMU berhasil dihapus.');
+        return redirect()->route('TimJAMU');
+    }
 }

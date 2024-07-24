@@ -36,7 +36,7 @@ class perangkatController extends Controller
         $dataBaru = new Penetapan;
         $dataBaru->level_penetapan = $request['level_penetapan'];
         $dataBaru->namaDokumen_penetapan = $request['namaDokumen_penetapan'];
-        $dataBaru->file_path = $request['file_path'];
+        $dataBaru->files = $request['file_path'];
         $dataBaru->save();
 
         Alert::success('success', 'Dokumen berhasil ditambahkan.');
@@ -64,7 +64,17 @@ class perangkatController extends Controller
         $dataUpdate->namaDokumen_penetapan = $request['namaDokumen_penetapan'];
         $dataUpdate->save();
 
-        Alert::success('success', 'dokumen berhasil diperbarui.');
+        Alert::success('success', 'Dokumen berhasil diperbarui.');
         return redirect()->route('penetapan');
     }
+    
+    public function destroy(String $id_penetapan)
+    {
+        $dataDelete = Penetapan::findOrfail($id_penetapan);
+        $dataDelete->delete();
+
+        Alert::success('success', 'Dokumen Perangkat SPMI berhasil dihapus.');
+        return redirect()->route('penetapan');
+    }
+
 }

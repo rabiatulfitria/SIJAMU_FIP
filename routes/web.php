@@ -34,6 +34,7 @@ Route::get('/TimPenjaminanMutu', [timjamuController::class, 'index'])->name('Tim
 Route::get('/TimPenjaminanMutu/tambahTimJAMU', [timjamuController::class, 'create'])->name('tambahTimJAMU');
 Route::get('/TimPenjaminanMutu/editTimJAMU/{id}', [timjamuController::class, 'edit'])->name('editTimJAMU');
 Route::post('/TimPenjaminanMutu', [timjamuController::class, 'store'])->name('jamutims.store');
+Route::delete('/TimPenjaminanMutu/{id}', [timjamuController::class, 'destroy'])->name('hapusTimJAMU');
 Route::put('/TimPenjaminanMutu/{id}/pembaruanTimJAMU', [timjamuController::class, 'update'])->name('updateTimJAMU');
 
 // route untuk halaman menu Penetapan CRUD -> Perangkat SPMI
@@ -41,6 +42,7 @@ Route::get('/Penetapan/PerangkatSPMI', [perangkatController::class, 'index'])->n
 Route::get('/Penetapan/tambahDokumenPerangkatSPMI',[perangkatController::class, 'create'])->name('tambahDokumenPerangkat');
 Route::get('/Penetapan/editDokumenPerangkatSPMI/{id_penetapan}', [perangkatController::class, 'edit'])->name('editDokumenPerangkat');
 Route::post('/Penetapan', [perangkatController::class, 'store'])->name('perangkat.store');
+Route::delete('/Penetapan/{id_penetapan}', [perangkatController::class, 'destroy'])->name('hapusDokumenPerangkat');
 Route::put('/Penetapan/{id_penetapan}/pembaruanDokumenPerangkatSPMI', [perangkatController::class, 'update'])->name('updateDokumenPerangkat');
 
 // route untuk halaman menu Penetapan CRUD -> Standar Yang Ditetapkan Institusi
