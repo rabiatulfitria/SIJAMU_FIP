@@ -112,13 +112,13 @@
                     </li>
                     <!-- 5 Poin -->
                     <li class="menu-item {{ \Route::is('penetapan*') ? 'active' : '' }}">
-                        <a href="{{ route('penetapan') }}" class="menu-link menu-toggle">
+                        <a href="{{ route('penetapan.perangkat') }}" class="menu-link menu-toggle">
                             <i class='menu-icon tf-icons bx bxs-book-bookmark'></i>
                             <div data-i18n="Penetapan">Penetapan</div>
                         </a>
                         <ul class="menu-sub">
-                            <li class="menu-item {{ \Route::is('penetapan') ? 'active' : '' }}">
-                                <a href="{{ route('penetapan') }}" class="menu-link">
+                            <li class="menu-item {{ \Route::is('penetapan.perangkat') ? 'active' : '' }}">
+                                <a href="{{ route('penetapan.perangkat') }}" class="menu-link">
                                     <div data-i18n="Perangkat">Perangkat SPMI</div>
                                 </a>
                             </li>

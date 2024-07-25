@@ -9,12 +9,14 @@ class Penetapan extends Model
 {
     use HasFactory;
 
+    protected $table = 'penetapans';
      /**
      * Atribut diisi secara massal
      *
      * @var array<int, string>
      */
     protected $fillable = [
+        'id_penetapan',
         'level_penetapan',
         'namaDokumen_penetapan',
         'file_path'

@@ -28,25 +28,28 @@
                                 <label class="form-label" for="bx bx-file">Nama Dokumen</label>
                                 <div class="input-group input-group-merge">
                                     <span id="basic-icon-default-fullname2" class="input-group-text"><i
-                                            class="bx bx-user"></i></span>
+                                            class="bx bx-file"></i></span>
                                     <input type="text" class="form-control" id="bx bx-file"
                                         name="namaDokumen_penetapan" placeholder="Nama Dokumen" aria-label=""
                                         aria-describedby="bx bx-file" />
                                 </div>
                             </div>
                             <div class="form-check mt-3">
-                                <input name="default-radio-1" class="form-check-input" type="radio" value=""
+                                <input name="default-radio-1" class="form-check-input" type="radio" name="radio_option" value="ada"
                                     id="defaultRadio1" />
                                 <label class="form-check-label" for="defaultRadio1"> Ada </label>
                             </div>
                             <div class="form-check">
-                                <input name="default-radio-1" class="form-check-input" type="radio" value=""
+                                <input name="default-radio-1" class="form-check-input" type="radio" name="radio_option" value="tidak ada"
                                     id="defaultRadio2" checked />
                                 <label class="form-check-label" for="defaultRadio2"> Tidak Ada </label>
                             </div>
+                            <div>
+
+                            </div>
                             <div class="mb-3">
                                 <label for="formFileMultiple" class="form-label">Pilih File</label>
-                                <input class="form-control" type="file" name="files[]" id="formFileMultiple" multiple />
+                                <input class="form-control" type="file" name="files" id="formFileMultiple" multiple />
                               </div>
                             <button type="submit" class="btn btn-primary">{{ isset($perangkat) }}Kirim</button>
                         </form>

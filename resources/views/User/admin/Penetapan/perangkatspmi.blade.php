@@ -85,9 +85,9 @@
                     @foreach ($perangkat as $row)
                         <tr>
                             <td><i class="me-3"></i> <strong>{{ $row->namaDokumen_penetapan }}</strong></td>
-                            <td></td>
+                            <td>{{$radioOption}}</td>
                             <td><span class="badge bg-label-info me-1"><i
-                                        class="bi bi-link-45deg">{{ $row->file_path }}</i></span></td>
+                                        class="bi bi-link-45deg">{{ $row->files }}</i></span>
                             <td>
                                 <div class="dropdown">
                                     <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
@@ -102,7 +102,7 @@
                                                 Edit</a>
                                         </div>
                                         <div>
-                                            <form method="POST" action="/Penetapan/{{ $row->id_penetapan }}">
+                                            <form method="POST" action="/Penetapan/PerangkatSPMI{{ $row->id_penetapan }}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="dropdown-item"><i class="bx bx-trash me-1"></i>

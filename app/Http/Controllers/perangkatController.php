@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Penetapan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -22,10 +23,15 @@ class perangkatController extends Controller
     }
     public function store(Request $request)
     {
+        // return $request;
         $request->validate([
             'level_penetapan' => 'required|in:perangkatspmi',
+            'namaDokumen_penetapan' => 'required|string',
+            'radio_option' => 'required|string',
             'files.*' => 'required|mimes:doc,docx,xls,xlsx,url|max:2048'
         ]);
+        $radioOption = $request->input('radio_option');
+        $keterangan = $request->input('keterangan_dokumen');
 
         if ($request->hasFile('files')) {
             foreach ($request->file('files') as $file) {
@@ -40,7 +46,7 @@ class perangkatController extends Controller
         $dataBaru->save();
 
         Alert::success('success', 'Dokumen berhasil ditambahkan.');
-        return redirect()->route('penetapan');
+        return redirect()->route('penetapan.perangkat');
     }
 
     public function edit(String $id_penetapan)
@@ -58,14 +64,17 @@ class perangkatController extends Controller
         $request->validate([
             'level_penetapan' => 'required|in:perangkatspmi',
             'namaDokumen_penetapan' => 'required|string',
+            'radio_option' => 'required|string',
+            'files.*' => 'required|mimes:doc,docx,xls,xlsx,url|max:2048'
         ]);
 
         $dataUpdate->level_penetapan = $request['level_penetapan'];
         $dataUpdate->namaDokumen_penetapan = $request['namaDokumen_penetapan'];
+        $dataBaru->files = $request['file_path'];
         $dataUpdate->save();
 
         Alert::success('success', 'Dokumen berhasil diperbarui.');
-        return redirect()->route('penetapan');
+        return redirect()->route('penetapan.perangkat');
     }
     
     public function destroy(String $id_penetapan)
@@ -74,7 +83,7 @@ class perangkatController extends Controller
         $dataDelete->delete();
 
         Alert::success('success', 'Dokumen Perangkat SPMI berhasil dihapus.');
-        return redirect()->route('penetapan');
+        return redirect()->route('penetapan.perangkat');
     }
 
 }
