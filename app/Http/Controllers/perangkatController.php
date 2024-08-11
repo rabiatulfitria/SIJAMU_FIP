@@ -31,18 +31,22 @@ class perangkatController extends Controller
             'files.*' => 'required|mimes:doc,docx,xls,xlsx,url|max:2048'
         ]);
         $radioOption = $request->input('radio_option');
-        $keterangan = $request->input('keterangan_dokumen');
+        // $keterangan = $request->input('keterangan_dokumen');
 
+        $filePaths = [];
         if ($request->hasFile('files')) {
             foreach ($request->file('files') as $file) {
                 $namaDokumen = time() . '-' . $file->getClientOriginalName();
                 $path = $file->storeAs('private', $namaDokumen);
+                $filePaths[] = $path;
             }
         }
+        $dataBaru->files = json_encode($filePaths);
+        
         $dataBaru = new Penetapan;
         $dataBaru->level_penetapan = $request['level_penetapan'];
         $dataBaru->namaDokumen_penetapan = $request['namaDokumen_penetapan'];
-        $dataBaru->files = $request['file_path'];
+        $dataBaru->files = json_encode($filePaths);
         $dataBaru->save();
 
         Alert::success('success', 'Dokumen berhasil ditambahkan.');
@@ -70,7 +74,7 @@ class perangkatController extends Controller
 
         $dataUpdate->level_penetapan = $request['level_penetapan'];
         $dataUpdate->namaDokumen_penetapan = $request['namaDokumen_penetapan'];
-        $dataBaru->files = $request['file_path'];
+        $dataUpdate->files = $request['file_path'];
         $dataUpdate->save();
 
         Alert::success('success', 'Dokumen berhasil diperbarui.');

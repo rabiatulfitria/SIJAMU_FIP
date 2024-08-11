@@ -6301,6 +6301,33 @@ a.invert-bg-dark:hover, a.invert-bg-dark:focus {
   padding: 5px; /* Atur padding sesuai kebutuhan */
 }
 
+/*css untuk DataTable*/
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+  font-size: 12px; /* Ubah ukuran font pagination */
+  color: #e681fd; /* Ubah warna teks pagination */
+}
+
+.dataTables_wrapper .dataTables_filter label {
+  font-size: 10px; /* Ubah ukuran font label search */
+  color: #e681fd; /* Ubah warna teks label search */
+}
+
+.dataTables_wrapper .dataTables_length label {
+  font-size: 12px; /* Ubah ukuran font label length */
+  color: #e681fd; /* Ubah warna teks label length */
+}
+
+.dataTables_wrapper .dataTables_info {
+  font-size: 14px; /* Ubah ukuran font info */
+  color: #e681fd; /* Ubah warna teks info */
+}
+
+.dataTables_wrapper .dataTables_processing {
+  font-size: 16px; /* Ubah ukuran font processing */
+  color: orange; /* Ubah warna teks processing */
+}
+
+/* Tambahkan gaya custom lainnya sesuai kebutuhan */
 
 .btn {
   cursor: pointer;

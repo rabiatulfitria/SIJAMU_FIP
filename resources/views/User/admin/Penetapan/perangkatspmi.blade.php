@@ -87,7 +87,7 @@
                             <td><i class="me-3"></i> <strong>{{ $row->namaDokumen_penetapan }}</strong></td>
                             <td>{{$radioOption}}</td>
                             <td><span class="badge bg-label-info me-1"><i
-                                        class="bi bi-link-45deg">{{ $row->files }}</i></span>
+                                        class="bi bi-link-45deg">{{ json_decode($row->files, true)[0] }}</i></span>
                             <td>
                                 <div class="dropdown">
                                     <button type="button" class="btn p-0 dropdown-toggle hide-arrow"

@@ -19,7 +19,7 @@ class Penetapan extends Model
         'id_penetapan',
         'level_penetapan',
         'namaDokumen_penetapan',
-        'file_path'
+        'files'
     ];
 
     /**

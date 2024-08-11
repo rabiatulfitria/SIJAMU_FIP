@@ -73,7 +73,7 @@
     <div class="card">
         <h5 class="card-header">Tim Jaminan Mutu Fakultas dan Prodi Ilmu di Fakultas Ilmu Pendidikan</h5>
         <div class="table-responsive text-nowrap">
-            <table class="table">
+            <table class="table custom-table-sm dataTables_paginate .paginate_button" id="Datatable">
                 <thead class="table-purple">
                     <tr>
                         <th>No</th>
@@ -121,11 +121,13 @@
             </table>
         </div>
     </div>
-    <div class="demo-inline-spacing" style="padding-left: 430px">
-        <button type="button" class="btn btn-primary" style="padding-left: 50px; padding-right: 50px"
-            onclick="window.location.href='{{ route('tambahTimJAMU') }}'">Tambah</button>
-        @if (session('success'))
-            <div>{{ @session('success') }}</div>
-        @endif
+    <div class="row">
+        <div class="col-md-6 col-sm-2 demo-inline-spacing">
+            <button type="button" class="btn btn-primary" style="padding-left: 50px; padding-right: 50px"
+                onclick="window.location.href='{{ route('tambahTimJAMU') }}'">Tambah</button>
+            @if (session('success'))
+                <div>{{ @session('success') }}</div>
+            @endif
+        </div>
     </div>
 @endsection

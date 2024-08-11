@@ -32,6 +32,7 @@
                                     <input type="text" class="form-control" id="bx bx-file"
                                         name="namaDokumen_penetapan" placeholder="Nama Dokumen" aria-label=""
                                         aria-describedby="bx bx-file" />
+                                        <input type="hidden" name="level_penetapan" value="perangkatspmi">
                                 </div>
                             </div>
                             <div class="form-check mt-3">
