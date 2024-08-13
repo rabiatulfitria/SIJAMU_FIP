@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 15 Jul 2024 pada 07.48
+-- Waktu pembuatan: 13 Agu 2024 pada 11.38
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -28,10 +28,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `evaluasis` (
-  `id_evaluasi` int(11) NOT NULL,
+  `id_evaluasi` int(10) UNSIGNED NOT NULL,
   `namaDokumen_evaluasi` varchar(1000) NOT NULL,
-  `unggahDokumen_evaluasi` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -56,27 +57,22 @@ CREATE TABLE `failed_jobs` (
 --
 
 CREATE TABLE `jamutims` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) UNSIGNED NOT NULL,
   `nip` bigint(20) NOT NULL,
   `nama` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `PJ` varchar(50) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data untuk tabel `jamutims`
 --
 
 INSERT INTO `jamutims` (`id`, `nip`, `nama`, `email`, `PJ`, `created_at`, `updated_at`) VALUES
-(1, 19880823201803001, 'Muhamad Afif Effindi', 'mafif@gmail.com', 'Ketua Jaminan Mutu', '2024-07-14 02:52:45', '2024-07-13 19:52:45'),
-(2, 19880823201803002, 'Eriqa Pratiwi', 'eriqa@gmail.com', 'Sekretaris Jaminan Mutu', '2024-06-07 02:07:58', '2024-06-07 02:07:58'),
-(3, 19880823201803002, 'Nilamsari Damayanti Fajrin', 'nilams@gmail.com', 'Akademik', '2024-06-08 06:41:53', '2024-06-07 23:41:53'),
-(4, 19880823201803003, 'Ayyu Subhi Farahiba', 'ayyu@gmail.com', 'Akademik', '2024-06-08 04:29:47', '2024-06-07 21:29:47'),
-(5, 19880823201803001, 'Mochammad Yasir', 'yasir@gmail.com', 'Akademik', '2024-06-08 06:41:02', '2024-06-07 23:41:02'),
-(6, 19880823201803002, 'Ana Naimatul Jannah', 'naimatul@gmail.com', 'Akademik', '2024-06-07 21:36:42', '2024-06-07 21:36:42'),
-(7, 19880823201803001, 'Fiyan Ilman Faqih', 'fyan@gmail.com', 'Akademik', '2024-06-08 06:39:28', '2024-06-07 23:39:28');
+(1, 19880823201803001, 'Muhamad Afif Effindi', 'mafif@gmail.com', 'Ketua Jaminan Mutu', '2024-07-25 07:15:15', '2024-07-25 07:15:15'),
+(2, 19880823201803002, 'Eriqa Pratiwi', 'eriqa@gmail.com', 'Sekretaris Jaminan Mutu', '2024-07-25 07:17:13', '2024-07-25 07:17:13');
 
 -- --------------------------------------------------------
 
@@ -95,10 +91,16 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(5, '2014_10_12_000000_create_users_table', 1),
-(6, '2014_10_12_100000_create_password_resets_table', 1),
-(7, '2019_08_19_000000_create_failed_jobs_table', 1),
-(8, '2019_12_14_000001_create_personal_access_tokens_table', 1);
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2019_08_19_000000_create_failed_jobs_table', 1),
+(4, '2019_12_14_000001_create_personal_access_tokens_table', 1),
+(5, '2024_06_05_081514_create_jamutims_table', 1),
+(6, '2024_07_13_053900_create_penetapans_table', 1),
+(7, '2024_07_13_054002_create_pelaksanaans_table', 1),
+(8, '2024_07_13_054119_create_evaluasis_table', 1),
+(9, '2024_07_13_054218_create_pengendalians_table', 1),
+(10, '2024_07_13_054316_create_peningkatans_table', 1);
 
 -- --------------------------------------------------------
 
@@ -119,11 +121,11 @@ CREATE TABLE `password_resets` (
 --
 
 CREATE TABLE `pelaksanaans` (
-  `id_pelaksanaan` int(11) NOT NULL,
-  `level_pelaksanaan` varchar(20) NOT NULL,
+  `id_pelaksanaan` int(10) UNSIGNED NOT NULL,
   `namaDokumen_pelaksanaan` varchar(1000) NOT NULL,
-  `unggahDokumen_pelaksanaan` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -132,13 +134,13 @@ CREATE TABLE `pelaksanaans` (
 --
 
 CREATE TABLE `penetapans` (
-  `id_penetapan` int(11) NOT NULL,
-  `level_penetapan` enum('perangkatspmi','standarinstitusi') NOT NULL,
-  `namaDokumen_penetapan` varchar(1000) NOT NULL,
-  `unggahDokumen_penetapan` varchar(2048) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id_penetapan` int(10) UNSIGNED NOT NULL,
+  `level_penetapan` enum('perangkatspmi','standarinstitusi') NOT NULL DEFAULT 'perangkatspmi',
+  `namaDokumen_penetapan` varchar(255) NOT NULL,
+  `files` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -147,10 +149,11 @@ CREATE TABLE `penetapans` (
 --
 
 CREATE TABLE `pengendalians` (
-  `id_pengendalian` int(11) NOT NULL,
+  `id_pengendalian` int(10) UNSIGNED NOT NULL,
   `namaDokumen_pengendalian` varchar(1000) NOT NULL,
-  `unggahDokumen_pengendalian` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -159,10 +162,11 @@ CREATE TABLE `pengendalians` (
 --
 
 CREATE TABLE `peningkatans` (
-  `id_peningkatan` int(11) NOT NULL,
+  `id_peningkatan` int(10) UNSIGNED NOT NULL,
   `namaDokumen_peningkatan` varchar(1000) NOT NULL,
-  `unggahDokumen_peningkatan` varchar(1000) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -190,8 +194,6 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `user_level` varchar(100) NOT NULL,
-  `username` varchar(100) NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
@@ -222,8 +224,8 @@ ALTER TABLE `failed_jobs`
 -- Indeks untuk tabel `jamutims`
 --
 ALTER TABLE `jamutims`
-  ADD PRIMARY KEY (`id`) USING BTREE,
-  ADD UNIQUE KEY `email` (`email`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `jamutims_email_unique` (`email`);
 
 --
 -- Indeks untuk tabel `migrations`
@@ -284,7 +286,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `evaluasis`
 --
 ALTER TABLE `evaluasis`
-  MODIFY `id_evaluasi` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_evaluasi` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `failed_jobs`
@@ -296,37 +298,37 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT untuk tabel `jamutims`
 --
 ALTER TABLE `jamutims`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `pelaksanaans`
 --
 ALTER TABLE `pelaksanaans`
-  MODIFY `id_pelaksanaan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pelaksanaan` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `penetapans`
 --
 ALTER TABLE `penetapans`
-  MODIFY `id_penetapan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_penetapan` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `pengendalians`
 --
 ALTER TABLE `pengendalians`
-  MODIFY `id_pengendalian` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pengendalian` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `peningkatans`
 --
 ALTER TABLE `peningkatans`
-  MODIFY `id_peningkatan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_peningkatan` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `personal_access_tokens`
