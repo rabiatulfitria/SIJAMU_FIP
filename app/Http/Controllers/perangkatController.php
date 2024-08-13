@@ -40,12 +40,10 @@ class perangkatController extends Controller
                 $path = $file->storeAs('private', $namaDokumen);
                 $filePaths[] = $path;
             }
-        }
-        $dataBaru->files = json_encode($filePaths);
-        
-        $dataBaru = new Penetapan;
-        $dataBaru->level_penetapan = $request['level_penetapan'];
-        $dataBaru->namaDokumen_penetapan = $request['namaDokumen_penetapan'];
+        }        
+        $dataBaru = new Penetapan();
+        $dataBaru->level_penetapan = $request-> level_penetapan;
+        $dataBaru->namaDokumen_penetapan = $request-> namaDokumen_penetapan;
         $dataBaru->files = json_encode($filePaths);
         $dataBaru->save();
 
