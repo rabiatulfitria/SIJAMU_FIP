@@ -21,34 +21,41 @@ class perangkatController extends Controller
     {
         return view('User.admin.Penetapan.tambah_perangkatspmi');
     }
+    
     public function store(Request $request)
     {
-        // return $request;
-        $request->validate([
+        $validateData = $request->validate([
             'level_penetapan' => 'required|in:perangkatspmi',
             'namaDokumen_penetapan' => 'required|string',
-            'radio_option' => 'required|string',
-            'files.*' => 'required|mimes:doc,docx,xls,xlsx,url|max:2048'
+            'default-radio-1' => 'required|string',
+            'files[].*' => 'required|mimes:doc,docx,xls,xlsx|max:2048'
         ]);
-        $radioOption = $request->input('radio_option');
-        // $keterangan = $request->input('keterangan_dokumen');
+        if ($validateData){
+            
 
-        $filePaths = [];
-        if ($request->hasFile('files')) {
-            foreach ($request->file('files') as $file) {
-                $namaDokumen = time() . '-' . $file->getClientOriginalName();
-                $path = $file->storeAs('private', $namaDokumen);
-                $filePaths[] = $path;
+            $option = $request->input('default-radio-1');
+            $filePaths = [];
+
+            if ($request->hasFile('files')) {
+                foreach ($request->file('files') as $file) {
+                    $namaDokumen = time() . '-' . $file->getClientOriginalName();
+                    $path = $file->storeAs('public/private', $namaDokumen);
+                    $filePaths[] = $path;
+                }
             }
-        }        
-        $dataBaru = new Penetapan();
-        $dataBaru->level_penetapan = $request-> level_penetapan;
-        $dataBaru->namaDokumen_penetapan = $request-> namaDokumen_penetapan;
-        $dataBaru->files = json_encode($filePaths);
-        $dataBaru->save();
+    
 
-        Alert::success('success', 'Dokumen berhasil ditambahkan.');
-        return redirect()->route('penetapan.perangkat');
+            $model = new Penetapan();
+            $model->level_penetapan = $request->input('level_penetapan');
+            $model->namaDokumen_penetapan = $request->input('namaDokumen_penetapan');
+            $model->files = json_encode($filePaths);
+            $model->status_dokumen = $option;
+            $model->save();
+
+
+            Alert::success('success', 'Dokumen berhasil ditambahkan.');
+            return redirect()->route('penetapan.perangkat');
+        }
     }
 
     public function edit(String $id_penetapan)

@@ -41,7 +41,8 @@ Route::put('/TimPenjaminanMutu/{id}/pembaruanTimJAMU', [timjamuController::class
 Route::get('/Penetapan/PerangkatSPMI', [perangkatController::class, 'index'])->name('penetapan.perangkat');
 Route::get('/Penetapan/tambahDokumenPerangkatSPMI',[perangkatController::class, 'create'])->name('tambahDokumenPerangkat');
 Route::get('/Penetapan/editDokumenPerangkatSPMI/{id_penetapan}', [perangkatController::class, 'edit'])->name('editDokumenPerangkat');
-Route::post('/Penetapan', [perangkatController::class, 'store'])->name('perangkat.store');
+// Route::post('/Penetapan', [perangkatController::class, 'store'])->name('perangkat.store');
+Route::resource('/tambahDokumenPerangkatSPMI-2', perangkatController::class);
 Route::delete('/Penetapan/{id_penetapan}', [perangkatController::class, 'destroy'])->name('hapusDokumenPerangkat');
 Route::put('/Penetapan/{id_penetapan}/pembaruanDokumenPerangkatSPMI', [perangkatController::class, 'update'])->name('updateDokumenPerangkat');
 

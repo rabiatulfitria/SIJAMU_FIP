@@ -85,9 +85,22 @@
                     @foreach ($perangkat as $row)
                         <tr>
                             <td><i class="me-3"></i> <strong>{{ $row->namaDokumen_penetapan }}</strong></td>
-                            <td>{{$radioOption}}</td>
-                            <td><span class="badge bg-label-info me-1"><i
-                                        class="bi bi-link-45deg">{{ json_decode($row->files, true)[0] }}</i></span>
+                            <td>{{ $row->status_dokumen }}</td>
+                            <td>
+                                @php
+                                    $files = json_decode($row->files, true);
+                                @endphp
+
+                                @if ($files && is_array($files))
+                                    @foreach ($files as $file)
+                                        <a href="{{ asset('storage/app/private/' . basename($file)) }}" target="_blank" class="badge bg-label-info me-1">
+                                            <i class="bi bi-link-45deg"></i> {{ basename($file) }}
+                                        </a>
+                                    @endforeach
+                                @else
+                                    <p>No files available</p>
+                                @endif
+                            </td>
                             <td>
                                 <div class="dropdown">
                                     <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
