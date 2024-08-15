@@ -21,7 +21,7 @@
                     <h5 class="mb-0"></h5>
                 </div>
                 <div class="card-body">
-                    <form method="POST" action="/TimPenjaminanMutu/{{$oldData->id_penetapan}}/updateTimJAMU">
+                    <form method="POST" action="/TimPenjaminanMutu/{{$oldData->id}}/updateTimJAMU">
                         @csrf
                         @method('PUT')
                         <div class="mb-3">

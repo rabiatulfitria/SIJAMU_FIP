@@ -185,7 +185,7 @@
                             </div>
                         </div>
                     </div>
-                    <span style="color: #007bff; font-size: 20px; font-weight:bold;">Penigkatan</span>
+                    <span style="color: #007bff; font-size: 20px; font-weight:bold;">Peningkatan</span>
                     <h1 class="card-title text-nowrap mb-1"></h1>
                     <small class="text-gray fw-semibold">Standar Perguruan Tinggi</small>
                 </div>

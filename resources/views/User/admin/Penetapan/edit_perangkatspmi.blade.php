@@ -31,23 +31,23 @@
                                     <span id="basic-icon-default-fullname2" class="input-group-text"><i
                                             class="bx bx-user"></i></span>
                                     <input type="text" class="form-control" id="basic-icon-default-fullname"
-                                        name="nama" placeholder="Nama Dokumen" aria-label=""
+                                        name="Nama Dokumen" value="{{$oldData->namaDokumen_penetapan}}" placeholder="Nama Dokumen" aria-label=""
                                         aria-describedby="basic-icon-default-fullname2" />
                                 </div>
                             </div>
                             <div class="form-check mt-3">
-                                <input name="default-radio-1" class="form-check-input" type="radio" value=""
+                                <input name="default-radio-1" class="form-check-input" type="radio" value="{{$oldData->radio_option}}"
                                     id="defaultRadio1" />
                                 <label class="form-check-label" for="defaultRadio1"> Ada </label>
                             </div>
                             <div class="form-check">
-                                <input name="default-radio-1" class="form-check-input" type="radio" value=""
+                                <input name="default-radio-1" class="form-check-input" type="radio" value="{{$oldData->radio_option}}"
                                     id="defaultRadio2" checked />
                                 <label class="form-check-label" for="defaultRadio2"> Tidak Ada </label>
                             </div>
                             <div class="mb-3">
                                 <label for="formFileMultiple" class="form-label">Pilih File</label>
-                                <input class="form-control" type="file" name="files[]" value="{{$oldData->PATHINFO_EXTENSION}}" id="formFileMultiple" multiple />
+                                <input class="form-control" type="file" name="files[]" value="{{$oldData->filesPaths}}" id="formFileMultiple" multiple />
                               </div>
                             <button type="submit" class="btn btn-primary">{{ isset($perangkat) }}Ubah</button>
                         </form>

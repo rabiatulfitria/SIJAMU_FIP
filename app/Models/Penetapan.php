@@ -10,6 +10,10 @@ class Penetapan extends Model
     use HasFactory;
 
     protected $table = 'penetapans';
+
+    // Pendefinisian primarykey secara khusus. Karena default laravel berupa 'id'
+    protected $primaryKey = 'id_penetapan';
+
      /**
      * Atribut diisi secara massal
      *

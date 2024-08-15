@@ -43,7 +43,7 @@ Route::get('/Penetapan/tambahDokumenPerangkatSPMI',[perangkatController::class, 
 Route::get('/Penetapan/editDokumenPerangkatSPMI/{id_penetapan}', [perangkatController::class, 'edit'])->name('editDokumenPerangkat');
 // Route::post('/Penetapan', [perangkatController::class, 'store'])->name('perangkat.store');
 Route::resource('/tambahDokumenPerangkatSPMI-2', perangkatController::class);
-Route::delete('/Penetapan/{id_penetapan}', [perangkatController::class, 'destroy'])->name('hapusDokumenPerangkat');
+Route::delete('/Penetapan/PerangkatSPMI{id_penetapan}', [perangkatController::class, 'destroy'])->name('hapusDokumenPerangkat');
 Route::put('/Penetapan/{id_penetapan}/pembaruanDokumenPerangkatSPMI', [perangkatController::class, 'update'])->name('updateDokumenPerangkat');
 
 // route untuk halaman menu Penetapan CRUD -> Standar Yang Ditetapkan Institusi

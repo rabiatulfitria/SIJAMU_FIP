@@ -17,12 +17,12 @@ class perangkatController extends Controller
         return view('User.admin.Penetapan.perangkatspmi', compact('perangkat'));
     }
 
-    public function create()
+    public function create()  //tombol Tambah
     {
         return view('User.admin.Penetapan.tambah_perangkatspmi');
     }
     
-    public function store(Request $request)
+    public function store(Request $request)  //proses Tambah
     {
         $validateData = $request->validate([
             'level_penetapan' => 'required|in:perangkatspmi',
@@ -39,7 +39,7 @@ class perangkatController extends Controller
             if ($request->hasFile('files')) {
                 foreach ($request->file('files') as $file) {
                     $namaDokumen = time() . '-' . $file->getClientOriginalName();
-                    $path = $file->storeAs('public/private', $namaDokumen);
+                    $path = $file->storeAs('storage/app/private', $namaDokumen);
                     $filePaths[] = $path;
                 }
             }
@@ -77,9 +77,10 @@ class perangkatController extends Controller
             'files.*' => 'required|mimes:doc,docx,xls,xlsx,url|max:2048'
         ]);
 
-        $dataUpdate->level_penetapan = $request['level_penetapan'];
-        $dataUpdate->namaDokumen_penetapan = $request['namaDokumen_penetapan'];
-        $dataUpdate->files = $request['file_path'];
+        $dataUpdate->level_penetapan = $request->input('level_penetapan');
+        $dataUpdate->namaDokumen_penetapan = $request->input('namaDokumen_penetapan');
+        $dataUpdate->files = json_encode($filePaths);
+        $dataUpdate->status_dokumen = $option;
         $dataUpdate->save();
 
         Alert::success('success', 'Dokumen berhasil diperbarui.');

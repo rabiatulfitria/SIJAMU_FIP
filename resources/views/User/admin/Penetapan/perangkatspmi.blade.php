@@ -76,7 +76,7 @@
                 <thead class="table-purple">
                     <tr>
                         <th style="padding-left: 35px">Nama Dokumen</th>
-                        <th style="padding-left: 30px">Status Dokumen</th>
+                        <th style="padding-left: 80px">Status Dokumen</th>
                         <th style="padding-left: 30px">Tautan</th>
                         <th>Aksi</th>
                     </tr>
@@ -84,8 +84,8 @@
                 <tbody class="table-border-bottom-0">
                     @foreach ($perangkat as $row)
                         <tr>
-                            <td><i class="me-3"></i> <strong>{{ $row->namaDokumen_penetapan }}</strong></td>
-                            <td>{{ $row->status_dokumen }}</td>
+                            <td style="padding-left: 20px"><i class="me-3"></i> <strong>{{ $row->namaDokumen_penetapan }}</strong></td>
+                            <td style="padding-left: 100px">{{ $row->status_dokumen }}</td>
                             <td>
                                 @php
                                     $files = json_decode($row->files, true);
@@ -115,7 +115,7 @@
                                                 Edit</a>
                                         </div>
                                         <div>
-                                            <form method="POST" action="/Penetapan/PerangkatSPMI{{ $row->id_penetapan }}">
+                                            <form method="POST" action="{{ route('hapusDokumenPerangkat', $row->id_penetapan) }}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="dropdown-item"><i class="bx bx-trash me-1"></i>
