@@ -9,7 +9,7 @@
 
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
         <div class="navbar-nav align-items-center">
-            <div class="nav-items d-flex align-item-center">Dokumen Perangkat SPMI</div>
+            <div class="nav-items d-flex align-item-center">Dokumen Standar SPMI Universitas Trunojoyo Madura</div>
         </div>
     @endsection
 
@@ -31,23 +31,25 @@
                                     <span id="basic-icon-default-fullname2" class="input-group-text"><i
                                             class="bx bx-user"></i></span>
                                     <input type="text" class="form-control" id="basic-icon-default-fullname"
-                                        name="Nama Dokumen" value="{{$oldData->namaDokumen_penetapan}}" placeholder="Nama Dokumen" aria-label=""
+                                        name="Nama Dokumen" value="" placeholder="Nama Dokumen" aria-label=""
                                         aria-describedby="basic-icon-default-fullname2" />
                                 </div>
                             </div>
                             <div class="form-check mt-3">
-                                <input name="default-radio-1" class="form-check-input" type="radio" value="Ada"
-                                    id="defaultRadio1" {{$oldData->status_dokumen == 'Ada' ? 'checked' : ''}} />
+                                {{-- {{ dd($oldData) }} --}}
+
+                                <input name="default-radio-1" class="form-check-input" type="radio" value="{{$oldData->status_dokumen}}"
+                                    id="defaultRadio1" />
                                 <label class="form-check-label" for="defaultRadio1"> Ada </label>
                             </div>
                             <div class="form-check">
-                                <input name="default-radio-1" class="form-check-input" type="radio" value="Tidak Ada"
-                                    id="defaultRadio2" {{$oldData->status_dokumen == 'Tidak Ada' ? 'checked' : ''}}/>
+                                <input name="default-radio-1" class="form-check-input" type="radio" value="{{$oldData->status_dokumen}}"
+                                    id="defaultRadio2" checked />
                                 <label class="form-check-label" for="defaultRadio2"> Tidak Ada </label>
                             </div>
                             <div class="mb-3">
                                 <label for="formFileMultiple" class="form-label">Pilih File</label>
-                                <input class="form-control" type="file" name="files[]" value="{{$oldData->files}}" id="formFileMultiple" multiple />
+                                <input class="form-control" type="file" name="files[]" value="{{$oldData->filePaths}}" id="formFileMultiple" multiple />
                               </div>
                             <button type="submit" class="btn btn-primary">{{ isset($perangkat) }}Ubah</button>
                         </form>

@@ -34,12 +34,12 @@
                             </div>
                             <div class="form-check mt-3">
                                 <input name="default-radio-1" class="form-check-input" type="radio" name="radio_option" value="Ada"
-                                    id="defaultRadio1" />
+                                    id="defaultRadio1"/>
                                 <label class="form-check-label" for="defaultRadio1"> Ada </label>
                             </div>
                             <div class="form-check">
                                 <input name="default-radio-1" class="form-check-input" type="radio" name="radio_option" value="Tidak Ada"
-                                    id="defaultRadio2" checked />
+                                    id="defaultRadio2"/>
                                 <label class="form-check-label" for="defaultRadio2"> Tidak Ada </label>
                             </div>
                             <div>

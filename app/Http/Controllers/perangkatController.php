@@ -21,7 +21,7 @@ class perangkatController extends Controller
     {
         return view('User.admin.Penetapan.tambah_perangkatspmi');
     }
-    
+
     public function store(Request $request)  //proses Tambah
     {
         $validateData = $request->validate([
@@ -30,8 +30,8 @@ class perangkatController extends Controller
             'default-radio-1' => 'required|string',
             'files[].*' => 'required|mimes:doc,docx,xls,xlsx|max:2048'
         ]);
-        if ($validateData){
-            
+        if ($validateData) {
+
 
             $option = $request->input('default-radio-1');
             $filePaths = [];
@@ -39,11 +39,15 @@ class perangkatController extends Controller
             if ($request->hasFile('files')) {
                 foreach ($request->file('files') as $file) {
                     $namaDokumen = time() . '-' . $file->getClientOriginalName();
-                    $path = $file->storeAs('storage/app/private', $namaDokumen);
-                    $filePaths[] = $path;
+
+                    // Memindahkan file ke folder 'storage/app/private' dengan nama yang telah dibuat
+                    $file->move(storage_path('app/private'), $namaDokumen);
+
+                    // Menyimpan path ke dalam array (database)
+                    $filePaths[] = 'storage/app/private/' . $namaDokumen;
                 }
             }
-    
+
 
             $model = new Penetapan();
             $model->level_penetapan = $request->input('level_penetapan');
@@ -56,6 +60,12 @@ class perangkatController extends Controller
             Alert::success('success', 'Dokumen berhasil ditambahkan.');
             return redirect()->route('penetapan.perangkat');
         }
+    }
+
+    public function viewSensitifFile($namaDokumen)
+    {
+        $file = storage_path( path: 'app/private'.$namaDokumen);
+        return response()->file($file);
     }
 
     public function edit(String $id_penetapan)
@@ -73,20 +83,20 @@ class perangkatController extends Controller
         $request->validate([
             'level_penetapan' => 'required|in:perangkatspmi',
             'namaDokumen_penetapan' => 'required|string',
-            'radio_option' => 'required|string',
-            'files.*' => 'required|mimes:doc,docx,xls,xlsx,url|max:2048'
+            'default-radio-1' => 'required|string',
+            'files[].*' => 'required|mimes:doc,docx,xls,xlsx,url|max:2048'
         ]);
 
         $dataUpdate->level_penetapan = $request->input('level_penetapan');
         $dataUpdate->namaDokumen_penetapan = $request->input('namaDokumen_penetapan');
-        $dataUpdate->files = json_encode($filePaths);
-        $dataUpdate->status_dokumen = $option;
+        $dataUpdate->files = $request->input('files');
+        $dataUpdate->status_dokumen = $request->input('default-radio-1');
         $dataUpdate->save();
 
         Alert::success('success', 'Dokumen berhasil diperbarui.');
         return redirect()->route('penetapan.perangkat');
     }
-    
+
     public function destroy(String $id_penetapan)
     {
         $dataDelete = Penetapan::findOrfail($id_penetapan);
@@ -95,5 +105,4 @@ class perangkatController extends Controller
         Alert::success('success', 'Dokumen Perangkat SPMI berhasil dihapus.');
         return redirect()->route('penetapan.perangkat');
     }
-
 }

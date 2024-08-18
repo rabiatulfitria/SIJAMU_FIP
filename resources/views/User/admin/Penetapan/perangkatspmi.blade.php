@@ -76,8 +76,8 @@
                 <thead class="table-purple">
                     <tr>
                         <th style="padding-left: 35px">Nama Dokumen</th>
-                        <th style="padding-left: 80px">Status Dokumen</th>
-                        <th style="padding-left: 30px">Tautan</th>
+                        <th style="padding-left: 20px">Status Dokumen</th>
+                        <th style="padding-left: 20px">Tautan</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -85,7 +85,7 @@
                     @foreach ($perangkat as $row)
                         <tr>
                             <td style="padding-left: 20px"><i class="me-3"></i> <strong>{{ $row->namaDokumen_penetapan }}</strong></td>
-                            <td style="padding-left: 100px">{{ $row->status_dokumen }}</td>
+                            <td style="padding-left: 70px">{{ $row->status_dokumen }}</td>
                             <td>
                                 @php
                                     $files = json_decode($row->files, true);
@@ -93,8 +93,8 @@
 
                                 @if ($files && is_array($files))
                                     @foreach ($files as $file)
-                                        <a href="{{ asset('storage/app/private/' . basename($file)) }}" target="_blank" class="badge bg-label-info me-1">
-                                            <i class="bi bi-link-45deg"></i> {{ basename($file) }}
+                                        <a href="{{ route('private', ['files' => $file]) }}" target="_blank" class="badge bg-label-info me-1">
+                                            <i class="bi bi-link-45deg">Dokumen</i>
                                         </a>
                                     @endforeach
                                 @else
@@ -118,7 +118,7 @@
                                             <form method="POST" action="{{ route('hapusDokumenPerangkat', $row->id_penetapan) }}">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="dropdown-item"><i class="bx bx-trash me-1"></i>
+                                                <button class="dropdown-item btn btn-outline-danger"><i class="bx bx-trash me-1"></i>
                                                     Delete</button>
                                             </form>
                                         </div>
