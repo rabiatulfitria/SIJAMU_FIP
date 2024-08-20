@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Penetapan;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Validator;
 
 class perangkatController extends Controller
 {
@@ -41,10 +42,13 @@ class perangkatController extends Controller
                     $namaDokumen = time() . '-' . $file->getClientOriginalName();
 
                     // Memindahkan file ke folder 'storage/app/private' dengan nama yang telah dibuat
-                    $file->move(storage_path('app/private'), $namaDokumen);
+                    Storage::disk('local')->put('/private/' . $namaDokumen, File::get($file));
 
-                    // Menyimpan path ke dalam array (database)
-                    $filePaths[] = 'storage/app/private/' . $namaDokumen;
+                    // Menyimpan path ke dalam array
+                    $path = '/private/' . $namaDokumen;
+                    $filePaths[] = $path;
+
+                    Penetapan::create(['files' => $path]);
                 }
             }
 
@@ -64,7 +68,8 @@ class perangkatController extends Controller
 
     public function viewSensitifFile($namaDokumen)
     {
-        $file = storage_path( path: 'app/private'.$namaDokumen);
+        //menggunakan path: 'app/private/'
+        $file = storage_path('app/private/'.$namaDokumen);
         return response()->file($file);
     }
 

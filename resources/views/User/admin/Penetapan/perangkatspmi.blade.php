@@ -93,7 +93,8 @@
 
                                 @if ($files && is_array($files))
                                     @foreach ($files as $file)
-                                        <a href="{{ route('private', ['files' => $file]) }}" target="_blank" class="badge bg-label-info me-1">
+                                    {{-- {{ dd($files) }} --}}
+                                        <a target="_blank" href="{{ route('private', ['files' => $file]) }}" class="badge bg-label-info me-1">
                                             <i class="bi bi-link-45deg">Dokumen</i>
                                         </a>
                                     @endforeach
