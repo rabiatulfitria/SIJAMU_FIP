@@ -90,7 +90,7 @@
                 <div class="tab-pane show active" id="navs-top-home" role="tabpanel">
                     <div class="row">
                         <!-- Sub Standar -->
-                        <div class="col-lg-4 col-md-6 col-sm-6" >
+                        <div class="col-lg-4" >
                             <div class="card overflow-hidden mb-4" style="height: 300px;">
                                 <div class="card-body left" id="vertical-example"><b>Standar Proses Pembelajaran</b>
                                     <ul>
@@ -98,37 +98,34 @@
                                         </li>
                                         <li style="font-size: 12px"><a href="menuProdi/rps">Rencana Pembelajaran Semester
                                                 (RPS)</a></li>
-                                        <li style="font-size: 12px"><a href="menuProdi/rps">Rencana Pembelajaran Semester
-                                                (RPS)</a></li>
-                                        <li style="font-size: 12px"><a href="menuProdi/rps">Rencana Pembelajaran Semester
-                                                (RPS)</a></li>
-                                        <li style="font-size: 12px"><a href="menuProdi/rps">Rencana Pembelajaran Semester
-                                                (RPS)</a></li>
-                                        <li style="font-size: 12px"><a href="menuProdi/rps">Rencana Pembelajaran Semester
-                                                (RPS)</a></li>
-                                        <li style="font-size: 12px"><a href="menuProdi/rps">Rencana Pembelajaran Semester
-                                                (RPS)</a></li>
-                                        <li style="font-size: 12px"><a href="menuProdi/rps">Rencana Pembelajaran Semester
-                                                (RPS)</a></li>
-                                        <li style="font-size: 12px"><a href="menuProdi/rps">Rencana Pembelajaran Semester
-                                                (RPS)</a></li>
-                                        <li style="font-size: 12px"><a href="menuProdi/rps">Rencana Pembelajaran Semester
-                                                (RPS)</a></li>
-                                        <li style="font-size: 12px"><a href="menuProdi/rps">Rencana Pembelajaran Semester
-                                                (RPS)</a></li>
-                                        <li style="font-size: 12px"><a href="menuProdi/rps">Rencana Pembelajaran Semester
-                                                (RPS)</a></li>
-                                        <li style="font-size: 12px"><a href="menuProdi/rps">Rencana Pembelajaran Semester
-                                                (RPS)</a></li>
-
+                                        <li style="font-size: 12px"><a href="menuProdi/rps">Dokumen monitoring dan evaluasi kegiatan program merdeka belajar
+                                                </a></li>
+                                        <li style="font-size: 12px"><a href="menuProdi/rps">Capaian Pembelajaran Lulusan
+                                                </a></li>
+                                        <li style="font-size: 12px"><a href="menuProdi/rps">Panduan RPS
+                                                </a></li>
+                                        <li style="font-size: 12px"><a href="menuProdi/rps">Panduan Mutu Soal
+                                                </a></li>
+                                        <li style="font-size: 12px"><a href="menuProdi/rps">Panduan Kisi Kisi Soal
+                                                </a></li>
+                                        <li style="font-size: 12px"><a href="menuProdi/rps">Panduan Penyusunan Tugas Akhir
+                                                </a></li>
                                     </ul>
+                                    <div><b>Standar Layanan Kemahasiswaan</b>
+                                        <ul>
+                                            <li style="font-size: 12px"><a href="menuProdi/dokkurikulum">Formulir Kepuasan Mahasiswa</a>
+                                            </li>
+                                            <li style="font-size: 12px"><a href="menuProdi/dokkurikulum">Dokumen Monitoring dan Evaluasi Keteracapaian Standar Layanan Kemahasiswaan</a>
+                                            </li>
+                                        </ul>    
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <!--/ Sub Standar -->
 
                         <!-- Tabel Unggah Dokumen Sub Standar -->
-                        <div class="col-lg-8 col-md-6 col-sm-12">
+                        <div class="col-lg-8">
                             <div class="card overflow-hidden mb-4" style="height: 300px">
                                 <div class="card-body right" id="both-scrollbars-example">
                                     @yield('tabel-unggah-dokumen')

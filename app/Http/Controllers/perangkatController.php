@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Penetapan;
+use Illuminate\Foundation\Console\StorageLinkCommand;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -47,8 +48,6 @@ class perangkatController extends Controller
                     // Menyimpan path ke dalam array
                     $path = '/private/' . $namaDokumen;
                     $filePaths[] = $path;
-
-                    Penetapan::create(['files' => $path]);
                 }
             }
 
@@ -66,11 +65,34 @@ class perangkatController extends Controller
         }
     }
 
-    public function viewSensitifFile($namaDokumen)
+    // public function viewSensitifFile($id_penetapan)
+    // {
+    //     //Cari file berdasarkan id_penetapan
+    //     $perangkat = Penetapan::findOrFail($id_penetapan);
+
+    //     //ambil path file dari database
+    //     $filePaths = $perangkat->files;
+        
+    //     //cek apakah file ada di storage lokal
+    //     if (file_exists($filePaths)) {
+    //         return response()->file($filePaths);
+    //     }
+    // }
+
+    public function viewSensitifFile($id_penetapan)
     {
-        //menggunakan path: 'app/private/'
-        $file = storage_path('app/private/'.$namaDokumen);
-        return response()->file($file);
+        $perangkat = Penetapan::findOrFail($id_penetapan);
+        $filePaths = json_decode($perangkat->files, true);
+
+        if (is_array($filePaths) && !empty($filePaths)) {
+            $file = $filePaths[0];
+
+            if (Storage::disk('local')->exists($file)) {
+                return response()->file(storage_path('app' . $file));
+            } else {
+                abort(404, 'File not found.');
+            }
+        }
     }
 
     public function edit(String $id_penetapan)
@@ -81,33 +103,59 @@ class perangkatController extends Controller
         ]);
     }
 
-    public function update(Request $request, String $id_penetapan)
+    public function update(Request $request, $id_penetapan)
     {
-        $dataUpdate = Penetapan::find($id_penetapan);
+        $dataUpdate = Penetapan::findOrFail($id_penetapan);
 
         $request->validate([
             'level_penetapan' => 'required|in:perangkatspmi',
-            'namaDokumen_penetapan' => 'required|string',
+            'nama_dokumen' => 'required|string',
             'default-radio-1' => 'required|string',
-            'files[].*' => 'required|mimes:doc,docx,xls,xlsx,url|max:2048'
+            'files.*' => 'nullable|mimes:doc,docx,xls,xlsx,pdf|max:2048'
         ]);
 
-        $dataUpdate->level_penetapan = $request->input('level_penetapan');
-        $dataUpdate->namaDokumen_penetapan = $request->input('namaDokumen_penetapan');
-        $dataUpdate->files = $request->input('files');
+        $dataUpdate->namaDokumen_penetapan = $request->input('nama_dokumen');
         $dataUpdate->status_dokumen = $request->input('default-radio-1');
-        $dataUpdate->save();
 
+        // Proses file baru jika ada
+        if ($request->hasFile('files')) {
+            // Hapus file lama dari storage
+            $oldFiles = json_decode($dataUpdate->files, true);
+            if (is_array($oldFiles)) {
+                foreach ($oldFiles as $oldFile) {
+                    if (Storage::disk('local')->exists($oldFile)) {
+                        Storage::disk('local')->delete($oldFile);
+                    }
+                }
+            }
+            $filePaths = [];
+            foreach ($request->file('files') as $file) {
+                $namaDokumen = time() . '-' . $file->getClientOriginalName();
+                Storage::disk('local')->put('/private/' . $namaDokumen, File::get($file));
+                $filePaths[] = '/private/' . $namaDokumen;
+            }
+            $dataUpdate->files = json_encode($filePaths);
+        }
+        $dataUpdate->save();
         Alert::success('success', 'Dokumen berhasil diperbarui.');
         return redirect()->route('penetapan.perangkat');
     }
 
-    public function destroy(String $id_penetapan)
-    {
-        $dataDelete = Penetapan::findOrfail($id_penetapan);
-        $dataDelete->delete();
 
-        Alert::success('success', 'Dokumen Perangkat SPMI berhasil dihapus.');
+
+
+    public function destroy($id_penetapan)
+    {
+        $perangkat = Penetapan::findOrFail($id_penetapan);
+        $files = json_decode($perangkat->files, true);
+        if (is_array($files)) {
+            foreach ($files as $file) {
+                Storage::disk('local')->delete($file);
+            }
+        }
+        $perangkat->delete();
+    
+        Alert::success('success', 'Dokumen berhasil dihapus.');
         return redirect()->route('penetapan.perangkat');
     }
 }

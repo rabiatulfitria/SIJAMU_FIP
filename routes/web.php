@@ -43,9 +43,13 @@ Route::get('/Penetapan/tambahDokumenPerangkatSPMI',[perangkatController::class, 
 Route::get('/Penetapan/editDokumenPerangkatSPMI/{id_penetapan}', [perangkatController::class, 'edit'])->name('editDokumenPerangkat');
 // Route::post('/Penetapan', [perangkatController::class, 'store'])->name('perangkat.store');
 Route::resource('/tambahDokumenPerangkatSPMI-2', perangkatController::class);
-Route::get('/dokumen/{files}', [perangkatController::class, 'viewSensitifFile'])->name('private');
+Route::get('/dokumen{id_penetapan}', [perangkatController::class, 'viewSensitifFile'])->name('private');
 Route::delete('/Penetapan/PerangkatSPMI{id_penetapan}', [perangkatController::class, 'destroy'])->name('hapusDokumenPerangkat');
-Route::put('/Penetapan/{id_penetapan}/pembaruanDokumenPerangkatSPMI', [perangkatController::class, 'update'])->name('updateDokumenPerangkat');
+// Route::put('/Penetapan/updateDokumenPerangkat', [perangkatController::class, 'update'])->name('updateDokumenPerangkat');
+// Route::put('Penetapan/updateDokumenPerangkat/{id_penetapan}', [perangkatController::class, 'update'])->name('editDokumenPerangkat');
+// Route::post('Penetapan/updateDokumenPerangkat/{id_penetapan}', [perangkatController::class, 'updateDokumenPerangkat'])->name('updateDokumenPerangkat');
+Route::put('Penetapan/updateDokumenPerangkat/{id_penetapan}', [perangkatController::class, 'update'])->name('updateDokumenPerangkat');
+
 
 // route untuk halaman menu Penetapan CRUD -> Standar Yang Ditetapkan Institusi
 Route::get('/Penetapan/StandarInstitusi', [standarController::class, 'index'])->name('penetapan.standar');
@@ -62,4 +66,3 @@ Route::get('/Pengendalian/Standar/RTM',[pengendalianController::class, 'index'])
 
 // route untuk halaman menu Peningkatan CRUD
 Route::get('Peningkatan/StandarInstitusi',[peningkatanController::class, 'index'])->name('peningkatan');
-
