@@ -131,3 +131,69 @@
         </div>
     </div>
 @endsection
+
+<style>
+    /* Custom CSS for DataTable */
+    table.dataTable td,
+    table.dataTable th {
+        padding: 12px 15px;
+    }
+
+    .dataTables_wrapper {
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(197, 100, 165, 0.1);
+    }
+
+    /* Mengubah tampilan pagination DataTable */
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        background-color: #4CAF50;
+        /* Warna latar belakang */
+        color: rgb(194, 108, 247);
+        /* Warna teks */
+        border: 1px solid #4CAF50;
+        /* Warna border */
+        padding: 6px 12px;
+        /* Ukuran padding tombol */
+        margin: 2px;
+        border-radius: 5px;
+        /* Membuat sudut tombol membulat */
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+        /* Transisi warna */
+    }
+
+    /* Mengubah tampilan saat tombol pagination di-hover */
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        background-color: #45a049;
+        /* Warna latar belakang saat di-hover */
+        color: white;
+        /* Warna teks */
+        border-color: #45a049;
+        /* Warna border saat di-hover */
+    }
+
+    /* Mengubah tampilan pagination aktif */
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+        background-color: #2196F3;
+        /* Warna latar belakang tombol aktif */
+        color: white;
+        /* Warna teks tombol aktif */
+        border: 1px solid #2196F3;
+        /* Warna border tombol aktif */
+        border-radius: 5px;
+        /* Membuat sudut tombol membulat */
+    }
+
+    /* Mengubah tampilan tombol pagination tidak aktif */
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
+        background-color: #cccccc;
+        /* Warna latar belakang tombol tidak aktif */
+        color: #666666;
+        /* Warna teks tombol tidak aktif */
+        border: 1px solid #cccccc;
+        /* Warna border tombol tidak aktif */
+        cursor: not-allowed;
+        /* Cursor tidak diizinkan */
+    }
+</style>

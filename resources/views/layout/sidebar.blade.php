@@ -185,7 +185,7 @@
                                 <script>
                                     document.write(new Date().getFullYear());
                                 </script>
-                                | SI-Sistem Pinjaminan Mutu Internal Fakultas Ilmu Pendidikan Universitas Trunojoyo
+                                | SI-Sistem Penjaminan Mutu Internal Fakultas Ilmu Pendidikan Universitas Trunojoyo
                                 Madura
                             </div>
                         </div>

@@ -1,4 +1,4 @@
-@extends('User.admin.Pelaksanaan.sidebar')
+@extends('User.admin.Pelaksanaan.sidebar_prodi')
 @section('tabel-unggah-dokumen')
     <div class="table-responsive text-nowrap">
         <table class="table">

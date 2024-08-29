@@ -77,14 +77,16 @@
                     <tr>
                         <th style="padding-left: 35px">Nama Dokumen</th>
                         <th style="padding-left: 20px">Status Dokumen</th>
-                        <th style="padding-left: 20px">Tautan</th>
+                        <th style="padding-left: 10px">Unggahan</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
                     @foreach ($perangkat as $row)
                         <tr>
-                            <td style="padding-left: 20px"><i class="me-3"></i> <strong>{{ $row->namaDokumen_penetapan }}</strong></td>
+                            <td style="padding-left: 20px"><i class="me-3"></i>
+                                <strong>{{ $row->namaDokumen_penetapan }}</strong>
+                            </td>
                             <td style="padding-left: 70px">{{ $row->status_dokumen }}</td>
                             <td>
                                 @php
@@ -93,11 +95,12 @@
 
                                 @if ($files && is_array($files))
                                     @foreach ($files as $file)
-                                    {{-- {{ dd($files) }} --}}
+                                        {{-- {{ dd($files) }} --}}
                                         {{-- <a target="_blank" href="{{ route('private', ['files' => $file]) }}" class="badge bg-label-info me-1">
                                             <i class="bi bi-link-45deg">Dokumen</i>
                                         </a> --}}
-                                        <a href=" {{ route('private',['id_penetapan' => $row->id_penetapan]) }}" class="badge bg-label-info me-1">
+                                        <a href=" {{ route('private', ['id_penetapan' => $row->id_penetapan]) }}"
+                                            class="badge bg-label-info me-1">
                                             <i class="bi bi-link-45deg">Dokumen</i>
                                         </a>
                                     @endforeach
@@ -116,17 +119,20 @@
                                             <a class="dropdown-item"
                                                 href="{{ route('editDokumenPerangkat', $row->id_penetapan) }}"><i
                                                     class="bx bx-edit-alt me-1"></i>
-                                                Edit</a>
+                                                Ubah</a>
                                         </div>
                                         <div>
-                                            <form method="POST" action="{{ route('hapusDokumenPerangkat', $row->id_penetapan) }}">
+                                            <form method="POST"
+                                                action="{{ route('hapusDokumenPerangkat', $row->id_penetapan) }}">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="dropdown-item btn btn-outline-danger"><i class="bx bx-trash me-1"></i>
-                                                    Delete</button>
+                                                <button class="dropdown-item btn btn-outline-danger"><i
+                                                        class="bx bx-trash me-1"></i>
+                                                    Hapus</button>
                                             </form>
                                         </div>
                                     </div>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
