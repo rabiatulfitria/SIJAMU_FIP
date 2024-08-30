@@ -28,8 +28,9 @@ n
                                 <label class="form-label" for="bx bx-file">Nama Dokumen</label>
                                 <div class="input-group input-group-merge">
                                     <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-file"></i></span>
-                                    <input type="text" class="form-control" id="bx bx-file" name="namaDokumen_penetapan" placeholder="Nama Dokumen" aria-label="" aria-describedby="bx bx-file" required />
+                                    <input type="text" class="form-control" id="bx bx-file" name="namaDokumen_penetapan" value="{{$nama}}" placeholder="Nama Dokumen" aria-label="" aria-describedby="bx bx-file" disabled />
                                     <input type="hidden" name="level_penetapan" value="standarspmi">
+                                    <input type="hidden" name="id_penetapan" value="{{$id}}">
                                 </div>
                             </div>
                             <div class="form-check mt-3">
@@ -47,7 +48,7 @@ n
                             </div>
                             <div class="mb-3">
                                 <label for="formFileMultiple" class="form-label">Pilih File</label>
-                                <input class="form-control" type="file" name="files[]" id="formFileMultiple" multiple required />
+                                <input class="form-control" type="file" name="files" id="formFileMultiple" required />
                               </div>
                             <button type="submit" class="btn btn-primary">{{ isset($standar) }}Kirim</button>
                         </form>

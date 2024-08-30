@@ -100,7 +100,7 @@
                                             <i class="bi bi-link-45deg">Dokumen</i>
                                         </a> --}}
                                         <a href=" {{ route('private', ['id_penetapan' => $row->id_penetapan]) }}"
-                                            class="badge bg-label-info me-1">
+                                            class="badge bg-label-info me-1" target="_blank">
                                             <i class="bi bi-link-45deg">Dokumen</i>
                                         </a>
                                     @endforeach

@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 
+use function PHPUnit\Framework\isEmpty;
+use function PHPUnit\Framework\isNull;
+
 class standarController extends Controller
 {
     public function index()
@@ -28,12 +31,44 @@ class standarController extends Controller
 
         // dd($standar);
 
-
         return view('User.admin.Penetapan.standarinstitusi', compact('standar', 'standar2', 'standar3', 'standar4'));
     }
-    public function create()  //tombol Tambah
+
+    public function folder()
     {
-        return view('User.admin.Penetapan.tambah_standarspmi');
+        // $jamutims = Timjamu::all();
+        return view('User.admin.Penetapan.folder_dokumen.dokumen_standarpendidikan');
+    }
+
+    public function create($id)  //tombol Tambah
+    {
+        $penetapan = Penetapan::where('id_penetapan',$id)->first(); //mengambil satu data dari satu row
+        $namaDokumen = $penetapan->namaDokumen_penetapan;
+        return view('User.admin.Penetapan.tambah_standarspmi')->with(['id'=>$id,'nama'=>$namaDokumen]);
+    }
+
+    public function uploadDokumen(Request $request){
+        $array = Penetapan::find($request->id_penetapan);
+        if ($request->hasFile('files')) {
+            $file = $request->file('files');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->storeAs('uploads', $filename);
+            if($array->files ==""){
+                $dokumen = array($filename);
+                $array->files = serialize($dokumen); //inputan file dijadikan bentuk array
+                $array->save();
+            }
+            else{
+                $dokumen = unserialize($array->files);
+                $dokumen = array_merge($dokumen,array($filename));
+                $array->files = serialize($dokumen);
+                $array->save();
+            }      
+            return response()->json(['success' => 'File uploaded successfully']);
+        } else {
+            // file kosong
+            return response()->json(['error' => 'No file uploaded']);
+        }
     }
 
     public function store(Request $request)  //proses Tambah

@@ -99,7 +99,7 @@
                             @php
                                 $files = json_decode($standar->files, true);
                             @endphp
-                        
+
                             @if ($files && is_array($files))
                                 @foreach ($files as $file)
                                     <a href="{{ route('private', ['id_penetapan' => $standar->id_penetapan]) }}"
@@ -111,7 +111,7 @@
                                 <p>No files available</p>
                             @endif
                         </td>
-                        
+
                         {{-- @endforeach --}}
                         <td>
                             <div class="dropdown">
@@ -120,7 +120,7 @@
                                 </button>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" type="button"
-                                        onclick="window.location.href='{{ route('unggahDokumenStandar') }}'"><i
+                                        onclick="window.location.href='{{ route('unggahDokumenStandar',['id'=>$standar->id_penetapan]) }}'"><i
                                             class="bx bx-upload"></i>
                                         Unggah Dokumen</a>
                                     @if (session('success'))
@@ -150,67 +150,11 @@
                                 {{ $standar2->status_dokumen == 'tidak ada' ? 'checked' : '' }} />
                             <label class="form-check-label" for="defaultRadio2">Tidak Ada</label>
                         </td>
-                            <td>
-                                @php
-                                    $files = json_decode($standar2->files, true);
-                                @endphp
-                            
-                                @if ($files && is_array($files))
-                                    @foreach ($files as $file)
-                                        <a href="{{ route('private', ['id_penetapan' => $standar2->id_penetapan]) }}"
-                                            class="badge bg-label-info me-1">
-                                            <i class="bi bi-link-45deg">Dokumen</i>
-                                        </a>
-                                    @endforeach
-                                @else
-                                    <p>No files available</p>
-                                @endif
-                            </td>
-                        {{-- @endforeach --}}
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                    data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" type="button"
-                                        onclick="window.location.href='{{ route('unggahDokumenStandar') }}'"><i
-                                            class="bx bx-upload"></i>
-                                        Unggah Dokumen</a>
-                                    @if (session('success'))
-                                        <div>{{ @session('success') }}</div>
-                                    @endif
-                                    <a class="dropdown-item" href="javascript:void(0);"><i
-                                            class="bx bx-edit-alt me-1"></i>
-                                        Ubah</a>
-                                    <a class="dropdown-item btn btn-outline-danger" href="javascript:void(0);"><i
-                                            class="bx bx-trash me-1"></i>
-                                        Hapus</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td class=" me-3" style="font-size: 13px">Standar Pengabdian Kepada Masyarakat Universitas
-                            Trunojoyo Madura</td>
-                        {{-- @foreach ($standar as $item) --}}
-                            <td>
-                                <input name="status_dokumen3" class="form-check-input" type="radio" value="Ada"
-                                    {{ $standar3->status_dokumen == 'Ada' ? 'checked' : '' }} />
-                                <label class="form-check-label" for="defaultRadio1"> Ada</label>
-                                <span></span>
-                                <input name="status_dokumen3" class="form-check-input" type="radio" value="Ada"
-                                    {{ $standar3->status_dokumen == 'tidak Ada' ? 'checked' : '' }} />
-                                <label class="form-check-label" for="defaultRadio2"> Tidak Ada</label>
-                            </td>
-                        </td>
                         <td>
                             @php
-                                $files = json_decode($standar3->files, true);
+                                $files = json_decode($standar2->files, true);
                             @endphp
-                        
+
                             @if ($files && is_array($files))
                                 @foreach ($files as $file)
                                     <a href="{{ route('private', ['id_penetapan' => $standar2->id_penetapan]) }}"
@@ -231,7 +175,7 @@
                                 </button>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" type="button"
-                                        onclick="window.location.href='{{ route('unggahDokumenStandar') }}'"><i
+                                        onclick="window.location.href='{{ route('unggahDokumenStandar',['id'=>$standar->id_penetapan]) }}'"><i
                                             class="bx bx-upload"></i>
                                         Unggah Dokumen</a>
                                     @if (session('success'))
@@ -246,36 +190,30 @@
                                 </div>
                             </div>
                         </td>
-                    </tr>                    
-                    <tr>
-                        <td>4</td>
-                        <td class=" me-3" style="font-size: 13px">Standar di aspek lainnya</td>
                     </tr>
-                    @foreach ($standar4 as $item)
                     <tr>
-                        <td></td>
+                        <td>3</td>
+                        <td class=" me-3" style="font-size: 13px">Standar Pengabdian Kepada Masyarakat Universitas
+                            Trunojoyo Madura</td>
+                        {{-- @foreach ($standar as $item) --}}
                         <td>
-                            <li class="me-3" style="font-size: 13px">
-                                Standar Layanan Kemahasiswaan Universitas Trunojoyo Madura
-                            </li>
-                        </td>
-                        <td>
-                            <input name="status_dokumen4" class="form-check-input" type="radio" value="Ada"
-                                {{ $item->status_dokumen == 'Ada' ? 'checked' : '' }} />
+                            <input name="status_dokumen3" class="form-check-input" type="radio" value="Ada"
+                                {{ $standar3->status_dokumen == 'Ada' ? 'checked' : '' }} />
                             <label class="form-check-label" for="defaultRadio1"> Ada</label>
                             <span></span>
-                            <input name="status_dokumen4" class="form-check-input" type="radio" value="Tidak Ada"
-                                {{ $item->status_dokumen == 'Tidak Ada' ? 'checked' : '' }} />
+                            <input name="status_dokumen3" class="form-check-input" type="radio" value="Ada"
+                                {{ $standar3->status_dokumen == 'tidak Ada' ? 'checked' : '' }} />
                             <label class="form-check-label" for="defaultRadio2"> Tidak Ada</label>
+                        </td>
                         </td>
                         <td>
                             @php
-                                $files = json_decode($item->files, true);
+                                $files = json_decode($standar3->files, true);
                             @endphp
 
                             @if ($files && is_array($files))
                                 @foreach ($files as $file)
-                                    <a href="{{ route('private', ['id_penetapan' => $item->id_penetapan]) }}"
+                                    <a href="{{ route('private', ['id_penetapan' => $standar2->id_penetapan]) }}"
                                         class="badge bg-label-info me-1">
                                         <i class="bi bi-link-45deg">Dokumen</i>
                                     </a>
@@ -284,30 +222,93 @@
                                 <p>No files available</p>
                             @endif
                         </td>
+                        {{-- @endforeach --}}
                         <td>
                             <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                    data-bs-toggle="dropdown">
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" type="button"
-                                        onclick="window.location.href='{{ route('unggahDokumenStandar') }}'">
-                                        <i class="bx bx-upload"></i> Unggah Dokumen
-                                    </a>
+                                        onclick="window.location.href='{{ route('unggahDokumenStandar',['id'=>$standar->id_penetapan]) }}'"><i
+                                            class="bx bx-upload"></i>
+                                        Unggah Dokumen</a>
                                     @if (session('success'))
                                         <div>{{ @session('success') }}</div>
                                     @endif
-                                    <a class="dropdown-item" href="javascript:void(0);">
-                                        <i class="bx bx-edit-alt me-1"></i> Ubah
-                                    </a>
-                                    <a class="dropdown-item btn btn-outline-danger" href="javascript:void(0);">
-                                        <i class="bx bx-trash me-1"></i> Hapus
-                                    </a>
+                                    <a class="dropdown-item" href="javascript:void(0);"><i
+                                            class="bx bx-edit-alt me-1"></i>
+                                        Ubah</a>
+                                    <a class="dropdown-item btn btn-outline-danger" href="javascript:void(0);"><i
+                                            class="bx bx-trash me-1"></i>
+                                        Hapus</a>
                                 </div>
                             </div>
                         </td>
                     </tr>
-                @endforeach
+                    <tr>
+                        <td>4</td>
+                        <td class=" me-3" style="font-size: 13px">Standar di aspek lainnya</td>
+                    </tr>
+                    @foreach ($standar4 as $item)
+                        <tr>
+                            <td></td>
+                            <td>
+                                <li class="me-3" style="font-size: 13px">
+                                    Standar Layanan Kemahasiswaan Universitas Trunojoyo Madura
+                                </li>
+                            </td>
+                            <td>
+                                <input name="status_dokumen4" class="form-check-input" type="radio" value="Ada"
+                                    {{ $item->status_dokumen == 'Ada' ? 'checked' : '' }} />
+                                <label class="form-check-label" for="defaultRadio1"> Ada</label>
+                                <span></span>
+                                <input name="status_dokumen4" class="form-check-input" type="radio" value="Tidak Ada"
+                                    {{ $item->status_dokumen == 'Tidak Ada' ? 'checked' : '' }} />
+                                <label class="form-check-label" for="defaultRadio2"> Tidak Ada</label>
+                            </td>
+                            <td>
+                                @php
+                                    $files = json_decode($item->files, true);
+                                @endphp
+
+                                @if ($files && is_array($files))
+                                    @foreach ($files as $file)
+                                        <a href="{{ route('private', ['id_penetapan' => $item->id_penetapan]) }}"
+                                            class="badge bg-label-info me-1">
+                                            <i class="bi bi-link-45deg">Dokumen</i>
+                                        </a>
+                                    @endforeach
+                                @else
+                                    <p>No files available</p>
+                                @endif
+                            </td>
+                            <td>
+                                <div class="dropdown">
+                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                        data-bs-toggle="dropdown">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" type="button"
+                                            onclick="window.location.href='{{ route('unggahDokumenStandar',['id'=>$standar->id_penetapan]) }}'">
+                                            <i class="bx bx-upload"></i> Unggah Dokumen
+                                        </a>
+                                        @if (session('success'))
+                                            <div>{{ @session('success') }}</div>
+                                        @endif
+                                        <a class="dropdown-item" href="javascript:void(0);">
+                                            <i class="bx bx-edit-alt me-1"></i> Ubah
+                                        </a>
+                                        <a class="dropdown-item btn btn-outline-danger" href="javascript:void(0);">
+                                            <i class="bx bx-trash me-1"></i> Hapus
+                                        </a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
 
 
 
@@ -436,5 +437,10 @@
         @if (session('success'))
             <div>{{ @session('success') }}</div>
         @endif
+    </div>
+    <div class="demo-inline-spacing">
+        <button type="button" class="btn btn-light"
+            onclick="window.location.href='{{ route('FolderDokumenStandar') }}'">Folder
+        </button>
     </div>
 @endsection
