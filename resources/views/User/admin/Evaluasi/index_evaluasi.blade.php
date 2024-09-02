@@ -70,7 +70,22 @@
 
 @section('content')
     <div class="card">
-        <h5 class="card-header">Audit Mutu Internal (AMI)</h5>
+        <h5 class="card-header">Audit Mutu Internal (AMI)
+            <div class="card accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                        data-bs-target="#accordionOne" aria-expanded="false" aria-controls="accordionOne">
+                        Accordion Item 1
+                    </button>
+                </h2>
+
+                <div id="accordionOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample"
+                    style="">
+                    <div class="accordion-body">
+                    </div>
+                </div>
+            </div>
+        </h5>
         <div class="table text-nowrap" id="horizontal-example">
             <table class="table">
                 <thead class="table-purple">
@@ -90,7 +105,8 @@
                         <td><i class="me-3"></i>Pendidikan Bahasa dan Sastra Indonesia</td>
                         <td style="padding-left: 60px"><i class="me-3"></i> yyyy/mm/dd</td>
                         <td style="padding-left: 40px"><i class="me-3"></i> yyyy/mm/dd</td>
-                        <td style="padding-left: 50px"><span class="badge bg-label-info me-1"><i class="bi bi-link-45deg">file</i></span></td>
+                        <td style="padding-left: 50px"><span class="badge bg-label-info me-1"><i
+                                    class="bi bi-link-45deg">file</i></span></td>
                         <td>
                             <div class="dropdown">
                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
@@ -110,14 +126,17 @@
                         <td><i class="me-3"></i>Pendidikan Guru Sekolah Dasar</td>
                         <td style="padding-left: 60px"><i class="me-3"></i> yyyy/mm/dd</td>
                         <td style="padding-left: 40px"><i class="me-3"></i> yyyy/mm/dd</td>
-                        <td style="padding-left: 50px"><span class="badge bg-label-info me-1"><i class="bi bi-link-45deg">file</i></span></td>
+                        <td style="padding-left: 50px"><span class="badge bg-label-info me-1"><i
+                                    class="bi bi-link-45deg">file</i></span></td>
                         <td>
                             <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                    data-bs-toggle="dropdown">
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i>
+                                    <a class="dropdown-item" href="javascript:void(0);"><i
+                                            class="bx bx-edit-alt me-1"></i>
                                         Edit</a>
                                     <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
                                         Delete</a>
@@ -130,14 +149,17 @@
                         <td><i class="me-3"></i>Pendidikan Informatika</td>
                         <td style="padding-left: 60px"><i class="me-3"></i> yyyy/mm/dd</td>
                         <td style="padding-left: 40px"><i class="me-3"></i> yyyy/mm/dd</td>
-                        <td style="padding-left: 50px"><span class="badge bg-label-info me-1"><i class="bi bi-link-45deg">file</i></span></td>
+                        <td style="padding-left: 50px"><span class="badge bg-label-info me-1"><i
+                                    class="bi bi-link-45deg">file</i></span></td>
                         <td>
                             <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                    data-bs-toggle="dropdown">
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i>
+                                    <a class="dropdown-item" href="javascript:void(0);"><i
+                                            class="bx bx-edit-alt me-1"></i>
                                         Edit</a>
                                     <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
                                         Delete</a>
@@ -150,14 +172,17 @@
                         <td><i class="me-3"></i>Pendidikan Guru Sekolah Dasar</td>
                         <td style="padding-left: 60px"><i class="me-3"></i> yyyy/mm/dd</td>
                         <td style="padding-left: 40px"><i class="me-3"></i> yyyy/mm/dd</td>
-                        <td style="padding-left: 50px"><span class="badge bg-label-info me-1"><i class="bi bi-link-45deg">file</i></span></td>
+                        <td style="padding-left: 50px"><span class="badge bg-label-info me-1"><i
+                                    class="bi bi-link-45deg">file</i></span></td>
                         <td>
                             <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                    data-bs-toggle="dropdown">
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i>
+                                    <a class="dropdown-item" href="javascript:void(0);"><i
+                                            class="bx bx-edit-alt me-1"></i>
                                         Edit</a>
                                     <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
                                         Delete</a>
@@ -170,14 +195,17 @@
                         <td><i class="me-3"></i>Pendidikan Guru Pendidikan Anak Usia Dini</td>
                         <td style="padding-left: 60px"><i class="me-3"></i> yyyy/mm/dd</td>
                         <td style="padding-left: 40px"><i class="me-3"></i> yyyy/mm/dd</td>
-                        <td style="padding-left: 50px"><span class="badge bg-label-info me-1"><i class="bi bi-link-45deg">file</i></span></td>
+                        <td style="padding-left: 50px"><span class="badge bg-label-info me-1"><i
+                                    class="bi bi-link-45deg">file</i></span></td>
                         <td>
                             <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                    data-bs-toggle="dropdown">
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i>
+                                    <a class="dropdown-item" href="javascript:void(0);"><i
+                                            class="bx bx-edit-alt me-1"></i>
                                         Edit</a>
                                     <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
                                         Delete</a>
@@ -191,8 +219,8 @@
         </div>
     </div>
     <div class="demo-inline-spacing">
-        <button type="button" class="btn btn-light"
-            onclick="window.location.href='{{ route('tambahTimJAMU') }}'">+ Tambah Dokumen AMI</button>
+        <button type="button" class="btn btn-light" onclick="window.location.href='{{ route('tambahTimJAMU') }}'">+
+            Tambah Dokumen AMI</button>
         @if (session('success'))
             <div>{{ @session('success') }}</div>
         @endif

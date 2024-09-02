@@ -105,7 +105,7 @@
                                         </a>
                                     @endforeach
                                 @else
-                                    <p>No files available</p>
+                                    <p>No files available</p>z
                                 @endif
                             </td>
                             <td>

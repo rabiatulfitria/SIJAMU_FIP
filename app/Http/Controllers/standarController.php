@@ -18,16 +18,16 @@ class standarController extends Controller
         // $standar = Penetapan::where('level_penetapan', 'standarinstitusi')->get();
 
         $standar = Penetapan::where('level_penetapan', 'standarinstitusi') //nomor 1, id sesuaikan
-                    ->where('id_penetapan', 32)
-                    ->first();
+            ->where('id_penetapan', 32)
+            ->first();
         $standar2 = Penetapan::where('level_penetapan', 'standarinstitusi') // nomor 2, id sesuaikan
-                    ->where('id_penetapan', 33)
-                    ->first();
+            ->where('id_penetapan', 33)
+            ->first();
         $standar3 = Penetapan::where('level_penetapan', 'standarinstitusi') // nomor 3, id sesuaikan
-                    ->where('id_penetapan', 34)
-                    ->first();
+            ->where('id_penetapan', 34)
+            ->first();
         $standar4 = Penetapan::where('level_penetapan', 'standarinstitusi') // nomor 4, id selain nomor 1-3
-                    ->whereNotIn('id_penetapan', [32, 33, 34, 35])->get();
+            ->whereNotIn('id_penetapan', [32, 33, 34, 35])->get();
 
         // dd($standar);
 
@@ -40,35 +40,43 @@ class standarController extends Controller
         return view('User.admin.Penetapan.folder_dokumen.dokumen_standarpendidikan');
     }
 
-    public function create($id)  //tombol Tambah
+    public function create($id)  //tombol Unggah | $id: mengambil data id di row tabel standarinstitusi.blade
     {
-        $penetapan = Penetapan::where('id_penetapan',$id)->first(); //mengambil satu data dari satu row
+        $penetapan = Penetapan::where('id_penetapan', $id)->first(); // first: mengambil satu data dari satu row
         $namaDokumen = $penetapan->namaDokumen_penetapan;
-        return view('User.admin.Penetapan.tambah_standarspmi')->with(['id'=>$id,'nama'=>$namaDokumen]);
+        return view('User.admin.Penetapan.folder_dokumen.tambahdokumen_standarspmi')->with(['id' => $id, 'nama' => $namaDokumen]);
     }
 
-    public function uploadDokumen(Request $request){
+    public function uploadDokumen(Request $request)
+    {
         $array = Penetapan::find($request->id_penetapan);
         if ($request->hasFile('files')) {
             $file = $request->file('files');
             $filename = time() . '_' . $file->getClientOriginalName();
             $file->storeAs('uploads', $filename);
-            if($array->files ==""){
+            if ($array->files == "") {
                 $dokumen = array($filename);
-                $array->files = serialize($dokumen); //inputan file dijadikan bentuk array
+                $array->files = serialize($dokumen); //serialize berfungsi untuk menjadikan inputan file jadi bentuk array. kodenya berupa a:1 (artinya ada 1 array tersimpan)
                 $array->save();
-            }
-            else{
+            } else {
                 $dokumen = unserialize($array->files);
-                $dokumen = array_merge($dokumen,array($filename));
+                $dokumen = array_merge($dokumen, array($filename));
                 $array->files = serialize($dokumen);
                 $array->save();
-            }      
-            return response()->json(['success' => 'File uploaded successfully']);
+            }
+
+            Alert::success('success', 'Dokumen berhasil ditambahkan.');
+            return redirect()->route('penetapan.standar');
+
         } else {
             // file kosong
             return response()->json(['error' => 'No file uploaded']);
         }
+    }
+
+    public function standar_create()
+    {
+        return view('User.admin.Penetapan.tambah_standarspmi');
     }
 
     public function store(Request $request)  //proses Tambah
@@ -82,21 +90,7 @@ class standarController extends Controller
         if ($validateData) {
 
             $option = $request->input('default-radio-1');
-            $filePaths = [];
-
-            if ($request->hasFile('files')) {
-                foreach ($request->file('files') as $file) {
-                    $namaDokumen = time() . '-' . $file->getClientOriginalName();
-
-                    // Memindahkan file ke folder 'storage/app/private' dengan nama yang telah dibuat
-                    Storage::disk('local')->put('/private/' . $namaDokumen, File::get($file));
-
-                    // Menyimpan path ke dalam array
-                    $path = '/private/' . $namaDokumen;
-                    $filePaths[] = $path;
-                }
-            }
-
+            $filePaths = $array; //variabel array pada function uploadDokumen
 
             $model = new Penetapan();
             $model->level_penetapan = $request->input('level_penetapan');
@@ -106,8 +100,8 @@ class standarController extends Controller
             $model->save();
 
 
-            Alert::success('success', 'Dokumen berhasil ditambahkan.');
-            return redirect()->route('penetapan.perangkat');
+            Alert::success('success', 'Standar berhasil ditambahkan.');
+            return redirect()->route('penetapan.standar');
         }
     }
 
@@ -170,7 +164,7 @@ class standarController extends Controller
         }
         $dataUpdate->save();
         Alert::success('success', 'Dokumen berhasil diperbarui.');
-        return redirect()->route('penetapan.perangkat');
+        return redirect()->route('penetapan.standar');
     }
 
     public function destroy($id_penetapan)
@@ -183,9 +177,8 @@ class standarController extends Controller
             }
         }
         $standar->delete();
-    
-        Alert::success('success', 'Dokumen berhasil dihapus.');
-        return redirect()->route('penetapan.perangkat');
-    }
 
+        Alert::success('success', 'Dokumen berhasil dihapus.');
+        return redirect()->route('penetapan.standar');
+    }
 }

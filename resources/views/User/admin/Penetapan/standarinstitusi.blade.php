@@ -108,7 +108,7 @@
                                     </a>
                                 @endforeach
                             @else
-                                <p>No files available</p>
+                                <p>Masih dalam proses</p>
                             @endif
                         </td>
 
@@ -120,23 +120,25 @@
                                 </button>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" type="button"
-                                        onclick="window.location.href='{{ route('unggahDokumenStandar',['id'=>$standar->id_penetapan]) }}'"><i
+                                        onclick="window.location.href='{{ route('unggahDokumenStandar', ['id' => $standar->id_penetapan]) }}'"><i
                                             class="bx bx-upload"></i>
                                         Unggah Dokumen</a>
                                     @if (session('success'))
                                         <div>{{ @session('success') }}</div>
                                     @endif
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i>
-                                        Ubah</a>
-                                    <a class="dropdown-item btn btn-outline-danger" href="javascript:void(0);"><i
-                                            class="bx bx-trash me-1"></i>
-                                        Hapus</a>
+                                    <a class="dropdown-item" href="javascript:void(0);">
+                                        <i class="bx bx-edit-alt me-1"></i> Ubah Dokumen
+                                    </a>
+                                    <a class="dropdown-item" href="javascript:void(0);">
+                                        <i class="bx bx-edit-alt me-1"></i> Ubah Standar
+                                    </a>
+                                    <a class="dropdown-item btn btn-outline-danger" href="javascript:void(0);">
+                                        <i class="bx bx-trash me-1"></i> Hapus
+                                    </a>
                                 </div>
                             </div>
                         </td>
                     </tr>
-
-
                     <tr>
                         <td>2</td>
                         <td class=" me-3" style="font-size: 13px">Standar Penelitian Universitas Trunojoyo Madura</td>
@@ -163,7 +165,7 @@
                                     </a>
                                 @endforeach
                             @else
-                                <p>No files available</p>
+                                <p>Masih dalam proses</p>
                             @endif
                         </td>
                         {{-- @endforeach --}}
@@ -175,18 +177,21 @@
                                 </button>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" type="button"
-                                        onclick="window.location.href='{{ route('unggahDokumenStandar',['id'=>$standar->id_penetapan]) }}'"><i
+                                        onclick="window.location.href='{{ route('unggahDokumenStandar', ['id' => $standar->id_penetapan]) }}'"><i
                                             class="bx bx-upload"></i>
                                         Unggah Dokumen</a>
                                     @if (session('success'))
                                         <div>{{ @session('success') }}</div>
                                     @endif
                                     <a class="dropdown-item" href="javascript:void(0);"><i
-                                            class="bx bx-edit-alt me-1"></i>
-                                        Ubah</a>
+                                            class="bx bx-edit-alt me-1"></i> Ubah Dokumen
+                                    </a>
+                                    <a class="dropdown-item" href="javascript:void(0);">
+                                        <i class="bx bx-edit-alt me-1"></i> Ubah Standar
+                                    </a>
                                     <a class="dropdown-item btn btn-outline-danger" href="javascript:void(0);"><i
-                                            class="bx bx-trash me-1"></i>
-                                        Hapus</a>
+                                            class="bx bx-trash me-1"></i> Hapus
+                                    </a>
                                 </div>
                             </div>
                         </td>
@@ -219,7 +224,7 @@
                                     </a>
                                 @endforeach
                             @else
-                                <p>No files available</p>
+                                <p>Masih dalam proses</p>
                             @endif
                         </td>
                         {{-- @endforeach --}}
@@ -231,18 +236,21 @@
                                 </button>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" type="button"
-                                        onclick="window.location.href='{{ route('unggahDokumenStandar',['id'=>$standar->id_penetapan]) }}'"><i
+                                        onclick="window.location.href='{{ route('unggahDokumenStandar', ['id' => $standar->id_penetapan]) }}'"><i
                                             class="bx bx-upload"></i>
                                         Unggah Dokumen</a>
                                     @if (session('success'))
                                         <div>{{ @session('success') }}</div>
                                     @endif
                                     <a class="dropdown-item" href="javascript:void(0);"><i
-                                            class="bx bx-edit-alt me-1"></i>
-                                        Ubah</a>
+                                            class="bx bx-edit-alt me-1"></i> Ubah Dokumen
+                                    </a>
+                                    <a class="dropdown-item" href="javascript:void(0);">
+                                        <i class="bx bx-edit-alt me-1"></i> Ubah Standar
+                                    </a>
                                     <a class="dropdown-item btn btn-outline-danger" href="javascript:void(0);"><i
-                                            class="bx bx-trash me-1"></i>
-                                        Hapus</a>
+                                            class="bx bx-trash me-1"></i> Hapus
+                                    </a>
                                 </div>
                             </div>
                         </td>
@@ -281,7 +289,7 @@
                                         </a>
                                     @endforeach
                                 @else
-                                    <p>No files available</p>
+                                    <p>Masih dalam proses</p>
                                 @endif
                             </td>
                             <td>
@@ -292,14 +300,17 @@
                                     </button>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" type="button"
-                                            onclick="window.location.href='{{ route('unggahDokumenStandar',['id'=>$standar->id_penetapan]) }}'">
+                                            onclick="window.location.href='{{ route('unggahDokumenStandar', ['id' => $standar->id_penetapan]) }}'">
                                             <i class="bx bx-upload"></i> Unggah Dokumen
                                         </a>
                                         @if (session('success'))
                                             <div>{{ @session('success') }}</div>
                                         @endif
                                         <a class="dropdown-item" href="javascript:void(0);">
-                                            <i class="bx bx-edit-alt me-1"></i> Ubah
+                                            <i class="bx bx-edit-alt me-1"></i> Ubah Dokumen
+                                        </a>
+                                        <a class="dropdown-item" href="javascript:void(0);">
+                                            <i class="bx bx-edit-alt me-1"></i> Ubah Standar
                                         </a>
                                         <a class="dropdown-item btn btn-outline-danger" href="javascript:void(0);">
                                             <i class="bx bx-trash me-1"></i> Hapus
@@ -309,131 +320,13 @@
                             </td>
                         </tr>
                     @endforeach
-
-
-
-
-                    {{-- <tr>
-                        <td></td>
-                        <td>
-                            <li class=" me-3" style="font-size: 13px">Standar Layanan Kerjasama Universitas Trunoojoyo
-                                Madura</li>
-                        </td>
-                        @foreach ($standar as $item)
-                            <td>
-                                <input name="default-radio-1" class="form-check-input" type="radio" value="Ada"
-                                    {{ $item->status_dokumen == 'ada' ? 'checked' : '' }} />
-                                <label class="form-check-label" for="defaultRadio1"> Ada</label>
-                                <span></span>
-                                <input name="default-radio-1" class="form-check-input" type="radio" value="Ada"
-                                    {{ $item->status_dokumen == 'ada' ? 'checked' : '' }} />
-                                <label class="form-check-label" for="defaultRadio2"> Tidak Ada</label>
-                            </td>
-                            <td>
-                                @php
-                                    $files = json_decode($item->files, true);
-                                @endphp
-
-                                @if ($files && is_array($files))
-                                    @foreach ($files as $file)
-                                        <a href=" {{ route('private', ['id_penetapan' => $row->id_penetapan]) }}"
-                                            class="badge bg-label-info me-1">
-                                            <i class="bi bi-link-45deg">Dokumen</i>
-                                        </a>
-                                    @endforeach
-                                @else
-                                    <p>No files available</p>
-                                @endif
-                            </td>
-                        @endforeach
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                    data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" type="button"
-                                        onclick="window.location.href='{{ route('unggahDokumenStandar') }}'"><i
-                                            class="bx bx-upload"></i>
-                                        Unggah Dokumen</a>
-                                    @if (session('success'))
-                                        <div>{{ @session('success') }}</div>
-                                    @endif
-                                    <a class="dropdown-item" href="javascript:void(0);"><i
-                                            class="bx bx-edit-alt me-1"></i>
-                                        Ubah</a>
-                                    <a class="dropdown-item btn btn-outline-danger" href="javascript:void(0);"><i
-                                            class="bx bx-trash me-1"></i>
-                                        Hapus</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>
-                            <li class="me-3" style="font-size: 13px">Standar Tata Kelola Universitas Trunojoyo Madura
-                            </li>
-                        </td>
-                        @foreach ($standar as $item)
-                            <td>
-                                <input name="default-radio-1" class="form-check-input" type="radio" value="Ada"
-                                    {{ $item->status_dokumen == 'ada' ? 'checked' : '' }} />
-                                <label class="form-check-label" for="defaultRadio1"> Ada</label>
-                                <span></span>
-                                <input name="default-radio-1" class="form-check-input" type="radio" value="Ada"
-                                    {{ $item->status_dokumen == 'ada' ? 'checked' : '' }} />
-                                <label class="form-check-label" for="defaultRadio2"> Tidak Ada</label>
-                            </td>
-                            <td>
-                                @php
-                                    $files = json_decode($item->files, true);
-                                @endphp
-
-                                @if ($files && is_array($files))
-                                    @foreach ($files as $file)
-                                        <a href=" {{ route('private', ['id_penetapan' => $row->id_penetapan]) }}"
-                                            class="badge bg-label-info me-1">
-                                            <i class="bi bi-link-45deg">Dokumen</i>
-                                        </a>
-                                    @endforeach
-                                @else
-                                    <p>No files available</p>
-                                @endif
-                            </td>
-                        @endforeach
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                    data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" type="button"
-                                        onclick="window.location.href='{{ route('unggahDokumenStandar') }}'"><i
-                                            class="bx bx-upload"></i>
-                                        Unggah Dokumen</a>
-                                    @if (session('success'))
-                                        <div>{{ @session('success') }}</div>
-                                    @endif
-                                    <a class="dropdown-item" href="javascript:void(0);"><i
-                                            class="bx bx-edit-alt me-1"></i>
-                                        Ubah</a>
-                                    <a class="dropdown-item btn btn-outline-danger" href="javascript:void(0);"><i
-                                            class="bx bx-trash me-1"></i>
-                                        Hapus</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr> --}}
                 </tbody>
             </table>
         </div>
     </div>
     <div class="demo-inline-spacing">
-        <button type="button" class="btn btn-light"
-            onclick="window.location.href='{{ route('tambahDokumenPerangkat') }}'">+ Tambah Standar</button>
+        <button type="button" class="btn btn-light" onclick="window.location.href='{{ route('tambahStandar') }}'">+
+            Tambah Standar</button>
         @if (session('success'))
             <div>{{ @session('success') }}</div>
         @endif

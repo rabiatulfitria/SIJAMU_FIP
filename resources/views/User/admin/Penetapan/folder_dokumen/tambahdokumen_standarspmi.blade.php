@@ -9,27 +9,30 @@
 
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
         <div class="navbar-nav align-items-center">
-            <div class="nav-items d-flex align-item-center">Tambah Standar SPMI Universitas Trunojoyo Madura</div>
+            <div class="nav-items d-flex align-item-center">Unggah Dokumen Standar SPMI Universitas Trunojoyo Madura</div>
         </div>
     @endsection
 n
     @section('content')
         <div class="row">
+
             <div class="col-xl">
                 <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h5 class="mb-0"></h5>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ url('tambahDokumenPerangkatSPMI-2') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('uploadDokumen') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
-                                <label class="form-label" for="bx bx-file">Nama Standar</label>
+                                <label class="form-label" for="bx bx-file">Nama Dokumen</label>
                                 <div class="input-group input-group-merge">
                                     <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-file"></i></span>
-                                    <input type="text" class="form-control" id="bx bx-file" name="namaDokumen_penetapan" placeholder="Nama Standar" aria-label="" aria-describedby="bx bx-file" required />
-                                    <input type="hidden" name="level_penetapan" value="perangkatspmi">
+                                    <input type="text" class="form-control" id="bx bx-file" name="namaDokumen_penetapan" value="{{$nama}}" placeholder="Nama Dokumen" aria-label="" aria-describedby="bx bx-file" disabled />
+                                    <input type="hidden" name="level_penetapan" value="standarspmi">
+                                    <input type="hidden" name="id_penetapan" value="{{$id}}">
                                 </div>
+                                {{-- type hidden berfungsi untuk mengambil(get) untuk kolom input pada nama dokumen,jadi sesuai dengan id dan level pada database--}}
                             </div>
                             <div class="form-check mt-3">
                                 <input name="default-radio-1" class="form-check-input" type="radio" name="radio_option" value="Ada"
@@ -42,11 +45,11 @@ n
                                 <label class="form-check-label" for="defaultRadio2"> Tidak Ada </label>
                             </div>
                             <div>
-
                             </div>
                             <div class="mb-3">
                                 <label for="formFileMultiple" class="form-label">Pilih File</label>
-                                <input class="form-control" type="file" name="files[]" id="formFileMultiple" multiple required />
+                                <input class="form-control" type="file" name="files" id="formFileMultiple" />
+                                {{-- required --}}
                               </div>
                             <button type="submit" class="btn btn-primary">{{ isset($standar) }}Kirim</button>
                         </form>
