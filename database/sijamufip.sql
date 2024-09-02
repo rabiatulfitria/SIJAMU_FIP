@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 13 Agu 2024 pada 11.38
+-- Waktu pembuatan: 02 Sep 2024 pada 09.03
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -134,13 +134,27 @@ CREATE TABLE `pelaksanaans` (
 --
 
 CREATE TABLE `penetapans` (
-  `id_penetapan` int(10) UNSIGNED NOT NULL,
+  `id_penetapan` bigint(20) UNSIGNED NOT NULL,
   `level_penetapan` enum('perangkatspmi','standarinstitusi') NOT NULL DEFAULT 'perangkatspmi',
+  `status_dokumen` varchar(255) NOT NULL,
   `namaDokumen_penetapan` varchar(255) NOT NULL,
   `files` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `penetapans`
+--
+
+INSERT INTO `penetapans` (`id_penetapan`, `level_penetapan`, `status_dokumen`, `namaDokumen_penetapan`, `files`, `created_at`, `updated_at`) VALUES
+(9, 'perangkatspmi', 'Ada', 'Kebijakan SPMI - UTM', '[\"\\/private\\/1724568255-01 Kebijakan SPMI.pdf\"]', '2024-08-24 23:44:15', '2024-08-24 23:50:16'),
+(10, 'perangkatspmi', 'Ada', 'Manual SPMI', '[\"\\/private\\/1724568546-Buku Pedoman SPMI 2018.pdf\"]', '2024-08-24 23:49:06', '2024-08-24 23:49:06'),
+(11, 'perangkatspmi', 'Ada', 'Standar SPMI', '[\"\\/private\\/1724659753-03 Standar SPMI.pdf\"]', '2024-08-26 01:09:13', '2024-08-26 01:09:13'),
+(32, 'standarinstitusi', 'Ada', 'Standar Pendidikan Universitas Trunojoyo Madura', 'a:1:{i:0;s:30:\"1725249217_03 Standar SPMI.pdf\";}', NULL, '2024-09-01 20:53:37'),
+(33, 'standarinstitusi', 'Tidak Ada', 'Standar Penelitian Universitas Trunojoyo Madura', '', NULL, NULL),
+(34, 'standarinstitusi', 'Ada', 'Standar Pengabdian Kepada Masyarakat Univeristas Trunojoyo Madura', '', NULL, NULL),
+(36, 'standarinstitusi', 'Ada', 'Standar Layanan Kemahasiswaan Univeristas Trunojoyo Madura', '', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -310,13 +324,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `pelaksanaans`
 --
 ALTER TABLE `pelaksanaans`
-  MODIFY `id_pelaksanaan` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pelaksanaan` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `penetapans`
 --
 ALTER TABLE `penetapans`
-  MODIFY `id_penetapan` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_penetapan` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT untuk tabel `pengendalians`
