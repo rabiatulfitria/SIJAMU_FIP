@@ -15,29 +15,19 @@ class standarController extends Controller
 {
     public function index()
     {
-        // $standar = Penetapan::where('level_penetapan', 'standarinstitusi')->get();
-
-        $standar = Penetapan::where('level_penetapan', 'standarinstitusi') //nomor 1, id sesuaikan
-            ->where('id_penetapan', 32)
-            ->first();
-        $standar2 = Penetapan::where('level_penetapan', 'standarinstitusi') // nomor 2, id sesuaikan
-            ->where('id_penetapan', 33)
-            ->first();
-        $standar3 = Penetapan::where('level_penetapan', 'standarinstitusi') // nomor 3, id sesuaikan
-            ->where('id_penetapan', 34)
-            ->first();
-        $standar4 = Penetapan::where('level_penetapan', 'standarinstitusi') // nomor 4, id selain nomor 1-3
-            ->whereNotIn('id_penetapan', [32, 33, 34, 35])->get();
-
-        // dd($standar);
-
-        return view('User.admin.Penetapan.standarinstitusi', compact('standar', 'standar2', 'standar3', 'standar4'));
+        $standar = Penetapan::where('level_penetapan', 'standarinstitusi')
+            ->get();
+        foreach ($standar as $s) {
+            $files = unserialize($s->files);
+        }
+        return view('User.admin.Penetapan.standarinstitusi', compact(['standar', 'files']));
     }
 
-    public function folder()
+    public function folder($id)
     {
-        // $jamutims = Timjamu::all();
-        return view('User.admin.Penetapan.folder_dokumen.dokumen_standarpendidikan');
+        $standar = Penetapan::where('id_penetapan', $id)->first();
+        $files = unserialize($standar->files);
+        return view('User.admin.Penetapan.folder_dokumen.dokumen_standarpendidikan', compact('standar', 'files'));
     }
 
     public function create($id)  //tombol Unggah | $id: mengambil data id di row tabel standarinstitusi.blade

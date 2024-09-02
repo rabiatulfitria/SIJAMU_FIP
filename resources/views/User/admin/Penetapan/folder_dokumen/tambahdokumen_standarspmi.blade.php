@@ -22,7 +22,7 @@ n
                         <h5 class="mb-0"></h5>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ url('uploadDokumen') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('unggahDokumenStandarSPMI') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label" for="bx bx-file">Nama Dokumen</label>

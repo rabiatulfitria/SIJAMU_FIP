@@ -21,7 +21,7 @@ n
                         <h5 class="mb-0"></h5>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ url('tambahDokumenPerangkatSPMI-2') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label" for="bx bx-file">Nama Standar</label>

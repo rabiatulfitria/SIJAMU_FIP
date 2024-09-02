@@ -53,14 +53,14 @@ Route::put('Penetapan/updateDokumenPerangkat/{id_penetapan}', [perangkatControll
 
 // route untuk halaman menu Penetapan CRUD -> Standar Yang Ditetapkan Institusi
 Route::get('/Penetapan/StandarInstitusi', [standarController::class, 'index'])->name('penetapan.standar');
-Route::get('/Penetapan/unggahDokumenStandarSPMI/{id}',[standarController::class, 'create'])->name('unggahDokumenStandar');
-Route::get('/Penetapan/tambahDokumenStandarSPMI',[standarController::class, 'standar_create'])->name('tambahStandar'); //tambah standar
+Route::get('/Penetapan/unggahDokumenStandarSPMI/{id}', [standarController::class, 'create'])->name('unggahDokumenStandar');
+Route::get('/Penetapan/tambahDokumenStandarSPMI', [standarController::class, 'standar_create'])->name('tambahStandar'); //tambah standar
 Route::get('/Penetapan/editDokumenStandarSPMI/{id_penetapan}', [standarController::class, 'edit'])->name('editDokumenStandar');
 Route::post('/unggahDokumenStandarSPMI', [standarController::class, 'uploadDokumen']);
 Route::get('/dokumen{id_penetapan}', [standarController::class, 'viewSensitifFile'])->name('private');
 Route::delete('/Penetapan/StandarSPMI{id_penetapan}', [standarController::class, 'destroy'])->name('hapusDokumenStandar');
 Route::put('Penetapan/updateDokumenStandar/{id_penetapan}', [standarController::class, 'update'])->name('updateDokumenStandar');
-Route::get('/Penetapan/StandarInstitusi/folder', [standarController::class, 'folder'])->name('FolderDokumenStandar');
+Route::get('/Penetapan/StandarInstitusi/folder/{id}', [standarController::class, 'folder'])->name('FolderDokumenStandar');
 
 
 // route untuk halaman menu Pelaksanaan CRUD
