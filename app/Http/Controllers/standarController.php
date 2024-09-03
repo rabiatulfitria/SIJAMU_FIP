@@ -95,16 +95,16 @@ class standarController extends Controller
         }
     }
 
-    public function viewSensitifFile($id_penetapan)
+    public function lihatdokumenstandar($id_penetapan)
     {
         $standar = Penetapan::findOrFail($id_penetapan);
-        $filePaths = json_decode($standar->files, true);
+        $filePaths = json_decode($standar->files, true); //string berkode JSON (berupa path file) diterjemahkan ke bentuk array
 
-        if (is_array($filePaths) && !empty($filePaths)) {
+        if (is_array($filePaths) && !empty($filePaths)) { //memeriksa variabel $filePaths apakah berupa array, dan tidak kosong?
             $file = $filePaths[0];
 
             if (Storage::disk('local')->exists($file)) {
-                return response()->file(storage_path('app' . $file));
+                return response()->file(storage_path('app' . $file)); //mengarahkan ke file
             } else {
                 abort(404, 'File not found.');
             }
@@ -147,8 +147,8 @@ class standarController extends Controller
             $filePaths = [];
             foreach ($request->file('files') as $file) {
                 $namaDokumen = time() . '-' . $file->getClientOriginalName();
-                Storage::disk('local')->put('/private/' . $namaDokumen, File::get($file));
-                $filePaths[] = '/private/' . $namaDokumen;
+                Storage::disk('local')->put('/standarinstitusi/' . $namaDokumen, File::get($file));
+                $filePaths[] = '/standarinstitusi/' . $namaDokumen;
             }
             $dataUpdate->files = json_encode($filePaths);
         }

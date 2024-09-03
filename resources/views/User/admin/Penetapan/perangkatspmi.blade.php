@@ -96,16 +96,20 @@
                                 @if ($files && is_array($files))
                                     @foreach ($files as $file)
                                         {{-- {{ dd($files) }} --}}
-                                        {{-- <a target="_blank" href="{{ route('private', ['files' => $file]) }}" class="badge bg-label-info me-1">
+                                        {{-- <a href="{{ route('private', ['files' => $file]) }}" class="badge bg-label-info me-1">
                                             <i class="bi bi-link-45deg">Dokumen</i>
                                         </a> --}}
-                                        <a href=" {{ route('private', ['id_penetapan' => $row->id_penetapan]) }}"
+                                        {{-- <a href=" {{ route('dokumenperangkat', ['id_penetapan' => $row->id_penetapan]) }}"
                                             class="badge bg-label-info me-1" target="_blank">
+                                            <i class="bi bi-link-45deg">Dokumen</i>
+                                        </a> --}}
+                                        <a href="{{ route('dokumenperangkat', ['id_penetapan' => $row->id_penetapan]) }}"
+                                            class="badge bg-label-info me-1" target="_blank" >
                                             <i class="bi bi-link-45deg">Dokumen</i>
                                         </a>
                                     @endforeach
                                 @else
-                                    <p>No files available</p>z
+                                    <p>Masih dalam proses</p>z
                                 @endif
                             </td>
                             <td>

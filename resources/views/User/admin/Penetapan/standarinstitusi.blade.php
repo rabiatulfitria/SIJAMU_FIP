@@ -82,9 +82,9 @@
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                    @foreach ($standar as $s)
+                    @foreach ($standar as $key => $s)
                         <tr>
-                            <td>1</td>
+                            <td>{{ $key + 1 }}</td>
                             <td class="me-3" style="font-size: 13px">{{ $s->namaDokumen_penetapan }}</td>
                             {{-- @foreach ($standar as $item) --}}
                             <td>
@@ -120,9 +120,6 @@
                                         @if (session('success'))
                                             <div>{{ @session('success') }}</div>
                                         @endif
-                                        <a class="dropdown-item" href="javascript:void(0);">
-                                            <i class="bx bx-edit-alt me-1"></i> Ubah Dokumen
-                                        </a>
                                         <a class="dropdown-item" href="">
                                             <i class="bx bx-edit-alt me-1"></i> Ubah Standar
                                         </a>

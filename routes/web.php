@@ -41,13 +41,9 @@ Route::put('/TimPenjaminanMutu/{id}/pembaruanTimJAMU', [timjamuController::class
 Route::get('/Penetapan/PerangkatSPMI', [perangkatController::class, 'index'])->name('penetapan.perangkat');
 Route::get('/Penetapan/tambahDokumenPerangkatSPMI',[perangkatController::class, 'create'])->name('tambahDokumenPerangkat');
 Route::get('/Penetapan/editDokumenPerangkatSPMI/{id_penetapan}', [perangkatController::class, 'edit'])->name('editDokumenPerangkat');
-// Route::post('/Penetapan', [perangkatController::class, 'store'])->name('perangkat.store');
 Route::resource('/tambahDokumenPerangkatSPMI-2', perangkatController::class);
-Route::get('/dokumen{id_penetapan}', [perangkatController::class, 'viewSensitifFile'])->name('private');
+Route::get('/dokumen{id_penetapan}', [perangkatController::class, 'lihatdokumenperangkat'])->name('dokumenperangkat');
 Route::delete('/Penetapan/PerangkatSPMI{id_penetapan}', [perangkatController::class, 'destroy'])->name('hapusDokumenPerangkat');
-// Route::put('/Penetapan/updateDokumenPerangkat', [perangkatController::class, 'update'])->name('updateDokumenPerangkat');
-// Route::put('Penetapan/updateDokumenPerangkat/{id_penetapan}', [perangkatController::class, 'update'])->name('editDokumenPerangkat');
-// Route::post('Penetapan/updateDokumenPerangkat/{id_penetapan}', [perangkatController::class, 'updateDokumenPerangkat'])->name('updateDokumenPerangkat');
 Route::put('Penetapan/updateDokumenPerangkat/{id_penetapan}', [perangkatController::class, 'update'])->name('updateDokumenPerangkat');
 
 
@@ -57,7 +53,7 @@ Route::get('/Penetapan/unggahDokumenStandarSPMI/{id}', [standarController::class
 Route::get('/Penetapan/tambahDokumenStandarSPMI', [standarController::class, 'standar_create'])->name('tambahStandar'); //tambah standar
 Route::get('/Penetapan/editDokumenStandarSPMI/{id_penetapan}', [standarController::class, 'edit'])->name('editDokumenStandar');
 Route::post('/unggahDokumenStandarSPMI', [standarController::class, 'uploadDokumen']);
-Route::get('/dokumen{id_penetapan}', [standarController::class, 'viewSensitifFile'])->name('private');
+Route::get('/dokumen{id_penetapan}', [standarController::class, 'lihatdokumenstandar'])->name('dokumenstandar');
 Route::delete('/Penetapan/StandarSPMI{id_penetapan}', [standarController::class, 'destroy'])->name('hapusDokumenStandar');
 Route::put('Penetapan/updateDokumenStandar/{id_penetapan}', [standarController::class, 'update'])->name('updateDokumenStandar');
 Route::get('/Penetapan/StandarInstitusi/folder/{id}', [standarController::class, 'folder'])->name('FolderDokumenStandar');

@@ -42,11 +42,11 @@ class perangkatController extends Controller
                 foreach ($request->file('files') as $file) {
                     $namaDokumen = time() . '-' . $file->getClientOriginalName();
 
-                    // Memindahkan file ke folder 'storage/app/private' dengan nama yang telah dibuat
-                    Storage::disk('local')->put('/private/' . $namaDokumen, File::get($file));
+                    // Memindahkan file ke folder 'storage/app/perangkatspmi' dengan nama yang telah dibuat
+                    Storage::disk('local')->put('/perangkatspmi/' . $namaDokumen, File::get($file));
 
                     // Menyimpan path ke dalam array
-                    $path = '/private/' . $namaDokumen;
+                    $path = '/perangkatspmi/' . $namaDokumen;
                     $filePaths[] = $path;
                 }
             }
@@ -79,7 +79,7 @@ class perangkatController extends Controller
     //     }
     // }
 
-    public function viewSensitifFile($id_penetapan)
+    public function lihatdokumenperangkat($id_penetapan)
     {
         $perangkat = Penetapan::findOrFail($id_penetapan);
         $filePaths = json_decode($perangkat->files, true);
@@ -88,7 +88,7 @@ class perangkatController extends Controller
             $file = $filePaths[0];
 
             if (Storage::disk('local')->exists($file)) {
-                return response()->file(storage_path('app' . $file));
+                return response()->file(storage_path('app/perangkatspmi' . $file));
             } else {
                 abort(404, 'File not found.');
             }
@@ -131,8 +131,8 @@ class perangkatController extends Controller
             $filePaths = [];
             foreach ($request->file('files') as $file) {
                 $namaDokumen = time() . '-' . $file->getClientOriginalName();
-                Storage::disk('local')->put('/private/' . $namaDokumen, File::get($file));
-                $filePaths[] = '/private/' . $namaDokumen;
+                Storage::disk('local')->put('/perangkatspmi/' . $namaDokumen, File::get($file));
+                $filePaths[] = '/perangkatspmi/' . $namaDokumen;
             }
             $dataUpdate->files = json_encode($filePaths);
         }
