@@ -21,14 +21,14 @@ n
                         <h5 class="mb-0"></h5>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ url('') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('standar.store') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label" for="bx bx-file">Nama Standar</label>
                                 <div class="input-group input-group-merge">
                                     <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-file"></i></span>
                                     <input type="text" class="form-control" id="bx bx-file" name="namaDokumen_penetapan" placeholder="Nama Standar" aria-label="" aria-describedby="bx bx-file" required />
-                                    <input type="hidden" name="level_penetapan" value="perangkatspmi">
+                                    <input type="hidden" name="level_penetapan" value="standarinstitusi">
                                 </div>
                             </div>
                             <div class="form-check mt-3">

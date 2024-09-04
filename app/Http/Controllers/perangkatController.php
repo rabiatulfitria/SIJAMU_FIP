@@ -88,7 +88,7 @@ class perangkatController extends Controller
             $file = $filePaths[0];
 
             if (Storage::disk('local')->exists($file)) {
-                return response()->file(storage_path('app/perangkatspmi' . $file));
+                return response()->file(storage_path('app' . $file));
             } else {
                 abort(404, 'File not found.');
             }

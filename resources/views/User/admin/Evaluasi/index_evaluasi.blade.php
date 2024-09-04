@@ -71,20 +71,15 @@
 @section('content')
     <div class="card">
         <h5 class="card-header">Audit Mutu Internal (AMI)
-            <div class="card accordion-item">
-                <h2 class="accordion-header" id="headingOne">
-                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
-                        data-bs-target="#accordionOne" aria-expanded="false" aria-controls="accordionOne">
-                        Accordion Item 1
-                    </button>
-                </h2>
-
-                <div id="accordionOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample"
-                    style="">
-                    <div class="accordion-body">
-                    </div>
-                </div>
-            </div>
+            <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Tahun Akademik (TA)
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="javascript:void(0);">Action</a></li>
+                <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
+                <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
+            </ul>
         </h5>
         <div class="table text-nowrap" id="horizontal-example">
             <table class="table">

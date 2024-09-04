@@ -43,7 +43,7 @@ class standarController extends Controller
         if ($request->hasFile('files')) {
             $file = $request->file('files');
             $filename = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('uploads', $filename);
+            $file->storeAs('standarinstitusi', $filename);
             if ($array->files == "") {
                 $dokumen = array($filename);
                 $array->files = serialize($dokumen); //serialize berfungsi untuk menjadikan inputan file jadi bentuk array. kodenya berupa a:1 (artinya ada 1 array tersimpan)
@@ -64,7 +64,7 @@ class standarController extends Controller
         }
     }
 
-    public function standar_create()
+    public function standar_create() //tambah standar
     {
         return view('User.admin.Penetapan.tambah_standarspmi');
     }
@@ -75,25 +75,37 @@ class standarController extends Controller
             'level_penetapan' => 'required|in:standarinstitusi',
             'namaDokumen_penetapan' => 'required|string',
             'default-radio-1' => 'required|string',
-            'files[].*' => 'required|mimes:doc,docx,xls,xlsx|max:2048'
+            'files.*' => 'required|mimes:doc,docx,xls,xlsx|max:2048'
         ]);
+    
         if ($validateData) {
-
             $option = $request->input('default-radio-1');
-            $filePaths = $array; //variabel array pada function uploadDokumen
-
+            
+            // Inisialisasi variabel $dokumen
+            $dokumen = [];
+            
+            // Proses upload file
+            if ($request->hasFile('files')) {
+                foreach ($request->file('files') as $file) {
+                    $filename = time() . '_' . $file->getClientOriginalName();
+                    $file->storeAs('standarinstitusi', $filename);
+                    $dokumen[] = $filename; // Tambahkan file ke array dokumen
+                }
+            }
+    
+            // Simpan data ke dalam model
             $model = new Penetapan();
             $model->level_penetapan = $request->input('level_penetapan');
             $model->namaDokumen_penetapan = $request->input('namaDokumen_penetapan');
-            $model->files = json_encode($filePaths);
+            $model->files = json_encode($dokumen); // Simpan file dalam format JSON
             $model->status_dokumen = $option;
             $model->save();
-
-
+    
             Alert::success('success', 'Standar berhasil ditambahkan.');
             return redirect()->route('penetapan.standar');
         }
     }
+    
 
     public function lihatdokumenstandar($id_penetapan)
     {

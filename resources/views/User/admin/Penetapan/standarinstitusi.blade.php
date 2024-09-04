@@ -136,8 +136,9 @@
         </div>
     </div>
     <div class="demo-inline-spacing">
-        <button type="button" class="btn btn-light" onclick="window.location.href='{{ route('tambahStandar') }}'">+
-            Tambah Standar</button>
+        <button type="button" class="btn btn-light" onclick="window.location.href='{{ route('tambahStandar') }}'">
+            + Tambah Standar
+        </button>
         @if (session('success'))
             <div>{{ @session('success') }}</div>
         @endif
