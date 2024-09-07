@@ -76,9 +76,9 @@
                 Tahun Akademik (TA)
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="javascript:void(0);">Action</a></li>
-                <li><a class="dropdown-item" href="javascript:void(0);">Another action</a></li>
-                <li><a class="dropdown-item" href="javascript:void(0);">Something else here</a></li>
+                <li><a class="dropdown-item" href="javascript:void(0);">2022-2023</a></li>
+                <li><a class="dropdown-item" href="javascript:void(0);">2023-2024</a></li>
+                <li><a class="dropdown-item" href="javascript:void(0);">2024-2025</a></li>
             </ul>
         </h5>
         <div class="table text-nowrap" id="horizontal-example">

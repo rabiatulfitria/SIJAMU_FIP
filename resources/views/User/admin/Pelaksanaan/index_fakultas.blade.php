@@ -4,14 +4,9 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>Program Studi</th>
-                <th>2020</th>
-                <th>2021</th>
-                <th>2022</th>
-                <th>2023</th>
-                <th>2024</th>
-                <th>dokumen</th>
-                <th>aksi</th>
+                <th>Nama Dokumen</th>
+                <th>Unggahan</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>

@@ -141,9 +141,6 @@ class perangkatController extends Controller
         return redirect()->route('penetapan.perangkat');
     }
 
-
-
-
     public function destroy($id_penetapan)
     {
         $perangkat = Penetapan::findOrFail($id_penetapan);

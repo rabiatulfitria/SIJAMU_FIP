@@ -71,11 +71,17 @@
     <div class="card">
         <h5 class="card-header">Standar Yang Ditetapkan Institusi</h5>
         <div class="col-lg-6 mb-xl-0 mb-4">
-            <small class="text-light fw-semibold">Dokumen {{ $standar->namaDokumen_penetapan }}</small>
+            <small class="text-light fw-semibold" style="margin-left: 5px">Dokumen
+                {{ $standar->namaDokumen_penetapan }}</small>
             <div class="demo-inline-spacing mt-3">
-                <ol class="list-group list-group-numbered">
+                <ol class="list-group list-group-numbered" style="margin-bottom: 10px">
                     @foreach ($files as $file)
-                        <li class="list-group-item">{{ $file }}</li>
+                        <li class="list-group-item">
+                            <a href="{{ route('dokumenstandar', ['id_penetapan' => $standar->id_penetapan]) }}"
+                                class="badge bg-label-info me-1" target="_blank">
+                                <i class="bi bi-link-45deg">{{ $file }}</i>
+                            </a>
+                        </li>
                     @endforeach
                 </ol>
             </div>

@@ -83,19 +83,12 @@
                 </thead>
                 <tbody class="table-border-bottom-0">
                     @foreach ($standar as $key => $s)
+                    {{-- {{ dd($s) }} --}}
+
                         <tr>
                             <td>{{ $key + 1 }}</td>
                             <td class="me-3" style="font-size: 13px">{{ $s->namaDokumen_penetapan }}</td>
-                            {{-- @foreach ($standar as $item) --}}
-                            <td>
-                                <input name="status_dokumen" class="form-check-input" type="radio" value="Ada"
-                                    {{ $s->status_dokumen == 'Ada' ? 'checked' : '' }} />
-                                <label class="form-check-label" for="defaultRadio1">Ada</label>
-                                <span></span>
-                                <input name="status_dokumen" class="form-check-input" type="radio" value="Tidak Ada"
-                                    {{ $s->status_dokumen == 'tidak ada' ? 'checked' : '' }} />
-                                <label class="form-check-label" for="defaultRadio2">Tidak Ada</label>
-                            </td>
+                            <td style="padding-left: 70px">{{ $s->status_dokumen }}</td>
                             <td>
                                 @if (!empty($s->files))
                                     <a href="{{ route('FolderDokumenStandar', ['id' => $s->id_penetapan]) }}"

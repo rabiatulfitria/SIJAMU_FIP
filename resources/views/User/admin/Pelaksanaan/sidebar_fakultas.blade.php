@@ -72,59 +72,54 @@
         <div class="nav-align-top mb-4">
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item">
-                    <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
-                        href="{{ route('pelaksanaan.prodi') }}" data-bs-target="#navs-top-home"
-                        aria-controls="navs-top-home" aria-selected="true">
+                    <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                        data-bs-target="#navs-prodi" aria-controls="navs-prodi" aria-selected="true">
                         Prodi
                     </button>
                 </li>
                 <li class="nav-item">
-                    <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
-                        href="{{ route('pelaksanaan.fakultas') }}" data-bs-target="#navs-top-profile"
-                        aria-controls="navs-top-profile" aria-selected="false">
+                    <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
+                        data-bs-target="#navs-fakultas" aria-controls="navs-fakultas" aria-selected="false">
                         Fakultas
                     </button>
                 </li>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane show active" id="navs-top-home" role="tabpanel">
+                <div class="tab-pane fade show active" id="navs-fakultas" role="tabpanel">
                     <div class="row">
                         <!-- Sub Standar -->
-                        <div class="col-lg-4" >
+                        <div class="col-lg-4">
                             <div class="card overflow-hidden mb-4" style="height: 300px;">
                                 <div class="card-body left" id="vertical-example">
                                     <div><b>Strategi Pencapaian</b></div>
                                     <ul>
-                                        <li style="font-size: 12px"><a href="menuProdi/dokkurikulum">Renstra Program Studi</a>
+                                        <li style="font-size: 12px"><a href="menuProdi/dokkurikulum">Renstra Fakultas</a>
                                         </li>
                                     </ul>
-                                    <div><b>Standar Proses Pembelajaran</b>
+                                    <div><b>Standar Dosen dan Tenaga Kependidikan</b>
                                         <ul>
-                                            <li style="font-size: 12px"><a href="menuProdi/dokkurikulum">Dokumen Kurikulum</a>
+                                            <li style="font-size: 12px"><a href="menuProdi/dokkurikulum">Tri Dharma
+                                                    Dosen</a>
                                             </li>
-                                            <li style="font-size: 12px"><a href="menuProdi/rps">Rencana Pembelajaran Semester
-                                                    (RPS)</a></li>
-                                            <li style="font-size: 12px"><a href="menuProdi/rps">Dokumen monitoring dan evaluasi kegiatan program merdeka belajar
-                                                    </a></li>
-                                            <li style="font-size: 12px"><a href="menuProdi/rps">Capaian Pembelajaran Lulusan
-                                                    </a></li>
-                                            <li style="font-size: 12px"><a href="menuProdi/rps">Panduan RPS
-                                                    </a></li>
-                                            <li style="font-size: 12px"><a href="menuProdi/rps">Panduan Mutu Soal
-                                                    </a></li>
-                                            <li style="font-size: 12px"><a href="menuProdi/rps">Panduan Kisi Kisi Soal
-                                                    </a></li>
-                                            <li style="font-size: 12px"><a href="menuProdi/rps">Panduan Penyusunan Tugas Akhir
-                                                    </a></li>
+                                            <li style="font-size: 12px"><a href="menuProdi/rps">Pendidikan (mengajar)</a>
+                                            </li>
+                                            <li style="font-size: 12px"><a href="menuProdi/rps">Penelitian (publikasi
+                                                    karya)</a></li>
+                                            <li style="font-size: 12px"><a href="menuProdi/rps">Pengabdian Kepada
+                                                    Masyarakat</a></li>
+                                            <li style="font-size: 12px"><a href="menuProdi/rps">Penunjang (sertifikat)</a>
+                                            </li>
+                                            <li style="font-size: 12px"><a href="menuProdi/rps">Beban Kerja Dosen (BKD)</a>
+                                            </li>
+                                            <li style="font-size: 12px"><a href="menuProdi/rps">SKP</a></li> </a></li>
                                         </ul>
-                                        </div>
-                                    <div><b>Standar Layanan Kemahasiswaan</b>
+                                    </div>
+                                    <div><b>Tenaga Kependidikan</b>
                                         <ul>
-                                            <li style="font-size: 12px"><a href="menuProdi/dokkurikulum">Formulir Kepuasan Mahasiswa</a>
+                                            <li style="font-size: 12px"><a href="menuProdi/dokkurikulum">Evaluasi Kinerja
+                                                    Pimpinan</a>
                                             </li>
-                                            <li style="font-size: 12px"><a href="menuProdi/dokkurikulum">Dokumen Monitoring dan Evaluasi Keteracapaian Standar Layanan Kemahasiswaan</a>
-                                            </li>
-                                        </ul>    
+                                        </ul>
                                     </div>
                                 </div>
                             </div>

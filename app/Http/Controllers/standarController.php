@@ -71,6 +71,8 @@ class standarController extends Controller
 
     public function store(Request $request)  //proses Tambah
     {
+        // dd($request->all());
+        
         $validateData = $request->validate([
             'level_penetapan' => 'required|in:standarinstitusi',
             'namaDokumen_penetapan' => 'required|string',
@@ -82,7 +84,7 @@ class standarController extends Controller
             $option = $request->input('default-radio-1');
             
             // Inisialisasi variabel $dokumen
-            $dokumen = [];
+            $dokumen = json_decode($standar->files, true);
             
             // Proses upload file
             if ($request->hasFile('files')) {

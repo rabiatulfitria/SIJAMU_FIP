@@ -5,13 +5,8 @@
             <tr>
                 <th>No</th>
                 <th>Program Studi</th>
-                <th>2020</th>
-                <th>2021</th>
-                <th>2022</th>
-                <th>2023</th>
-                <th>2024</th>
-                <th>dokumen</th>
-                <th>aksi</th>
+                <th>Dokumen</th>
+                <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
@@ -25,56 +20,31 @@
                     </tr> --}}
             <tr>
                 <td>1</td>
-                <td>jsdbhdbnd xdsd djd xd</td>
-                <td>jsdbhdbnd</td>
-                <td>jsdbhdbnd</td>
-                <td>jsdbhdbnd</td>
-                <td>jsdbhdbnd</td>
-                <td>jsdbhdbnd</td>
+                <td>aaaaaaaaa</td>
                 <td>jsdbhdbnd</td>
                 <td>jsdbhdbnd</td>
             </tr>
             <tr>
                 <td>1</td>
-                <td>jsdbhdbnd xdsd djd xd</td>
-                <td>jsdbhdbnd</td>
-                <td>jsdbhdbnd</td>
-                <td>jsdbhdbnd</td>
-                <td>jsdbhdbnd</td>
-                <td>jsdbhdbnd</td>
+                <td>aaaaaaaaa</td>
                 <td>jsdbhdbnd</td>
                 <td>jsdbhdbnd</td>
             </tr>
             <tr>
                 <td>1</td>
-                <td>jsdbhdbnd xdsd djd xd</td>
-                <td>jsdbhdbnd</td>
-                <td>jsdbhdbnd</td>
-                <td>jsdbhdbnd</td>
-                <td>jsdbhdbnd</td>
-                <td>jsdbhdbnd</td>
+                <td>bbbbbbbbb</td>
                 <td>jsdbhdbnd</td>
                 <td>jsdbhdbnd</td>
             </tr>
             <tr>
                 <td>1</td>
-                <td>jsdbhdbnd xdsd djd xd</td>
-                <td>jsdbhdbnd</td>
-                <td>jsdbhdbnd</td>
-                <td>jsdbhdbnd</td>
-                <td>jsdbhdbnd</td>
-                <td>jsdbhdbnd</td>
+                <td>ccccccccc</td>
                 <td>jsdbhdbnd</td>
                 <td>jsdbhdbnd</td>
             </tr>
             <tr>
                 <td>1</td>
-                <td>jsdbhdbnd xdsd djd xd</td>
-                <td>jsdbhdbnd</td>
-                <td>jsdbhdbnd</td>
-                <td>jsdbhdbnd</td>
-                <td>jsdbhdbnd</td>
-                <td>jsdbhdbnd</td>
+                <td>ddddddddd</td>
                 <td>jsdbhdbnd</td>
                 <td>jsdbhdbnd</td>
             </tr>

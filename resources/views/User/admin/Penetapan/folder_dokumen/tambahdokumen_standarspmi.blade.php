@@ -25,7 +25,7 @@ n
                         <form method="POST" action="{{ url('unggahDokumenStandarSPMI') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
-                                <label class="form-label" for="bx bx-file">Nama Dokumen</label>
+                                <label class="form-label" for="bx bx-file">Nama Standar</label>
                                 <div class="input-group input-group-merge">
                                     <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-file"></i></span>
                                     <input type="text" class="form-control" id="bx bx-file" name="namaDokumen_penetapan" value="{{$nama}}" placeholder="Nama Dokumen" aria-label="" aria-describedby="bx bx-file" disabled />

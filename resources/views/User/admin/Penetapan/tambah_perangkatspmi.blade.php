@@ -12,7 +12,7 @@
             <div class="nav-items d-flex align-item-center">Tambah Dokumen Perangkat SPMI</div>
         </div>
     @endsection
-n
+    n
     @section('content')
         <div class="row">
 
@@ -22,33 +22,40 @@ n
                         <h5 class="mb-0"></h5>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ url('tambahDokumenPerangkatSPMI-2') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('tambahDokumenPerangkatSPMI-2') }}"
+                            enctype="multipart/form-data">
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label" for="bx bx-file">Nama Dokumen</label>
                                 <div class="input-group input-group-merge">
-                                    <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-file"></i></span>
-                                    <input type="text" class="form-control" id="bx bx-file" name="namaDokumen_penetapan" placeholder="Nama Dokumen" aria-label="" aria-describedby="bx bx-file" required />
+                                    <span id="basic-icon-default-fullname2" class="input-group-text"><i
+                                            class="bx bx-file"></i></span>
+                                    <input type="text" class="form-control" id="bx bx-file" name="namaDokumen_penetapan"
+                                        placeholder="Nama Dokumen" aria-label="" aria-describedby="bx bx-file" required />
                                     <input type="hidden" name="level_penetapan" value="perangkatspmi">
                                 </div>
                             </div>
-                            <div class="form-check mt-3">
-                                <input name="default-radio-1" class="form-check-input" type="radio" name="radio_option" value="Ada"
-                                    id="defaultRadio1"/>
+                            <div>
+                                <div class="form-label">
+                                    <label>Status Dokumen</label>
+                                </div>
+                                <input name="default-radio-1" class="form-check-input" type="radio" name="radio_option"
+                                    value="Ada" id="defaultRadio1" />
                                 <label class="form-check-label" for="defaultRadio1"> Ada </label>
                             </div>
                             <div class="form-check">
-                                <input name="default-radio-1" class="form-check-input" type="radio" name="radio_option" value="Tidak Ada"
-                                    id="defaultRadio2"/>
+                                <input name="default-radio-1" class="form-check-input" type="radio" name="radio_option"
+                                    value="Tidak Ada" id="defaultRadio2" />
                                 <label class="form-check-label" for="defaultRadio2"> Tidak Ada </label>
                             </div>
                             <div>
 
                             </div>
                             <div class="mb-3">
-                                <label for="formFileMultiple" class="form-label">Pilih File</label>
-                                <input class="form-control" type="file" name="files[]" id="formFileMultiple" multiple required />
-                              </div>
+                                <label for="formFileMultiple" class="form-label">Pilih Dokumen</label>
+                                <input class="form-control" type="file" name="files[]" id="formFileMultiple" multiple
+                                    required />
+                            </div>
                             <button type="submit" class="btn btn-primary">{{ isset($perangkat) }}Kirim</button>
                         </form>
                     </div>
