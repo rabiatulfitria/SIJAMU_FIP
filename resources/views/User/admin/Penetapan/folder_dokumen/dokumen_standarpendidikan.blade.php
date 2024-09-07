@@ -77,8 +77,7 @@
                 <ol class="list-group list-group-numbered" style="margin-bottom: 10px">
                     @foreach ($files as $file)
                         <li class="list-group-item">
-                            <a href="{{ route('dokumenstandar', ['id_penetapan' => $standar->id_penetapan]) }}"
-                                class="badge bg-label-info me-1" target="_blank">
+                            <a href="/standarinstitusi/{{ $file }}" class="badge bg-label-info me-1" target="_blank">
                                 <i class="bi bi-link-45deg">{{ $file }}</i>
                             </a>
                         </li>

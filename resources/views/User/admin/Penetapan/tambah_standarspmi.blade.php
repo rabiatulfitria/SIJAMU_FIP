@@ -30,7 +30,7 @@
                                             class="bx bx-file"></i></span>
                                     <input type="text" class="form-control" id="bx bx-file" name="namaDokumen_penetapan"
                                         placeholder="Nama Dokumen" aria-label="" aria-describedby="bx bx-file" required />
-                                    <input type="hidden" name="level_penetapan" value="standarspmi">
+                                    <input type="hidden" name="level_penetapan" value="standarinstitusi">
                                 </div>
                             </div>
                             <div>

@@ -72,13 +72,13 @@
         <div class="nav-align-top mb-4">
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item">
-                    <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                    <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
                         data-bs-target="#navs-prodi" aria-controls="navs-prodi" aria-selected="true">
                         Prodi
                     </button>
                 </li>
                 <li class="nav-item">
-                    <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
+                    <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
                         data-bs-target="#navs-fakultas" aria-controls="navs-fakultas" aria-selected="false">
                         Fakultas
                     </button>
