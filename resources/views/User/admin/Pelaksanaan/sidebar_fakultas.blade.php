@@ -72,53 +72,49 @@
         <div class="nav-align-top mb-4">
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item">
-                    <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
-                        data-bs-target="#navs-prodi" aria-controls="navs-prodi" aria-selected="true">
+                    <a type="button" class="nav-link" href="{{ route('pelaksanaan.prodi') }}">
                         Prodi
-                    </button>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
-                        data-bs-target="#navs-fakultas" aria-controls="navs-fakultas" aria-selected="false">
+                    <a type="button" class="nav-link active" href="{{ route('pelaksanaan.fakultas') }}">
                         Fakultas
-                    </button>
+                    </a>
                 </li>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane fade show active" id="navs-fakultas" role="tabpanel">
+                <div class="tab-pane show active" id="navs-top-home" role="tabpanel">
                     <div class="row">
                         <!-- Sub Standar -->
                         <div class="col-lg-4">
                             <div class="card overflow-hidden mb-4" style="height: 300px;">
                                 <div class="card-body left" id="vertical-example">
-                                    <div><b>Strategi Pencapaian</b></div>
+                                    <div><b style="font-size: 13px">Strategi Pencapaian</b></div>
                                     <ul>
                                         <li style="font-size: 12px"><a href="menuProdi/dokkurikulum">Renstra Fakultas</a>
                                         </li>
                                     </ul>
-                                    <div><b>Standar Dosen dan Tenaga Kependidikan</b>
-                                        <ul>
-                                            <li style="font-size: 12px"><a href="menuProdi/dokkurikulum">Tri Dharma
-                                                    Dosen</a>
-                                            </li>
-                                            <li style="font-size: 12px"><a href="menuProdi/rps">Pendidikan (mengajar)</a>
-                                            </li>
-                                            <li style="font-size: 12px"><a href="menuProdi/rps">Penelitian (publikasi
-                                                    karya)</a></li>
-                                            <li style="font-size: 12px"><a href="menuProdi/rps">Pengabdian Kepada
-                                                    Masyarakat</a></li>
-                                            <li style="font-size: 12px"><a href="menuProdi/rps">Penunjang (sertifikat)</a>
-                                            </li>
-                                            <li style="font-size: 12px"><a href="menuProdi/rps">Beban Kerja Dosen (BKD)</a>
-                                            </li>
-                                            <li style="font-size: 12px"><a href="menuProdi/rps">SKP</a></li> </a></li>
-                                        </ul>
+                                    <div><b style="font-size: 13px">Standar Dosen dan Tenaga Kependidikan</b>
+                                        <div><b style="font-size: 12px">> Tri Dharma Dosen :</b>
+                                            <ul>
+                                                <li style="font-size: 12px"><a href=""> Pendidikan (mengajar)</a>
+                                                </li>
+                                                <li style="font-size: 12px"><a href=""> Penelitian (publikasi
+                                                        karya)</a>
+                                                </li>
+                                                <li style="font-size: 12px"><a href=""> Pengabdian Kepada
+                                                        Masyarakat</a>
+                                                </li>
+                                                <li style="font-size: 12px"><a href=""> Penunjang (sertifikat)</a>
+                                                </li>
+                                                <li style="font-size: 12px"><a href=""> Beban Kerja Dosen (BKD)</a>
+                                                </li>
+                                            </ul>
+                                        </div>
                                     </div>
-                                    <div><b>Tenaga Kependidikan</b>
+                                    <div><b style="font-size: 12px">> Tenaga Kependidikan :</b>
                                         <ul>
-                                            <li style="font-size: 12px"><a href="menuProdi/dokkurikulum">Evaluasi Kinerja
-                                                    Pimpinan</a>
-                                            </li>
+                                            <li style="font-size: 12px"><a href=""> Evaluasi kinerja pimpinan</a>
                                         </ul>
                                     </div>
                                 </div>

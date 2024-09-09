@@ -71,7 +71,7 @@
     <div class="card">
         <h5 class="card-header">Standar Yang Ditetapkan Institusi</h5>
         <div class="col-lg-6 mb-xl-0 mb-4">
-            <small class="text-light fw-semibold" style="margin-left: 5px">Dokumen
+            <small class="text-gray fw-semibold" style="margin-left: 5px">Dokumen
                 {{ $standar->namaDokumen_penetapan }}</small>
             <div class="demo-inline-spacing mt-3">
                 <ol class="list-group list-group-numbered" style="margin-bottom: 10px">

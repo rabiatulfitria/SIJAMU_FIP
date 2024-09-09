@@ -53,9 +53,9 @@
                             </div>
                             <div class="mb-3">
                                 <label for="formFileMultiple" class="form-label">Pilih Dokumen</label>
-                                <input class="form-control" type="file" name="files[]" id="formFileMultiple" multiple
-                                    required />
+                                <input class="form-control" type="file" name="files[]" id="formFileMultiple" multiple />
                             </div>
+                            {{-- required --}}
                             <button type="submit" class="btn btn-primary">{{ isset($perangkat) }}Kirim</button>
                         </form>
                     </div>

@@ -5,48 +5,59 @@
             <tr>
                 <th>No</th>
                 <th>Program Studi</th>
-                <th>Dokumen</th>
+                <th>Dokumen Renstra</th>
                 <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
-            {{-- @foreach ($programStudis as $programStudi) --}}
-            {{-- <tr>
-                        <td>{{ $loop->iteration }}</td>
-                        <td>{{ $programStudi->name }} - {{ $programStudi->level }}</td>
-                        <td>{{ $programStudi->akreditasi_2020 }}</td>
-                        <td>{{ $programStudi->akreditasi_2021 }}</td>
-                        <td>{{ $programStudi->akreditasi_2022 }}</td>
-                    </tr> --}}
             <tr>
                 <td>1</td>
-                <td>aaaaaaaaa</td>
-                <td>jsdbhdbnd</td>
+                <td>Pendidikan Bahasa dan Sastra Indonesia</td>
+                <td>Renstra-PBSI</td>
                 <td>jsdbhdbnd</td>
             </tr>
             <tr>
-                <td>1</td>
-                <td>aaaaaaaaa</td>
-                <td>jsdbhdbnd</td>
-                <td>jsdbhdbnd</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>bbbbbbbbb</td>
-                <td>jsdbhdbnd</td>
+                <td>2</td>
+                <td>Pendidikan Ilmu Pengetahuan Alam</td>
+                <td>Renstra-PIPA</td>
                 <td>jsdbhdbnd</td>
             </tr>
             <tr>
-                <td>1</td>
-                <td>ccccccccc</td>
-                <td>jsdbhdbnd</td>
+                <td>3</td>
+                <td>Pendidikan Guru Sekolah Dasar</td>
+                <td>Renstra-PGSD</td>
                 <td>jsdbhdbnd</td>
             </tr>
             <tr>
-                <td>1</td>
-                <td>ddddddddd</td>
+                <td>4</td>
+                <td>Pendidikan Guru Pendidikan Anak Usia Dini</td>
+                <td>Renstra-PGPAUD</td>
                 <td>jsdbhdbnd</td>
-                <td>jsdbhdbnd</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Pendidikan Informatika</td>
+                <td>
+                    {{-- @php
+                        $files = json_decode($row->files, true);
+                    @endphp --}}
+
+                    {{-- @if ($files && is_array($files)) --}}
+                    {{-- @foreach ($files as $file) --}}
+                    <a href="" class="badge bg-label-info me-1" target="_blank">
+                        <i class="bi bi-link-45deg">Renstra-PIF</i>
+                    </a>
+                    {{-- @endforeach --}}
+                    {{-- @else
+                        <p>Masih dalam proses</p>
+                    @endif --}}
+                </td>
+                <td>
+                    <a href="" class="btn btn-warning btn-xs"><i class="bx bx-edit-alt me-1"></i>                    </a>
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-danger btn-xs"><i class="bx bx-trash me-1"></i>                    </button>
+                </td>
             </tr>
             {{-- @endforeach --}}
         </tbody>

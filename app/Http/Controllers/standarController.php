@@ -57,7 +57,6 @@ class standarController extends Controller
 
             Alert::success('success', 'Dokumen berhasil ditambahkan.');
             return redirect()->route('penetapan.standar');
-
         } else {
             // file kosong
             return response()->json(['error' => 'No file uploaded']);
@@ -77,30 +76,30 @@ class standarController extends Controller
         //     'default-radio-1' => 'required|string',
         // ]);
         // if ($validateData) {
-            $model = new Penetapan();
-            $model->level_penetapan = $request->level_penetapan;
-            $model->namaDokumen_penetapan = $request->namaDokumen_penetapan;
-            $model->files = "";
-            $model->status_dokumen = $request->input('default-radio-1');
-            $model->save();
+        $model = new Penetapan();
+        $model->level_penetapan = $request->level_penetapan;
+        $model->namaDokumen_penetapan = $request->namaDokumen_penetapan;
+        $model->files = "";
+        $model->status_dokumen = $request->input('default-radio-1');
+        $model->save();
 
-            Alert::success('success', 'Standar berhasil ditambahkan.');
-            return redirect()->route('penetapan.standar');
+        Alert::success('success', 'Standar berhasil ditambahkan.');
+        return redirect()->route('penetapan.standar');
         // }
-        
+
         // $validateData = $request->validate([
         //     'level_penetapan' => 'required|in:standarinstitusi',
         //     'namaDokumen_penetapan' => 'required|string',
         //     'default-radio-1' => 'required|string',
         //     'files.*' => 'required|mimes:doc,docx,xls,xlsx|max:2048'
         // ]);
-    
+
         // if ($validateData) {
         //     $option = $request->input('default-radio-1');
-            
+
         //     // Inisialisasi variabel $dokumen
         //     $dokumen = json_decode($standar->files, true);
-            
+
         //     // Proses upload file
         //     if ($request->hasFile('files')) {
         //         foreach ($request->file('files') as $file) {
@@ -109,7 +108,7 @@ class standarController extends Controller
         //             $dokumen[] = $filename; // Tambahkan file ke array dokumen
         //         }
         //     }
-    
+
         //     // Simpan data ke dalam model
         //     $model = new Penetapan();
         //     $model->level_penetapan = $request->input('level_penetapan');
@@ -117,12 +116,12 @@ class standarController extends Controller
         //     $model->files = json_encode($dokumen); // Simpan file dalam format JSON
         //     $model->status_dokumen = $option;
         //     $model->save();
-    
+
         //     Alert::success('success', 'Standar berhasil ditambahkan.');
         //     return redirect()->route('penetapan.standar');
         // }
     }
-    
+
 
     public function lihatdokumenstandar($id_penetapan)
     {
@@ -140,10 +139,10 @@ class standarController extends Controller
         }
     }
 
-    public function edit(String $id_penetapan)
+    public function edit($id)
     {
-        $data = Penetapan::where('id_penetapan', $id_penetapan)->first();
-        return view('User.admin.Penetapan.edit_standarspmi', [
+        $data = Penetapan::where('id_penetapan', $id)->first();
+        return view('User.admin.Penetapan.edit_standarinstitusi', [
             'oldData' => $data
         ]);
     }
@@ -182,7 +181,7 @@ class standarController extends Controller
             $dataUpdate->files = json_encode($filePaths);
         }
         $dataUpdate->save();
-        Alert::success('success', 'Dokumen berhasil diperbarui.');
+        Alert::success('success', 'Pembaruan Berhasil.');
         return redirect()->route('penetapan.standar');
     }
 

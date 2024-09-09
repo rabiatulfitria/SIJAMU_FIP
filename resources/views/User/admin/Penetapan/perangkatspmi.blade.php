@@ -76,7 +76,7 @@
                 <thead class="table-purple">
                     <tr>
                         <th style="padding-left: 35px">Nama Dokumen</th>
-                        <th style="padding-left: 20px">Status Dokumen</th>
+                        <th>Status Dokumen</th>
                         <th style="padding-left: 10px">Unggahan</th>
                         <th>Aksi</th>
                     </tr>
@@ -87,7 +87,7 @@
                             <td style="padding-left: 20px"><i class="me-3"></i>
                                 <strong>{{ $row->namaDokumen_penetapan }}</strong>
                             </td>
-                            <td style="padding-left: 70px">{{ $row->status_dokumen }}</td>
+                            <td style="text-align:left">{{ $row->status_dokumen }}</td>
                             <td>
                                 @php
                                     $files = json_decode($row->files, true);
@@ -109,7 +109,7 @@
                                         </a>
                                     @endforeach
                                 @else
-                                    <p>Masih dalam proses</p>z
+                                    <p>Masih dalam proses</p>
                                 @endif
                             </td>
                             <td>

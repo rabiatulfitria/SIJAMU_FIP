@@ -72,20 +72,18 @@
         <div class="nav-align-top mb-4">
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item">
-                    <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
-                        data-bs-target="#navs-prodi" aria-controls="navs-prodi" aria-selected="true">
+                    <a type="button" class="nav-link active" href="{{ route('pelaksanaan.prodi') }}">
                         Prodi
-                    </button>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
-                        data-bs-target="#navs-fakultas" aria-controls="navs-fakultas" aria-selected="false">
+                    <a type="button" class="nav-link" href="{{ route('pelaksanaan.fakultas') }}">
                         Fakultas
-                    </button>
+                    </a>
                 </li>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane fade show active" id="navs-prodi" role="tabpanel">
+                <div class="tab-pane show active" id="navs-top-home" role="tabpanel">
                     <div class="row">
                         <!-- Sub Standar -->
                         <div class="col-lg-4">
@@ -99,9 +97,6 @@
                                     </ul>
                                     <div><b>Standar Proses Pembelajaran</b>
                                         <ul>
-                                            <li style="font-size: 12px"><a href="menuProdi/dokkurikulum">Dokumen
-                                                    Kurikulum</a>
-                                            </li>
                                             <li style="font-size: 12px"><a href="menuProdi/rps">Rencana Pembelajaran
                                                     Semester
                                                     (RPS)</a></li>
@@ -115,9 +110,6 @@
                                             <li style="font-size: 12px"><a href="menuProdi/rps">Panduan Mutu Soal
                                                 </a></li>
                                             <li style="font-size: 12px"><a href="menuProdi/rps">Panduan Kisi Kisi Soal
-                                                </a></li>
-                                            <li style="font-size: 12px"><a href="menuProdi/rps">Panduan Penyusunan Tugas
-                                                    Akhir
                                                 </a></li>
                                         </ul>
                                     </div>

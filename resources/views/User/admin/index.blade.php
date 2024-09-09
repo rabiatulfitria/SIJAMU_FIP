@@ -91,7 +91,7 @@
                     </div>
                     <span style="color: #007bff; font-size: 20px; font-weight:bold;">Penetapan</span>
                     <h1 class="card-title text-nowrap mb-1"></h1>
-                    <small class="text-gray fw-semibold">Ditetapkan oleh Perguruan Tinggi</small>
+                    <small class="text-gray fw-semibold">Standar Yang Ditetapkan Perguruan Tinggi</small>
                 </div>
             </div>
         </div>
@@ -115,7 +115,7 @@
                     </div>
                     <span style="color: #007bff; font-size: 20px; font-weight:bold;">Pelaksanaan</span>
                     <h1 class="card-title text-nowrap mb-1"></h1>
-                    <small class="text-gray fw-semibold">Standar Pendidikan Tinggi</small>
+                    <small class="text-gray fw-semibold">Standar Yang Dilaksanakan Perguruan Tinggi</small>
                 </div>
             </div>
         </div>
@@ -139,7 +139,7 @@
                     </div>
                     <span style="color: #007bff; font-size: 20px; font-weight:bold;">Evaluasi</span>
                     <h1 class="card-title text-nowrap mb-1"></h1>
-                    <small class="text-gray fw-semibold">Pelaksanaan Standar Perguruan Tinggi</small>
+                    <small class="text-gray fw-semibold">Standar Yang Dilaksanakan Perguruan Tinggi</small>
                 </div>
             </div>
         </div>

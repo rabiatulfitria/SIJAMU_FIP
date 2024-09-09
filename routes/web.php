@@ -52,7 +52,7 @@ Route::get('/Penetapan/StandarInstitusi', [standarController::class, 'index'])->
 Route::get('/Penetapan/unggahDokumenStandarSPMI/{id}', [standarController::class, 'create'])->name('unggahDokumenStandar');
 Route::get('/Penetapan/tambahDokumenStandarSPMI', [standarController::class, 'standar_create'])->name('tambahStandar'); //tambah standar
 Route::post('/StandarYangDitetapkanInstitusi', [standarController::class, 'store'])->name('standar.store');
-Route::get('/Penetapan/editDokumenStandarSPMI/{id_penetapan}', [standarController::class, 'edit'])->name('editDokumenStandar');
+Route::get('/Penetapan/editDokumenStandarSPMI/{id}', [standarController::class, 'edit'])->name('editDataStandar');
 Route::post('/unggahDokumenStandarSPMI', [standarController::class, 'uploadDokumen']);
 Route::get('/dokumenStandarInstitusi{id_penetapan}', [standarController::class, 'lihatdokumenstandar'])->name('dokumenstandar');
 Route::delete('/Penetapan/StandarSPMI{id_penetapan}', [standarController::class, 'destroy'])->name('hapusDokumenStandar');

@@ -76,19 +76,19 @@
                     <tr>
                         <th>No</th>
                         <th style="padding-left: 10px">Nama Dokumen</th>
-                        <th style="padding-left: 20px">Status Dokumen</th>
+                        <th style="padding-left: 10px">Status Dokumen</th>
                         <th style="padding-left: 10px">Unggahan</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
                     @foreach ($standar as $key => $s)
-                    {{-- {{ dd($s) }} --}}
+                        {{-- {{ dd($s) }} --}}
 
                         <tr>
                             <td>{{ $key + 1 }}</td>
                             <td class="me-3" style="font-size: 13px">{{ $s->namaDokumen_penetapan }}</td>
-                            <td style="padding-left: 70px">{{ $s->status_dokumen }}</td>
+                            <td style="text-align:left">{{ $s->status_dokumen }}</td>
                             <td>
                                 @if (!empty($s->files))
                                     <a href="{{ route('FolderDokumenStandar', ['id' => $s->id_penetapan]) }}"
@@ -113,8 +113,9 @@
                                         @if (session('success'))
                                             <div>{{ @session('success') }}</div>
                                         @endif
-                                        <a class="dropdown-item" href="">
-                                            <i class="bx bx-edit-alt me-1"></i> Ubah Standar
+                                        <a class="dropdown-item"
+                                            onclick="window.location.href='{{ route('editDataStandar', ['id' => $s->id_penetapan]) }}'">
+                                            <i class="bx bx-edit-alt me-1"></i> Ubah Data
                                         </a>
                                         <a class="dropdown-item btn btn-outline-danger" href="javascript:void(0);">
                                             <i class="bx bx-trash me-1"></i> Hapus
@@ -136,9 +137,4 @@
             <div>{{ @session('success') }}</div>
         @endif
     </div>
-    {{-- <div class="demo-inline-spacing">
-        <button type="button" class="btn btn-light"
-            onclick="window.location.href='{{ route('FolderDokumenStandar',) }}'">Folder
-        </button>
-    </div> --}}
 @endsection
