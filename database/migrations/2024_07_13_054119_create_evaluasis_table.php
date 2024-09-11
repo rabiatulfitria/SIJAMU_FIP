@@ -14,8 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('evaluasis', function (Blueprint $table) {
-            $table->integer('id_evaluasi',false, true)->length(11)->autoIncrement();
-            $table->string('namaDokumen_evaluasi', 1000);
+            $table->id('id_evaluasi');
+            $table->string('namaDokumen_evaluasi');
+            $table->string('program_studi');
+            $table->date('tanggal_terakhir_dilakukan');
+            $table->date('tanggal_diperbarui');
+            $table->string('unggahan_dokumen');
             $table->timestamps();
         });
     }

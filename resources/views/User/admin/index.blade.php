@@ -91,7 +91,7 @@
                     </div>
                     <span style="color: #007bff; font-size: 20px; font-weight:bold;">Penetapan</span>
                     <h1 class="card-title text-nowrap mb-1"></h1>
-                    <small class="text-gray fw-semibold">Standar Yang Ditetapkan Perguruan Tinggi</small>
+                    <small class="text-gray fw-semibold">Standar SPMI Yang Ditetapkan Perguruan Tinggi</small>
                 </div>
             </div>
         </div>
@@ -115,7 +115,7 @@
                     </div>
                     <span style="color: #007bff; font-size: 20px; font-weight:bold;">Pelaksanaan</span>
                     <h1 class="card-title text-nowrap mb-1"></h1>
-                    <small class="text-gray fw-semibold">Standar Yang Dilaksanakan Perguruan Tinggi</small>
+                    <small class="text-gray fw-semibold">Standar SPMI Yang Dilaksanakan Perguruan Tinggi</small>
                 </div>
             </div>
         </div>
@@ -139,7 +139,7 @@
                     </div>
                     <span style="color: #007bff; font-size: 20px; font-weight:bold;">Evaluasi</span>
                     <h1 class="card-title text-nowrap mb-1"></h1>
-                    <small class="text-gray fw-semibold">Standar Yang Dilaksanakan Perguruan Tinggi</small>
+                    <small class="text-gray fw-semibold">Standar SPMI Yang Dilaksanakan Perguruan Tinggi</small>
                 </div>
             </div>
         </div>
@@ -163,7 +163,7 @@
                     </div>
                     <span style="color: #007bff; font-size: 20px; font-weight:bold;">Pengendalian</span>
                     <h1 class="card-title text-nowrap mb-1"></h1>
-                    <small class="text-gray fw-semibold">Standar Perguruan Tinggi</small>
+                    <small class="text-gray fw-semibold">Standar SPMI Yang Dilaksanakan Perguruan Tinggi</small>
                 </div>
             </div>
         </div>
@@ -187,7 +187,7 @@
                     </div>
                     <span style="color: #007bff; font-size: 20px; font-weight:bold;">Peningkatan</span>
                     <h1 class="card-title text-nowrap mb-1"></h1>
-                    <small class="text-gray fw-semibold">Standar Perguruan Tinggi</small>
+                    <small class="text-gray fw-semibold">Standar SPMI Perguruan Tinggi</small>
                 </div>
             </div>
         </div>

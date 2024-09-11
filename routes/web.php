@@ -66,6 +66,12 @@ Route::get('/Pelaksanaan/Fakultas', [pelaksanaan2Controller::class, 'index'])->n
 
 // route untuk halaman menu Evaluasi CRUD
 Route::get('/Evaluasi/AuditMutuInternal',[evaluasiController::class, 'index'])->name('evaluasi');
+Route::get('/Evaluasi/tambahDokumenEvaluasi',[evaluasiController::class, 'create'])->name('tambahDokumenAMI');
+Route::resource('/tambahDokumenEvaluasi-2', evaluasiController::class);
+Route::get('/dokumenEvaluasi({id_evaluasi})', [evaluasiController::class, 'lihatdokumenevaluasi'])->name('dokumenevaluasi');
+Route::delete('/Evaluasi/PerangkatSPMI{id_evaluasi}', [evaluasiController::class, 'destroy'])->name('hapusDokumenEvaluasi');
+Route::get('/Evaluasi/editDokumenPerangkatSPMI/{id_evaluasi}', [evaluasiController::class, 'edit'])->name('editDokumenEvaluasi');
+Route::put('Evaluasi/updateDokumenEvaluasi/{id_evaluasi}', [evaluasiController::class, 'update'])->name('updateDokumenEvaluasi');
 
 // route untuk halaman menu Pengendalian CRUD
 Route::get('/Pengendalian/Standar/RTM',[pengendalianController::class, 'index'])->name('pengendalian');

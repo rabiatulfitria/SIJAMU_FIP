@@ -12,7 +12,7 @@
             <div class="nav-items d-flex align-item-center">Tambah Dokumen Perangkat SPMI</div>
         </div>
     @endsection
-    n
+    
     @section('content')
         <div class="row">
 
