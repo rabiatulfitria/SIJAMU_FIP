@@ -71,7 +71,7 @@
     <div class="card">
         <h5 class="card-header">Standar Yang Ditetapkan Institusi</h5>
         <div class="table-responsive text-nowrap">
-            <table class="table">
+            <table class="table table-bordered">
                 <thead class="table-purple">
                     <tr>
                         <th>No</th>

@@ -82,24 +82,24 @@
             </ul>
         </h5>
         <div class="table text-nowrap" id="horizontal-example">
-            <table class="table">
+            <table class="table table-bordered">
                 <thead class="table-purple">
                     <tr>
-                        <th style="padding-left: 25px">Nama Dokumen</th>
-                        <th style="padding-left: 25px">Program Studi</th>
-                        <th style="padding-left: 25px">Tanggal Terakhir Dilakukan</th>
-                        <th style="padding-left: 25px">Tanggal Diperbarui</th>
-                        <th style="padding-left: 10px">Unggahan</th>
+                        <th>Nama Dokumen</th>
+                        <th>Program Studi</th>
+                        <th>Tanggal Terakhir Dilakukan</th>
+                        <th>Tanggal Diperbarui</th>
+                        <th>Unggahan</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
                     @foreach ($evaluasi as $row)
                     <tr>
-                        <td><i class="me-3"></i>{{ $row->namaDokumen_evaluasi }}</td>
-                        <td><i class="me-3"></i>{{ $row->program_studi }}</td>
-                        <td><i class="me-3"></i>{{ $row->tanggal_terakhir_dilakukan }}</td>
-                        <td><i class="me-3"></i>{{ $row->tanggal_diperbarui }}</td>
+                        <td><i></i>{{ $row->namaDokumen_evaluasi }}</td>
+                        <td><i></i>{{ $row->program_studi }}</td>
+                        <td><i></i>{{ $row->tanggal_terakhir_dilakukan }}</td>
+                        <td><i></i>{{ $row->tanggal_diperbarui }}</td>
                         <td>
                             @php
                                 $files = json_decode($row->unggahan_dokumen, true);

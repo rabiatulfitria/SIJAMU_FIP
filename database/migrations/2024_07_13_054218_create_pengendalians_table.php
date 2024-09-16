@@ -14,8 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('pengendalians', function (Blueprint $table) {
-            $table->integer('id_pengendalian',false, true)->length(11)->autoIncrement();
-            $table->string('namaDokumen_pengendalian', 1000);
+            $table->id('id_pengendalian');
+            $table->string('bidang_standar');
+            $table->string('program_studi');
+            $table->string('laporan_rtm');
+            $table->string('laporan_rtl');
             $table->timestamps();
         });
     }

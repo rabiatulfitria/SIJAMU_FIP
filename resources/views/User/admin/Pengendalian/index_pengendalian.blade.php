@@ -8,7 +8,7 @@
     </div>
 
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-        <div class="navbar-nav align-items-center" style="color: #007bff; font-size: 20px; font-weight:bold">Evaluasi</div>
+        <div class="navbar-nav align-items-center" style="color: #007bff; font-size: 20px; font-weight:bold">Pengendalian</div>
 
         {{-- <small class="text-gray fw-semibold">Perangkat SPMI</small> --}}
         <ul class="navbar-nav flex-row align-items-center ms-auto">
@@ -70,89 +70,99 @@
 
 @section('content')
     <div class="card">
-        <h5 class="card-header">Pengendalian Standar SPMI</h5>
+        <h5 class="card-header">Pengendalian Standar SPMI Perguruan Tinggi
+            <button type="button" class="btn btn-outline-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Tahun Akademik (TA)
+            </button>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="javascript:void(0);">2022-2023</a></li>
+                <li><a class="dropdown-item" href="javascript:void(0);">2023-2024</a></li>
+                <li><a class="dropdown-item" href="javascript:void(0);">2024-2025</a></li>
+            </ul>
+        </h5>
         <div class="table text-nowrap" id="horizontal-example">
-            <table class="table">
+            <table class="table table-bordered">
                 <thead class="table-purple">
                     <tr>
-                        <th style="padding-left: 25px">Nama Bidang Pengaturan Standar</th>
-                        <th style="padding-left: 25px">Program Studi</th>
-                        <th style="padding-left: 30px">Notulensi RTM</th>
-                        <th style="padding-left: 30px">Tanggal Terakhir Dilakukan</th>
-                        <th style="padding-left: 30px">Tanggal Diperbarui</th>
+                        <th>Nama Bidang Pengaturan Standar</th>
+                        <th>Program Studi</th>
+                        <th>Laporan RTM</th>
+                        <th>Laporan RTL</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                    {{-- @foreach --}}
+                    @foreach ($pengendalian as $row)
                     <tr>
-                        <td><i class="me-3"></i>Standar di aspek pendidikan</td>
-                        <td><i class="me-3"></i>Pendidikan Ilmu Pengetahuan Alam</td>
-                        <td style="padding-left: 50px"><span class="badge bg-label-info me-1"><i class="bi bi-link-45deg">file</i></span></td>                        
-                        <td style="padding-left: 50px"><i class="me-3"></i> yyyy/mm/dd</td>
-                        <td style="padding-left: 50px"><i class="me-3"></i> yyyy/mm/dd</td>
+                        <td><i></i>{{ $row->bidang_standar }}</td>
+                        <td><i></i>{{ $row->program_studi }}</td>
+                        <td>
+                            @php
+                                $files = json_decode($row->laporan_rtm, true);
+                            @endphp
+                            
+                            @if ($files && is_array($files))
+                                @foreach ($files as $file)
+                                    <a href=""
+                                        class="badge bg-label-info me-1" target="_blank" >
+                                        <i class="bi bi-link-45deg">Dokumen</i>
+                                    </a>
+                                @endforeach
+                            @else
+                                <p>Masih dalam proses</p>
+                            @endif
+                        </td>
+                        <td>
+                            @php
+                                $files = json_decode($row->laporan_rtl, true);
+                            @endphp
+                            
+                            @if ($files && is_array($files))
+                                @foreach ($files as $file)
+                                    <a href=""
+                                        class="badge bg-label-info me-1" target="_blank" >
+                                        <i class="bi bi-link-45deg">Dokumen</i>
+                                    </a>
+                                @endforeach
+                            @else
+                                <p>Masih dalam proses</p>
+                            @endif
+                        </td>
                         <td>
                             <div class="dropdown">
                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                                     <i class="bx bx-dots-vertical-rounded"></i>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i>
-                                        Edit</a>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
-                                        Delete</a>
+                                    <div>
+                                        <a class="dropdown-item"
+                                            href=""><i
+                                                class="bx bx-edit-alt me-1"></i>
+                                            Ubah</a>
+                                    </div>
+                                    <div>
+                                        <form method="POST"
+                                            action="">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="dropdown-item btn btn-outline-danger"><i
+                                                    class="bx bx-trash me-1"></i>
+                                                Hapus</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td><i class="me-3"></i>Standar di aspek pendidikan</td>
-                        <td><i class="me-3"></i>Pendidikan Bahasa dan Sastra Indonesia</td>
-                        <td style="padding-left: 50px"><span class="badge bg-label-info me-1"><i class="bi bi-link-45deg">file</i></span></td>                        
-                        <td style="padding-left: 50px"><i class="me-3"></i> yyyy/mm/dd</td>
-                        <td style="padding-left: 50px"><i class="me-3"></i> yyyy/mm/dd</td>
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i>
-                                        Edit</a>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
-                                        Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><i class="me-3"></i>Standar di aspek pendidikan</td>
-                        <td><i class="me-3"></i>Pendidikan Guru Sekolah Dasar</td>
-                        <td style="padding-left: 50px"><span class="badge bg-label-info me-1"><i class="bi bi-link-45deg">file</i></span></td>                        
-                        <td style="padding-left: 50px"><i class="me-3"></i> yyyy/mm/dd</td>
-                        <td style="padding-left: 50px"><i class="me-3"></i> yyyy/mm/dd</td>
-                        <td>
-                            <div class="dropdown">
-                                <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                                    <i class="bx bx-dots-vertical-rounded"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit-alt me-1"></i>
-                                        Edit</a>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
-                                        Delete</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    {{-- @endforeach --}}
+                    @endforeach
                 </tbody>
             </table>
         </div>
     </div>
     <div class="demo-inline-spacing">
-        <button type="button" class="btn btn-primary"
-            onclick="window.location.href='{{ route('tambahTimJAMU') }}'">+ Tambahkan Bentuk Pengendalian</button>
+        <button type="button" class="btn btn-light" onclick="window.location.href=''">+
+            Tambah Bentuk Pengendalian</button>
         @if (session('success'))
             <div>{{ @session('success') }}</div>
         @endif
