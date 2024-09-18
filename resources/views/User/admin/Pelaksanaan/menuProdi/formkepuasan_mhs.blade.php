@@ -1,42 +1,42 @@
-@extends('User.admin.Pelaksanaan.sidebar_fakultas')
+@extends('User.admin.Pelaksanaan.sidebar_prodi')
 @section('tabel-unggah-dokumen')
     <table class="table table-bordered custom-table-sm" id="Datatable">
         <thead>
             <tr>
                 <th>No</th>
-                <th>Nama Dokumen</th>
-                <th>Dokumen Renstra</th>
+                <th>Program Studi</th>
+                <th>Tautan Pengisian Formulir</th>
                 <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>1</td>
-                <td>Renstra FIP 2023-2024</td>
-                <td>Dokumen</td>
+                <td>Pendidikan Bahasa dan Sastra Indonesia</td>
+                <td><i class='bx bx-link' style="font-size:14px; font-family:Arial"> formulir</i></td>
                 <td>jsdbhdbnd</td>
             </tr>
             <tr>
                 <td>2</td>
-                <td>Renstra FIP 2024-2025</td>
-                <td>Dokumen</td>
+                <td>Pendidikan Ilmu Pengetahuan Alam</td>
+                <td><i class='bx bx-link' style="font-size:14px; font-family:Arial"> formulir</i></td>
                 <td>jsdbhdbnd</td>
             </tr>
             <tr>
                 <td>3</td>
-                <td>Renstra FIP 2025-2026</td>
-                <td>Dokumen</td>
+                <td>Pendidikan Guru Sekolah Dasar</td>
+                <td><i class='bx bx-link' style="font-size:14px; font-family:Arial"> formulir</i></td>
                 <td>jsdbhdbnd</td>
             </tr>
             <tr>
                 <td>4</td>
-                <td>Renstra FIP yyyy-yyyy</td>
-                <td>Dokumen</td>
+                <td>Pendidikan Guru Pendidikan Anak Usia Dini</td>
+                <td><i class='bx bx-link' style="font-size:14px; font-family:Arial"> formulir</i></td>
                 <td>jsdbhdbnd</td>
             </tr>
             <tr>
                 <td>5</td>
-                <td>Renstra FIP yyyy-yyyy</td>
+                <td>Pendidikan Informatika</td>
                 <td>
                     {{-- @php
                         $files = json_decode($row->files, true);
@@ -45,7 +45,7 @@
                     {{-- @if ($files && is_array($files)) --}}
                     {{-- @foreach ($files as $file) --}}
                     <a href="" class="badge bg-label-info me-1" target="_blank">
-                        <i class="bi bi-link-45deg">Dokumen</i>
+                        <i class='bx bx-link' style="font-size:14px; font-family:Arial"> formulir</i>
                     </a>
                     {{-- @endforeach --}}
                     {{-- @else
@@ -53,10 +53,10 @@
                     @endif --}}
                 </td>
                 <td>
-                    <a href="" class="btn btn-warning btn-xs"><i class="bx bx-edit-alt me-1"></i>                    </a>
+                    <a href="" class="btn btn-warning btn-xs"><i class="bx bx-edit-alt me-1"></i> </a>
                     @csrf
                     @method('DELETE')
-                    <button class="btn btn-danger btn-xs"><i class="bx bx-trash me-1"></i>                    </button>
+                    <button class="btn btn-danger btn-xs"><i class="bx bx-trash me-1"></i> </button>
                 </td>
             </tr>
             {{-- @endforeach --}}

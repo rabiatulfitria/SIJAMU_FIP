@@ -24,24 +24,24 @@ class evaluasiController extends Controller
     {
         // dd($request->all());
 
-        $request->validate([
-            'namaDokumen_evaluasi' => 'required|string',
-            'program_studi' => 'required|string',
-            'tanggal_terakhir_dilakukan' => 'required|date',
-            'tanggal_diperbarui' => 'required|date',
-            'unggahan_dokumen[].*' => 'required|mimes:doc,docx,xls,xlsx|max:2048',
-        ]);
-        $namaDokumen = $request->namaDokumen_evaluasi === 'Dokumen Lainnya' ? $request->input('manual_namaDokumen') : $request->namaDokumen_evaluasi;
+        // $validateData = $request->validate([
+        //     'namaDokumen_evaluasi' => 'required|string',
+        //     'program_studi' => 'required|string',
+        //     'tanggal_terakhir_dilakukan' => 'required|date',
+        //     'tanggal_diperbarui' => 'required|date',
+        //     'unggahan_dokumen[].*' => 'required|mimes:doc,docx,xls,xlsx|max:2048',
+        // ]);
+        // $namaDokumen = $request->namaDokumen_evaluasi === 'Dokumen Lainnya' ? $request->input('manual_namaDokumen') : $request->namaDokumen_evaluasi;
 
-        if ($validateData) {
+        // if ($validateData) {
 
             $filePaths = [];
 
-            dd(Storage::disk());
+            // dd(Storage::disk());
             if ($request->hasFile('unggahan_dokumen')) {
                 foreach ($request->file('unggahan_dokumen') as $file) {
                     $namaDokumen = time() . '-' . $file->getClientOriginalName();
-                    dd(Storage::disk('local')->put('/evaluasi(AMI)/' . $namaDokumen, File::get($file)));
+                    Storage::disk('local')->put('/evaluasi(AMI)/' . $namaDokumen, File::get($file));
 
                     // Menyimpan path ke dalam array
                     $path = '/evaluasi(AMI)/' . $namaDokumen;
@@ -51,7 +51,7 @@ class evaluasiController extends Controller
             }
 
             $model = new Evaluasi();
-            $model->namaDokumen_evaluasi = $request->input('namaDokumen_penetapan');
+            $model->namaDokumen_evaluasi = $request->input('namaDokumen_evaluasi');
             $model->program_studi = $request->input('program_studi');
             $model->tanggal_terakhir_dilakukan = $request->input('tanggal_terakhir_dilakukan');
             $model->tanggal_diperbarui = $request->input('tanggal_diperbarui');
@@ -60,7 +60,7 @@ class evaluasiController extends Controller
 
             Alert::success('success', 'Dokumen berhasil ditambahkan.');
             return redirect()->route('evaluasi');
-        }
+        // }
     }
 
     public function lihatdokumenevaluasi($id_evaluasi)
@@ -91,18 +91,18 @@ class evaluasiController extends Controller
     {
         $dataUpdate = Evaluasi::findOrFail($id_evaluasi);
 
-        $request->validate([
-            'namaDokumen_evaluasi' => 'required|string',
-            'program_studi' => 'required|string',
-            'tanggal_terakhir_dilakukan' => 'required|date',
-            'tanggal_diperbarui' => 'required|date',
-            'unggahan_dokumen[].*' => 'required|mimes:doc,docx,xls,xlsx|max:2048'
-        ]);
+        // $request->validate([
+        //     'namaDokumen_evaluasi' => 'required|string',
+        //     'program_studi' => 'required|string',
+        //     'tanggal_terakhir_dilakukan' => 'required|date',
+        //     'tanggal_diperbarui' => 'required|date',
+        //     'unggahan_dokumen[].*' => 'required|mimes:doc,docx,xls,xlsx|max:2048'
+        // ]);
 
         $dataUpdate->namaDokumen_evaluasi = $request->input('namaDokumen_evaluasi');
         $dataUpdate->program_studi = $request->input('program_studi');
         $dataUpdate->tanggal_terakhir_dilakukan = $request->input('tanggal_terakhir_dilakukan');
-        $dataUpdate->tanggal_diperbarui = $request->input('tanggal-diperbarui');
+        $dataUpdate->tanggal_diperbarui = $request->input('tanggal_diperbarui');
 
         // Proses file baru jika ada
         if ($request->hasFile('unggahan_dokumen')) {

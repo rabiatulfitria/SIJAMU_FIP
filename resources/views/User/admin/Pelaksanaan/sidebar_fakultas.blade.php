@@ -97,8 +97,6 @@
                                     <div><b style="font-size: 13px">Standar Dosen dan Tenaga Kependidikan</b>
                                         <div><b style="font-size: 12px">> Tri Dharma Dosen :</b>
                                             <ul>
-                                                <li style="font-size: 12px"><a href=""> Pendidikan (mengajar)</a>
-                                                </li>
                                                 <li style="font-size: 12px"><a href=""> Penelitian (publikasi
                                                         karya)</a>
                                                 </li>
@@ -107,12 +105,13 @@
                                                 </li>
                                                 <li style="font-size: 12px"><a href=""> Penunjang (sertifikat)</a>
                                                 </li>
-                                                <li style="font-size: 12px"><a href=""> Beban Kerja Dosen (BKD)</a>
-                                                </li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div><b style="font-size: 12px">> Tenaga Kependidikan :</b>
+                                        <ul>
+                                            <li style="font-size: 12px"><a href=""> Laporan Kinerja Tendik</a>
+                                        </ul>
                                         <ul>
                                             <li style="font-size: 12px"><a href=""> Evaluasi kinerja pimpinan</a>
                                         </ul>

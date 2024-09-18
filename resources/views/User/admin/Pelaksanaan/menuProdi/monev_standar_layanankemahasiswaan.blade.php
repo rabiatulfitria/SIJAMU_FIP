@@ -1,42 +1,48 @@
-@extends('User.admin.Pelaksanaan.sidebar_fakultas')
+@extends('User.admin.Pelaksanaan.sidebar_prodi')
 @section('tabel-unggah-dokumen')
     <table class="table table-bordered custom-table-sm" id="Datatable">
         <thead>
             <tr>
                 <th>No</th>
                 <th>Nama Dokumen</th>
-                <th>Dokumen Renstra</th>
+                <th>Tahun Akademik</th>
+                <th>Unggahan</th>
                 <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>1</td>
-                <td>Renstra FIP 2023-2024</td>
+                <td>Monev Ketercapaian Standar Layanan Kemahasiswaan</td>
+                <td>2022/2023</td>
                 <td>Dokumen</td>
                 <td>jsdbhdbnd</td>
             </tr>
             <tr>
                 <td>2</td>
-                <td>Renstra FIP 2024-2025</td>
+                <td>Monev Ketercapaian Standar Layanan Kemahasiswaan</td>
+                <td>2023/2024</td>
                 <td>Dokumen</td>
                 <td>jsdbhdbnd</td>
             </tr>
             <tr>
                 <td>3</td>
-                <td>Renstra FIP 2025-2026</td>
+                <td>Monev Ketercapaian Standar Layanan Kemahasiswaan</td>
+                <td>2024/2025</td>
                 <td>Dokumen</td>
                 <td>jsdbhdbnd</td>
             </tr>
             <tr>
                 <td>4</td>
-                <td>Renstra FIP yyyy-yyyy</td>
+                <td>Monev Ketercapaian Standar Layanan Kemahasiswaan</td>
+                <td>yyyy/yyyy</td>
                 <td>Dokumen</td>
                 <td>jsdbhdbnd</td>
             </tr>
             <tr>
                 <td>5</td>
-                <td>Renstra FIP yyyy-yyyy</td>
+                <td>Monev Ketercapaian Standar Layanan Kemahasiswaan</td>
+                <td>yyyy/yyyy</td>
                 <td>
                     {{-- @php
                         $files = json_decode($row->files, true);

@@ -91,35 +91,37 @@
                                 <div class="card-body left" id="vertical-example">
                                     <div><b>Strategi Pencapaian</b></div>
                                     <ul>
-                                        <li style="font-size: 12px"><a href="menuProdi/dokkurikulum">Renstra Program
+                                        <li style="font-size: 12px"><a href="menuProdi/">Renstra Program
                                                 Studi</a>
                                         </li>
                                     </ul>
                                     <div><b>Standar Proses Pembelajaran</b>
                                         <ul>
-                                            <li style="font-size: 12px"><a href="menuProdi/rps">Rencana Pembelajaran
+                                            <li style="font-size: 12px"><a href="menuProdi/">Dokumen Kurikulum</a></li>
+                                            <li style="font-size: 12px"><a href="menuProdi/">Rencana Pembelajaran
                                                     Semester
                                                     (RPS)</a></li>
-                                            <li style="font-size: 12px"><a href="menuProdi/rps">Dokumen monitoring dan
-                                                    evaluasi kegiatan program merdeka belajar
+                                            <li style="font-size: 12px"><a href="menuProdi/">Dokumen Monitoring dan
+                                                    Evaluasi Kegiatan Program MBKM
                                                 </a></li>
-                                            <li style="font-size: 12px"><a href="menuProdi/rps">Capaian Pembelajaran Lulusan
+                                            <li style="font-size: 12px"><a href="menuProdi/">Capaian Pembelajaran Lulusan
+                                                    (CPL)
                                                 </a></li>
-                                            <li style="font-size: 12px"><a href="menuProdi/rps">Panduan RPS
+                                            <li style="font-size: 12px"><a href="menuProdi/">Panduan RPS
                                                 </a></li>
-                                            <li style="font-size: 12px"><a href="menuProdi/rps">Panduan Mutu Soal
+                                            <li style="font-size: 12px"><a href="menuProdi/">Panduan Mutu Soal
                                                 </a></li>
-                                            <li style="font-size: 12px"><a href="menuProdi/rps">Panduan Kisi Kisi Soal
+                                            <li style="font-size: 12px"><a href="menuProdi/">Panduan Kisi Kisi Soal
                                                 </a></li>
                                         </ul>
                                     </div>
                                     <div><b>Standar Layanan Kemahasiswaan</b>
                                         <ul>
-                                            <li style="font-size: 12px"><a href="menuProdi/dokkurikulum">Formulir Kepuasan
+                                            <li style="font-size: 12px"><a href="menuProdi/">Formulir Kepuasan
                                                     Mahasiswa</a>
                                             </li>
-                                            <li style="font-size: 12px"><a href="menuProdi/dokkurikulum">Dokumen Monitoring
-                                                    dan Evaluasi Keteracapaian Standar Layanan Kemahasiswaan</a>
+                                            <li style="font-size: 12px"><a href="menuProdi/">Dokumen Monitoring
+                                                    dan Evaluasi Ketercapaian Standar Layanan Kemahasiswaan</a>
                                             </li>
                                         </ul>
                                     </div>
