@@ -101,10 +101,10 @@
                                 </button>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="javascript:void(0);"><i
-                                            class="bx bx-detail me-1"></i>
-                                        Detail</a>
-                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-edit me-1"></i>
-                                        Edit</a>
+                                            class="bx bx-edit-alt me-1"></i>
+                                        Ubah</a>
+                                    <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
+                                        Hapus</a>
                                 </div>
                             </div>
                         </td>

@@ -94,6 +94,8 @@
                                         <li style="font-size: 12px"><a href="menuProdi/">Renstra Program
                                                 Studi</a>
                                         </li>
+                                        <li style="font-size: 12px"><a href="menuProdi/">Laporan Kinerja Program Studi</a>
+                                    </li>
                                     </ul>
                                     <div><b>Standar Proses Pembelajaran</b>
                                         <ul>

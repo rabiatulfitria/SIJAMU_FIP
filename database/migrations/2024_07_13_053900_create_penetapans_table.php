@@ -15,10 +15,12 @@ return new class extends Migration
     {
         Schema::create('penetapans', function (Blueprint $table) {
             $table->id('id_penetapan');
-            $table->enum('level_penetapan', ['perangkatspmi', 'standarinstitusi'])->default('perangkatspmi');
-            $table->string('status_dokumen');
-            $table->string('namaDokumen_penetapan');
-            $table->string('files');
+            $table->string('submenu_penetapan');
+
+            //foreign key
+            $table->foreignId('id_nfp1')->references('id_nfp1')->on('nama_file_p1')->onDelete('restrict');
+            $table->foreignId('id_fp1')->references('id_fp1')->on('file_p1')->onDelete('restrict');
+
             $table->timestamps();
         });
     }

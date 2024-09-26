@@ -1,48 +1,45 @@
 <?php
 
 namespace App\Models;
-
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Penetapan extends Model
 {
-    use HasFactory;
-
     protected $table = 'penetapans';
-
-    // Pendefinisian primarykey secara khusus. Karena default laravel berupa 'id'
     protected $primaryKey = 'id_penetapan';
-
-     /**
-     * Atribut diisi secara massal
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
-        'id_penetapan',
-        'level_penetapan',
-        'namaDokumen_penetapan',
-        'files'
+        'submenu_penetapan',
     ];
 
+    public function fileP1()
+    {
+        return $this->hasMany(FileP1::class, 'id_fp1', 'id_nfp1');
+    }
+
+    public function namaFileP1()
+    {
+        return $this->hasOne(NamaFileP1::class, 'id_fp1', 'id_nfp1');
+    }
+
+
+
     /**
-     * Jika Penetapan berupa level perangkatspmi.
+     * Jika Penetapan berupa submenu perangkatspmi.
      *
      * @return bool
      */
     public function isPerangkatspmi()
     {
-        return $this->level_penetapan === 'perangkatspmi';
+        return $this->submenu_penetapan === 'perangkatspmi';
     }
 
     /**
-     * Jika Penetapan berupa level standarinstitusi.
+     * Jika Penetapan berupa submenu standarinstitusi.
      *
      * @return bool
      */
     public function isStandarinstitusi()
     {
-        return $this->level_penetapan === 'standarinstitusi';
+        return $this->submenu_penetapan === 'standarinstitusi';
     }
 }

@@ -13,35 +13,35 @@
         <tbody>
             <tr>
                 <td>1</td>
-                <td>RPS-PBSI (TA 2023-2024)</td>
+                <td>RPS-PBSI</td>
                 <td>Pendidikan Bahasa dan Sastra Indonesia</td>
                 <td>Dokumen</td>
                 <td>jsdbhdbnd</td>
             </tr>
             <tr>
                 <td>2</td>
-                <td>RPS-PIPA (TA 2023-2024)</td>
+                <td>RPS-PIPA</td>
                 <td>Pendidikan Ilmu Pengetahuan Alam</td>
                 <td>Dokumen</td>
                 <td>jsdbhdbnd</td>
             </tr>
             <tr>
                 <td>3</td>
-                <td>RPS-PGSD (TA 2023-2024)</td>
+                <td>RPS-PGSD</td>
                 <td>Pendidikan Guru Sekolah Dasar</td>
                 <td>Dokumen</td>
                 <td>jsdbhdbnd</td>
             </tr>
             <tr>
                 <td>4</td>
-                <td>RPS-PGPAUD (TA 2023-2024)</td>
+                <td>RPS-PGPAUD</td>
                 <td>Pendidikan Guru Pendidikan Anak Usia Dini</td>
                 <td>Dokumen</td>
                 <td>jsdbhdbnd</td>
             </tr>
             <tr>
                 <td>5</td>
-                <td>RPS-PIF (TA 2023-2024)</td>
+                <td>RPS-PIF</td>
                 <td>Pendidikan Informatika</td>
                 <td>
                     {{-- @php

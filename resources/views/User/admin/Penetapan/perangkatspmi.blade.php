@@ -76,33 +76,23 @@
                 <thead class="table-purple">
                     <tr>
                         <th style="padding-left: 35px">Nama Dokumen</th>
-                        <th>Status Dokumen</th>
                         <th style="padding-left: 10px">Unggahan</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                    @foreach ($perangkat as $row)
+                    @foreach ($dokumenp1 as $row)
                         <tr>
                             <td style="padding-left: 20px"><i class="me-3"></i>
-                                <strong>{{ $row->namaDokumen_penetapan }}</strong>
+                                <strong>{{ $row->nama_filep1 }}</strong>
                             </td>
-                            <td style="text-align:left">{{ $row->status_dokumen }}</td>
                             <td>
                                 @php
                                     $files = json_decode($row->files, true);
                                 @endphp
 
                                 @if ($files && is_array($files))
-                                    @foreach ($files as $file)
-                                        {{-- {{ dd($files) }} --}}
-                                        {{-- <a href="{{ route('private', ['files' => $file]) }}" class="badge bg-label-info me-1">
-                                            <i class="bi bi-link-45deg">Dokumen</i>
-                                        </a> --}}
-                                        {{-- <a href=" {{ route('dokumenperangkat', ['id_penetapan' => $row->id_penetapan]) }}"
-                                            class="badge bg-label-info me-1" target="_blank">
-                                            <i class="bi bi-link-45deg">Dokumen</i>
-                                        </a> --}}
+                                    @foreach ($dokumenp1->fileP1 as $file)
                                         <a href="{{ route('dokumenperangkat', ['id_penetapan' => $row->id_penetapan]) }}"
                                             class="badge bg-label-info me-1" target="_blank" >
                                             <i class="bi bi-link-45deg">Dokumen</i>

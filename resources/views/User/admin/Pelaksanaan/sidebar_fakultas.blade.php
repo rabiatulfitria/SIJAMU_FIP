@@ -94,28 +94,9 @@
                                         <li style="font-size: 12px"><a href="menuProdi/dokkurikulum">Renstra Fakultas</a>
                                         </li>
                                     </ul>
-                                    <div><b style="font-size: 13px">Standar Dosen dan Tenaga Kependidikan</b>
-                                        <div><b style="font-size: 12px">> Tri Dharma Dosen :</b>
-                                            <ul>
-                                                <li style="font-size: 12px"><a href=""> Penelitian (publikasi
-                                                        karya)</a>
-                                                </li>
-                                                <li style="font-size: 12px"><a href=""> Pengabdian Kepada
-                                                        Masyarakat</a>
-                                                </li>
-                                                <li style="font-size: 12px"><a href=""> Penunjang (sertifikat)</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div><b style="font-size: 12px">> Tenaga Kependidikan :</b>
-                                        <ul>
-                                            <li style="font-size: 12px"><a href=""> Laporan Kinerja Tendik</a>
-                                        </ul>
-                                        <ul>
-                                            <li style="font-size: 12px"><a href=""> Evaluasi kinerja pimpinan</a>
-                                        </ul>
-                                    </div>
+                                    <ul>
+                                        <li style="font-size: 12px"><a href="">Laporan Kinerja Fakultas</a></li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>

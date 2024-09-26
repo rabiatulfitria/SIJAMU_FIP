@@ -31,26 +31,16 @@
                                     <span id="basic-icon-default-fullname2" class="input-group-text"><i
                                             class="bx bx-user"></i></span>
                                     <input type="text" class="form-control" id="basic-icon-default-fullname"
-                                        name="nama_dokumen" value="{{$oldData->namaDokumen_penetapan}}" placeholder="Nama Dokumen" aria-label=""
+                                        name="nama_filep1" value="{{$oldData->nama_filep1}}" placeholder="Nama Dokumen" aria-label=""
                                         aria-describedby="basic-icon-default-fullname2" />
                                 </div>
                             </div>
-                            <input type="hidden" name="level_penetapan" value="{{$oldData->level_penetapan}}">
-                            <div class="form-check mt-3">
-                                <input name="default-radio-1" class="form-check-input" type="radio" value="Ada"
-                                    id="defaultRadio1" {{$oldData->status_dokumen == 'Ada' ? 'checked' : ''}} />
-                                <label class="form-check-label" for="defaultRadio1"> Ada </label>
-                            </div>
-                            <div class="form-check">
-                                <input name="default-radio-1" class="form-check-input" type="radio" value="Tidak Ada"
-                                    id="defaultRadio2" {{$oldData->status_dokumen == 'Tidak Ada' ? 'checked' : ''}}/>
-                                <label class="form-check-label" for="defaultRadio2"> Tidak Ada </label>
-                            </div>
+                            <input type="hidden" name="submenu_penetapan" value="{{$oldData->submenu_penetapan}}">
                             <div class="mb-3">
                                 <label for="formFileMultiple" class="form-label">Pilih File</label>
                                 <input class="form-control" type="file" name="files[]" value="{{$oldData->files}}" id="formFileMultiple" multiple />
                               </div>
-                            <button type="submit" class="btn btn-primary">{{ isset($perangkat) }}Ubah</button>
+                            <button type="submit" class="btn btn-primary">{{ isset($dokumenp1) }}Ubah</button>
                         </form>
                     </div>
                 </div>
