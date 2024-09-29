@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 02 Sep 2024 pada 09.03
--- Versi server: 10.4.32-MariaDB
--- Versi PHP: 8.2.12
+-- Generation Time: Sep 29, 2024 at 09:17 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,20 +24,22 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `evaluasis`
+-- Table structure for table `evaluasis`
 --
 
 CREATE TABLE `evaluasis` (
-  `id_evaluasi` int(10) UNSIGNED NOT NULL,
-  `namaDokumen_evaluasi` varchar(1000) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `id_evaluasi` bigint(20) UNSIGNED NOT NULL,
+  `nama_prodi` varchar(255) NOT NULL,
+  `tanggal_terakhir_dilakukan` date NOT NULL,
+  `tanggal_diperbarui` date NOT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `failed_jobs`
+-- Table structure for table `failed_jobs`
 --
 
 CREATE TABLE `failed_jobs` (
@@ -53,7 +55,83 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `jamutims`
+-- Table structure for table `file_eval`
+--
+
+CREATE TABLE `file_eval` (
+  `id_feval` bigint(20) UNSIGNED NOT NULL,
+  `files` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `update_at` timestamp NULL DEFAULT NULL,
+  `id_nfeval` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `file_p1`
+--
+
+CREATE TABLE `file_p1` (
+  `id_fp1` bigint(20) UNSIGNED NOT NULL,
+  `files` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `file_p1`
+--
+
+INSERT INTO `file_p1` (`id_fp1`, `files`, `created_at`, `updated_at`) VALUES
+(1, '///01 kebijakan', '2024-09-25 06:45:44', '2024-09-25 06:45:44'),
+(2, '///standar pendidikan UTM', '2024-09-28 05:30:46', '2024-09-28 05:30:46');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `file_p2`
+--
+
+CREATE TABLE `file_p2` (
+  `id_fp2` bigint(20) UNSIGNED NOT NULL,
+  `files` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `file_p4`
+--
+
+CREATE TABLE `file_p4` (
+  `id_fp4` bigint(20) NOT NULL,
+  `files` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `update_at` timestamp NULL DEFAULT NULL,
+  `id_nfp4` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `file_p5`
+--
+
+CREATE TABLE `file_p5` (
+  `id_fp5` bigint(20) NOT NULL,
+  `files` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `update_at` timestamp NULL DEFAULT NULL,
+  `id_nfp5` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jamutims`
 --
 
 CREATE TABLE `jamutims` (
@@ -67,7 +145,7 @@ CREATE TABLE `jamutims` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `jamutims`
+-- Dumping data for table `jamutims`
 --
 
 INSERT INTO `jamutims` (`id`, `nip`, `nama`, `email`, `PJ`, `created_at`, `updated_at`) VALUES
@@ -77,7 +155,7 @@ INSERT INTO `jamutims` (`id`, `nip`, `nama`, `email`, `PJ`, `created_at`, `updat
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -87,7 +165,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -105,7 +183,87 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `password_resets`
+-- Table structure for table `nama_file_eval`
+--
+
+CREATE TABLE `nama_file_eval` (
+  `id_nfeval` bigint(20) UNSIGNED NOT NULL,
+  `nama_fileeval` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `update_at` timestamp NULL DEFAULT NULL,
+  `id_evaluasi` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nama_file_p1`
+--
+
+CREATE TABLE `nama_file_p1` (
+  `id_nfp1` bigint(20) UNSIGNED NOT NULL,
+  `id_fp1` bigint(20) UNSIGNED NOT NULL,
+  `nama_filep1` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `update_at` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `nama_file_p1`
+--
+
+INSERT INTO `nama_file_p1` (`id_nfp1`, `id_fp1`, `nama_filep1`, `created_at`, `update_at`) VALUES
+(1, 1, 'kebijakan spmi', '2024-09-25 07:11:35', '2024-09-25 07:11:35'),
+(2, 2, 'Standar Pendidikan Universitas Trunojoyo Madura', '2024-09-28 05:31:58', '2024-09-28 05:31:58');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nama_file_p2`
+--
+
+CREATE TABLE `nama_file_p2` (
+  `id_nfp2` bigint(20) UNSIGNED NOT NULL,
+  `id_fp2` bigint(20) UNSIGNED NOT NULL,
+  `nama_filep2` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `update_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nama_file_p4`
+--
+
+CREATE TABLE `nama_file_p4` (
+  `id_nfp4` bigint(20) NOT NULL,
+  `nama_filep4` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `update_at` timestamp NULL DEFAULT NULL,
+  `id_pengendalian` bigint(20) NOT NULL,
+  `id_fp4` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nama_file_p5`
+--
+
+CREATE TABLE `nama_file_p5` (
+  `id_nfp5` bigint(20) NOT NULL,
+  `nama_filep5` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `update_at` timestamp NULL DEFAULT NULL,
+  `id_peningkatan` bigint(20) NOT NULL,
+  `id_fp5` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -117,54 +275,53 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pelaksanaans`
+-- Table structure for table `pelaksanaans`
 --
 
 CREATE TABLE `pelaksanaans` (
-  `id_pelaksanaan` int(10) UNSIGNED NOT NULL,
-  `namaDokumen_pelaksanaan` varchar(1000) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `id_plks` bigint(20) UNSIGNED NOT NULL,
+  `level_plks` varchar(255) NOT NULL,
+  `id_nfp2` bigint(20) UNSIGNED NOT NULL,
+  `id_fp2` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `penetapans`
+-- Table structure for table `penetapans`
 --
 
 CREATE TABLE `penetapans` (
   `id_penetapan` bigint(20) UNSIGNED NOT NULL,
-  `level_penetapan` enum('perangkatspmi','standarinstitusi') NOT NULL DEFAULT 'perangkatspmi',
-  `status_dokumen` varchar(255) NOT NULL,
-  `namaDokumen_penetapan` varchar(255) NOT NULL,
-  `files` varchar(255) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `submenu_penetapan` varchar(255) NOT NULL,
+  `id_nfp1` bigint(20) UNSIGNED NOT NULL,
+  `id_fp1` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data untuk tabel `penetapans`
+-- Dumping data for table `penetapans`
 --
 
-INSERT INTO `penetapans` (`id_penetapan`, `level_penetapan`, `status_dokumen`, `namaDokumen_penetapan`, `files`, `created_at`, `updated_at`) VALUES
-(9, 'perangkatspmi', 'Ada', 'Kebijakan SPMI - UTM', '[\"\\/private\\/1724568255-01 Kebijakan SPMI.pdf\"]', '2024-08-24 23:44:15', '2024-08-24 23:50:16'),
-(10, 'perangkatspmi', 'Ada', 'Manual SPMI', '[\"\\/private\\/1724568546-Buku Pedoman SPMI 2018.pdf\"]', '2024-08-24 23:49:06', '2024-08-24 23:49:06'),
-(11, 'perangkatspmi', 'Ada', 'Standar SPMI', '[\"\\/private\\/1724659753-03 Standar SPMI.pdf\"]', '2024-08-26 01:09:13', '2024-08-26 01:09:13'),
-(32, 'standarinstitusi', 'Ada', 'Standar Pendidikan Universitas Trunojoyo Madura', 'a:1:{i:0;s:30:\"1725249217_03 Standar SPMI.pdf\";}', NULL, '2024-09-01 20:53:37'),
-(33, 'standarinstitusi', 'Tidak Ada', 'Standar Penelitian Universitas Trunojoyo Madura', '', NULL, NULL),
-(34, 'standarinstitusi', 'Ada', 'Standar Pengabdian Kepada Masyarakat Univeristas Trunojoyo Madura', '', NULL, NULL),
-(36, 'standarinstitusi', 'Ada', 'Standar Layanan Kemahasiswaan Univeristas Trunojoyo Madura', '', NULL, NULL);
+INSERT INTO `penetapans` (`id_penetapan`, `submenu_penetapan`, `id_nfp1`, `id_fp1`, `created_at`, `updated_at`) VALUES
+(1, 'perangkatspmi', 1, 1, '2024-09-25 07:12:29', '2024-09-25 07:12:29'),
+(44, 'standarinstitusi', 2, 2, '2024-09-28 05:33:34', '2024-09-28 05:33:34');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengendalians`
+-- Table structure for table `pengendalians`
 --
 
 CREATE TABLE `pengendalians` (
-  `id_pengendalian` int(10) UNSIGNED NOT NULL,
-  `namaDokumen_pengendalian` varchar(1000) NOT NULL,
+  `id_pengendalian` bigint(20) UNSIGNED NOT NULL,
+  `bidang_standar` varchar(255) NOT NULL,
+  `nama_prodi` varchar(255) NOT NULL,
+  `laporan_rtm` varchar(255) NOT NULL,
+  `laporan_rtl` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -172,20 +329,23 @@ CREATE TABLE `pengendalians` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `peningkatans`
+-- Table structure for table `peningkatans`
 --
 
 CREATE TABLE `peningkatans` (
   `id_peningkatan` int(10) UNSIGNED NOT NULL,
-  `namaDokumen_peningkatan` varchar(1000) NOT NULL,
+  `nama_dokumen_p5` varchar(255) NOT NULL,
+  `dokumenp5` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `id_nfp5` bigint(20) NOT NULL,
+  `id_fp5` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `personal_access_tokens`
+-- Table structure for table `personal_access_tokens`
 --
 
 CREATE TABLE `personal_access_tokens` (
@@ -203,7 +363,18 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `users`
+-- Table structure for table `tabel_prodi`
+--
+
+CREATE TABLE `tabel_prodi` (
+  `id_prodi` bigint(20) NOT NULL,
+  `nama_prodi` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -215,70 +386,136 @@ CREATE TABLE `users` (
   `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `evaluasis`
+-- Indexes for table `evaluasis`
 --
 ALTER TABLE `evaluasis`
   ADD PRIMARY KEY (`id_evaluasi`);
 
 --
--- Indeks untuk tabel `failed_jobs`
+-- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Indeks untuk tabel `jamutims`
+-- Indexes for table `file_eval`
+--
+ALTER TABLE `file_eval`
+  ADD PRIMARY KEY (`id_feval`);
+
+--
+-- Indexes for table `file_p1`
+--
+ALTER TABLE `file_p1`
+  ADD PRIMARY KEY (`id_fp1`);
+
+--
+-- Indexes for table `file_p2`
+--
+ALTER TABLE `file_p2`
+  ADD PRIMARY KEY (`id_fp2`);
+
+--
+-- Indexes for table `file_p4`
+--
+ALTER TABLE `file_p4`
+  ADD PRIMARY KEY (`id_fp4`);
+
+--
+-- Indexes for table `file_p5`
+--
+ALTER TABLE `file_p5`
+  ADD PRIMARY KEY (`id_fp5`);
+
+--
+-- Indexes for table `jamutims`
 --
 ALTER TABLE `jamutims`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `jamutims_email_unique` (`email`);
 
 --
--- Indeks untuk tabel `migrations`
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indeks untuk tabel `password_resets`
+-- Indexes for table `nama_file_eval`
+--
+ALTER TABLE `nama_file_eval`
+  ADD PRIMARY KEY (`id_nfeval`);
+
+--
+-- Indexes for table `nama_file_p1`
+--
+ALTER TABLE `nama_file_p1`
+  ADD PRIMARY KEY (`id_nfp1`),
+  ADD KEY `namafilep1_filep1_foreign` (`id_fp1`);
+
+--
+-- Indexes for table `nama_file_p2`
+--
+ALTER TABLE `nama_file_p2`
+  ADD PRIMARY KEY (`id_nfp2`),
+  ADD KEY `namafilep2_filep2_foreign` (`id_fp2`);
+
+--
+-- Indexes for table `nama_file_p4`
+--
+ALTER TABLE `nama_file_p4`
+  ADD PRIMARY KEY (`id_nfp4`);
+
+--
+-- Indexes for table `nama_file_p5`
+--
+ALTER TABLE `nama_file_p5`
+  ADD PRIMARY KEY (`id_nfp5`);
+
+--
+-- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
--- Indeks untuk tabel `pelaksanaans`
+-- Indexes for table `pelaksanaans`
 --
 ALTER TABLE `pelaksanaans`
-  ADD PRIMARY KEY (`id_pelaksanaan`);
+  ADD PRIMARY KEY (`id_plks`),
+  ADD KEY `pelaksanaan_namafilep2_foreign` (`id_nfp2`),
+  ADD KEY `pelaksanaan_filep2_foreign` (`id_fp2`);
 
 --
--- Indeks untuk tabel `penetapans`
+-- Indexes for table `penetapans`
 --
 ALTER TABLE `penetapans`
-  ADD PRIMARY KEY (`id_penetapan`);
+  ADD PRIMARY KEY (`id_penetapan`),
+  ADD KEY `penetapan_namafilep1_foreign` (`id_nfp1`),
+  ADD KEY `penetapan_filep1_foreign` (`id_fp1`);
 
 --
--- Indeks untuk tabel `pengendalians`
+-- Indexes for table `pengendalians`
 --
 ALTER TABLE `pengendalians`
   ADD PRIMARY KEY (`id_pengendalian`);
 
 --
--- Indeks untuk tabel `peningkatans`
+-- Indexes for table `peningkatans`
 --
 ALTER TABLE `peningkatans`
   ADD PRIMARY KEY (`id_peningkatan`);
 
 --
--- Indeks untuk tabel `personal_access_tokens`
+-- Indexes for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
@@ -286,75 +523,171 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Indeks untuk tabel `users`
+-- Indexes for table `tabel_prodi`
+--
+ALTER TABLE `tabel_prodi`
+  ADD PRIMARY KEY (`id_prodi`);
+
+--
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
+  ADD UNIQUE KEY `email` (`email`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `evaluasis`
+-- AUTO_INCREMENT for table `evaluasis`
 --
 ALTER TABLE `evaluasis`
-  MODIFY `id_evaluasi` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_evaluasi` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT untuk tabel `failed_jobs`
+-- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `jamutims`
+-- AUTO_INCREMENT for table `file_eval`
+--
+ALTER TABLE `file_eval`
+  MODIFY `id_feval` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `file_p1`
+--
+ALTER TABLE `file_p1`
+  MODIFY `id_fp1` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `file_p2`
+--
+ALTER TABLE `file_p2`
+  MODIFY `id_fp2` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `file_p4`
+--
+ALTER TABLE `file_p4`
+  MODIFY `id_fp4` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `file_p5`
+--
+ALTER TABLE `file_p5`
+  MODIFY `id_fp5` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `jamutims`
 --
 ALTER TABLE `jamutims`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT untuk tabel `migrations`
+-- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT untuk tabel `pelaksanaans`
+-- AUTO_INCREMENT for table `nama_file_eval`
+--
+ALTER TABLE `nama_file_eval`
+  MODIFY `id_nfeval` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `nama_file_p1`
+--
+ALTER TABLE `nama_file_p1`
+  MODIFY `id_nfp1` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `nama_file_p2`
+--
+ALTER TABLE `nama_file_p2`
+  MODIFY `id_nfp2` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `nama_file_p4`
+--
+ALTER TABLE `nama_file_p4`
+  MODIFY `id_nfp4` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `nama_file_p5`
+--
+ALTER TABLE `nama_file_p5`
+  MODIFY `id_nfp5` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `pelaksanaans`
 --
 ALTER TABLE `pelaksanaans`
-  MODIFY `id_pelaksanaan` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_plks` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `penetapans`
+-- AUTO_INCREMENT for table `penetapans`
 --
 ALTER TABLE `penetapans`
-  MODIFY `id_penetapan` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id_penetapan` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
--- AUTO_INCREMENT untuk tabel `pengendalians`
+-- AUTO_INCREMENT for table `pengendalians`
 --
 ALTER TABLE `pengendalians`
-  MODIFY `id_pengendalian` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pengendalian` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT untuk tabel `peningkatans`
+-- AUTO_INCREMENT for table `peningkatans`
 --
 ALTER TABLE `peningkatans`
   MODIFY `id_peningkatan` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `personal_access_tokens`
+-- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT untuk tabel `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `nama_file_p1`
+--
+ALTER TABLE `nama_file_p1`
+  ADD CONSTRAINT `namafilep1_filep1_foreign` FOREIGN KEY (`id_fp1`) REFERENCES `file_p1` (`id_fp1`);
+
+--
+-- Constraints for table `nama_file_p2`
+--
+ALTER TABLE `nama_file_p2`
+  ADD CONSTRAINT `namafilep2_filep2_foreign` FOREIGN KEY (`id_fp2`) REFERENCES `file_p2` (`id_fp2`);
+
+--
+-- Constraints for table `pelaksanaans`
+--
+ALTER TABLE `pelaksanaans`
+  ADD CONSTRAINT `pelaksanaan_filep2_foreign` FOREIGN KEY (`id_fp2`) REFERENCES `file_p2` (`id_fp2`),
+  ADD CONSTRAINT `pelaksanaan_namafilep2_foreign` FOREIGN KEY (`id_nfp2`) REFERENCES `nama_file_p2` (`id_nfp2`);
+
+--
+-- Constraints for table `penetapans`
+--
+ALTER TABLE `penetapans`
+  ADD CONSTRAINT `penetapan_filep1_foreign` FOREIGN KEY (`id_fp1`) REFERENCES `file_p1` (`id_fp1`),
+  ADD CONSTRAINT `penetapan_namafilep1_foreign` FOREIGN KEY (`id_nfp1`) REFERENCES `nama_file_p1` (`id_nfp1`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
