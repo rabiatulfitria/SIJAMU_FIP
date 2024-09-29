@@ -119,7 +119,7 @@
                         <ul class="menu-sub">
                             <li class="menu-item {{ \Route::is('penetapan.perangkat') ? 'active' : '' }}">
                                 <a href="{{ route('penetapan.perangkat') }}" class="menu-link">
-                                    <div data-i18n="Perangkat">Dokumen SPMI</div>
+                                    <div data-i18n="Dokumen">Dokumen SPMI</div>
                                 </a>
                             </li>
                             <li class="menu-item {{ \Route::is('penetapan.standar') ? 'active' : '' }}">

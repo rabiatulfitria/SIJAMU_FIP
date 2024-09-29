@@ -70,7 +70,7 @@
 
 @section('content')
     <div class="card">
-        <h5 class="card-header">Perangkat SPMI</h5>
+        <h5 class="card-header">Dokumen SPMI</h5> {{-- Dokumen SPMI (Perangkat SPMI) --}}
         <div class="table-responsive text-nowrap">
             <table class="table">
                 <thead class="table-purple">

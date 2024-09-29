@@ -28,8 +28,8 @@ n
                                 <label class="form-label" for="bx bx-file">Nama Standar</label>
                                 <div class="input-group input-group-merge">
                                     <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-file"></i></span>
-                                    <input type="text" class="form-control" id="bx bx-file" name="namaDokumen_penetapan" value="{{$nama}}" placeholder="Nama Dokumen" aria-label="" aria-describedby="bx bx-file" disabled />
-                                    <input type="hidden" name="level_penetapan" value="standarspmi">
+                                    <input type="text" class="form-control" id="bx bx-file" name="nama_filep1" value="{{$nama}}" placeholder="Nama Dokumen" aria-label="" aria-describedby="bx bx-file" disabled />
+                                    <input type="hidden" name="submenu_penetapan" value="standarspmi">
                                     <input type="hidden" name="id_penetapan" value="{{$id}}">
                                 </div>
                                 {{-- type hidden berfungsi untuk mengambil(get) untuk kolom input pada nama dokumen,jadi sesuai dengan id dan level pada database--}}

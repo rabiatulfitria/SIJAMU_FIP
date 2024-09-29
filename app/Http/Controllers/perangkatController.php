@@ -24,7 +24,7 @@ class perangkatController extends Controller
             ->where('submenu_penetapan', 'perangkatspmi')
             ->get();
 
-        return view('User.admin.Penetapan.perangkatspmi', compact('perangkat'));
+        return view('User.admin.Penetapan.perangkatspmi', compact('dokumenp1'));
     }
 
     public function create()  //tombol Tambah
@@ -60,7 +60,7 @@ class perangkatController extends Controller
             }
         }
 
-        // Simpan data nama_filep1 (asumsikan relasi one-to-one)
+        // Simpan data nama_filep1
         $namaFileP1 = new NamaFileP1();
         $namaFileP1->nama_filep1 = $validatedData['nama_filep1'];
         $namaFileP1->save();
@@ -101,6 +101,8 @@ class perangkatController extends Controller
 
     public function update(Request $request, $id_penetapan)
     {
+        dd($request);
+
         $dataUpdate = Penetapan::findOrFail($id_penetapan);
 
         $request->validate([
@@ -109,28 +111,36 @@ class perangkatController extends Controller
             'files.*' => 'required|mimes:doc,docx,xls,xlsx|max:2048'
         ]);
 
-        $dataUpdate->nama_filep1 = $request->input('nama_file_p1');
+        $dataUpdate->submenu_penetapan = $request->input('submenu_penetapan');
+        $dataUpdate->save();
 
-        // Proses file baru jika ada
+        $namaFileP1 = NamaFileP1::find($request->input('nama_filep1'));
+        $dataUpdate->namaFileP1()->associate($namaFileP1);
+        $dataUpdate->save();
+
+        // Proses file baru
         if ($request->hasFile('files')) {
-            // Hapus file lama dari storage
-            $oldFiles = json_decode($dataUpdate->files, true);
-            if (is_array($oldFiles)) {
-                foreach ($oldFiles as $oldFile) {
-                    if (Storage::disk('local')->exists($oldFile)) {
-                        Storage::disk('local')->delete($oldFile);
-                    }
-                }
-            }
-            $filePaths = [];
+            // Hapus file lama yang tidak ada di request baru
+            $oldFilePaths = json_decode($dataUpdate->files, true) ?? [];
+            $newFilePaths = [];
             foreach ($request->file('files') as $file) {
                 $namaDokumen = time() . '-' . $file->getClientOriginalName();
-                Storage::disk('local')->put('/perangkatspmi/' . $namaDokumen, File::get($file));
-                $filePaths[] = '/perangkatspmi/' . $namaDokumen;
+                $path = Storage::disk('local')->put('/perangkatspmi/' . $namaDokumen, $file);
+                $newFilePaths[] = $path;
             }
-            $dataUpdate->files = json_encode($filePaths);
+            $dataUpdate->fileP1()->syncWithoutDetaching($newFilePaths); // Simpan file baru tanpa menghapus yang lama
+
+            // Hapus file lama yang tidak ada di newFilePaths
+            $filesToDelete = array_diff($oldFilePaths, $newFilePaths);
+            foreach ($filesToDelete as $fileToDelete) {
+                Storage::disk('local')->delete($fileToDelete);
+            }
+
+            $dataUpdate->files = json_encode($newFilePaths);
         }
         $dataUpdate->save();
+
+
         Alert::success('success', 'Dokumen berhasil diperbarui.');
         return redirect()->route('penetapan.perangkat');
     }

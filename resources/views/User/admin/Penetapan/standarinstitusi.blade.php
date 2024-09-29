@@ -82,16 +82,16 @@
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
-                    @foreach ($standar as $key => $s)
+                    @foreach ($standar as $key => $row) {{-- as $key => $s --}}
                         {{-- {{ dd($s) }} --}}
 
                         <tr>
                             <td>{{ $key + 1 }}</td>
-                            <td class="me-3" style="font-size: 13px">{{ $s->namaDokumen_penetapan }}</td>
-                            <td style="text-align:left">{{ $s->status_dokumen }}</td>
+                            <td class="me-3" style="font-size: 13px">{{ $row->nama_filep1 }}</td>
+                            <td style="text-align:left">{{ $row->status_dokumen }}</td>
                             <td>
-                                @if (!empty($s->files))
-                                    <a href="{{ route('FolderDokumenStandar', ['id' => $s->id_penetapan]) }}"
+                                @if (!empty($row->files))
+                                    <a href="{{ route('FolderDokumenStandar', ['id' => $row->id_penetapan]) }}"
                                         class="badge bg-label-info me-1">
                                         <i class="bi bi-link-45deg">Dokumen</i>
                                     </a>
@@ -107,14 +107,14 @@
                                     </button>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" type="button"
-                                            onclick="window.location.href='{{ route('unggahDokumenStandar', ['id' => $s->id_penetapan]) }}'"><i
+                                            onclick="window.location.href='{{ route('unggahDokumenStandar', ['id' => $row->id_penetapan]) }}'"><i
                                                 class="bx bx-upload"></i>
                                             Unggah Dokumen</a>
                                         @if (session('success'))
                                             <div>{{ @session('success') }}</div>
                                         @endif
                                         <a class="dropdown-item"
-                                            onclick="window.location.href='{{ route('editDataStandar', ['id' => $s->id_penetapan]) }}'">
+                                            onclick="window.location.href='{{ route('editDataStandar', ['id' => $row->id_penetapan]) }}'">
                                             <i class="bx bx-edit-alt me-1"></i> Ubah Data
                                         </a>
                                         <a class="dropdown-item btn btn-outline-danger" href="javascript:void(0);">

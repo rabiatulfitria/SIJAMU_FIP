@@ -15,25 +15,39 @@ class standarController extends Controller
 {
     public function index()
     {
-        $standar = Penetapan::where('level_penetapan', 'standarinstitusi')
-            ->get();
-        foreach ($standar as $s) {
-            $files = unserialize($s->files);
-        }
-        return view('User.admin.Penetapan.standarinstitusi', compact(['standar', 'files']));
+        $standar = Penetapan::with('fileP1', 'namaFileP1')
+        ->join('file_p1', 'penetapans.id_nfp1', '=', 'file_p1.id_fp1')
+        ->join('nama_file_p1', 'nama_file_p1.id_fp1', '=', 'file_p1.id_fp1')
+        ->select('penetapans.id_penetapan', 'penetapans.submenu_penetapan', 'nama_file_p1.nama_filep1', 'file_p1.files')
+        ->where('submenu_penetapan', 'standarinstitusi')
+        ->get();
+        // foreach ($standar as $s) {
+        //     $files = unserialize($s->files);
+        // }
+        return view('User.admin.Penetapan.standarinstitusi', compact(['standar'])); //compact(['standar', 'files'])
     }
 
     public function folder($id)
     {
-        $standar = Penetapan::where('id_penetapan', $id)->first();
+        $standar = Penetapan::with('fileP1', 'namaFileP1')
+        ->join('file_p1', 'penetapans.id_nfp1', '=', 'file_p1.id_fp1')
+        ->join('nama_file_p1', 'nama_file_p1.id_fp1', '=', 'file_p1.id_fp1')
+        ->select('penetapans.id_penetapan', 'penetapans.submenu_penetapan', 'nama_file_p1.nama_filep1', 'file_p1.files')
+        ->where('id_penetapan', $id)
+        ->first();
         $files = unserialize($standar->files);
         return view('User.admin.Penetapan.folder_dokumen.dokumen_standarpendidikan', compact('standar', 'files'));
     }
 
-    public function create($id)  //tombol Unggah | $id: mengambil data id di row tabel standarinstitusi.blade
+    public function create($id)  //tombol Unggah | $id: mengambil data id di row tabel standarinstitusi.blade // first: mengambil satu data dari satu row
     {
-        $penetapan = Penetapan::where('id_penetapan', $id)->first(); // first: mengambil satu data dari satu row
-        $namaDokumen = $penetapan->namaDokumen_penetapan;
+        $penetapan = Penetapan::with('fileP1', 'namaFileP1')
+        ->join('file_p1', 'penetapans.id_nfp1', '=', 'file_p1.id_fp1')
+        ->join('nama_file_p1', 'nama_file_p1.id_fp1', '=', 'file_p1.id_fp1')
+        ->select('penetapans.id_penetapan', 'penetapans.submenu_penetapan', 'nama_file_p1.nama_filep1', 'file_p1.files')
+        ->where('id_penetapan', $id)
+        ->first();
+        $namaDokumen = $penetapan->nama_filep1;
         return view('User.admin.Penetapan.folder_dokumen.tambahdokumen_standarspmi')->with(['id' => $id, 'nama' => $namaDokumen]);
     }
 
@@ -85,41 +99,6 @@ class standarController extends Controller
 
         Alert::success('success', 'Standar berhasil ditambahkan.');
         return redirect()->route('penetapan.standar');
-        // }
-
-        // $validateData = $request->validate([
-        //     'level_penetapan' => 'required|in:standarinstitusi',
-        //     'namaDokumen_penetapan' => 'required|string',
-        //     'default-radio-1' => 'required|string',
-        //     'files.*' => 'required|mimes:doc,docx,xls,xlsx|max:2048'
-        // ]);
-
-        // if ($validateData) {
-        //     $option = $request->input('default-radio-1');
-
-        //     // Inisialisasi variabel $dokumen
-        //     $dokumen = json_decode($standar->files, true);
-
-        //     // Proses upload file
-        //     if ($request->hasFile('files')) {
-        //         foreach ($request->file('files') as $file) {
-        //             $filename = time() . '_' . $file->getClientOriginalName();
-        //             $file->storeAs('standarinstitusi', $filename);
-        //             $dokumen[] = $filename; // Tambahkan file ke array dokumen
-        //         }
-        //     }
-
-        //     // Simpan data ke dalam model
-        //     $model = new Penetapan();
-        //     $model->level_penetapan = $request->input('level_penetapan');
-        //     $model->namaDokumen_penetapan = $request->input('namaDokumen_penetapan');
-        //     $model->files = json_encode($dokumen); // Simpan file dalam format JSON
-        //     $model->status_dokumen = $option;
-        //     $model->save();
-
-        //     Alert::success('success', 'Standar berhasil ditambahkan.');
-        //     return redirect()->route('penetapan.standar');
-        // }
     }
 
 
