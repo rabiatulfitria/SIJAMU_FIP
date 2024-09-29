@@ -48,7 +48,7 @@ class standarController extends Controller
         ->where('id_penetapan', $id)
         ->first();
         $namaDokumen = $penetapan->nama_filep1;
-        return view('User.admin.Penetapan.folder_dokumen.tambahdokumen_standarspmi')->with(['id' => $id, 'nama' => $namaDokumen]);
+        return view('User.admin.Penetapan.folder_dokumen.tambahdokumen_standarinstitusi')->with(['id' => $id, 'nama' => $namaDokumen]);
     }
 
     public function uploadDokumen(Request $request)
