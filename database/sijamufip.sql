@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 29, 2024 at 09:17 AM
+-- Generation Time: Oct 05, 2024 at 04:13 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -90,12 +90,40 @@ INSERT INTO `file_p1` (`id_fp1`, `files`, `created_at`, `updated_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `file_p2`
+-- Table structure for table `file_p2_renpro`
 --
 
-CREATE TABLE `file_p2` (
-  `id_fp2` bigint(20) UNSIGNED NOT NULL,
+CREATE TABLE `file_p2_renpro` (
+  `id_fp2_renpro` bigint(20) UNSIGNED NOT NULL,
+  `id_plks` bigint(20) UNSIGNED NOT NULL,
+  `id_nfp2_renpro` bigint(20) UNSIGNED NOT NULL,
   `files` varchar(255) NOT NULL,
+  `tahun1` varchar(255) NOT NULL,
+  `tahun2` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `file_p2_renpro`
+--
+
+INSERT INTO `file_p2_renpro` (`id_fp2_renpro`, `id_plks`, `id_nfp2_renpro`, `files`, `tahun1`, `tahun2`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, '/000_renstra-pif\\', '2020-2022', '', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `file_p2_rps`
+--
+
+CREATE TABLE `file_p2_rps` (
+  `id_fp2_rps` bigint(20) UNSIGNED NOT NULL,
+  `id_plks` bigint(20) UNSIGNED NOT NULL,
+  `id_nfp2_rps` bigint(20) UNSIGNED NOT NULL,
+  `files` varchar(255) NOT NULL,
+  `tahun1` varchar(255) NOT NULL,
+  `tahun2` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -183,6 +211,43 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `nama_filep2_renpro`
+--
+
+CREATE TABLE `nama_filep2_renpro` (
+  `id_nfp2_renpro` bigint(20) UNSIGNED NOT NULL,
+  `id_plks` bigint(20) UNSIGNED NOT NULL,
+  `nama_file` varchar(255) NOT NULL,
+  `id_prodi` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `update_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `nama_filep2_renpro`
+--
+
+INSERT INTO `nama_filep2_renpro` (`id_nfp2_renpro`, `id_plks`, `nama_file`, `id_prodi`, `created_at`, `update_at`) VALUES
+(1, 1, 'Renstra-PIF', 3, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nama_filep2_rps`
+--
+
+CREATE TABLE `nama_filep2_rps` (
+  `id_nfp2_rps` bigint(20) UNSIGNED NOT NULL,
+  `id_plks` bigint(20) UNSIGNED NOT NULL,
+  `nama_file` varchar(255) NOT NULL,
+  `id_prodi` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `update_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `nama_file_eval`
 --
 
@@ -215,20 +280,6 @@ CREATE TABLE `nama_file_p1` (
 INSERT INTO `nama_file_p1` (`id_nfp1`, `id_fp1`, `nama_filep1`, `created_at`, `update_at`) VALUES
 (1, 1, 'kebijakan spmi', '2024-09-25 07:11:35', '2024-09-25 07:11:35'),
 (2, 2, 'Standar Pendidikan Universitas Trunojoyo Madura', '2024-09-28 05:31:58', '2024-09-28 05:31:58');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `nama_file_p2`
---
-
-CREATE TABLE `nama_file_p2` (
-  `id_nfp2` bigint(20) UNSIGNED NOT NULL,
-  `id_fp2` bigint(20) UNSIGNED NOT NULL,
-  `nama_filep2` varchar(255) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `update_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -281,11 +332,17 @@ CREATE TABLE `password_resets` (
 CREATE TABLE `pelaksanaans` (
   `id_plks` bigint(20) UNSIGNED NOT NULL,
   `level_plks` varchar(255) NOT NULL,
-  `id_nfp2` bigint(20) UNSIGNED NOT NULL,
-  `id_fp2` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `pelaksanaans`
+--
+
+INSERT INTO `pelaksanaans` (`id_plks`, `level_plks`, `created_at`, `updated_at`) VALUES
+(1, 'Prodi', '2024-10-04 14:54:13', '2024-10-04 14:54:13'),
+(2, 'Fakultas', '2024-10-04 14:54:13', '2024-10-04 14:54:13');
 
 -- --------------------------------------------------------
 
@@ -367,9 +424,20 @@ CREATE TABLE `personal_access_tokens` (
 --
 
 CREATE TABLE `tabel_prodi` (
-  `id_prodi` bigint(20) NOT NULL,
+  `id_prodi` bigint(20) UNSIGNED NOT NULL,
   `nama_prodi` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tabel_prodi`
+--
+
+INSERT INTO `tabel_prodi` (`id_prodi`, `nama_prodi`) VALUES
+(1, 'Pendidikan Guru Sekolah Dasar (PGSD)'),
+(2, 'Pendidikan Bahasa dan Sastra Indonesia (PBSI)'),
+(3, 'Pendidikan Informatika (PIF)'),
+(4, 'Pendidikan Ilmu Pengetahuan Alam (PIPA)'),
+(5, 'Pendidikan Guru Pendidikan Anak Usia Dini (PGPAUD)');
 
 -- --------------------------------------------------------
 
@@ -418,10 +486,20 @@ ALTER TABLE `file_p1`
   ADD PRIMARY KEY (`id_fp1`);
 
 --
--- Indexes for table `file_p2`
+-- Indexes for table `file_p2_renpro`
 --
-ALTER TABLE `file_p2`
-  ADD PRIMARY KEY (`id_fp2`);
+ALTER TABLE `file_p2_renpro`
+  ADD PRIMARY KEY (`id_fp2_renpro`),
+  ADD KEY `renpro_pelaksanaans_foreign` (`id_plks`),
+  ADD KEY `renpro_namafilep2_foreign` (`id_nfp2_renpro`);
+
+--
+-- Indexes for table `file_p2_rps`
+--
+ALTER TABLE `file_p2_rps`
+  ADD PRIMARY KEY (`id_fp2_rps`),
+  ADD KEY `rps_pelaksanaans_foreign` (`id_plks`),
+  ADD KEY `rps_namafilep2_rps_foreign` (`id_nfp2_rps`);
 
 --
 -- Indexes for table `file_p4`
@@ -449,6 +527,22 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `nama_filep2_renpro`
+--
+ALTER TABLE `nama_filep2_renpro`
+  ADD PRIMARY KEY (`id_nfp2_renpro`),
+  ADD KEY `nfilep2_renpro_tprodi_foreign` (`id_prodi`),
+  ADD KEY `nfilep2_renpro_pelaksanaans_foreign` (`id_plks`);
+
+--
+-- Indexes for table `nama_filep2_rps`
+--
+ALTER TABLE `nama_filep2_rps`
+  ADD PRIMARY KEY (`id_nfp2_rps`),
+  ADD KEY `namafilep2_prodi_foreign` (`id_prodi`),
+  ADD KEY `nfilep2_rps_pelaksanaans_foreign` (`id_plks`);
+
+--
 -- Indexes for table `nama_file_eval`
 --
 ALTER TABLE `nama_file_eval`
@@ -460,13 +554,6 @@ ALTER TABLE `nama_file_eval`
 ALTER TABLE `nama_file_p1`
   ADD PRIMARY KEY (`id_nfp1`),
   ADD KEY `namafilep1_filep1_foreign` (`id_fp1`);
-
---
--- Indexes for table `nama_file_p2`
---
-ALTER TABLE `nama_file_p2`
-  ADD PRIMARY KEY (`id_nfp2`),
-  ADD KEY `namafilep2_filep2_foreign` (`id_fp2`);
 
 --
 -- Indexes for table `nama_file_p4`
@@ -490,9 +577,7 @@ ALTER TABLE `password_resets`
 -- Indexes for table `pelaksanaans`
 --
 ALTER TABLE `pelaksanaans`
-  ADD PRIMARY KEY (`id_plks`),
-  ADD KEY `pelaksanaan_namafilep2_foreign` (`id_nfp2`),
-  ADD KEY `pelaksanaan_filep2_foreign` (`id_fp2`);
+  ADD PRIMARY KEY (`id_plks`);
 
 --
 -- Indexes for table `penetapans`
@@ -564,10 +649,16 @@ ALTER TABLE `file_p1`
   MODIFY `id_fp1` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `file_p2`
+-- AUTO_INCREMENT for table `file_p2_renpro`
 --
-ALTER TABLE `file_p2`
-  MODIFY `id_fp2` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `file_p2_renpro`
+  MODIFY `id_fp2_renpro` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `file_p2_rps`
+--
+ALTER TABLE `file_p2_rps`
+  MODIFY `id_fp2_rps` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `file_p4`
@@ -594,6 +685,18 @@ ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
+-- AUTO_INCREMENT for table `nama_filep2_renpro`
+--
+ALTER TABLE `nama_filep2_renpro`
+  MODIFY `id_nfp2_renpro` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `nama_filep2_rps`
+--
+ALTER TABLE `nama_filep2_rps`
+  MODIFY `id_nfp2_rps` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `nama_file_eval`
 --
 ALTER TABLE `nama_file_eval`
@@ -604,12 +707,6 @@ ALTER TABLE `nama_file_eval`
 --
 ALTER TABLE `nama_file_p1`
   MODIFY `id_nfp1` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `nama_file_p2`
---
-ALTER TABLE `nama_file_p2`
-  MODIFY `id_nfp2` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `nama_file_p4`
@@ -627,7 +724,7 @@ ALTER TABLE `nama_file_p5`
 -- AUTO_INCREMENT for table `pelaksanaans`
 --
 ALTER TABLE `pelaksanaans`
-  MODIFY `id_plks` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id_plks` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `penetapans`
@@ -654,6 +751,12 @@ ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `tabel_prodi`
+--
+ALTER TABLE `tabel_prodi`
+  MODIFY `id_prodi` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
@@ -664,23 +767,38 @@ ALTER TABLE `users`
 --
 
 --
+-- Constraints for table `file_p2_renpro`
+--
+ALTER TABLE `file_p2_renpro`
+  ADD CONSTRAINT `renpro_namafilep2_foreign` FOREIGN KEY (`id_nfp2_renpro`) REFERENCES `nama_filep2_renpro` (`id_nfp2_renpro`),
+  ADD CONSTRAINT `renpro_pelaksanaans_foreign` FOREIGN KEY (`id_plks`) REFERENCES `pelaksanaans` (`id_plks`);
+
+--
+-- Constraints for table `file_p2_rps`
+--
+ALTER TABLE `file_p2_rps`
+  ADD CONSTRAINT `rps_namafilep2_rps_foreign` FOREIGN KEY (`id_nfp2_rps`) REFERENCES `nama_filep2_rps` (`id_nfp2_rps`),
+  ADD CONSTRAINT `rps_pelaksanaans_foreign` FOREIGN KEY (`id_plks`) REFERENCES `pelaksanaans` (`id_plks`);
+
+--
+-- Constraints for table `nama_filep2_renpro`
+--
+ALTER TABLE `nama_filep2_renpro`
+  ADD CONSTRAINT `nfilep2_renpro_pelaksanaans_foreign` FOREIGN KEY (`id_plks`) REFERENCES `pelaksanaans` (`id_plks`),
+  ADD CONSTRAINT `nfilep2_renpro_tprodi_foreign` FOREIGN KEY (`id_prodi`) REFERENCES `tabel_prodi` (`id_prodi`);
+
+--
+-- Constraints for table `nama_filep2_rps`
+--
+ALTER TABLE `nama_filep2_rps`
+  ADD CONSTRAINT `nfilep2_rps_pelaksanaans_foreign` FOREIGN KEY (`id_plks`) REFERENCES `pelaksanaans` (`id_plks`),
+  ADD CONSTRAINT `nfilep2_rps_tprodi_foreign` FOREIGN KEY (`id_prodi`) REFERENCES `tabel_prodi` (`id_prodi`);
+
+--
 -- Constraints for table `nama_file_p1`
 --
 ALTER TABLE `nama_file_p1`
   ADD CONSTRAINT `namafilep1_filep1_foreign` FOREIGN KEY (`id_fp1`) REFERENCES `file_p1` (`id_fp1`);
-
---
--- Constraints for table `nama_file_p2`
---
-ALTER TABLE `nama_file_p2`
-  ADD CONSTRAINT `namafilep2_filep2_foreign` FOREIGN KEY (`id_fp2`) REFERENCES `file_p2` (`id_fp2`);
-
---
--- Constraints for table `pelaksanaans`
---
-ALTER TABLE `pelaksanaans`
-  ADD CONSTRAINT `pelaksanaan_filep2_foreign` FOREIGN KEY (`id_fp2`) REFERENCES `file_p2` (`id_fp2`),
-  ADD CONSTRAINT `pelaksanaan_namafilep2_foreign` FOREIGN KEY (`id_nfp2`) REFERENCES `nama_file_p2` (`id_nfp2`);
 
 --
 -- Constraints for table `penetapans`
