@@ -4,27 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Models\Penetapan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
-use RealRashid\SweetAlert\Facades\Alert;
+use function PHPUnit\Framework\isNull;
 
 use function PHPUnit\Framework\isEmpty;
-use function PHPUnit\Framework\isNull;
+use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class standarController extends Controller
 {
     public function index()
     {
-        $standar = Penetapan::with('fileP1', 'namaFileP1')
-        ->join('file_p1', 'penetapans.id_nfp1', '=', 'file_p1.id_fp1')
-        ->join('nama_file_p1', 'nama_file_p1.id_fp1', '=', 'file_p1.id_fp1')
-        ->select('penetapans.id_penetapan', 'penetapans.submenu_penetapan', 'nama_file_p1.nama_filep1', 'file_p1.files')
-        ->where('submenu_penetapan', 'standarinstitusi')
-        ->get();
+         // Mengambil data dari tabel standar_institutusi beserta nama prodi dari tabel_prodi
+         $dokumenp1 = DB::table('standar_institutusi')
+         ->join('tabel_prodi', 'standar_institutusi.namaprodi', '=', 'tabel_prodi.id_prodi')
+         ->select('standar_institutusi.*', 'tabel_prodi.nama_prodi')
+         ->get();
         // foreach ($standar as $s) {
         //     $files = unserialize($s->files);
         // }
-        return view('User.admin.Penetapan.standarinstitusi', compact(['standar'])); //compact(['standar', 'files'])
+        return view('User.admin.Penetapan.standarinstitusi', compact('dokumenp1')); //compact(['standar', 'files'])
     }
 
     public function folder($id)
@@ -41,10 +41,17 @@ class standarController extends Controller
 
     public function create($id)  //tombol Unggah | $id: mengambil data id di row tabel standarinstitusi.blade // first: mengambil satu data dari satu row
     {
-        $penetapan = Penetapan::with('fileP1', 'namaFileP1')
-        ->join('file_p1', 'penetapans.id_nfp1', '=', 'file_p1.id_fp1')
-        ->join('nama_file_p1', 'nama_file_p1.id_fp1', '=', 'file_p1.id_fp1')
-        ->select('penetapans.id_penetapan', 'penetapans.submenu_penetapan', 'nama_file_p1.nama_filep1', 'file_p1.files')
+        $penetapan = DB::table('penetapans')
+        ->select(
+            'penetapans.id_penetapan',
+            'penetapans.submenu_penetapan',
+            'penetapans.id_nfp1',
+            'penetapans.id_fp1',
+            'nama_file_p1.nama_filep1',  // Ambil nama_filep1 dari tabel nama_file_p1
+            'file_p1.files'  // Ambil files dari tabel file_p1
+        )
+        ->join('nama_file_p1', 'penetapans.id_nfp1', '=', 'nama_file_p1.id_nfp1')  // Join ke nama_file_p1 berdasarkan id_nfp1
+        ->join('file_p1', 'penetapans.id_fp1', '=', 'file_p1.id_fp1')  // Join ke file_p1 berdasarkan id_fp1
         ->where('id_penetapan', $id)
         ->first();
         $namaDokumen = $penetapan->nama_filep1;
@@ -53,54 +60,106 @@ class standarController extends Controller
 
     public function uploadDokumen(Request $request)
     {
-        $array = Penetapan::find($request->id_penetapan);
-        if ($request->hasFile('files')) {
-            $file = $request->file('files');
-            $filename = time() . '_' . $file->getClientOriginalName();
-            $file->storeAs('standarinstitusi', $filename);
-            if ($array->files == "") {
-                $dokumen = array($filename);
-                $array->files = serialize($dokumen); //serialize berfungsi untuk menjadikan inputan file jadi bentuk array. kodenya berupa a:1 (artinya ada 1 array tersimpan)
-                $array->save();
-            } else {
-                $dokumen = unserialize($array->files);
-                $dokumen = array_merge($dokumen, array($filename));
-                $array->files = serialize($dokumen);
-                $array->save();
+        try {
+            // Validasi input
+            $validatedData = $request->validate([
+                'id_penetapan' => 'required',
+                'files.*' => 'nullable|mimes:doc,docx,xls,xlsx,pdf|max:2048',
+            ]);
+
+            // Dapatkan id_penetapan dari request
+            $idPenetapan = $validatedData['id_penetapan'];
+
+            // Cek apakah ada file baru yang diunggah
+            if ($request->hasFile('files')) {
+                $namaDokumen = [];
+                foreach ($request->file('files') as $file) {
+                    $namaFile = time() . '-' . $file->getClientOriginalName();
+                    $file->storeAs('standar', $namaFile, 'public');
+                    $namaDokumen[] = $namaFile;  // Simpan nama file di array
+                }
+
+                // Gabungkan nama file menjadi string
+                if (!empty($namaDokumen)) {
+                    $namaDokumen = implode(',', $namaDokumen);
+                }
+
+                // Update hanya kolom files di tabel FileP1 yang terkait dengan penetapan
+                DB::table('file_p1')
+                    ->join('penetapans', 'file_p1.id_fp1', '=', 'penetapans.id_fp1')
+                    ->where('penetapans.id_penetapan', $idPenetapan)
+                    ->update([
+                        'file_p1.files' => $namaDokumen,
+                        'file_p1.updated_at' => now(),
+                    ]);
+
+                // Tampilkan pesan sukses
+                Alert::success('success', 'Dokumen berhasil diperbarui.');
+                return redirect()->route('penetapan.standar');
             }
 
-            Alert::success('success', 'Dokumen berhasil ditambahkan.');
-            return redirect()->route('penetapan.standar');
-        } else {
-            // file kosong
-            return response()->json(['error' => 'No file uploaded']);
+            // Jika tidak ada file yang diunggah, tetap kembalikan response
+            Alert::info('info', 'Tidak ada file yang diunggah.');
+            return redirect()->back();
+        } catch (\Exception $e) {
+            // Menangkap semua error dan menampilkan pesan kesalahan
+            Alert::error('error', 'Terjadi kesalahan: ' . $e->getMessage());
+            return redirect()->back()->withInput();
         }
     }
 
+
     public function standar_create() //tambah standar
     {
-        return view('User.admin.Penetapan.tambah_standarspmi');
+        // Mengambil data nama_prodi dari tabel_prodi
+        $prodi = DB::table('tabel_prodi')->select('id_prodi', 'nama_prodi')->get();
+
+        // Mengirim data ke view
+        return view('User.admin.Penetapan.tambah_standarspmi', compact('prodi'));
     }
 
-    public function store(Request $request)  //proses Tambah
+    public function store(Request $request)
     {
-        // $validateData = $request->validate([
-        //     'level_penetapan' => 'required|in:standarinstitusi',
-        //     'namaDokumen_penetapan' => 'required|string',
-        //     'default-radio-1' => 'required|string',
-        // ]);
-        // if ($validateData) {
-        $model = new Penetapan();
-        $model->level_penetapan = $request->level_penetapan;
-        $model->namaDokumen_penetapan = $request->namaDokumen_penetapan;
-        $model->files = "";
-        $model->status_dokumen = $request->input('default-radio-1');
-        $model->save();
+        $request->validate([
+            'nama_filep1' => 'required|string|max:255',
+            'kategori' => 'required|string',
+            'tahun' => 'required|numeric|min:1900|max:2099',
+            'nama_prodi' => 'required|exists:tabel_prodi,id_prodi',
+            'files' => 'required',
+            'files.*' => 'file|mimes:pdf,doc,docx,xlsx,png,jpg,jpeg|max:2048'
+        ]);
 
-        Alert::success('success', 'Standar berhasil ditambahkan.');
-        return redirect()->route('penetapan.standar');
+        try {
+            DB::beginTransaction();
+
+            foreach ($request->file('files') as $file) {
+                // Generate unique file name
+                $namaFile = time() . '-' . $file->getClientOriginalName();
+
+                // Store file in the 'public/standar' directory
+                $path = $file->storeAs('standar', $namaFile, 'public');
+
+                // Insert data into 'standar_institutusi' table
+                DB::table('standar_institutusi')->insert([
+                    'namafile' => $request->nama_filep1,
+                    'kategori' => $request->kategori,
+                    'tahun' => $request->tahun,
+                    'namaprodi' => $request->nama_prodi,
+                    'file' => $path,
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]);
+            }
+
+            DB::commit();
+            Alert::success('success', 'Dokumen berhasil ditambahkan.');
+            return redirect()->route('penetapan.standar');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Alert::error('error', 'Terjadi kesalahan: ' . $e->getMessage());
+            return redirect()->back()->withInput();
+        }
     }
-
 
     public function lihatdokumenstandar($id_penetapan)
     {
@@ -118,64 +177,109 @@ class standarController extends Controller
         }
     }
 
-    public function edit($id)
+    public function edit(String $id)
     {
-        $data = Penetapan::where('id_penetapan', $id)->first();
-        return view('User.admin.Penetapan.edit_standarinstitusi', [
-            'oldData' => $data
-        ]);
+        // Ambil data standar_institutusi yang ingin diedit
+        $dokumenp1 = DB::table('standar_institutusi')
+            ->join('tabel_prodi', 'standar_institutusi.namaprodi', '=', 'tabel_prodi.id_prodi')
+            ->select('standar_institutusi.*', 'tabel_prodi.nama_prodi')
+            ->where('standar_institutusi.id', '=', $id)
+            ->first();
+
+        // Ambil daftar program studi untuk dropdown
+        $prodi = DB::table('tabel_prodi')->select('id_prodi', 'nama_prodi')->get();
+
+        // Kirim data ke view
+        return view('User.admin.Penetapan.edit_standarinstitusi', ['oldData' => $dokumenp1, 'prodi' => $prodi]);
     }
 
-    public function update(Request $request, $id_penetapan)
+    public function update(Request $request, $id)
     {
-        $dataUpdate = Penetapan::findOrFail($id_penetapan);
-
+        // Validasi input
         $request->validate([
-            'level_penetapan' => 'required|in:standarinstitusi',
-            'nama_dokumen' => 'required|string',
-            'default-radio-1' => 'required|string',
-            'files.*' => 'nullable|mimes:doc,docx,xls,xlsx,pdf|max:2048'
+            'nama_filep1' => 'required|string|max:255',
+            'kategori' => 'required|string',
+            'tahun' => 'required|numeric|min:1900|max:2099',
+            'nama_prodi' => 'required|exists:tabel_prodi,id_prodi',
+            'files.*' => 'file|mimes:pdf,doc,docx,xlsx,png,jpg,jpeg|max:2048'
         ]);
 
-        $dataUpdate->namaDokumen_penetapan = $request->input('nama_dokumen');
-        $dataUpdate->status_dokumen = $request->input('default-radio-1');
+        try {
+            DB::beginTransaction();
 
-        // Proses file baru jika ada
-        if ($request->hasFile('files')) {
-            // Hapus file lama dari storage
-            $oldFiles = json_decode($dataUpdate->files, true);
-            if (is_array($oldFiles)) {
-                foreach ($oldFiles as $oldFile) {
-                    if (Storage::disk('local')->exists($oldFile)) {
-                        Storage::disk('local')->delete($oldFile);
+            // Ambil data lama dari tabel
+            $dokumen = DB::table('standar_institutusi')->where('id', $id)->first();
+
+            // Update data di database
+            DB::table('standar_institutusi')
+                ->where('id', $id)
+                ->update([
+                    'namafile' => $request->nama_filep1,
+                    'kategori' => $request->kategori,
+                    'tahun' => $request->tahun,
+                    'namaprodi' => $request->nama_prodi,
+                    'updated_at' => now()
+                ]);
+
+            // Jika ada file baru diunggah, hapus file lama dan simpan file baru
+            if ($request->hasFile('files')) {
+                foreach ($request->file('files') as $file) {
+                    // Hapus file lama jika ada
+                    if ($dokumen->file && Storage::exists('public/' . $dokumen->file)) {
+                        Storage::delete('public/' . $dokumen->file);
                     }
+
+                    // Generate unique file name
+                    $namaFile = time() . '-' . $file->getClientOriginalName();
+                    $path = $file->storeAs('standar', $namaFile, 'public');
+
+                    // Update path file baru di database
+                    DB::table('standar_institutusi')
+                        ->where('id', $id)
+                        ->update(['file' => $path]);
                 }
             }
-            $filePaths = [];
-            foreach ($request->file('files') as $file) {
-                $namaDokumen = time() . '-' . $file->getClientOriginalName();
-                Storage::disk('local')->put('/standarinstitusi/' . $namaDokumen, File::get($file));
-                $filePaths[] = '/standarinstitusi/' . $namaDokumen;
-            }
-            $dataUpdate->files = json_encode($filePaths);
+
+            DB::commit();
+            Alert::success('success', 'Dokumen berhasil diupdate.');
+            return redirect()->route('penetapan.standar');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Alert::error('error', 'Terjadi kesalahan: ' . $e->getMessage());
+            return redirect()->back()->withInput();
         }
-        $dataUpdate->save();
-        Alert::success('success', 'Pembaruan Berhasil.');
-        return redirect()->route('penetapan.standar');
     }
 
-    public function destroy($id_penetapan)
-    {
-        $standar = Penetapan::findOrFail($id_penetapan);
-        $files = json_decode($standar->files, true);
-        if (is_array($files)) {
-            foreach ($files as $file) {
-                Storage::disk('local')->delete($file);
-            }
-        }
-        $standar->delete();
 
-        Alert::success('success', 'Dokumen berhasil dihapus.');
-        return redirect()->route('penetapan.standar');
+
+    public function destroy(String $id)
+    {
+        try {
+            // Ambil data dokumen berdasarkan id
+            $dokumen = DB::table('standar_institutusi')->where('id', $id)->first();
+
+            // Pastikan data dokumen ditemukan
+            if ($dokumen) {
+                // Hapus file dari storage
+                if ($dokumen->file && Storage::exists('public/' . $dokumen->file)) {
+                    Storage::delete('public/' . $dokumen->file);
+                }
+
+                // Hapus data dari tabel standar_institutusi
+                DB::table('standar_institutusi')->where('id', $id)->delete();
+
+
+                Alert::success('success', 'Dokumen berhasil dihapus.');
+                return redirect()->route('penetapan.standar');
+            } else {
+
+                Alert::success('error', 'Dokumen gagal dihapus.');
+                return redirect()->route('penetapan.standar');
+            }
+        } catch (\Exception $e) {
+
+            Alert::success('error', 'Dokumen gagal dihapus.');
+            return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
     }
 }

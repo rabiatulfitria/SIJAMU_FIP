@@ -20,27 +20,64 @@
                 <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h5 class="mb-0"></h5>
-                    </div> 
+                    </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('updateDokumenPerangkat', $oldData->id_penetapan) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('updateDokumenPerangkat', $oldData->id) }}" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
+
+                            <!-- Nama Dokumen -->
                             <div class="mb-3">
-                                <label class="form-label" for="basic-icon-default-fullname">Nama Dokumen</label>
+                                <label class="form-label" for="bx bx-file">Nama Dokumen</label>
                                 <div class="input-group input-group-merge">
-                                    <span id="basic-icon-default-fullname2" class="input-group-text"><i
-                                            class="bx bx-user"></i></span>
-                                    <input type="text" class="form-control" id="basic-icon-default-fullname"
-                                        name="nama_filep1" value="{{$oldData->nama_filep1}}" placeholder="Nama Dokumen" aria-label=""
-                                        aria-describedby="basic-icon-default-fullname2" />
+                                    <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-file"></i></span>
+                                    <input type="text" class="form-control" id="bx bx-file" name="nama_filep1" placeholder="Nama Dokumen" required
+                                        value="{{ old('nama_filep1', $oldData->namafile) }}" />
                                 </div>
                             </div>
-                            <input type="hidden" name="submenu_penetapan" value="{{$oldData->submenu_penetapan}}">
+
+                            <!-- Kategori -->
                             <div class="mb-3">
-                                <label for="formFileMultiple" class="form-label">Pilih File</label>
-                                <input class="form-control" type="file" name="files[]" value="{{$oldData->files}}" id="formFileMultiple" multiple />
-                              </div>
-                            <button type="submit" class="btn btn-primary">{{ isset($dokumenp1) }}Ubah</button>
+                                <label for="kategori" class="form-label">Kategori</label>
+                                <select class="form-select" id="kategori" name="kategori" required>
+                                    <option value="">Pilih Kategori</option>
+                                    <option value="Kebijakan" {{ $oldData->kategori == 'Kebijakan' ? 'selected' : '' }}>Kebijakan</option>
+                                    <option value="Manual" {{ $oldData->kategori == 'Manual' ? 'selected' : '' }}>Manual</option>
+                                    <option value="Standar" {{ $oldData->kategori == 'Standar' ? 'selected' : '' }}>Standar</option>
+                                    <option value="Formulir" {{ $oldData->kategori == 'Formulir' ? 'selected' : '' }}>Formulir</option>
+                                    <option value="SOP" {{ $oldData->kategori == 'SOP' ? 'selected' : '' }}>SOP</option>
+                                </select>
+                            </div>
+
+                            <!-- Tahun -->
+                            <div class="mb-3">
+                                <label for="tahun" class="form-label">Tahun</label>
+                                <input type="number" class="form-control" id="tahun" name="tahun" placeholder="Tahun" required min="1900" max="2099"
+                                    value="{{ old('tahun', $oldData->tahun) }}" />
+                            </div>
+
+                            <!-- Nama Program Studi -->
+                            <div class="mb-3">
+                                <label for="nama_prodi" class="form-label">Nama Program Studi</label>
+                                <select class="form-select" id="nama_prodi" name="nama_prodi" required>
+                                    <option value="">Pilih Program Studi</option>
+                                    @foreach($prodi as $item)
+                                        <option value="{{ $item->id_prodi }}" {{ $oldData->namaprodi == $item->id_prodi ? 'selected' : '' }}>
+                                            {{ $item->nama_prodi }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <!-- Pilih Dokumen -->
+                            <div class="mb-3">
+                                <label for="formFileMultiple" class="form-label">Pilih Dokumen</label>
+                                <input class="form-control" type="file" name="files[]" id="formFileMultiple" multiple />
+                                <p class="form-text text-muted">Unggah ulang dokumen jika ingin mengubah file yang sudah ada.</p>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <button type="submit" class="btn btn-primary">Ubah</button>
                         </form>
                     </div>
                 </div>

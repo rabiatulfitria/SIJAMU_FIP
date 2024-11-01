@@ -57,7 +57,7 @@
                                     value="{{$oldData->email}}"
                                     placeholder="john.doe" aria-label="john.doe"
                                     aria-describedby="basic-icon-default-email2" />
-                                
+
                             </div>
                             <div class="form-text"></div>
                         </div>

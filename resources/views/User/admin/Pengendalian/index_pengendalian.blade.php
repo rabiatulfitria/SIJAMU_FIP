@@ -56,7 +56,7 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="auth-login-basic.html">
+                        <a class="dropdown-item" href="{{route('logout')}}">
                             <i class="bx bx-power-off me-2"></i>
                             <span class="align-middle">Log Out</span>
                         </a>
@@ -96,35 +96,32 @@
                     @foreach ($pengendalian as $row)
                     <tr>
                         <td><i></i>{{ $row->bidang_standar }}</td>
-                        <td><i></i>{{ $row->program_studi }}</td>
+                        <td><i></i>{{ $row->nama_prodi }}</td>
                         <td>
-                            @php
-                                $files = json_decode($row->laporan_rtm, true);
-                            @endphp
-                            
-                            @if ($files && is_array($files))
-                                @foreach ($files as $file)
-                                    <a href=""
-                                        class="badge bg-label-info me-1" target="_blank" >
-                                        <i class="bi bi-link-45deg">Dokumen</i>
-                                    </a>
-                                @endforeach
+
+                            @if ($row->unggahan_rtm)
+                            <!-- Hanya berlaku jika dihosting-->
+                            {{-- <a href="https://docs.google.com/viewer?url=https://namadomain/storage/perangkatspmi/{{$row->files}}&embedded=true" --}}
+                            <a href="../storage/laporan_rtm/{{$row->unggahan_rtm}}"
+                                class="badge bg-label-info me-1" target="_blank" >
+                                <i class="bi bi-link-45deg">Dokumen RTM</i>
+                            </a>
+
                             @else
                                 <p>Masih dalam proses</p>
                             @endif
+
                         </td>
                         <td>
-                            @php
-                                $files = json_decode($row->laporan_rtl, true);
-                            @endphp
-                            
-                            @if ($files && is_array($files))
-                                @foreach ($files as $file)
-                                    <a href=""
-                                        class="badge bg-label-info me-1" target="_blank" >
-                                        <i class="bi bi-link-45deg">Dokumen</i>
-                                    </a>
-                                @endforeach
+
+                            @if ($row->unggahan_rtl)
+                            <!-- Hanya berlaku jika dihosting-->
+                            {{-- <a href="https://docs.google.com/viewer?url=https://namadomain/storage/perangkatspmi/{{$row->files}}&embedded=true" --}}
+                            <a href="../storage/laporan_rtm/{{$row->unggahan_rtl}}"
+                                class="badge bg-label-info me-1" target="_blank" >
+                                <i class="bi bi-link-45deg">Dokumen RTL</i>
+                            </a>
+
                             @else
                                 <p>Masih dalam proses</p>
                             @endif
@@ -137,13 +134,13 @@
                                 <div class="dropdown-menu">
                                     <div>
                                         <a class="dropdown-item"
-                                            href=""><i
+                                            href="{{ route('editDokumenPengendalian', $row->id_pengendalian) }}"><i
                                                 class="bx bx-edit-alt me-1"></i>
                                             Ubah</a>
                                     </div>
                                     <div>
                                         <form method="POST"
-                                            action="">
+                                            action="{{ route('hapusDokumenPengendalian', $row->id_pengendalian) }}">
                                             @csrf
                                             @method('DELETE')
                                             <button class="dropdown-item btn btn-outline-danger"><i
@@ -161,7 +158,7 @@
         </div>
     </div>
     <div class="demo-inline-spacing">
-        <button type="button" class="btn btn-light" onclick="window.location.href=''">+
+        <button type="button" class="btn btn-light" onclick="window.location.href='{{ route('tambahDokumenPengendalian') }}'">+
             Tambah Bentuk Pengendalian</button>
         @if (session('success'))
             <div>{{ @session('success') }}</div>

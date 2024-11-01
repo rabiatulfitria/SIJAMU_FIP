@@ -56,7 +56,7 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="auth-login-basic.html">
+                        <a class="dropdown-item" href="{{route('logout')}}">
                             <i class="bx bx-power-off me-2"></i>
                             <span class="align-middle">Log Out</span>
                         </a>
@@ -76,64 +76,62 @@
                 <thead class="table-purple">
                     <tr>
                         <th style="padding-left: 35px">Nama Dokumen</th>
+                        <th style="padding-left: 35px">Kategori</th>
+                        <th style="padding-left: 35px">Tahun</th>
+                        <th style="padding-left: 35px">Nama Program Studi</th>
                         <th style="padding-left: 10px">Unggahan</th>
-                        <th>Aksi</th>
+                        @if(Auth::user() && (Auth::user()->level == 'Admin' || Auth::user()->level == 'Jaminan Mutu' || Auth::user()->level == 'Koorprodi'))
+                            <th>Aksi</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
                     @foreach ($dokumenp1 as $row)
                         <tr>
                             <td style="padding-left: 20px"><i class="me-3"></i>
-                                <strong>{{ $row->nama_filep1 }}</strong>
+                                <strong>{{ $row->namafile }}</strong>
                             </td>
+                            <td>{{ $row->kategori }}</td>
+                            <td>{{ $row->tahun }}</td>
+                            <td>{{ $row->nama_prodi }}</td>
                             <td>
-                                @php
-                                    $files = json_decode($row->files, true);
-                                @endphp
-
-                                @if ($files && is_array($files))
-                                    @foreach ($dokumenp1->fileP1 as $file)
-                                        <a href="{{ route('dokumenperangkat', ['id_penetapan' => $row->id_penetapan]) }}"
-                                            class="badge bg-label-info me-1" target="_blank" >
-                                            <i class="bi bi-link-45deg">Dokumen</i>
-                                        </a>
-                                    @endforeach
+                                @if ($row->file)
+                                    <!-- Link ke dokumen -->
+                                    <a href="{{ asset('storage/' . $row->file) }}" class="badge bg-label-info me-1" target="_blank">
+                                        <i class="bi bi-link-45deg">Dokumen</i>
+                                    </a>
                                 @else
                                     <p>Masih dalam proses</p>
                                 @endif
                             </td>
+                            @if(Auth::user() && (Auth::user()->level == 'Admin' || Auth::user()->level == 'Jaminan Mutu' || Auth::user()->level == 'Koorprodi'))
                             <td>
                                 <div class="dropdown">
-                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                        data-bs-toggle="dropdown">
+                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                     </button>
                                     <div class="dropdown-menu">
                                         <div>
-                                            <a class="dropdown-item"
-                                                href="{{ route('editDokumenPerangkat', $row->id_penetapan) }}"><i
-                                                    class="bx bx-edit-alt me-1"></i>
-                                                Ubah</a>
+                                            <a class="dropdown-item" href="{{ route('editDokumenPerangkat', $row->id) }}"><i class="bx bx-edit-alt me-1"></i> Ubah</a>
                                         </div>
                                         <div>
-                                            <form method="POST"
-                                                action="{{ route('hapusDokumenPerangkat', $row->id_penetapan) }}">
+                                            <form method="POST" action="{{ route('hapusDokumenPerangkat', $row->id) }}">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="dropdown-item btn btn-outline-danger"><i
-                                                        class="bx bx-trash me-1"></i>
-                                                    Hapus</button>
+                                                <button class="dropdown-item btn btn-outline-danger"><i class="bx bx-trash me-1"></i> Hapus</button>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
                             </td>
+                            @endif
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
+    @if(Auth::user() && (Auth::user()->level == 'Admin' || Auth::user()->level == 'Jaminan Mutu' || Auth::user()->level == 'Koorprodi'))
     <div class="demo-inline-spacing">
         <button type="button" class="btn btn-light"
             onclick="window.location.href='{{ route('tambahDokumenPerangkat') }}'">+ Tambah Dokumen</button>
@@ -141,4 +139,5 @@
             <div>{{ @session('success') }}</div>
         @endif
     </div>
+    @endif
 @endsection

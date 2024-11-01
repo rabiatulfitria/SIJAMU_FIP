@@ -57,7 +57,7 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="auth-login-basic.html">
+                        <a class="dropdown-item" href="{{route('logout')}}">
                             <i class="bx bx-power-off me-2"></i>
                             <span class="align-middle">Log Out</span>
                         </a>
@@ -81,7 +81,9 @@
                         <th>Nama</th>
                         <th>Email</th>
                         <th>Penanggung Jawab</th>
+                        @if(Auth::user() && (Auth::user()->level == 'Admin' || Auth::user()->level == 'Jaminan Mutu'))
                         <th>Aksi</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
@@ -93,6 +95,7 @@
                             <td>{{ $row->nama }}</td>
                             <td><span class="badge bg-label-primary me-1">{{ $row->email }}</span></td>
                             <td>{{ $row->PJ }}</td>
+                            @if(Auth::user() && (Auth::user()->level == 'Admin' || Auth::user()->level == 'Jaminan Mutu'))
                             <td>
                                 <div class="dropdown">
                                     <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
@@ -108,19 +111,20 @@
                                             <form method="POST" action="/TimPenjaminanMutu/{{ $row->id }}">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="dropdown-item"><i class="bx bx-trash me-1"></i>
-                                                    Hapus</button>
+                                                <button class="dropdown-item"><i class="bx bx-trash me-1"></i> Hapus</button>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
                             </td>
+                            @endif
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
     </div>
+    @if(Auth::user() && (Auth::user()->level == 'Admin' || Auth::user()->level == 'Jaminan Mutu'))
     <div class="row">
         <div class="col-md-6 col-sm-2 demo-inline-spacing">
             <button type="button" class="btn btn-primary" style="padding-left: 50px; padding-right: 50px"
@@ -130,6 +134,7 @@
             @endif
         </div>
     </div>
+    @endif
 @endsection
 
 <style>

@@ -12,9 +12,10 @@ class pelaksanaan2Controller extends Controller
         // $jamutims = Timjamu::all();
         return view('User.admin.Pelaksanaan.index_fakultas');
     }
+
     public function fakultas(){
         $data=Pelaksanaan::all();
         return response()->json(['pelaksanaan'=>$data]);
     }
-    
+
 }

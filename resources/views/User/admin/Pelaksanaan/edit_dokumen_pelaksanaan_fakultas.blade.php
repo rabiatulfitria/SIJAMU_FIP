@@ -9,7 +9,7 @@
 
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
         <div class="navbar-nav align-items-center">
-            <div class="nav-items d-flex align-item-center">Tambah Dokumen Perangkat SPMI</div>
+            <div class="nav-items d-flex align-item-center">Edit Dokumen Pelaksanaan</div>
         </div>
     @endsection
 
@@ -22,14 +22,15 @@
                         <h5 class="mb-0"></h5>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ url('tambahDokumenPerangkatSPMI-2') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('update-dokumen-pelaksanaan-fakultas/' . $pelaksanaan->id) }}" enctype="multipart/form-data">
                             @csrf
                             <!-- Nama Dokumen -->
                             <div class="mb-3">
                                 <label class="form-label" for="bx bx-file">Nama Dokumen</label>
                                 <div class="input-group input-group-merge">
                                     <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-file"></i></span>
-                                    <input type="text" class="form-control" id="bx bx-file" name="nama_filep1" placeholder="Nama Dokumen" required />
+                                    <input type="text" class="form-control" id="bx bx-file" name="nama_filep1" placeholder="Nama Dokumen" required
+                                           value="{{ $pelaksanaan->namafile }}" />
                                 </div>
                             </div>
 
@@ -38,41 +39,30 @@
                                 <label for="kategori" class="form-label">Kategori</label>
                                 <select class="form-select" id="kategori" name="kategori" required>
                                     <option value="">Pilih Kategori</option>
-                                    <option value="Kebijakan">Kebijakan</option>
-                                    <option value="Manual">Manual</option>
-                                    <option value="Standar">Standar</option>
-                                    <option value="Formulir">Formulir</option>
-                                    <option value="SOP">SOP</option>
+                                    <option value="Renstra Fakultas" {{ $pelaksanaan->kategori == 'Renstra Fakultas' ? 'selected' : '' }}>Renstra Fakultas</option>
+                                    <option value="Laporan Kinerja Fakultas" {{ $pelaksanaan->kategori == 'Laporan Kinerja Fakultas' ? 'selected' : '' }}>Laporan Kinerja Fakultas</option>
                                 </select>
                             </div>
 
                             <!-- Tahun -->
                             <div class="mb-3">
                                 <label for="tahun" class="form-label">Tahun</label>
-                                <input type="number" class="form-control" id="tahun" name="tahun" placeholder="Tahun" required min="1900" max="2099" />
-                            </div>
-
-                            <!-- Nama Program Studi -->
-                            <div class="mb-3">
-                                <label for="nama_prodi" class="form-label">Nama Program Studi</label>
-                                <select class="form-select" id="nama_prodi" name="nama_prodi" required>
-                                    <option value="">Pilih Program Studi</option>
-                                    @foreach($prodi as $item)
-                                        <option value="{{ $item->id_prodi }}">{{ $item->nama_prodi }}</option>
-                                    @endforeach
-                                </select>
+                                <input type="number" class="form-control" id="tahun" name="tahun" placeholder="Tahun" required min="1900" max="2099"
+                                       value="{{ $pelaksanaan->tahun }}" />
                             </div>
 
                             <!-- Pilih Dokumen -->
                             <div class="mb-3">
                                 <label for="formFileMultiple" class="form-label">Pilih Dokumen</label>
                                 <input class="form-control" type="file" name="files[]" id="formFileMultiple" multiple />
+                                <p class="form-text text-muted">Unggah ulang dokumen jika ingin mengubah file yang sudah ada.</p>
                             </div>
 
                             <!-- Kirim -->
                             <button type="submit" class="btn btn-primary">Kirim</button>
                         </form>
                     </div>
+
                 </div>
             </div>
         </div>

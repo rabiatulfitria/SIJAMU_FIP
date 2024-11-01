@@ -56,7 +56,7 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="auth-login-basic.html">
+                        <a class="dropdown-item" href="{{route('logout')}}">
                             <i class="bx bx-power-off me-2"></i>
                             <span class="align-middle">Log Out</span>
                         </a>
@@ -81,7 +81,7 @@
                 <li><a class="dropdown-item" href="javascript:void(0);">2024-2025</a></li>
             </ul>
         </h5>
-        <div class="table text-nowrap" id="horizontal-example">
+        <div class="table text-nowrap" id="horizontal-example" style="height: 200px;">
             <table class="table table-bordered">
                 <thead class="table-purple">
                     <tr>
@@ -96,22 +96,19 @@
                 <tbody class="table-border-bottom-0">
                     @foreach ($evaluasi as $row)
                     <tr>
-                        <td><i></i>{{ $row->namaDokumen_evaluasi }}</td>
+                        <td><i></i>{{ $row->nama_dokumen }}</td>
                         <td><i></i>{{ $row->program_studi }}</td>
                         <td><i></i>{{ $row->tanggal_terakhir_dilakukan }}</td>
                         <td><i></i>{{ $row->tanggal_diperbarui }}</td>
                         <td>
-                            @php
-                                $files = json_decode($row->unggahan_dokumen, true);
-                            @endphp
-                            
-                            @if ($files && is_array($files))
-                                @foreach ($files as $file)
-                                    <a href="{{ route('dokumenevaluasi', ['id_evaluasi' => $row->id_evaluasi]) }}"
-                                        class="badge bg-label-info me-1" target="_blank" >
-                                        <i class="bi bi-link-45deg">Dokumen</i>
-                                    </a>
-                                @endforeach
+                            @if ($row->unggahan)
+                            <!-- Hanya berlaku jika dihosting-->
+                            {{-- <a href="https://docs.google.com/viewer?url=https://namadomain/storage/perangkatspmi/{{$row->files}}&embedded=true" --}}
+                            <a href="../storage/evaluasi/{{$row->unggahan}}"
+                                class="badge bg-label-info me-1" target="_blank" >
+                                <i class="bi bi-link-45deg">Dokumen</i>
+                            </a>
+
                             @else
                                 <p>Masih dalam proses</p>
                             @endif

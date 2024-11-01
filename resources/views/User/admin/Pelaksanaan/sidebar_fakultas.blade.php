@@ -55,7 +55,7 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="auth-login-basic.html">
+                        <a class="dropdown-item" href="{{route('logout')}}">
                             <i class="bx bx-power-off me-2"></i>
                             <span class="align-middle">Log Out</span>
                         </a>
@@ -91,11 +91,11 @@
                                 <div class="card-body left" id="vertical-example">
                                     <div><b style="font-size: 13px">Strategi Pencapaian</b></div>
                                     <ul>
-                                        <li style="font-size: 12px"><a href="menuProdi/dokkurikulum">Renstra Fakultas</a>
+                                        <li style="font-size: 12px"><a href="javascript:void(0);" onclick="showTable('DatatablesRenstraProgramStudinya')">Renstra Fakultas</a>
                                         </li>
                                     </ul>
                                     <ul>
-                                        <li style="font-size: 12px"><a href="">Laporan Kinerja Fakultas</a></li>
+                                        <li style="font-size: 12px"><a href="javascript:void(0);" onclick="showTable('DatatablesLaporanKinerjaFakultas')">Laporan Kinerja Fakultas</a></li>
                                     </ul>
                                 </div>
                             </div>

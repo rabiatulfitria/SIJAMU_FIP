@@ -9,28 +9,27 @@
 
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
         <div class="navbar-nav align-items-center">
-            <div class="nav-items d-flex align-item-center">Tambah Standar SPMI Universitas Trunojoyo Madura</div>
+            <div class="nav-items d-flex align-item-center">Tambah Dokumen Pelaksanaan</div>
         </div>
     @endsection
 
     @section('content')
         <div class="row">
+
             <div class="col-xl">
                 <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h5 class="mb-0"></h5>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('standar.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('simpan-dokumen-pelaksanaan-fakultas') }}" enctype="multipart/form-data">
                             @csrf
                             <!-- Nama Dokumen -->
                             <div class="mb-3">
                                 <label class="form-label" for="bx bx-file">Nama Dokumen</label>
                                 <div class="input-group input-group-merge">
                                     <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-file"></i></span>
-                                    <input type="text" class="form-control" id="bx bx-file" name="nama_filep1"
-                                        placeholder="Nama Dokumen" required />
-                                    <input type="hidden" name="submenu_penetapan" value="standarinstitusi">
+                                    <input type="text" class="form-control" id="bx bx-file" name="nama_filep1" placeholder="Nama Dokumen" required />
                                 </div>
                             </div>
 
@@ -39,30 +38,17 @@
                                 <label for="kategori" class="form-label">Kategori</label>
                                 <select class="form-select" id="kategori" name="kategori" required>
                                     <option value="">Pilih Kategori</option>
-                                    <option value="Standar Pendidikan Universitas Trunojoyo Madura">Standar Pendidikan Universitas Trunojoyo Madura</option>
-                                    <option value="Standar Penelitian Universitas Trunojoyo Madura">Standar Penelitian Universitas Trunojoyo Madura</option>
-                                    <option value="Standar Pengabdian Kepada Masyarakat Universitas Trunojoyo Madura">Standar Pengabdian Kepada Masyarakat Universitas Trunojoyo Madura</option>
-                                    <option value="Standar Layanan Kemahasiswaan Universitas Trunojoyo Madura">Standar Layanan Kemahasiswaan Universitas Trunojoyo Madura</option>
-                                    <option value="Standar Layanan Kerjasama Universitas Trunojoyo Madura">Standar Layanan Kerjasama Universitas Trunojoyo Madura</option>
-                                    <option value="Standar Tata Kelola Universitas Trunojoyo Madura">Standar Tata Kelola Universitas Trunojoyo Madura</option>
+                                    <option value="Renstra Fakultas">Renstra Fakultas</option>
+                                    <option value="Laporan Kinerja Fakultas">Laporan Kinerja Fakultas</option>
+
                                 </select>
                             </div>
+
 
                             <!-- Tahun -->
                             <div class="mb-3">
                                 <label for="tahun" class="form-label">Tahun</label>
                                 <input type="number" class="form-control" id="tahun" name="tahun" placeholder="Tahun" required min="1900" max="2099" />
-                            </div>
-
-                            <!-- Nama Program Studi -->
-                            <div class="mb-3">
-                                <label for="nama_prodi" class="form-label">Nama Program Studi</label>
-                                <select class="form-select" id="nama_prodi" name="nama_prodi" required>
-                                    <option value="">Pilih Program Studi</option>
-                                    @foreach($prodi as $item)
-                                        <option value="{{ $item->id_prodi }}">{{ $item->nama_prodi }}</option>
-                                    @endforeach
-                                </select>
                             </div>
 
                             <!-- Pilih Dokumen -->
@@ -71,10 +57,9 @@
                                 <input class="form-control" type="file" name="files[]" id="formFileMultiple" multiple />
                             </div>
 
-                            <!-- Submit -->
-                            <button type="submit" class="btn btn-primary">{{ isset($standar) ? 'Update' : 'Kirim' }}</button>
+                            <!-- Kirim -->
+                            <button type="submit" class="btn btn-primary">Kirim</button>
                         </form>
-
                     </div>
                 </div>
             </div>

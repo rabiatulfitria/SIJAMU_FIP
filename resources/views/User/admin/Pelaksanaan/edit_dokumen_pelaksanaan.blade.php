@@ -9,7 +9,7 @@
 
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
         <div class="navbar-nav align-items-center">
-            <div class="nav-items d-flex align-item-center">Dokumen Standar SPMI Universita Tronojoyo Madura</div>
+            <div class="nav-items d-flex align-item-center">Edit Dokumen Pelaksanaan</div>
         </div>
     @endsection
 
@@ -22,16 +22,15 @@
                         <h5 class="mb-0"></h5>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('updateDokumenStandar', $oldData->id) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('update-dokumen-pelaksanaan/' . $pelaksanaan->id) }}" enctype="multipart/form-data">
                             @csrf
-                            @method('PUT')
                             <!-- Nama Dokumen -->
                             <div class="mb-3">
                                 <label class="form-label" for="bx bx-file">Nama Dokumen</label>
                                 <div class="input-group input-group-merge">
                                     <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-file"></i></span>
                                     <input type="text" class="form-control" id="bx bx-file" name="nama_filep1" placeholder="Nama Dokumen" required
-                                        value="{{ old('nama_filep1', $oldData->namafile) }}" />
+                                           value="{{ $pelaksanaan->namafile }}" />
                                 </div>
                             </div>
 
@@ -40,12 +39,17 @@
                                 <label for="kategori" class="form-label">Kategori</label>
                                 <select class="form-select" id="kategori" name="kategori" required>
                                     <option value="">Pilih Kategori</option>
-                                    <option value="Standar Pendidikan Universitas Trunojoyo Madura" {{ $oldData->kategori == 'Standar Pendidikan Universitas Trunojoyo Madura' ? 'selected' : '' }}>Standar Pendidikan Universitas Trunojoyo Madura</option>
-                                    <option value="Standar Penelitian Universitas Trunojoyo Madura" {{ $oldData->kategori == 'Standar Penelitian Universitas Trunojoyo Madura' ? 'selected' : '' }}>Standar Penelitian Universitas Trunojoyo Madura</option>
-                                    <option value="Standar Pengabdian Kepada Masyarakat Universitas Trunojoyo Madura" {{ $oldData->kategori == 'Standar Pengabdian Kepada Masyarakat Universitas Trunojoyo Madura' ? 'selected' : '' }}>Standar Pengabdian Kepada Masyarakat Universitas Trunojoyo Madura</option>
-                                    <option value="Standar Layanan Kemahasiswaan Universitas Trunojoyo Madura" {{ $oldData->kategori == 'Standar Layanan Kemahasiswaan Universitas Trunojoyo Madura' ? 'selected' : '' }}>Standar Layanan Kemahasiswaan Universitas Trunojoyo Madura</option>
-                                    <option value="Standar Layanan Kerjasama Universitas Trunojoyo Madura" {{ $oldData->kategori == 'Standar Layanan Kerjasama Universitas Trunojoyo Madura' ? 'selected' : '' }}>Standar Layanan Kerjasama Universitas Trunojoyo Madura</option>
-                                    <option value="Standar Tata Kelola Universitas Trunojoyo Madura" {{ $oldData->kategori == 'Standar Tata Kelola Universitas Trunojoyo Madura' ? 'selected' : '' }}>Standar Tata Kelola Universitas Trunojoyo Madura</option>
+                                    <option value="Renstra Program Studi" {{ $pelaksanaan->kategori == 'Renstra Program Studi' ? 'selected' : '' }}>Renstra Program Studi</option>
+                                    <option value="Laporan Kinerja Program Studi" {{ $pelaksanaan->kategori == 'Laporan Kinerja Program Studi' ? 'selected' : '' }}>Laporan Kinerja Program Studi</option>
+                                    <option value="Dokumen Kurikulum" {{ $pelaksanaan->kategori == 'Dokumen Kurikulum' ? 'selected' : '' }}>Dokumen Kurikulum</option>
+                                    <option value="Rencana Pembelajaran Semester (RPS)" {{ $pelaksanaan->kategori == 'Rencana Pembelajaran Semester (RPS)' ? 'selected' : '' }}>Rencana Pembelajaran Semester (RPS)</option>
+                                    <option value="Dokumen Monitoring dan Evaluasi Kegiatan Program MBKM" {{ $pelaksanaan->kategori == 'Dokumen Monitoring dan Evaluasi Kegiatan Program MBKM' ? 'selected' : '' }}>Dokumen Monitoring dan Evaluasi Kegiatan Program MBKM</option>
+                                    <option value="Capaian Pembelajaran Lulusan (CPL)" {{ $pelaksanaan->kategori == 'Capaian Pembelajaran Lulusan (CPL)' ? 'selected' : '' }}>Capaian Pembelajaran Lulusan (CPL)</option>
+                                    <option value="Panduan RPS" {{ $pelaksanaan->kategori == 'Panduan RPS' ? 'selected' : '' }}>Panduan RPS</option>
+                                    <option value="Panduan Mutu Soal" {{ $pelaksanaan->kategori == 'Panduan Mutu Soal' ? 'selected' : '' }}>Panduan Mutu Soal</option>
+                                    <option value="Panduan Kisi Kisi Soal" {{ $pelaksanaan->kategori == 'Panduan Kisi Kisi Soal' ? 'selected' : '' }}>Panduan Kisi Kisi Soal</option>
+                                    <option value="Formulir Kepuasan Mahasiswa" {{ $pelaksanaan->kategori == 'Formulir Kepuasan Mahasiswa' ? 'selected' : '' }}>Formulir Kepuasan Mahasiswa</option>
+                                    <option value="Dokumen Monitoring dan Evaluasi Ketercapaian Standar Layanan Kemahasiswaan" {{ $pelaksanaan->kategori == 'Dokumen Monitoring dan Evaluasi Ketercapaian Standar Layanan Kemahasiswaan' ? 'selected' : '' }}>Dokumen Monitoring dan Evaluasi Ketercapaian Standar Layanan Kemahasiswaan</option>
                                 </select>
                             </div>
 
@@ -53,7 +57,7 @@
                             <div class="mb-3">
                                 <label for="tahun" class="form-label">Tahun</label>
                                 <input type="number" class="form-control" id="tahun" name="tahun" placeholder="Tahun" required min="1900" max="2099"
-                                    value="{{ old('tahun', $oldData->tahun) }}" />
+                                       value="{{ $pelaksanaan->tahun }}" />
                             </div>
 
                             <!-- Nama Program Studi -->
@@ -62,7 +66,7 @@
                                 <select class="form-select" id="nama_prodi" name="nama_prodi" required>
                                     <option value="">Pilih Program Studi</option>
                                     @foreach($prodi as $item)
-                                        <option value="{{ $item->id_prodi }}" {{ $oldData->namaprodi == $item->id_prodi ? 'selected' : '' }}>
+                                        <option value="{{ $item->id_prodi }}" {{ $pelaksanaan->namaprodi == $item->id_prodi ? 'selected' : '' }}>
                                             {{ $item->nama_prodi }}
                                         </option>
                                     @endforeach
@@ -75,9 +79,12 @@
                                 <input class="form-control" type="file" name="files[]" id="formFileMultiple" multiple />
                                 <p class="form-text text-muted">Unggah ulang dokumen jika ingin mengubah file yang sudah ada.</p>
                             </div>
-                            <button type="submit" class="btn btn-primary">{{ isset($standar) }}Ubah</button>
+
+                            <!-- Kirim -->
+                            <button type="submit" class="btn btn-primary">Kirim</button>
                         </form>
                     </div>
+
                 </div>
             </div>
         </div>
