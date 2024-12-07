@@ -44,8 +44,8 @@ class pengendalianController extends Controller
                 'bidang_standar' => 'required|string',
                 'manual_namaDokumen' => 'nullable|string',
                 'nama_prodi' => 'nullable|string',
-                'laporan_rtm.*' => 'nullable|mimes:doc,docx,xls,xlsx,pdf|max:2048', // Validasi file RTM
-                'laporan_rtl.*' => 'nullable|mimes:doc,docx,xls,xlsx,pdf|max:2048', // Validasi file RTL
+                'laporan_rtm.*' => 'nullable|mimes:doc,docx,xls,xlsx,pdf|max:5120', // Validasi file RTM
+                'laporan_rtl.*' => 'nullable|mimes:doc,docx,xls,xlsx,pdf|max:5120', // Validasi file RTL
             ]);
 
             // Menentukan nama dokumen, apakah dari dropdown atau input manual
@@ -196,8 +196,8 @@ class pengendalianController extends Controller
                 'bidang_standar' => 'required|string',
                 'manual_namaDokumen' => 'nullable|string',
                 'nama_prodi' => 'nullable|string',
-                'laporan_rtm.*' => 'nullable|mimes:doc,docx,xls,xlsx,pdf|max:2048', // Validasi file RTM
-                'laporan_rtl.*' => 'nullable|mimes:doc,docx,xls,xlsx,pdf|max:2048', // Validasi file RTL
+                'laporan_rtm.*' => 'nullable|mimes:doc,docx,xls,xlsx,pdf|max:5120', // Validasi file RTM
+                'laporan_rtl.*' => 'nullable|mimes:doc,docx,xls,xlsx,pdf|max:5120', // Validasi file RTL
             ]);
 
             // Menentukan nama dokumen, apakah dari dropdown atau input manual

@@ -20,7 +20,8 @@
         href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap"
         rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link rel="stylesheet" href="{{ asset('sneat/assets/assets/img/') }}" />
+    <link rel="stylesheet" href="{{ asset('sneat/assets/assets/img/bg-mobile-fallback.jpg') }}" />
+    <link rel="stylesheet" href="{{ asset('sneat/assets/assets/mp4/bg.mp4') }}" />
     <link rel="stylesheet" href="{{ asset('sneat/assets/css/styles.css') }}" />
     <link rel="stylesheet" href="{{ asset('sneat/assets/js/scripts.js') }}" />
 </head>
@@ -28,7 +29,7 @@
 <body>
     <!-- Background Video-->
     <video class="bg-video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-        <source src="assets/mp4/bg.mp4" type="video/mp4" />
+        <source src="{{ asset('sneat/assets/assets/mp4/bg.mp4') }}" type="video/mp4" />
     </video>
     <!-- Masthead-->
     <div class="masthead">

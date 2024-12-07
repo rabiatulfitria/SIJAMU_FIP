@@ -46,7 +46,7 @@ class evaluasiController extends Controller
                 'program_studi' => 'required|string',
                 'tanggal_terakhir_dilakukan' => 'nullable|date',
                 'tanggal_diperbarui' => 'nullable|date',
-                'unggahan_dokumen.*' => 'nullable|mimes:doc,docx,xls,xlsx,pdf|max:2048',
+                'unggahan_dokumen.*' => 'nullable|mimes:doc,docx,xls,xlsx,pdf|max:5120', // Maksimum 5120 KB (5 MB)
             ]);
 
             // Menentukan nama dokumen, apakah dari dropdown atau input manual
@@ -177,7 +177,7 @@ class evaluasiController extends Controller
                 'nama_prodi' => 'required|string',
                 'tanggal_terakhir_dilakukan' => 'nullable|date',
                 'tanggal_diperbarui' => 'nullable|date',
-                'unggahan_dokumen.*' => 'nullable|mimes:doc,docx,xls,xlsx,pdf|max:2048',
+                'unggahan_dokumen.*' => 'nullable|mimes:doc,docx,xls,xlsx,pdf|max:5120', //Maksimum 5120 KB (5 MB)
             ]);
 
             // Cek apakah nama dokumen menggunakan dropdown atau input manual

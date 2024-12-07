@@ -26,7 +26,8 @@
                             @csrf
                             @method('PUT')
                             <label class="form-label" for="">Nama Dokumen</label>
-                            <select class="form-select" id="nama_fileeval" name="nama_fileeval" required onchange="toggleManualInput()">
+                            <select class="form-select" id="nama_fileeval" name="nama_fileeval" required
+                                onchange="toggleManualInput()">
                                 <option value="" disabled>Pilih Nama Dokumen</option>
                                 <option value="Isian Laporan AMI"
                                     {{ isset($namaFileEval) && $namaFileEval === 'Isian Laporan AMI' ? 'selected' : '' }}>
@@ -78,19 +79,21 @@
                             <div class="mb-3">
                                 <label class="form-label" for="">Tanggal Terakhir Dilakukan</label>
                                 <input type="date" class="form-control" id="tanggal_terakhir_dilakukan"
-                                    name="tanggal_terakhir_dilakukan" value="{{ old('tanggal_terakhir_dilakukan', $tanggal_terakhir_dilakukan) }}" />
+                                    name="tanggal_terakhir_dilakukan"
+                                    value="{{ old('tanggal_terakhir_dilakukan', $tanggal_terakhir_dilakukan) }}" />
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label" for="">Tanggal Diperbarui</label>
-                                <input type="date" class="form-control" id="tanggal_diperbarui"
-                                    name="tanggal_diperbarui" value="{{ old('tanggal_diperbarui', $tanggal_diperbarui) }}"/>
+                                <input type="date" class="form-control" id="tanggal_diperbarui" name="tanggal_diperbarui"
+                                    value="{{ old('tanggal_diperbarui', $tanggal_diperbarui) }}" />
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label" for="formFileMultiple">Unggah Dokumen</label>
+                                <label class="form-label" for="formFileMultiple">Pilih Dokumen</label>
                                 <input type="file" class="form-control" value="" id="formFileMultiple" multiple
                                     name="unggahan_dokumen[]" />
+                                <p class="form-text" style="color: #7ebcfe">Maksimum 5120 KB (5 MB)</p>
                             </div>
                             <div>
                                 <button type="submit" class="btn btn-primary">{{ isset($evaluasi) }}Kirim</button>

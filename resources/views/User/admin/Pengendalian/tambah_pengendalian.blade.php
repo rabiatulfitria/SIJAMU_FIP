@@ -21,7 +21,8 @@
                         <h5 class="mb-0"></h5>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ url('tambahDokumenPengendalian-2') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('tambahDokumenPengendalian-2') }}"
+                            enctype="multipart/form-data">
                             @csrf
                             <label class="form-label" for="">Nama Bidang Pengaturan Standar</label>
                             <select class="form-select" id="namaDokumen_evaluasi" name="bidang_standar" required
@@ -29,7 +30,8 @@
                                 <option value="" disabled selected>Pilih Nama Dokumen</option>
                                 <option value="Standar Pendidikan">Standar Pendidikan Universitas Trunojoyo Madura</option>
                                 <option value="Standar Penelitian">Standar Penelitian Universitas Trunojoyo Madura</option>
-                                <option value="Standar Pengabdian">Standar Pengabdian Kepada Masyarakat Universitas Trunojoyo Madura</option>
+                                <option value="Standar Pengabdian">Standar Pengabdian Kepada Masyarakat Universitas
+                                    Trunojoyo Madura</option>
                                 <option value="Standar ">Standar Penelitian Universitas Trunojoyo Madura</option>
 
                             </select>
@@ -53,12 +55,14 @@
                                 <label class="form-label" for="formFileMultiple">Laporan RTM</label>
                                 <input type="file" class="form-control" id="formFileMultiple" multiple
                                     name="laporan_rtm[]" />
+                                <p class="form-text" style="color: #7ebcfe">Maksimum 5120 KB (5 MB)</p>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label" for="formFileMultiple">Laporan RTL</label>
                                 <input type="file" class="form-control" id="formFileMultiple" multiple
                                     name="laporan_rtl[]" />
+                                <p class="form-text" style="color: #7ebcfe">Maksimum 5120 KB (5 MB)</p>
                             </div>
                             <div>
                                 <button type="submit" class="btn btn-primary">{{ isset($pengendalian) }}Kirim</button>

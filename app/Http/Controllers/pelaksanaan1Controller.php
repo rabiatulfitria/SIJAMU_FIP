@@ -108,7 +108,7 @@ class pelaksanaan1Controller extends Controller
                 'tahun' => 'required|numeric|min:1900|max:2099',
                 'nama_prodi' => 'required|exists:tabel_prodi,id_prodi',
                 'files' => 'required',
-                'files.*' => 'file|mimes:pdf,doc,docx,xlsx,png,jpg,jpeg|max:2048'
+                'files.*' => 'file|mimes:pdf,doc,docx,xlsx,png,jpg,jpeg|max:5120' //Maksimum 5120 KB (5 MB)
             ]);
 
             try {
@@ -149,7 +149,7 @@ class pelaksanaan1Controller extends Controller
         $pelaksanaan = DB::table('pelaksanaan_prodi')
         ->join('tabel_prodi', 'pelaksanaan_prodi.namaprodi', '=', 'tabel_prodi.id_prodi')
         ->select('pelaksanaan_prodi.*', 'tabel_prodi.nama_prodi')
-        ->where('pelaksanaan_prodi.id', '=', $id)
+        ->where('pelaksanaan_prodi.id_plks_prodi', '=', $id)
         ->first();
 
         $prodi = DB::table('tabel_prodi')->select('id_prodi', 'nama_prodi')->get();
@@ -165,7 +165,7 @@ class pelaksanaan1Controller extends Controller
             'kategori' => 'required|string',
             'tahun' => 'required|numeric|min:1900|max:2099',
             'nama_prodi' => 'required|exists:tabel_prodi,id_prodi',
-            'files.*' => 'file|mimes:pdf,doc,docx,xlsx,png,jpg,jpeg|max:2048'
+            'files.*' => 'file|mimes:pdf,doc,docx,xlsx,png,jpg,jpeg|max:5120' //Maksimum 5120 KB (5 MB)
         ]);
 
         try {
@@ -275,7 +275,7 @@ class pelaksanaan1Controller extends Controller
                 'kategori' => 'required|string',
                 'tahun' => 'required|numeric|min:1900|max:2099',
                 'files' => 'required',
-                'files.*' => 'file|mimes:pdf,doc,docx,xlsx,png,jpg,jpeg|max:2048'
+                'files.*' => 'file|mimes:pdf,doc,docx,xlsx,png,jpg,jpeg|max:5120' //Maksimum 5120 KB (5 MB)
             ]);
 
             try {
@@ -313,7 +313,7 @@ class pelaksanaan1Controller extends Controller
     public function editPelaksanaanFakultas(Request $request, $id){
         // Ambil data pelaksanaan_fakultas yang ingin diedit
         $pelaksanaan = DB::table('pelaksanaan_fakultas')
-        ->where('id', '=', $id)
+        ->where('id_plks_fklts', '=', $id)
         ->first();
 
         $prodi = DB::table('tabel_prodi')->select('id_prodi', 'nama_prodi')->get();
@@ -328,7 +328,7 @@ class pelaksanaan1Controller extends Controller
             'nama_filep1' => 'required|string|max:255',
             'kategori' => 'required|string',
             'tahun' => 'required|numeric|min:1900|max:2099',
-            'files.*' => 'file|mimes:pdf,doc,docx,xlsx,png,jpg,jpeg|max:2048'
+            'files.*' => 'file|mimes:pdf,doc,docx,xlsx,png,jpg,jpeg|max:5120' //Maksimum 5120 KB (5 MB)
         ]);
 
         try {

@@ -9,7 +9,7 @@
             <tr>
                 <th>No</th>
                 <th>Program Studi</th>
-                <th>Dokumen Formulir Kepuasan</th>
+                <th>Dokumen Renstra</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -20,8 +20,8 @@
                     <td>{{ $document->nama_prodi }}</td>
                     <td><a href="{{ asset('storage/' . $document->file) }}" target="_blank">{{ $document->namafile }}</a></td>
                     <td>
-                        <a href="{{ url('/edit-dokumen-pelaksanaan/' . $document->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                        <form action="{{ route('deletePelaksanaan', $document->id) }}" method="POST" style="display: inline;">
+                        <a href="{{ url('/edit-dokumen-pelaksanaan/' . $document->id_plks_prodi) }}" class="btn btn-warning btn-sm">Edit</a>
+                        <form action="{{ route('deletePelaksanaan', $document->id_plks_prodi) }}" method="POST" style="display: inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm">Hapus</button>

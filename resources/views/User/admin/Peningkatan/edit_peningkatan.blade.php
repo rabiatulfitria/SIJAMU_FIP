@@ -27,9 +27,10 @@
                             @method('PUT')
 
                             <div class="mb-3">
-                                <label class="form-label" for="formFileMultiple">Unggah Dokumen</label>
+                                <label class="form-label" for="formFileMultiple">Pilih Dokumen</label>
                                 <input type="file" class="form-control" value="" id="formFileMultiple" multiple
                                     name="unggahan_dokumen[]" />
+                                <p class="form-text" style="color: #7ebcfe">Maksimum 5120 KB (5 MB)</p>
                             </div>
                             <div>
                                 <button type="submit" class="btn btn-primary">{{ isset($evaluasi) }}Kirim</button>

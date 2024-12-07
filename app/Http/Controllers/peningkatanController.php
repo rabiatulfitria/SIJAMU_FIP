@@ -24,7 +24,7 @@ class peningkatanController extends Controller
             ->get();
 
         // Kembalikan data ke view
-        return view('User.admin.peningkatan.index_peningkatan', compact('peningkatan'));
+        return view('User.admin.Peningkatan.index_peningkatan', compact('peningkatan'));
     }
 
     public function store(Request $request)
@@ -35,7 +35,7 @@ class peningkatanController extends Controller
                 'namadokumen_p5' => 'required|string',
                 'manual_namaDokumen' => 'nullable|string',
                 'dokumen_p5' => 'required|string',
-                'unggahan_dokumen.*' => 'nullable|mimes:doc,docx,xls,xlsx,pdf|max:2048',
+                'unggahan_dokumen.*' => 'nullable|mimes:doc,docx,xls,xlsx,pdf|max:5120', //Maksimum 5120 KB (5 MB)
             ]);
 
             // Menentukan nama dokumen, apakah dari dropdown atau input manual
@@ -121,7 +121,7 @@ class peningkatanController extends Controller
             }
 
             // Pastikan untuk mengembalikan data lengkap (data peningkatan + nama file peningkatan)
-            return view('User.admin.peningkatan.edit_peningkatan', [
+            return view('User.admin.Peningkatan.edit_peningkatan', [
                 'oldData' => $dataPeningkatan,  // Data peningkatan yang diambil dari tabel peningkatans
                 'files' => $filep5nya ? $filep5nya->files : null,
                 'namaFileP5' => $namaFileP5->nama_file_p5,  // Mengembalikan nama_file_p5
@@ -140,7 +140,7 @@ class peningkatanController extends Controller
         try {
             // Validasi input dari form
             $validatedData = $request->validate([
-                'unggahan_dokumen.*' => 'nullable|mimes:doc,docx,xls,xlsx,pdf|max:2048',
+                'unggahan_dokumen.*' => 'nullable|mimes:doc,docx,xls,xlsx,pdf|max:5120', //Maksimum 5120 KB (5 MB)
             ]);
 
             // Cek apakah ada file baru yang diunggah

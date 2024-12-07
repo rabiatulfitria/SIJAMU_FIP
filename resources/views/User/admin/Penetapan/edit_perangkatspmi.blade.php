@@ -74,6 +74,7 @@
                                 <label for="formFileMultiple" class="form-label">Pilih Dokumen</label>
                                 <input class="form-control" type="file" name="files[]" id="formFileMultiple" multiple />
                                 <p class="form-text text-muted">Unggah ulang dokumen jika ingin mengubah file yang sudah ada.</p>
+                                <p class="form-text" style="color: #7ebcfe">Maksimum 5120 KB (5 MB)</p>
                             </div>
 
                             <!-- Submit Button -->

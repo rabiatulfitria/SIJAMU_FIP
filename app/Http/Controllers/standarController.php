@@ -27,36 +27,36 @@ class standarController extends Controller
         return view('User.admin.Penetapan.standarinstitusi', compact('dokumenp1')); //compact(['standar', 'files'])
     }
 
-    public function folder($id)
-    {
-        $standar = Penetapan::with('fileP1', 'namaFileP1')
-        ->join('file_p1', 'penetapans.id_nfp1', '=', 'file_p1.id_fp1')
-        ->join('nama_file_p1', 'nama_file_p1.id_fp1', '=', 'file_p1.id_fp1')
-        ->select('penetapans.id_penetapan', 'penetapans.submenu_penetapan', 'nama_file_p1.nama_filep1', 'file_p1.files')
-        ->where('id_penetapan', $id)
-        ->first();
-        $files = unserialize($standar->files);
-        return view('User.admin.Penetapan.folder_dokumen.dokumen_standarpendidikan', compact('standar', 'files'));
-    }
+    // public function folder($id)
+    // {
+    //     $standar = Penetapan::with('fileP1', 'namaFileP1')
+    //     ->join('file_p1', 'penetapans.id_nfp1', '=', 'file_p1.id_fp1')
+    //     ->join('nama_file_p1', 'nama_file_p1.id_fp1', '=', 'file_p1.id_fp1')
+    //     ->select('penetapans.id_penetapan', 'penetapans.submenu_penetapan', 'nama_file_p1.nama_filep1', 'file_p1.files')
+    //     ->where('id_penetapan', $id)
+    //     ->first();
+    //     $files = unserialize($standar->files);
+    //     return view('User.admin.Penetapan.folder_dokumen.dokumen_standarpendidikan', compact('standar', 'files'));
+    // }
 
-    public function create($id)  //tombol Unggah | $id: mengambil data id di row tabel standarinstitusi.blade // first: mengambil satu data dari satu row
-    {
-        $penetapan = DB::table('penetapans')
-        ->select(
-            'penetapans.id_penetapan',
-            'penetapans.submenu_penetapan',
-            'penetapans.id_nfp1',
-            'penetapans.id_fp1',
-            'nama_file_p1.nama_filep1',  // Ambil nama_filep1 dari tabel nama_file_p1
-            'file_p1.files'  // Ambil files dari tabel file_p1
-        )
-        ->join('nama_file_p1', 'penetapans.id_nfp1', '=', 'nama_file_p1.id_nfp1')  // Join ke nama_file_p1 berdasarkan id_nfp1
-        ->join('file_p1', 'penetapans.id_fp1', '=', 'file_p1.id_fp1')  // Join ke file_p1 berdasarkan id_fp1
-        ->where('id_penetapan', $id)
-        ->first();
-        $namaDokumen = $penetapan->nama_filep1;
-        return view('User.admin.Penetapan.folder_dokumen.tambahdokumen_standarinstitusi')->with(['id' => $id, 'nama' => $namaDokumen]);
-    }
+    // public function create($id)  //tombol Unggah | $id: mengambil data id di row tabel standarinstitusi.blade // first: mengambil satu data dari satu row
+    // {
+    //     $penetapan = DB::table('penetapans')
+    //     ->select(
+    //         'penetapans.id_penetapan',
+    //         'penetapans.submenu_penetapan',
+    //         'penetapans.id_nfp1',
+    //         'penetapans.id_fp1',
+    //         'nama_file_p1.nama_filep1',  // Ambil nama_filep1 dari tabel nama_file_p1
+    //         'file_p1.files'  // Ambil files dari tabel file_p1
+    //     )
+    //     ->join('nama_file_p1', 'penetapans.id_nfp1', '=', 'nama_file_p1.id_nfp1')  // Join ke nama_file_p1 berdasarkan id_nfp1
+    //     ->join('file_p1', 'penetapans.id_fp1', '=', 'file_p1.id_fp1')  // Join ke file_p1 berdasarkan id_fp1
+    //     ->where('id_penetapan', $id)
+    //     ->first();
+    //     $namaDokumen = $penetapan->nama_filep1;
+    //     return view('User.admin.Penetapan.folder_dokumen.tambahdokumen_standarinstitusi')->with(['id' => $id, 'nama' => $namaDokumen]);
+    // }
 
     public function uploadDokumen(Request $request)
     {
@@ -64,7 +64,7 @@ class standarController extends Controller
             // Validasi input
             $validatedData = $request->validate([
                 'id_penetapan' => 'required',
-                'files.*' => 'nullable|mimes:doc,docx,xls,xlsx,pdf|max:2048',
+                'files.*' => 'nullable|mimes:doc,docx,xls,xlsx,pdf|max:5120', //Maksimum 5120 KB (5 MB)
             ]);
 
             // Dapatkan id_penetapan dari request
@@ -126,7 +126,7 @@ class standarController extends Controller
             'tahun' => 'required|numeric|min:1900|max:2099',
             'nama_prodi' => 'required|exists:tabel_prodi,id_prodi',
             'files' => 'required',
-            'files.*' => 'file|mimes:pdf,doc,docx,xlsx,png,jpg,jpeg|max:2048'
+            'files.*' => 'file|mimes:pdf,doc,docx,xlsx,png,jpg,jpeg|max:5120' //Maksimum 5120 KB (5 MB)
         ]);
 
         try {
@@ -201,7 +201,7 @@ class standarController extends Controller
             'kategori' => 'required|string',
             'tahun' => 'required|numeric|min:1900|max:2099',
             'nama_prodi' => 'required|exists:tabel_prodi,id_prodi',
-            'files.*' => 'file|mimes:pdf,doc,docx,xlsx,png,jpg,jpeg|max:2048'
+            'files.*' => 'file|mimes:pdf,doc,docx,xlsx,png,jpg,jpeg|max:5120' //Maksimum 5120 KB (5 MB)
         ]);
 
         try {

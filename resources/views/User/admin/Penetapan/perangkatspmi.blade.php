@@ -112,10 +112,10 @@
                                     </button>
                                     <div class="dropdown-menu">
                                         <div>
-                                            <a class="dropdown-item" href="{{ route('editDokumenPerangkat', $row->id) }}"><i class="bx bx-edit-alt me-1"></i> Ubah</a>
+                                            <a class="dropdown-item" href="{{ route('editDokumenPerangkat', $row->id_dokspmi) }}"><i class="bx bx-edit-alt me-1"></i> Ubah</a>
                                         </div>
                                         <div>
-                                            <form method="POST" action="{{ route('hapusDokumenPerangkat', $row->id) }}">
+                                            <form method="POST" action="{{ route('hapusDokumenPerangkat', $row->id_dokspmi) }}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="dropdown-item btn btn-outline-danger"><i class="bx bx-trash me-1"></i> Hapus</button>

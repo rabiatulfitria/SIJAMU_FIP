@@ -115,12 +115,12 @@
                                             <div>{{ @session('success') }}</div>
                                         @endif
                                         <a class="dropdown-item"
-                                            onclick="window.location.href='{{ route('editDataStandar', ['id' => $row->id]) }}'">
+                                            onclick="window.location.href='{{ route('editDataStandar', ['id' => $row->id_standarinstitut]) }}'">
                                             <i class="bx bx-edit-alt me-1"></i> Ubah Data
                                         </a>
                                         <div>
                                             <form method="POST"
-                                                action="{{ route('hapusDokumenStandar', $row->id) }}">
+                                                action="{{ route('hapusDokumenStandar', $row->id_standarinstitut) }}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button class="dropdown-item btn btn-outline-danger"><i

@@ -48,11 +48,13 @@
                             <div class="mb-3">
                                 <label class="form-label" for="formFileMultiple">Laporan RTM</label>
                                 <input type="file" class="form-control" id="formFileMultiple" multiple name="laporan_rtm[]" />
+                                <p class="form-text" style="color: #7ebcfe">Maksimum 5120 KB (5 MB)</p>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label" for="formFileMultiple">Laporan RTL</label>
                                 <input type="file" class="form-control" id="formFileMultiple" multiple name="laporan_rtl[]" />
+                                <p class="form-text" style="color: #7ebcfe">Maksimum 5120 KB (5 MB)</p>
                             </div>
                             <div>
                                 <button type="submit" class="btn btn-primary">{{ isset($evaluasi) }}Kirim</button>

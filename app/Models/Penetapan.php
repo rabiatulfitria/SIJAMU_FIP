@@ -11,15 +11,15 @@ class Penetapan extends Model
         'submenu_penetapan',
     ];
 
-    public function fileP1()
-    {
-        return $this->hasMany(FileP1::class, 'id_fp1', 'id_nfp1');
-    }
+    // public function fileP1()
+    // {
+    //     return $this->hasMany(FileP1::class, 'id_fp1', 'id_nfp1');
+    // }
 
-    public function namaFileP1()
-    {
-        return $this->hasOne(NamaFileP1::class, 'id_fp1', 'id_nfp1');
-    }
+    // public function namaFileP1()
+    // {
+    //     return $this->hasOne(NamaFileP1::class, 'id_fp1', 'id_nfp1');
+    // }
 
 
 
@@ -28,18 +28,18 @@ class Penetapan extends Model
      *
      * @return bool
      */
-    public function isPerangkatspmi()
-    {
-        return $this->submenu_penetapan === 'perangkatspmi';
-    }
+    // public function isPerangkatspmi()
+    // {
+    //     return $this->submenu_penetapan === 'perangkatspmi';
+    // }
 
     /**
      * Jika Penetapan berupa submenu standarinstitusi.
      *
      * @return bool
      */
-    public function isStandarinstitusi()
-    {
-        return $this->submenu_penetapan === 'standarinstitusi';
-    }
+    // public function isStandarinstitusi()
+    // {
+    //     return $this->submenu_penetapan === 'standarinstitusi';
+    // }
 }
