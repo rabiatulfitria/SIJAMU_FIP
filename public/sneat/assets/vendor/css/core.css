@@ -3850,7 +3850,7 @@ textarea.form-control-lg {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: rgb(255, 255, 255);
+  background-color: rgba(255, 252, 255, 0.861);
   background-clip: border-box;
   border: 0 solid #fb78f9;
   border-radius: 0.5rem;
@@ -3881,15 +3881,6 @@ textarea.form-control-lg {
 .card-body {
   flex: 1 1 auto;
   padding: 1.5rem 1.5rem;
-}
-
-.left{
-  background-color: #e0f3ff;
-}
-
-.right{
-  background-color: #ffffff;
-  
 }
 
 .card-title {
@@ -6288,46 +6279,6 @@ a.invert-bg-dark:hover, a.invert-bg-dark:focus {
 .nav-align-left .table:not(.table-dark) td {
   border-color: #d9dee3;
 }
-
-/**/
-.custom-table-sm {
-  font-size: 12px; /* Atur ukuran font sesuai kebutuhan */
-  padding: 5px;    /* Atur padding sesuai kebutuhan */
-  margin: 0 auto;  /* Menjadikan tabel berada di tengah */
-}
-
-.custom-table-sm th,
-.custom-table-sm td {
-  padding: 5px; /* Atur padding sesuai kebutuhan */
-}
-
-/*css untuk DataTable*/
-.dataTables_wrapper .dataTables_paginate .paginate_button {
-  font-size: 12px; /* Ubah ukuran font pagination */
-  color: #e681fd; /* Ubah warna teks pagination */
-}
-
-.dataTables_wrapper .dataTables_filter label {
-  font-size: 10px; /* Ubah ukuran font label search */
-  color: #e681fd; /* Ubah warna teks label search */
-}
-
-.dataTables_wrapper .dataTables_length label {
-  font-size: 12px; /* Ubah ukuran font label length */
-  color: #e681fd; /* Ubah warna teks label length */
-}
-
-.dataTables_wrapper .dataTables_info {
-  font-size: 14px; /* Ubah ukuran font info */
-  color: #e681fd; /* Ubah warna teks info */
-}
-
-.dataTables_wrapper .dataTables_processing {
-  font-size: 16px; /* Ubah ukuran font processing */
-  color: orange; /* Ubah warna teks processing */
-}
-
-/* Tambahkan gaya custom lainnya sesuai kebutuhan */
 
 .btn {
   cursor: pointer;
