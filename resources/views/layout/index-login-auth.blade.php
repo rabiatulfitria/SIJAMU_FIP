@@ -19,27 +19,11 @@
     <link
         href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap"
         rel="stylesheet" />
-        
-    <!-- Icon -->
-    <link rel="stylesheet" href="{{ asset('sneat/assets/vendor/fonts/boxicons.css') }}" />
-    
     <!-- Core theme CSS (includes Bootstrap)-->
-
     <link rel="stylesheet" href="{{ asset('sneat/assets/assets/img/bg-mobile-fallback.jpg') }}" />
     <link rel="stylesheet" href="{{ asset('sneat/assets/assets/mp4/bg.mp4') }}" />
-    {{-- <link rel="stylesheet" href="{{ asset('sneat/assets/vendor/css/core.css') }}"
-        class="template-customizer-core-css" />
-    <link rel="stylesheet" href="{{ asset('sneat/assets/vendor/css/theme-default.css') }}"
-        class="template-customizer-theme-css" /> --}}
-    <link rel="stylesheet" href="{{ asset('sneat/assets/css/demo.css') }}" />
-    <script rel="stylesheet" src="{{ asset('sneat/assets/js/config.js') }}" ></script>
     <link rel="stylesheet" href="{{ asset('sneat/assets/css/styles.css') }}" />
-    <script rel="stylesheet" src="{{ asset('sneat/assets/js/scripts.js') }}" ></script>
-
-    <!-- helpers -->
-    <script src="{{ asset('sneat/assets/vendor/js/helpers.js') }}"></script>
-
-
+    <link rel="stylesheet" href="{{ asset('sneat/assets/js/scripts.js') }}" />
 </head>
 
 <body>
@@ -64,31 +48,6 @@
             <a class="btn btn-dark m-3" href="#!"><i class="fab fa-instagram"></i></a>
         </div>
     </div>
-    
-    
-    
-    <!-- Core JS -->
-    <!-- build:js assets/vendor/js/core.js -->
-    <script src="{{ asset('sneat/assets/vendor/libs/jquery/jquery.js') }}"></script>
-    <script src="{{ asset('sneat/assets/vendor/libs/popper/popper.js') }}"></script>
-    <script src="{{ asset('sneat/assets/vendor/js/bootstrap.js') }}"></script>
-    <script src="{{ asset('sneat/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
-
-    <script src="{{ asset('sneat/assets/vendor/js/menu.js') }}"></script>
-    <!-- endbuild -->
-
-    <!-- Vendors JS -->
-
-    <!-- Main JS -->
-    <script src="{{ asset('sneat/assets/js/main.js') }}"></script>
-
-    <!-- Page JS -->
-
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-    
-    
-    
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
