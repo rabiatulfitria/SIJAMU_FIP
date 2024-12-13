@@ -22,7 +22,7 @@
                         <h5 class="mb-0"></h5>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('updateDokumenStandar', $oldData->id) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('updateDokumenStandar', $oldData->id_standarinstitut) }}" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <!-- Nama Dokumen -->

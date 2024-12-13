@@ -183,7 +183,7 @@ class standarController extends Controller
         $dokumenp1 = DB::table('standar_institutusi')
             ->join('tabel_prodi', 'standar_institutusi.namaprodi', '=', 'tabel_prodi.id_prodi')
             ->select('standar_institutusi.*', 'tabel_prodi.nama_prodi')
-            ->where('standar_institutusi.id', '=', $id)
+            ->where('standar_institutusi.id_standarinstitut', '=', $id)
             ->first();
 
         // Ambil daftar program studi untuk dropdown
@@ -208,11 +208,11 @@ class standarController extends Controller
             DB::beginTransaction();
 
             // Ambil data lama dari tabel
-            $dokumen = DB::table('standar_institutusi')->where('id', $id)->first();
+            $dokumen = DB::table('standar_institutusi')->where('id_standarinstitut', $id)->first();
 
             // Update data di database
             DB::table('standar_institutusi')
-                ->where('id', $id)
+                ->where('id_standarinstitut', $id)
                 ->update([
                     'namafile' => $request->nama_filep1,
                     'kategori' => $request->kategori,
@@ -235,7 +235,7 @@ class standarController extends Controller
 
                     // Update path file baru di database
                     DB::table('standar_institutusi')
-                        ->where('id', $id)
+                        ->where('id_standarinstitut', $id)
                         ->update(['file' => $path]);
                 }
             }
@@ -256,7 +256,7 @@ class standarController extends Controller
     {
         try {
             // Ambil data dokumen berdasarkan id
-            $dokumen = DB::table('standar_institutusi')->where('id', $id)->first();
+            $dokumen = DB::table('standar_institutusi')->where('id_standarinstitut', $id)->first();
 
             // Pastikan data dokumen ditemukan
             if ($dokumen) {
@@ -266,7 +266,7 @@ class standarController extends Controller
                 }
 
                 // Hapus data dari tabel standar_institutusi
-                DB::table('standar_institutusi')->where('id', $id)->delete();
+                DB::table('standar_institutusi')->where('id_standarinstitut', $id)->delete();
 
 
                 Alert::success('success', 'Dokumen berhasil dihapus.');

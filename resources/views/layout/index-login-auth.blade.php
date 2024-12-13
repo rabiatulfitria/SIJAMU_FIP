@@ -57,11 +57,12 @@
     </div>
     <!-- Social Icons-->
     <!-- For more icon options, visit https://fontawesome.com/icons?d=gallery&p=2&s=brands-->
+    <!-- tombol Daftar Akun, Panduan Pengguna, Info (nanti dibuatkan tooltip)--> 
     <div class="social-icons">
         <div class="d-flex flex-row flex-lg-column justify-content-center align-items-center h-100 mt-3 mt-lg-0">
-            <a class="btn btn-dark m-3" href="#!"><i class="fab fa-twitter"></i></a>
-            <a class="btn btn-dark m-3" href="#!"><i class="fab fa-facebook-f"></i></a>
-            <a class="btn btn-dark m-3" href="#!"><i class="fab fa-instagram"></i></a>
+            <a class="btn btn-dark m-3" href="#!"><i class="fa-solid fa-user-plus" style="color: #fefefe;"></i></a>
+            <a class="btn btn-dark m-3" href="#!"><i class="fa-solid fa-book" style="color: #fefefe;"></i></a>
+            <a class="btn btn-dark m-3" href="#!"><i class="fa-solid fa-circle-info" style="color: #fafafa;"></i></a>
         </div>
     </div>
     
