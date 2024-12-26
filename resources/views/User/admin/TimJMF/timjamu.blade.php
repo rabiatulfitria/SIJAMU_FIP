@@ -57,7 +57,7 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="{{route('logout')}}">
+                        <a class="dropdown-item" href="{{ route('logout') }}">
                             <i class="bx bx-power-off me-2"></i>
                             <span class="align-middle">Log Out</span>
                         </a>
@@ -81,8 +81,8 @@
                         <th>Nama</th>
                         <th>Email</th>
                         <th>Penanggung Jawab</th>
-                        @if(Auth::user() && (Auth::user()->level == 'Admin' || Auth::user()->level == 'Jaminan Mutu'))
-                        <th>Aksi</th>
+                        @if (Auth::user() && (Auth::user()->level == 'Admin' || Auth::user()->level == 'Jaminan Mutu'))
+                            <th>Aksi</th>
                         @endif
                     </tr>
                 </thead>
@@ -95,28 +95,29 @@
                             <td>{{ $row->nama }}</td>
                             <td><span class="badge bg-label-primary me-1">{{ $row->email }}</span></td>
                             <td>{{ $row->PJ }}</td>
-                            @if(Auth::user() && (Auth::user()->level == 'Admin' || Auth::user()->level == 'Jaminan Mutu'))
-                            <td>
-                                <div class="dropdown">
-                                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                        data-bs-toggle="dropdown">
-                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                    </button>
-                                    <div class="dropdown-menu">
-                                        <div>
-                                            <a class="dropdown-item" href="{{ route('editTimJAMU', $row->id) }}">
-                                                <i class="bx bx-edit-alt me-1"></i> Ubah</a>
-                                        </div>
-                                        <div>
-                                            <form method="POST" action="/TimPenjaminanMutu/{{ $row->id }}">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="dropdown-item"><i class="bx bx-trash me-1"></i> Hapus</button>
-                                            </form>
+                            @if (Auth::user() && (Auth::user()->level == 'Admin' || Auth::user()->level == 'Jaminan Mutu'))
+                                <td>
+                                    <div class="dropdown">
+                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
+                                            data-bs-toggle="dropdown">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <div>
+                                                <a class="dropdown-item" href="{{ route('editTimJAMU', $row->id) }}">
+                                                    <i class="bx bx-edit-alt me-1"></i> Ubah</a>
+                                            </div>
+                                            <div>
+                                                <form method="POST" action="/TimPenjaminanMutu/{{ $row->id }}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="dropdown-item"><i class="bx bx-trash me-1"></i>
+                                                        Hapus</button>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </td>
+                                </td>
                             @endif
                         </tr>
                     @endforeach
@@ -124,16 +125,16 @@
             </table>
         </div>
     </div>
-    @if(Auth::user() && (Auth::user()->level == 'Admin' || Auth::user()->level == 'Jaminan Mutu'))
-    <div class="row">
-        <div class="col-md-6 col-sm-2 demo-inline-spacing">
-            <button type="button" class="btn btn-primary" style="padding-left: 50px; padding-right: 50px"
-                onclick="window.location.href='{{ route('tambahTimJAMU') }}'">Tambah</button>
-            @if (session('success'))
-                <div>{{ @session('success') }}</div>
-            @endif
+    @if (Auth::user() && (Auth::user()->level == 'Admin' || Auth::user()->level == 'Jaminan Mutu'))
+        <div class="row">
+            <div class="col-md-6 col-sm-2 demo-inline-spacing">
+                <button type="button" class="btn btn-primary" style="padding-left: 50px; padding-right: 50px"
+                    onclick="window.location.href='{{ route('tambahTimJAMU') }}'">Tambah</button>
+                @if (session('success'))
+                    <div>{{ @session('success') }}</div>
+                @endif
+            </div>
         </div>
-    </div>
     @endif
 @endsection
 
@@ -143,6 +144,13 @@
     table.dataTable th {
         padding: 12px 15px;
     }
+
+    /* Pastikan semua teks di tabel DataTable rata kiri */
+    .dataTable th,
+    .dataTable td {
+        text-align: left !important;
+    }
+
 
     .dataTables_wrapper {
         padding: 20px;

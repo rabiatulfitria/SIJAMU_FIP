@@ -1,23 +1,50 @@
-@if(session('success'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <h5 class="mb-0 text-success">Berhasil</h5>
-        {{ session('success') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+<style>
+    .custom-swal {
+        width: 90%;
+        /* Default untuk layar kecil */
+        max-width: 300px;
+        /* Batas maksimal */
+    }
+</style>
+
+@if (session('success'))
+    <script>
+        Swal.fire({
+            title: 'Berhasil!',
+            text: "{{ session('success') }}",
+            icon: 'success',
+            confirmButtonText: 'OK'
+            customClass: {
+                popup: 'custom-swal',
+            },
+        });
+    </script>
 @endif
 
-@if(session('error'))
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <h5 class="mb-0 text-danger">Gagal</h5>
-        {{ session('error') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+@if (session('error'))
+    <script>
+        Swal.fire({
+            title: 'Gagal!',
+            text: "{{ session('error') }}",
+            icon: 'error',
+            confirmButtonText: 'OK'
+            customClass: {
+                popup: 'custom-swal',
+            },
+        });
+    </script>
 @endif
 
-@if(session('any'))
-    <div class="alert alert-primary alert-dismissible fade show" role="alert">
-        <h5 class="mb-0 text-danger">Terjadi Kesalahan !</h5>
-        {{ session('any') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
+@if (session('any'))
+    <script>
+        Swal.fire({
+            title: 'Terjadi Kesalahan!',
+            text: "{{ session('any') }}",
+            icon: 'warning',
+            confirmButtonText: 'OK'
+            customClass: {
+                popup: 'custom-swal',
+            },
+        });
+    </script>
 @endif

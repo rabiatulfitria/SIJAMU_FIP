@@ -19,7 +19,7 @@ class CekLogin
         // Cek apakah user sudah login atau belum
         if (!Auth::check()) {
             // Jika belum login, redirect ke halaman login dengan pesan error
-            return redirect()->route('auth.login')->with('error', 'Silahkan Login Dulu');
+            return redirect()->route('auth.login');
         }
 
         // Jika sudah login, lanjutkan ke permintaan berikutnya

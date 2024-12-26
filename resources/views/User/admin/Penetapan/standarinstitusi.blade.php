@@ -55,7 +55,7 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="{{route('logout')}}">
+                        <a class="dropdown-item" href="{{ route('logout') }}">
                             <i class="bx bx-power-off me-2"></i>
                             <span class="align-middle">Log Out</span>
                         </a>
@@ -71,15 +71,16 @@
     <div class="card">
         <h5 class="card-header">Standar Yang Ditetapkan Institusi</h5>
         <div class="table-responsive text-nowrap">
-            <table class="table">
+            <table class="table custom-table-sm dataTables_paginate .paginate_button" id="Datatable">
                 <thead class="table-purple">
                     <tr>
-                        <th style="padding-left: 35px">Nama Dokumen</th>
-                        <th style="padding-left: 35px">Kategori</th>
-                        <th style="padding-left: 35px">Tahun</th>
-                        <th style="padding-left: 35px">Nama Program Studi</th>
-                        <th style="padding-left: 10px">Unggahan</th>
-                        @if(Auth::user() && (Auth::user()->level == 'Admin' || Auth::user()->level == 'Jaminan Mutu' || Auth::user()->level == 'Koorprodi'))
+                        <th>Dokumen</th>
+                        <th>Kategori</th>
+                        <th>Tahun</th>
+                        <th>Nama Program Studi</th>
+                        <th>Unggahan</th>
+                        @if (Auth::user() &&
+                                (Auth::user()->level == 'Admin' || Auth::user()->level == 'Jaminan Mutu' || Auth::user()->level == 'Koorprodi'))
                             <th>Aksi</th>
                         @endif
                     </tr>
@@ -87,7 +88,7 @@
                 <tbody class="table-border-bottom-0">
                     @foreach ($dokumenp1 as $row)
                         <tr>
-                            <td style="padding-left: 20px"><i class="me-3"></i>
+                            <td><i class="me-3"></i>
                                 <strong>{{ $row->namafile }}</strong>
                             </td>
                             <td>{{ $row->kategori }}</td>
@@ -96,41 +97,43 @@
                             <td>
                                 @if ($row->file)
                                     <!-- Link ke dokumen -->
-                                    <a href="{{ asset('storage/' . $row->file) }}" class="badge bg-label-info me-1" target="_blank">
+                                    <a href="{{ asset('storage/' . $row->file) }}" class="badge bg-label-info me-1"
+                                        target="_blank">
                                         <i class="bi bi-link-45deg">Dokumen</i>
                                     </a>
                                 @else
                                     <p>Masih dalam proses</p>
                                 @endif
                             </td>
-                            @if(Auth::user() && (Auth::user()->level == 'Admin' || Auth::user()->level == 'Jaminan Mutu' || Auth::user()->level == 'Koorprodi'))
-                            <td>
-                                <div class="dropdown">
-                                    <button type="button" class="btn dropdown-toggle hide-arrow p-0"
-                                        data-bs-toggle="dropdown">
-                                        <i class="bx bx-dots-vertical-rounded"></i>
-                                    </button>
-                                    <div class="dropdown-menu">
-                                        @if (session('success'))
-                                            <div>{{ @session('success') }}</div>
-                                        @endif
-                                        <a class="dropdown-item"
-                                            onclick="window.location.href='{{ route('editDataStandar', ['id' => $row->id_standarinstitut]) }}'">
-                                            <i class="bx bx-edit-alt me-1"></i> Ubah Data
-                                        </a>
-                                        <div>
-                                            <form method="POST"
-                                                action="{{ route('hapusDokumenStandar', $row->id_standarinstitut) }}">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="dropdown-item btn btn-outline-danger"><i
-                                                        class="bx bx-trash me-1"></i>
-                                                    Hapus</button>
-                                            </form>
+                            @if (Auth::user() &&
+                                    (Auth::user()->level == 'Admin' || Auth::user()->level == 'Jaminan Mutu' || Auth::user()->level == 'Koorprodi'))
+                                <td>
+                                    <div class="dropdown">
+                                        <button type="button" class="btn dropdown-toggle hide-arrow p-0"
+                                            data-bs-toggle="dropdown">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            @if (session('success'))
+                                                <div>{{ @session('success') }}</div>
+                                            @endif
+                                            <a class="dropdown-item"
+                                                onclick="window.location.href='{{ route('editDataStandar', ['id' => $row->id_standarinstitut]) }}'">
+                                                <i class="bx bx-edit-alt me-1"></i> Ubah Data
+                                            </a>
+                                            <div>
+                                                <form method="POST"
+                                                    action="{{ route('hapusDokumenStandar', $row->id_standarinstitut) }}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button class="dropdown-item btn btn-outline-danger"><i
+                                                            class="bx bx-trash me-1"></i>
+                                                        Hapus</button>
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </td>
+                                </td>
                             @endif
                         </tr>
                     @endforeach
@@ -138,14 +141,104 @@
             </table>
         </div>
     </div>
-    @if(Auth::user() && (Auth::user()->level == 'Admin' || Auth::user()->level == 'Jaminan Mutu' || Auth::user()->level == 'Koorprodi'))
-    <div class="demo-inline-spacing">
-        <button type="button" class="btn btn-light" onclick="window.location.href='{{ route('tambahStandar') }}'">
-            + Tambah Standar
-        </button>
-        @if (session('success'))
-            <div>{{ @session('success') }}</div>
-        @endif
-    </div>
+    @if (Auth::user() &&
+            (Auth::user()->level == 'Admin' || Auth::user()->level == 'Jaminan Mutu' || Auth::user()->level == 'Koorprodi'))
+        <div class="demo-inline-spacing">
+            <button type="button" class="btn btn-light" onclick="window.location.href='{{ route('tambahStandar') }}'">
+                + Tambah Standar
+            </button>
+            @if (session('success'))
+                <div>{{ @session('success') }}</div>
+            @endif
+        </div>
     @endif
 @endsection
+
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#Datatable').DataTable({
+            "language": {
+                "paginate": {
+                    "previous": "Sebelumnya",
+                    "next": "Selanjutnya"
+                },
+                "search": "Cari:",
+                "lengthMenu": "Tampilkan _MENU_ entri"
+            }
+        });
+    });
+</script>
+
+<style>
+    /* Custom CSS for DataTable */
+    table.dataTable td,
+    table.dataTable th {
+        padding: 12px 15px;
+    }
+
+    /* Pastikan semua teks di tabel DataTable rata kiri */
+    .dataTable th,
+    .dataTable td {
+        text-align: left !important;
+    }
+
+    .dataTables_wrapper {
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(197, 100, 165, 0.1);
+    }
+
+    /* Mengubah tampilan pagination DataTable */
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        background-color: #4CAF50;
+        /* Warna latar belakang */
+        color: rgb(194, 108, 247);
+        /* Warna teks */
+        border: 1px solid #4CAF50;
+        /* Warna border */
+        padding: 6px 12px;
+        /* Ukuran padding tombol */
+        margin: 2px;
+        border-radius: 5px;
+        /* Membuat sudut tombol membulat */
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+        /* Transisi warna */
+    }
+
+    /* Mengubah tampilan saat tombol pagination di-hover */
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+        background-color: #45a049;
+        /* Warna latar belakang saat di-hover */
+        color: white;
+        /* Warna teks */
+        border-color: #45a049;
+        /* Warna border saat di-hover */
+    }
+
+    /* Mengubah tampilan pagination aktif */
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+        background-color: #2196F3;
+        /* Warna latar belakang tombol aktif */
+        color: white;
+        /* Warna teks tombol aktif */
+        border: 1px solid #2196F3;
+        /* Warna border tombol aktif */
+        border-radius: 5px;
+        /* Membuat sudut tombol membulat */
+    }
+
+    /* Mengubah tampilan tombol pagination tidak aktif */
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
+        background-color: #cccccc;
+        /* Warna latar belakang tombol tidak aktif */
+        color: #666666;
+        /* Warna teks tombol tidak aktif */
+        border: 1px solid #cccccc;
+        /* Warna border tombol tidak aktif */
+        cursor: not-allowed;
+        /* Cursor tidak diizinkan */
+    }
+</style>

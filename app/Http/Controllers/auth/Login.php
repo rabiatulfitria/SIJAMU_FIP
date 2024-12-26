@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class Login extends Controller
 {
@@ -33,11 +35,13 @@ class Login extends Controller
             // Login user menggunakan Auth
             Auth::loginUsingId($user->id);
 
-            // Redirect ke halaman dashboard atau halaman lain dengan pesan sukses
-            return redirect()->route('BerandaSIJAMUFIP')->with('success', 'Login berhasil!');
+            // Redirect ke halaman sijamufip
+            Alert::success('success', 'Login berhasil.');
+            return redirect()->route('BerandaSIJAMUFIP');
         } else {
             // Jika email atau password salah, kembali ke halaman login dengan pesan error
-            return redirect()->back()->with('error', 'Email atau password salah!');
+            Alert::error('error', 'Email atau password salah!.');
+            return redirect()->back();
         }
     }
 
@@ -48,7 +52,8 @@ class Login extends Controller
         Auth::logout();
 
         // Redirect ke halaman login dengan pesan sukses
-        return redirect()->route('auth.login')->with('success', 'Logout berhasil!');
+        Alert::success('success', 'Logout berhasil.');
+        return redirect()->route('auth.login');
     }
 
 
