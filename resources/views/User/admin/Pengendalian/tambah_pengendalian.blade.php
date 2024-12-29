@@ -23,18 +23,43 @@
                     <div class="card-body">
                         <form method="POST" action="{{ url('tambahDokumenPengendalian-2') }}"
                             enctype="multipart/form-data">
-                            @csrf
-                            <label class="form-label" for="">Nama Bidang Pengaturan Standar</label>
-                            <select class="form-select" id="namaDokumen_evaluasi" name="bidang_standar" required
-                                onchange="toggleManualInput()">
-                                <option value="" disabled selected>Pilih Nama Dokumen</option>
-                                <option value="Standar Pendidikan">Standar Pendidikan Universitas Trunojoyo Madura</option>
-                                <option value="Standar Penelitian">Standar Penelitian Universitas Trunojoyo Madura</option>
-                                <option value="Standar Pengabdian">Standar Pengabdian Kepada Masyarakat Universitas
-                                    Trunojoyo Madura</option>
-                                <option value="Standar ">Standar Penelitian Universitas Trunojoyo Madura</option>
+                            <div class="mb-3">
+                                @csrf
+                                <label class="form-label" for="">Nama Bidang Pengaturan Standar</label>
+                                <select class="form-select" id="bidang_standar" name="bidang_standar" required
+                                    onchange="toggleManualInput()">
+                                    <option value="" disabled selected>Pilih Nama Bidang Standar</option>
+                                    <option value="Standar Pendidikan">Standar Pendidikan Universitas Trunojoyo Madura
+                                    </option>
+                                    <option value="Standar Penelitian">Standar Penelitian Universitas Trunojoyo Madura
+                                    </option>
+                                    <option value="Standar Pengabdian">Standar Pengabdian Kepada Masyarakat Universitas
+                                        Trunojoyo Madura</option>
+                                    <option value="Standar ">Standar Penelitian Universitas Trunojoyo Madura</option>
+                                    <option value="Standar Lainnya">Standar Lainnya</option>
+                                </select>
+                                <div class="mb-3" id="manualNamaDokumen" style="display: none; padding-top:8px">
+                                    <label class="form-label" for="manual_namaDokumen">Ketikan Nama Standar</label>
+                                    <input type="text" class="form-control" id="manual_namaBidangStandar" name="manual_namaBidangStandar"
+                                        placeholder="Nama Standar Lainnya" />
+                                </div>
+                            </div>
 
-                            </select>
+                            <div class="mb-3">
+                                <label class="form-label" for="bx bx-file">Nama Dokumen</label>
+                                <div class="input-group input-group-merge">
+                                    <span id="basic-icon-default-fullname2" class="input-group-text"><i
+                                            class="bx bx-file"></i></span>
+                                    <input type="text" class="form-control" id="bx bx-file" name="nama_filep4"
+                                        placeholder="Nama Dokumen" required />
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="tahun" class="form-label">Tahun</label>
+                                <input type="number" class="form-control" id="tahun" name="tahun" placeholder="Tahun" required min="1900" max="2099" />
+                            </div>
+
                             <div class="mb-3">
                                 <label class="form-label" for="">Program Studi</label>
                                 <select class="form-select" id="nama_prodi" name="nama_prodi" required>
@@ -52,14 +77,14 @@
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label" for="formFileMultiple">Laporan RTM</label>
+                                <label class="form-label" for="formFileMultiple">Dokumen RTM</label>
                                 <input type="file" class="form-control" id="formFileMultiple" multiple
                                     name="laporan_rtm[]" />
                                 <p class="form-text" style="color: #7ebcfe">Maksimum 5120 KB (5 MB)</p>
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label" for="formFileMultiple">Laporan RTL</label>
+                                <label class="form-label" for="formFileMultiple">Dokumen RTL</label>
                                 <input type="file" class="form-control" id="formFileMultiple" multiple
                                     name="laporan_rtl[]" />
                                 <p class="form-text" style="color: #7ebcfe">Maksimum 5120 KB (5 MB)</p>

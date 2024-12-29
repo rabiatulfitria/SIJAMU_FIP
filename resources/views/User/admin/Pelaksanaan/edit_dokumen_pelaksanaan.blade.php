@@ -9,7 +9,7 @@
 
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
         <div class="navbar-nav align-items-center">
-            <div class="nav-items d-flex align-item-center">Edit Dokumen Pelaksanaan</div>
+            <div class="nav-items d-flex align-item-center">Edit Dokumen Pelaksanaan Prodi</div>
         </div>
     @endsection
 
@@ -22,7 +22,7 @@
                         <h5 class="mb-0"></h5>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ url('update-dokumen-pelaksanaan/' . $pelaksanaan->id) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('update-dokumen-pelaksanaan/' . $pelaksanaan->id_plks_prodi) }}" enctype="multipart/form-data">
                             @csrf
                             <!-- Nama Dokumen -->
                             <div class="mb-3">
@@ -82,7 +82,7 @@
                             </div>
 
                             <!-- Kirim -->
-                            <button type="submit" class="btn btn-primary">Kirim</button>
+                            <button type="submit" class="btn btn-primary">Ubah</button>
                         </form>
                     </div>
 

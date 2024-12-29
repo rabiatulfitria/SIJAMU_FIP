@@ -86,9 +86,11 @@
                 <thead class="table-purple">
                     <tr>
                         <th>Nama Bidang Pengaturan Standar</th>
+                        <th>Nama Dokumen</th>
+                        <th>Tahun</th>
                         <th>Program Studi</th>
-                        <th>Laporan RTM</th>
-                        <th>Laporan RTL</th>
+                        <th>Dokumen RTM</th>
+                        <th>Dokumen RTL</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -96,6 +98,8 @@
                     @foreach ($pengendalian as $row)
                     <tr>
                         <td><i></i>{{ $row->bidang_standar }}</td>
+                        <td><i></i>{{ $row->nama_filep4 }}</td>
+                        <td><i></i>{{ $row->tahun }}</td>
                         <td><i></i>{{ $row->nama_prodi }}</td>
                         <td>
 

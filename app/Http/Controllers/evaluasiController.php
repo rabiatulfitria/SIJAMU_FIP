@@ -18,12 +18,12 @@ class evaluasiController extends Controller
             ->join('evaluasis', 'nama_file_eval.id_evaluasi', '=', 'evaluasis.id_evaluasi')
             ->join('file_eval', 'nama_file_eval.id_nfeval', '=', 'file_eval.id_nfeval')
             ->select(
-                'nama_file_eval.nama_fileeval as nama_dokumen',
+                'nama_file_eval.nama_fileeval as namaDokumen_evaluasi',
                 'evaluasis.id_evaluasi as id_evaluasi',
                 'evaluasis.nama_prodi as program_studi',
                 'evaluasis.tanggal_terakhir_dilakukan as tanggal_terakhir_dilakukan',
                 'evaluasis.tanggal_diperbarui as tanggal_diperbarui',
-                'file_eval.files as unggahan'
+                'file_eval.files as unggahan' //nama 'unggahan' ini harus sama dengan nama row di blade.
             )
             ->get();
 
@@ -73,7 +73,7 @@ class evaluasiController extends Controller
             ]);
 
             // Mengupload file dan simpan ke tabel file_eval
-            if ($request->hasFile('unggahan_dokumen')) {
+            if ($request->hasFile('unggahan_dokumen')) { //apakah request HTTP (form) memiliki nama input unggahan_dokumen
                 foreach ($request->file('unggahan_dokumen') as $file) {
                     // Simpan file
                     $namaFile = time() . '-' . $file->getClientOriginalName();
@@ -99,7 +99,7 @@ class evaluasiController extends Controller
 
             // Tampilkan pesan sukses
             Alert::success('success', 'Data evaluasi dan dokumen berhasil ditambahkan.');
-            return redirect()->route('evaluasi');  // Ubah dengan route yang sesuai
+            return redirect()->route('evaluasi');
 
         } catch (\Exception $e) {
             // Menangkap semua error dan menampilkan pesan kesalahan
@@ -138,7 +138,7 @@ class evaluasiController extends Controller
                 ->where('id_evaluasi', $id_evaluasi)
                 ->first();
 
-            // Ambil data nama_file_eval berdasarkan id_evaluasi
+            // Ambil data nama_file_eval berdasarkan id_nfeval di tabel fileeval
             $fileevalnya = null;
             if ($namaFileEval) {
                 $fileevalnya = DB::table('file_eval')
