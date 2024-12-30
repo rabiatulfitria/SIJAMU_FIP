@@ -33,9 +33,9 @@
                                     {{ isset($namaFileEval) && $namaFileEval === 'Isian Laporan AMI' ? 'selected' : '' }}>
                                     Isian Laporan AMI
                                 </option>
-                                <option value="Laporan Evaluasi AMI"
-                                    {{ isset($namaFileEval) && $namaFileEval === 'Laporan Evaluasi AMI' ? 'selected' : '' }}>
-                                    Laporan Evaluasi AMI
+                                <option value="Berkas Audit (AMI)"
+                                    {{ isset($namaFileEval) && $namaFileEval === 'Berkas Audit (AMI)' ? 'selected' : '' }}>
+                                    Berkas Audit (AMI)
                                 </option>
                                 <option value="Dokumen Lainnya"
                                     {{ isset($namaFileEval) && $namaFileEval === 'Dokumen Lainnya' ? 'selected' : '' }}>
@@ -56,23 +56,15 @@
 
                             <div class="mb-3">
                                 <label class="form-label" for="">Program Studi</label>
-                                <select class="form-select" id="nama_prodi" name="nama_prodi" required>
+                                <select class="form-select" id="namaprodi" name="namaprodi" required>
                                     <option value="" disabled>Pilih Program Studi</option>
-                                    <option value="Pendidikan Bahasa dan Sastra Indonesia"
-                                        {{ $nama_prodi == 'Pendidikan Bahasa dan Sastra Indonesia' ? 'selected' : '' }}>
-                                        Pendidikan Bahasa dan Sastra Indonesia</option>
-                                    <option value="Pendidikan Guru Sekolah Dasar"
-                                        {{ $nama_prodi == 'Pendidikan Guru Sekolah Dasar' ? 'selected' : '' }}>
-                                        Pendidikan Guru Sekolah Dasar</option>
-                                    <option value="Pendidikan Ilmu Pengetahuan Alam"
-                                        {{ $nama_prodi == 'Pendidikan Ilmu Pengetahuan Alam' ? 'selected' : '' }}>
-                                        Pendidikan Ilmu Pengetahuan Alam</option>
-                                    <option value="Pendidikan Guru Pendidikan Anak Usia Dini"
-                                        {{ $nama_prodi == 'Pendidikan Guru Pendidikan Anak Usia Dini' ? 'selected' : '' }}>
-                                        Pendidikan Guru Pendidikan Anak Usia Dini</option>
-                                    <option value="Pendidikan Informatika"
-                                        {{ $nama_prodi == 'Pendidikan Informatika' ? 'selected' : '' }}>
-                                        Pendidikan Informatika</option>
+                                    <option value="">Pilih Program Studi</option>
+                                    <!-- ambil data sebelumnya di tabel nama_file_eval yang terdapat kolom id_evaluasi dan namaprodi -->
+                                    @foreach($prodi as $item) 
+                                        <option value="{{ $item->id_prodi }}" {{ $oldData->id_evaluasi == $item->id_prodi ? 'selected' : '' }}>
+                                            {{ $item->nama_prodi }}
+                                        </option>
+                                    @endforeach
                                 </select>
                             </div>
 

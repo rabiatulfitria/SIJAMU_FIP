@@ -15,12 +15,13 @@ class evaluasiController extends Controller
     {
         // Ambil data gabungan dari tabel nama_file_eval, evaluasi, dan file_eval
         $evaluasi = DB::table('nama_file_eval')
+            ->join('tabel_prodi', 'nama_file_eval.namaprodi', '=', 'tabel_prodi.id_prodi')
             ->join('evaluasis', 'nama_file_eval.id_evaluasi', '=', 'evaluasis.id_evaluasi')
             ->join('file_eval', 'nama_file_eval.id_nfeval', '=', 'file_eval.id_nfeval')
             ->select(
+                'tabel_prodi.nama_prodi as namaprodi',
                 'nama_file_eval.nama_fileeval as namaDokumen_evaluasi',
                 'evaluasis.id_evaluasi as id_evaluasi',
-                'evaluasis.nama_prodi as program_studi',
                 'evaluasis.tanggal_terakhir_dilakukan as tanggal_terakhir_dilakukan',
                 'evaluasis.tanggal_diperbarui as tanggal_diperbarui',
                 'file_eval.files as unggahan' //nama 'unggahan' ini harus sama dengan nama row di blade.
@@ -33,7 +34,9 @@ class evaluasiController extends Controller
 
     public function create()
     {
-        return view('User.admin.Evaluasi.tambah_evaluasi');
+        // Mengambil data nama_prodi dari tabel_prodi
+        $prodi = DB::table('tabel_prodi')->select('id_prodi', 'nama_prodi')->get();
+        return view('User.admin.Evaluasi.tambah_evaluasi', compact('prodi'));
     }
 
     public function store(Request $request)
@@ -43,7 +46,7 @@ class evaluasiController extends Controller
             $validatedData = $request->validate([
                 'namaDokumen_evaluasi' => 'required|string',
                 'manual_namaDokumen' => 'nullable|string',
-                'program_studi' => 'required|string',
+                'namaprodi' => 'required|exists:tabel_prodi,id_prodi',
                 'tanggal_terakhir_dilakukan' => 'nullable|date',
                 'tanggal_diperbarui' => 'nullable|date',
                 'unggahan_dokumen.*' => 'nullable|mimes:doc,docx,xls,xlsx,pdf|max:5120', // Maksimum 5120 KB (5 MB)
@@ -57,7 +60,6 @@ class evaluasiController extends Controller
 
             // Simpan data ke tabel evaluasi menggunakan query builder
             $idEvaluasi = DB::table('evaluasis')->insertGetId([
-                'nama_prodi' => $validatedData['program_studi'],
                 'tanggal_terakhir_dilakukan' => $validatedData['tanggal_terakhir_dilakukan'],
                 'tanggal_diperbarui' => $validatedData['tanggal_diperbarui'],
                 'created_at' => now(),
@@ -67,6 +69,7 @@ class evaluasiController extends Controller
             // Simpan nama dokumen ke tabel nama_file_eval dengan id dari evaluasi
             $idNfeval = DB::table('nama_file_eval')->insertGetId([
                 'nama_fileeval' => $namaDokumen,  // Nama dokumen yang disimpan
+                'namaprodi' => $validatedData['namaprodi'],
                 'id_evaluasi' => $idEvaluasi,     // Mengambil id_evaluasi dari tabel evaluasi
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -155,7 +158,7 @@ class evaluasiController extends Controller
                 'oldData' => $dataEvaluasi,  // Data evaluasi yang diambil dari tabel evaluasis
                 'files' => $fileevalnya ? $fileevalnya->files : null,
                 'namaFileEval' => $namaFileEval->nama_fileeval,  // Mengembalikan nama_fileeval
-                'nama_prodi' => $dataEvaluasi->nama_prodi,
+                'namaprodi' => $namaFileEval->namaprodi,
                 'tanggal_terakhir_dilakukan' => $dataEvaluasi->tanggal_terakhir_dilakukan,  // Tanggal terakhir dilakukan
                 'tanggal_diperbarui' => $dataEvaluasi->tanggal_diperbarui,  // Tanggal diperbarui
             ]);
@@ -174,7 +177,7 @@ class evaluasiController extends Controller
             $validatedData = $request->validate([
                 'nama_fileeval' => 'required|string',
                 'manual_namaDokumen' => 'nullable|string',
-                'nama_prodi' => 'required|string',
+                'namaprodi' => 'required|exists:tabel_prodi,id_prodi',
                 'tanggal_terakhir_dilakukan' => 'nullable|date',
                 'tanggal_diperbarui' => 'nullable|date',
                 'unggahan_dokumen.*' => 'nullable|mimes:doc,docx,xls,xlsx,pdf|max:5120', //Maksimum 5120 KB (5 MB)
@@ -190,7 +193,6 @@ class evaluasiController extends Controller
             DB::table('evaluasis')
                 ->where('id_evaluasi', $id_evaluasi)
                 ->update([
-                    'nama_prodi' => $validatedData['nama_prodi'],
                     'tanggal_terakhir_dilakukan' => $validatedData['tanggal_terakhir_dilakukan'],
                     'tanggal_diperbarui' => $validatedData['tanggal_diperbarui'],
                     'updated_at' => now(),
@@ -206,12 +208,14 @@ class evaluasiController extends Controller
                     ->where('id_evaluasi', $id_evaluasi)
                     ->update([
                         'nama_fileeval' => $namaDokumen,  // Update nama dokumen
+                        'namaprodi' => $validatedData['namaprodi'],
                         'updated_at' => now(),
                     ]);
             } else {
                 // Jika tidak ada data di nama_file_eval, buat baru
                 DB::table('nama_file_eval')->insert([
                     'nama_fileeval' => $namaDokumen,
+                    'namaprodi' => $validatedData['namaprodi'],
                     'id_evaluasi' => $id_evaluasi,
                     'created_at' => now(),
                     'updated_at' => now(),

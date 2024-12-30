@@ -43,17 +43,11 @@
 
                             <div class="mb-3">
                                 <label class="form-label" for="">Program Studi</label>
-                                <select class="form-select" id="program_studi" name="program_studi" required>
-                                    <option value="" disabled selected>Pilih Program Studi</option>
-                                    <option value="Pendidikan Bahasa dan Sastra Indonesia">Pendidikan Bahasa dan Sastra
-                                        Indonesia
-                                    </option>
-                                    <option value="Pendidikan Informatika">Pendidikan Guru Sekolah Dasar</option>
-                                    <option value="Pendidikan Ilmu Pengetahuan Alam">Pendidikan Ilmu Pengetahuan Alam
-                                    </option>
-                                    <option value="Pendidikan Guru Pendidikan Anak Usia Dini">Pendidikan Guru Pendidikan
-                                        Anak Usia Dini</option>
-                                    <option value="Pendidikan Informatika">Pendidikan Informatika</option>
+                                <select class="form-select" id="namaprodi" name="namaprodi" required>
+                                    <option value="">Pilih Program Studi</option>
+                                    @foreach($prodi as $item)
+                                        <option value="{{ $item->id_prodi }}">{{ $item->nama_prodi }}</option>
+                                    @endforeach
                                 </select>
                             </div>
 

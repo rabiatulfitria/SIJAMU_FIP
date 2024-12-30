@@ -97,7 +97,7 @@
                     @foreach ($evaluasi as $row)
                     <tr>
                         <td><i></i>{{ $row->namaDokumen_evaluasi }}</td>
-                        <td><i></i>{{ $row->program_studi }}</td>
+                        <td><i></i>{{ $row->namaprodi }}</td>
                         <td><i></i>{{ $row->tanggal_terakhir_dilakukan }}</td>
                         <td><i></i>{{ $row->tanggal_diperbarui }}</td>
                         <td>

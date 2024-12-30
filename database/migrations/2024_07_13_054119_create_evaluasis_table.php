@@ -15,8 +15,6 @@ return new class extends Migration
     {
         Schema::create('evaluasis', function (Blueprint $table) {
             $table->id('id_evaluasi');
-            $table->string('namaDokumen_evaluasi');
-            $table->string('program_studi');
             $table->date('tanggal_terakhir_dilakukan');
             $table->date('tanggal_diperbarui');
             $table->string('unggahan_dokumen');
