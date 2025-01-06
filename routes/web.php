@@ -61,22 +61,24 @@ Route::middleware(['cekLogin'])->group(function () {
     Route::get('/Penetapan/tambahDokumenPerangkatSPMI',[perangkatController::class, 'create'])->name('tambahDokumenPerangkat');
     Route::get('/Penetapan/editDokumenPerangkatSPMI/{id_dokspmi}', [perangkatController::class, 'edit'])->name('editDokumenPerangkat');
     Route::resource('/tambahDokumenPerangkatSPMI-2', perangkatController::class);
-    Route::get('/dokumenPerangkatSPMI({id_dokspmi})', [perangkatController::class, 'lihatdokumenperangkat'])->name('dokumenperangkat');
+    Route::get('/dokumenPerangkatSPMI({id_penetapan})', [perangkatController::class, 'lihatdokumenperangkat'])->name('dokumenperangkat');
     Route::delete('/Penetapan/PerangkatSPMI{id_dokspmi}', [perangkatController::class, 'destroy'])->name('hapusDokumenPerangkat');
     Route::put('Penetapan/updateDokumenPerangkat/{id_dokspmi}', [perangkatController::class, 'update'])->name('updateDokumenPerangkat');
 
 
     // route untuk halaman menu Penetapan CRUD -> Standar Yang Ditetapkan Institusi
     Route::get('/Penetapan/StandarInstitusi', [standarController::class, 'index'])->name('penetapan.standar');
-    Route::get('/Penetapan/unggahDokumenStandarSPMI/{id_standarinstitut}', [standarController::class, 'create'])->name('unggahDokumenStandar');
-    Route::get('/Penetapan/tambahDokumenStandarSPMI', [standarController::class, 'standar_create'])->name('tambahStandar'); //tambah standar
-    Route::post('/StandarYangDitetapkanInstitusi', [standarController::class, 'store'])->name('standar.store');
-    Route::get('/Penetapan/editDokumenStandarSPMI/{id_standarinstiu}', [standarController::class, 'edit'])->name('editDataStandar');
-    Route::post('/unggahDokumenStandarSPMI', [standarController::class, 'uploadDokumen']);
+    // Route::get('/Penetapan/unggahDokumenStandarSPMI/{id}', [standarController::class, 'create'])->name('unggahDokumenStandar');
+    Route::get('/Penetapan/tambahDokumenStandarSPMI', [standarController::class, 'create'])->name('tambahStandar'); //tambah dokumen standar
+    Route::resource('/tambahDokumenStandar-2', standarController::class);
+
+    // Route::post('/StandarYangDitetapkanInstitusi', [standarController::class, 'store'])->name('standar.store');
+    Route::get('/Penetapan/editDokumenStandarSPMI/{id}', [standarController::class, 'edit'])->name('editDataStandar');
+    // Route::post('/unggahDokumenStandarSPMI', [standarController::class, 'uploadDokumen']);
     Route::get('/dokumenStandarInstitusi{id_penetapan}', [standarController::class, 'lihatdokumenstandar'])->name('dokumenstandar');
-    Route::delete('/Penetapan/StandarSPMI{id_penetapan}', [standarController::class, 'destroy'])->name('hapusDokumenStandar');
-    Route::put('Penetapan/updateDokumenStandar/{id_penetapan}', [standarController::class, 'update'])->name('updateDokumenStandar');
-    Route::get('/Penetapan/StandarInstitusi/folder/{id}', [standarController::class, 'folder'])->name('FolderDokumenStandar');
+    Route::delete('/Penetapan/StandarSPMI{id}', [standarController::class, 'destroy'])->name('hapusDokumenStandar');
+    Route::put('Penetapan/updateDokumenStandar/{id}', [standarController::class, 'update'])->name('updateDokumenStandar');
+    // Route::get('/Penetapan/StandarInstitusi/folder/{id}', [standarController::class, 'folder'])->name('FolderDokumenStandar');
 
 
     // route untuk halaman menu Pelaksanaan CRUD

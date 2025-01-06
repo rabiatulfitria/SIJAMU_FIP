@@ -153,9 +153,12 @@ class evaluasiController extends Controller
                 $namaFileEval = (object) ['nama_fileeval' => ''];
             }
 
+            // Ambil daftar program studi untuk dropdown
+            $prodi = DB::table('tabel_prodi')->select('id_prodi', 'nama_prodi')->get();
+            
             // Pastikan untuk mengembalikan data lengkap (data evaluasi + nama file evaluasi)
             return view('User.admin.Evaluasi.edit_evaluasi', [
-                'oldData' => $dataEvaluasi,  // Data evaluasi yang diambil dari tabel evaluasis
+                'oldData' => $dataEvaluasi, 'prodi' => $prodi, // Data evaluasi yang diambil dari tabel evaluasis
                 'files' => $fileevalnya ? $fileevalnya->files : null,
                 'namaFileEval' => $namaFileEval->nama_fileeval,  // Mengembalikan nama_fileeval
                 'namaprodi' => $namaFileEval->namaprodi,
