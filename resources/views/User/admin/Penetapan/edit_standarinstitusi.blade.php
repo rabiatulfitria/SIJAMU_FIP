@@ -30,8 +30,8 @@
                                 <label class="form-label" for="bx bx-file">Nama Dokumen</label>
                                 <div class="input-group input-group-merge">
                                     <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-file"></i></span>
-                                    <input type="text" class="form-control" id="bx bx-file" name="nama_filep1" placeholder="Nama Dokumen" required
-                                        value="{{ old('nama_filep1', $oldData->namafile) }}" />
+                                    <input type="text" class="form-control" id="bx bx-file" name="nama_dokumenstandar" placeholder="Nama Dokumen" required
+                                        value="{{ old('nama_dokumenstandar', $oldData->nama_dokumenstandar) }}" />
                                 </div>
                             </div>
 
@@ -51,18 +51,18 @@
 
                             <!-- Tahun -->
                             <div class="mb-3">
-                                <label for="tahun" class="form-label">Tahun</label>
-                                <input type="number" class="form-control" id="tahun" name="tahun" placeholder="Tahun" required min="1900" max="2099"
-                                    value="{{ old('tahun', $oldData->tahun) }}" />
+                                <label for="tanggal_ditetapkan" class="form-label">Tanggal Ditetapkan</label>
+                                <input type="date" class="form-control" id="tanggal_ditetapkan" name="tanggal_ditetapkan" placeholder="Tanggal Ditetapkan" required min="1900" max="2099"
+                                    value="{{ old('tanggal_ditetapkan', $oldData->tanggal_ditetapkan) }}" />
                             </div>
 
                             <!-- Nama Program Studi -->
                             <div class="mb-3">
-                                <label for="nama_prodi" class="form-label">Nama Program Studi</label>
-                                <select class="form-select" id="nama_prodi" name="nama_prodi" required>
+                                <label for="" class="form-label">Nama Program Studi</label>
+                                <select class="form-select" id="progam_studi" name="program_studi" required>
                                     <option value="">Pilih Program Studi</option>
                                     @foreach($prodi as $item)
-                                        <option value="{{ $item->id_prodi }}" {{ $oldData->namaprodi == $item->id_prodi ? 'selected' : '' }}>
+                                        <option value="{{ $item->id_prodi }}" {{ $oldData->program_studi == $item->id_prodi ? 'selected' : '' }}>
                                             {{ $item->nama_prodi }}
                                         </option>
                                     @endforeach
@@ -76,7 +76,8 @@
                                 <p class="form-text text-muted">Unggah ulang dokumen jika ingin mengubah file yang sudah ada.</p>
                                 <p class="form-text" style="color: #7ebcfe">Maksimum 5120 KB (5 MB)</p>
                             </div>
-                            <button type="submit" class="btn btn-primary">{{ isset($standar) }}Ubah</button>
+                            <button type="submit" class="btn btn-primary">Ubah</button>
+                            {{-- {{ isset($standar) }} --}}
                         </form>
                     </div>
                 </div>

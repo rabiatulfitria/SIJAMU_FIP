@@ -23,39 +23,35 @@
                     <li>
                         <a class="dropdown-item" href="#">
                             <div class="d-flex">
-                                <div class="me-3 flex-shrink-0">
+                                <div class="flex-shrink-0 me-3">
                                     <div class="avatar avatar-online">
                                         <img src="{{ asset('sneat/assets/img/avatars/1.png') }}" alt
-                                            class="w-px-40 rounded-circle h-auto" />
+                                            class="w-px-40 h-auto rounded-circle" />
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <span class="fw-semibold d-block">John Doe</span>
-                                    <small class="text-muted">Admin</small>
+                                <!-- Tampilkan nama pengguna -->
+                                     <span class="fw-semibold d-block">{{ Auth::User()->nama }}</span>
+                                <!-- Tampilkan role atau informasi tambahan jika perlu -->
+                                     <small class="text-muted">{{ Auth::User()->level }}</small>
                                 </div>
                             </div>
                         </a>
                     </li>
+                    <!--<li>-->
+                    <!--    <div class="dropdown-divider"></div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--    <a class="dropdown-item" href="#">-->
+                    <!--        <i class="bx bx-user me-2"></i>-->
+                    <!--        <span class="align-middle">Profil Pengguna</span>-->
+                    <!--    </a>-->
+                    <!--</li>-->
                     <li>
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">
-                            <i class="bx bx-user me-2"></i>
-                            <span class="align-middle">My Profile</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#">
-                            <i class="bx bx-cog me-2"></i>
-                            <span class="align-middle">Settings</span>
-                        </a>
-                    </li>
-                    <li>
-                        <div class="dropdown-divider"></div>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="{{ route('logout') }}">
+                        <a class="dropdown-item" href="{{route('logout')}}">
                             <i class="bx bx-power-off me-2"></i>
                             <span class="align-middle">Log Out</span>
                         </a>
@@ -76,8 +72,8 @@
                     <tr>
                         <th>Dokumen</th>
                         <th>Kategori</th>
-                        <th>Tahun</th>
-                        <th>Nama Program Studi</th>
+                        <th>Tanggal Ditetapkan</th>
+                        <th>Program Studi</th>
                         <th>Unggahan</th>
                         @if (Auth::user() &&
                                 (Auth::user()->level == 'Admin' || Auth::user()->level == 'Jaminan Mutu' || Auth::user()->level == 'Koorprodi'))
@@ -87,17 +83,18 @@
                 </thead>
                 <tbody class="table-border-bottom-0">
                     @foreach ($dokumenp1 as $row)
+                    {{-- @php
+                        dd($row);
+                    @endphp --}}
                         <tr>
-                            <td><i class="me-3"></i>
-                                <strong>{{ $row->namafile }}</strong>
-                            </td>
+                            <td>{{ $row->nama_dokumenstandar }}</td>
                             <td>{{ $row->kategori }}</td>
-                            <td>{{ $row->tahun }}</td>
-                            <td>{{ $row->nama_prodi }}</td>
+                            <td>{{ $row->tanggal_ditetapkan }}</td>
+                            <td>{{ $row->program_studi }}</td>
                             <td>
-                                @if ($row->file)
+                                @if ($row->unggahan_dokumen)
                                     <!-- Link ke dokumen -->
-                                    <a href="{{ asset('storage/' . $row->file) }}" class="badge bg-label-info me-1"
+                                    <a href="{{ asset('storage/' . $row->unggahan_dokumen) }}" class="badge bg-label-info me-1"
                                         target="_blank">
                                         <i class="bi bi-link-45deg">Dokumen</i>
                                     </a>
@@ -118,7 +115,7 @@
                                                 <div>{{ @session('success') }}</div>
                                             @endif
                                             <a class="dropdown-item"
-                                                onclick="window.location.href='{{ route('editDataStandar', ['id' => $row->id_standarinstitut]) }}'">
+                                                onclick="window.location.href='{{ route('editDataStandar', $row->id_standarinstitut) }}'">
                                                 <i class="bx bx-edit-alt me-1"></i> Ubah Data
                                             </a>
                                             <div>
@@ -173,15 +170,17 @@
 
 <style>
     /* Custom CSS for DataTable */
-    table.dataTable td,
+    /* table.dataTable td,
     table.dataTable th {
         padding: 12px 15px;
-    }
+    } */
 
     /* Pastikan semua teks di tabel DataTable rata kiri */
     .dataTable th,
     .dataTable td {
         text-align: left !important;
+        padding: 12px 15px !important; /* Padding header dan data */
+        vertical-align: middle; /* Teks sejajar secara vertikal */
     }
 
     .dataTables_wrapper {

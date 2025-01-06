@@ -21,16 +21,16 @@
                         <h5 class="mb-0"></h5>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('standar.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('tambahDokumenStandar-2') }}" enctype="multipart/form-data">
                             @csrf
                             <!-- Nama Dokumen -->
                             <div class="mb-3">
                                 <label class="form-label" for="bx bx-file">Nama Dokumen</label>
                                 <div class="input-group input-group-merge">
                                     <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-file"></i></span>
-                                    <input type="text" class="form-control" id="bx bx-file" name="nama_filep1"
+                                    <input type="text" class="form-control" id="bx bx-file" name="nama_dokumenstandar"
                                         placeholder="Nama Dokumen" required />
-                                    <input type="hidden" name="submenu_penetapan" value="standarinstitusi">
+                                    {{-- <input type="hidden" name="" value="standarinstitusi"> --}}
                                 </div>
                             </div>
 
@@ -50,14 +50,13 @@
 
                             <!-- Tahun -->
                             <div class="mb-3">
-                                <label for="tahun" class="form-label">Tahun</label>
-                                <input type="number" class="form-control" id="tahun" name="tahun" placeholder="Tahun" required min="1900" max="2099" />
-                            </div>
+                                <label for="tanggal_ditetapkan" class="form-label">Tanggal Ditetapkan</label>
+                                <input type="date" class="form-control" id="tanggal_ditetapkan" name="tanggal_ditetapkan" placeholder="Tanggal Ditetapkan" required >
 
                             <!-- Nama Program Studi -->
                             <div class="mb-3">
-                                <label for="nama_prodi" class="form-label">Nama Program Studi</label>
-                                <select class="form-select" id="nama_prodi" name="nama_prodi" required>
+                                <label for="program_studi" class="form-label">Nama Program Studi</label>
+                                <select class="form-select" id="program_studi" name="program_studi" required>
                                     <option value="">Pilih Program Studi</option>
                                     @foreach($prodi as $item)
                                         <option value="{{ $item->id_prodi }}">{{ $item->nama_prodi }}</option>
@@ -73,7 +72,7 @@
                             </div>
 
                             <!-- Submit -->
-                            <button type="submit" class="btn btn-primary">{{ isset($standar) ? 'Update' : 'Kirim' }}</button>
+                            <button type="submit" class="btn btn-primary">{{ isset($dokumenp1) }}Kirim</button>
                         </form>
 
                     </div>
