@@ -55,9 +55,11 @@
         .dataTables_wrapper .dataTables_paginate .paginate_button {
             font-size: 12px;
         }
+
         .dataTables_wrapper .dataTables_filter label {
             font-size: 12px;
         }
+
         .dataTables_wrapper .dataTables_length label {
             font-size: 12px;
         }
@@ -78,7 +80,7 @@
                     <a href="index.html" class="app-brand-link">
                         <img src="{{ asset('sneat/assets/img/favicon/LOGO FIP.png') }}" width="55" height="55">
                         <span class="app-brand-text demo menu-text fw-bolder ms-2 text-capitalize fs-4">SIJAMU
-                            FIP</span>
+                            FKIP</span>
                     </a>
 
                     <a href="javascript:void(0);"
@@ -106,11 +108,11 @@
                             <div data-i18n="TimJAMU">Tim Penjaminan Mutu</div>
                         </a>
 
-                        <!-- Poin Penjaminan Mutu -->
+                        <!-- Siklus Penjaminan Mutu -->
                     <li class="menu-header small text-uppercase">
                         <span class="menu-header-text">PPEPP</span>
                     </li>
-                    <!-- 5 Poin -->
+                    <!-- terdiri dari 5 -->
                     <li class="menu-item {{ \Route::is('penetapan*') ? 'active' : '' }}">
                         <a href="{{ route('penetapan.perangkat') }}" class="menu-link menu-toggle">
                             <i class='menu-icon tf-icons bx bxs-book-bookmark'></i>
@@ -185,7 +187,8 @@
                                 <script>
                                     document.write(new Date().getFullYear());
                                 </script>
-                                | SI-Sistem Penjaminan Mutu Internal Fakultas Ilmu Pendidikan Universitas Trunojoyo
+                                | SI-Sistem Penjaminan Mutu Internal Fakultas Keguruan dan Ilmu Pendidikan Universitas
+                                Trunojoyo
                                 Madura
                             </div>
                         </div>
@@ -248,47 +251,67 @@
         });
     </script>
 
-<script>
-    $(document).ready(function() {
-        // Saat halaman pertama kali dimuat, tampilkan tabel default
-        showTable('DatatablesRenstraProgramStudinya');
-    });
-
-    function showTable(tableId) {
-        console.log(tableId);
-
-        // Sembunyikan semua div yang berisi tabel
-        var tables = document.querySelectorAll('[id^="Datatables"]');
-        tables.forEach(function(tableDiv) {
-            // Cari elemen <table> di dalam div yang tersembunyi
-            var tableElement = $(tableDiv).find('table').DataTable();
-            if (tableElement) {
-                tableElement.destroy();  // Hapus inisialisasi DataTables sebelum menyembunyikan tabel
-            }
-            tableDiv.style.display = 'none';  // Sembunyikan semua tabel
+    <script>
+        $(document).ready(function() {
+            // Saat halaman pertama kali dimuat, tampilkan tabel default
+            showTable('DatatablesRenstraProgramStudinya');
         });
 
-        // Tampilkan div yang sesuai dengan ID yang diklik
-        var selectedTableDiv = document.getElementById(tableId);
-        if (selectedTableDiv) {
-            selectedTableDiv.style.display = 'block';
+        function showTable(tableId) {
+            console.log(tableId);
 
-            // Inisialisasi ulang DataTable hanya pada elemen <table> di dalam div yang ditampilkan
-            $(selectedTableDiv).find('table').DataTable({
-                "language": {
-                    "paginate": {
-                        "previous": "Sebelumnya",
-                        "next": "Selanjutnya"
-                    },
-                    "search": "Cari:",
-                    "lengthMenu": "Tampilkan _MENU_ entri"
+            // Sembunyikan semua div yang berisi tabel
+            var tables = document.querySelectorAll('[id^="Datatables"]');
+            tables.forEach(function(tableDiv) {
+                // Cari elemen <table> di dalam div yang tersembunyi
+                var tableElement = $(tableDiv).find('table').DataTable();
+                if (tableElement) {
+                    tableElement.destroy(); // Hapus inisialisasi DataTables sebelum menyembunyikan tabel
+                }
+                tableDiv.style.display = 'none'; // Sembunyikan semua tabel
+            });
+
+            // Tampilkan div yang sesuai dengan ID yang diklik
+            var selectedTableDiv = document.getElementById(tableId);
+            if (selectedTableDiv) {
+                selectedTableDiv.style.display = 'block';
+
+                // Inisialisasi ulang DataTable hanya pada elemen <table> di dalam div yang ditampilkan
+                $(selectedTableDiv).find('table').DataTable({
+                    "language": {
+                        "paginate": {
+                            "previous": "Sebelumnya",
+                            "next": "Selanjutnya"
+                        },
+                        "search": "Cari:",
+                        "lengthMenu": "Tampilkan _MENU_ entri"
+                    }
+                });
+            }
+        }
+    </script>
+
+    
+    <!-- Script SweetAlert konfirmasi penghapusan -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function confirmDelete(documentId) {
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Anda tidak dapat mengembalikan dokumen ini setelah dihapus!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('delete-form-' + documentId).submit();
                 }
             });
         }
-    }
-</script>
-
-
+    </script>
 
 
     {{-- <!-- JQuery dan Bootstrap JS -->

@@ -9,7 +9,7 @@
 
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
         <div class="navbar-nav align-items-center">
-            <div class="nav-items d-flex align-item-center">Penjaminan Mutu Internal - Fakultas Ilmu Pendidikan</div>
+            <div class="nav-items d-flex align-item-center">Penjaminan Mutu Internal - Fakultas Keguruan dan Ilmu Pendidikan</div>
         </div>
 
         <ul class="navbar-nav flex-row align-items-center ms-auto">
@@ -32,27 +32,22 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <span class="fw-semibold d-block">John Doe</span>
-                                    <small class="text-muted">Admin</small>
+                                <!-- Tampilkan nama pengguna -->
+                                     <span class="fw-semibold d-block">{{ Auth::User()->nama }}</span>
+                                     <small class="text-muted">{{ Auth::User()->role->role_name }}</small>
                                 </div>
                             </div>
                         </a>
                     </li>
-                    <li>
-                        <div class="dropdown-divider"></div>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#">
-                            <i class="bx bx-user me-2"></i>
-                            <span class="align-middle">My Profile</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#">
-                            <i class="bx bx-cog me-2"></i>
-                            <span class="align-middle">Settings</span>
-                        </a>
-                    </li>
+                    <!--<li>-->
+                    <!--    <div class="dropdown-divider"></div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--    <a class="dropdown-item" href="#">-->
+                    <!--        <i class="bx bx-user me-2"></i>-->
+                    <!--        <span class="align-middle">Profil Pengguna</span>-->
+                    <!--    </a>-->
+                    <!--</li>-->
                     <li>
                         <div class="dropdown-divider"></div>
                     </li>
