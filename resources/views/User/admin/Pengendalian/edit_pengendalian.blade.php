@@ -23,41 +23,63 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('updateDokumenPengendalian', $oldData->id_pengendalian) }}"
                             enctype="multipart/form-data">
-                            @csrf
                             @method('PUT')
-                            <label class="form-label" for="namaDokumen_evaluasi">Nama Bidang Pengaturan Standar</label>
-                            <select class="form-select" id="namaDokumen_evaluasi" name="bidang_standar" required onchange="toggleManualInput()">
-                                <option value="" disabled {{ old('bidang_standar', $bidang_standar) === null ? 'selected' : '' }}>Pilih Nama Dokumen</option>
-                                <option value="Standar Pendidikan" {{ old('bidang_standar', $bidang_standar) === 'Standar Pendidikan' ? 'selected' : '' }}>Standar Pendidikan Universitas Trunojoyo Madura</option>
-                                <option value="Standar Penelitian" {{ old('bidang_standar', $bidang_standar) === 'Standar Penelitian' ? 'selected' : '' }}>Standar Penelitian Universitas Trunojoyo Madura</option>
-                                <option value="Standar Pengabdian" {{ old('bidang_standar', $bidang_standar) === 'Standar Pengabdian' ? 'selected' : '' }}>Standar Pengabdian Kepada Masyarakat Universitas Trunojoyo Madura</option>
-                                <option value="Standar Penelitian" {{ old('bidang_standar', $bidang_standar) === 'Standar Penelitian' ? 'selected' : '' }}>Standar Penelitian Universitas Trunojoyo Madura</option>
-                            </select>
+                            <div class="mb-3">
+                                @csrf
+                                <label class="form-label" for="bx bx-file">Nama Dokumen</label>
+                                <div class="input-group input-group-merge">
+                                    <span id="basic-icon-default-fullname2" class="input-group-text"><i
+                                            class="bx bx-file"></i></span>
+                                    <input type="text" class="form-control" id="bx bx-file" name="nama_dokumen"
+                                        placeholder="Nama Dokumen" required value="{{ $oldData->nama_dokumen }}" />
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="tahun" class="form-label">Tahun</label>
+                                <input type="text" class="form-control" id="tahun" name="tahun" placeholder="Tahun"
+                                    required value="{{ $oldData->tahun }}" />
+                            </div>
+
                             <div class="mb-3">
                                 <label class="form-label" for="nama_prodi">Program Studi</label>
-                                <select class="form-select" id="nama_prodi" name="nama_prodi" required>
-                                    <option value="" disabled {{ old('nama_prodi', $nama_prodi) === null ? 'selected' : '' }}>Pilih Program Studi</option>
-                                    <option value="Pendidikan Bahasa dan Sastra Indonesia" {{ old('nama_prodi', $nama_prodi) === 'Pendidikan Bahasa dan Sastra Indonesia' ? 'selected' : '' }}>Pendidikan Bahasa dan Sastra Indonesia</option>
-                                    <option value="Pendidikan Guru Sekolah Dasar" {{ old('nama_prodi', $nama_prodi) === 'Pendidikan Guru Sekolah Dasar' ? 'selected' : '' }}>Pendidikan Guru Sekolah Dasar</option>
-                                    <option value="Pendidikan Ilmu Pengetahuan Alam" {{ old('nama_prodi', $nama_prodi) === 'Pendidikan Ilmu Pengetahuan Alam' ? 'selected' : '' }}>Pendidikan Ilmu Pengetahuan Alam</option>
-                                    <option value="Pendidikan Guru Pendidikan Anak Usia Dini" {{ old('nama_prodi', $nama_prodi) === 'Pendidikan Guru Pendidikan Anak Usia Dini' ? 'selected' : '' }}>Pendidikan Guru Pendidikan Anak Usia Dini</option>
-                                    <option value="Pendidikan Informatika" {{ old('nama_prodi', $nama_prodi) === 'Pendidikan Informatika' ? 'selected' : '' }}>Pendidikan Informatika</option>
+                                <select class="form-select" id="id_prodi" name="id_prodi" required>
+                                    <option value="" disabled
+                                        {{ old('id_prodi', $id_prodi ?? null) === null ? 'selected' : '' }}>
+                                        Pilih Program Studi
+                                    </option>
+                                    @foreach ($prodi as $opsi)
+                                        <option value="{{ $opsi->id_prodi }}"
+                                            {{ old('id_prodi', $id_prodi ?? null) == $opsi->id_prodi ? 'selected' : '' }}>
+                                            {{ $opsi->nama_prodi }}
+                                        </option>
+                                    @endforeach
                                 </select>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label" for="formFileMultiple">Laporan RTM</label>
-                                <input type="file" class="form-control" id="formFileMultiple" multiple name="laporan_rtm[]" />
+                                <input type="file" name="file_rtm" id="file_rtm">
+                                @if ($oldData->file_rtm)
+                                    <p>File sebelumnya: <a
+                                            href="{{ route('lihatdokumenpengendalian', ['id_pengendalian' => $oldData->id_pengendalian, 'jenis_file' => 'rtm']) }}"
+                                            target="_blank">Buka File RTM</a></p>
+                                @endif
                                 <p class="form-text" style="color: #7ebcfe">Maksimum 5120 KB (5 MB)</p>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label" for="formFileMultiple">Laporan RTL</label>
-                                <input type="file" class="form-control" id="formFileMultiple" multiple name="laporan_rtl[]" />
+                                <input type="file" name="file_rtl" id="file_rtl">
+                                @if ($oldData->file_rtl)
+                                    <p>File sebelumnya: <a
+                                            href="{{ route('lihatdokumenpengendalian', ['id_pengendalian' => $oldData->id_pengendalian, 'jenis_file' => 'rtl']) }}"
+                                            target="_blank">Buka File RTL</a></p>
+                                @endif
                                 <p class="form-text" style="color: #7ebcfe">Maksimum 5120 KB (5 MB)</p>
                             </div>
                             <div>
-                                <button type="submit" class="btn btn-primary">{{ isset($evaluasi) }}Kirim</button>
+                                <button type="submit" class="btn btn-primary">Ubah</button>
                         </form>
                     </div>
                 </div>

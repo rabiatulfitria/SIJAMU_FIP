@@ -23,7 +23,7 @@
                     <div class="card-body">
                         <form method="POST" action="{{ url('tambahDokumenPengendalian-2') }}"
                             enctype="multipart/form-data">
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 @csrf
                                 <label class="form-label" for="">Nama Bidang Pengaturan Standar</label>
                                 <select class="form-select" id="bidang_standar" name="bidang_standar" required
@@ -43,50 +43,45 @@
                                     <input type="text" class="form-control" id="manual_namaBidangStandar" name="manual_namaBidangStandar"
                                         placeholder="Nama Standar Lainnya" />
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="mb-3">
+                                @csrf
                                 <label class="form-label" for="bx bx-file">Nama Dokumen</label>
                                 <div class="input-group input-group-merge">
                                     <span id="basic-icon-default-fullname2" class="input-group-text"><i
                                             class="bx bx-file"></i></span>
-                                    <input type="text" class="form-control" id="bx bx-file" name="nama_filep4"
+                                    <input type="text" class="form-control" id="bx bx-file" name="nama_dokumen"
                                         placeholder="Nama Dokumen" required />
                                 </div>
                             </div>
                             
                             <div class="mb-3">
                                 <label for="tahun" class="form-label">Tahun</label>
-                                <input type="number" class="form-control" id="tahun" name="tahun" placeholder="Tahun" required min="1900" max="2099" />
+                                <input type="text" class="form-control" id="tahun" name="tahun" placeholder="Tahun" required min="1900" max="2099" />
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label" for="">Program Studi</label>
-                                <select class="form-select" id="nama_prodi" name="nama_prodi" required>
+                                <label class="form-label" for="id_prodi">Program Studi</label>
+                                <select class="form-select" id="id_prodi" name="id_prodi" required>
                                     <option value="" disabled selected>Pilih Program Studi</option>
-                                    <option value="Pendidikan Bahasa dan Sastra Indonesia">Pendidikan Bahasa dan Sastra
-                                        Indonesia
-                                    </option>
-                                    <option value="Pendidikan Informatika">Pendidikan Guru Sekolah Dasar</option>
-                                    <option value="Pendidikan Ilmu Pengetahuan Alam">Pendidikan Ilmu Pengetahuan Alam
-                                    </option>
-                                    <option value="Pendidikan Guru Pendidikan Anak Usia Dini">Pendidikan Guru Pendidikan
-                                        Anak Usia Dini</option>
-                                    <option value="Pendidikan Informatika">Pendidikan Informatika</option>
+                                    @foreach($prodi as $opsi)
+                                        <option value="{{ $opsi->id_prodi }}">{{ $opsi->nama_prodi }}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label" for="formFileMultiple">Dokumen RTM</label>
                                 <input type="file" class="form-control" id="formFileMultiple" multiple
-                                    name="laporan_rtm[]" />
+                                    name="file_rtm[]" />
                                 <p class="form-text" style="color: #7ebcfe">Maksimum 5120 KB (5 MB)</p>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label" for="formFileMultiple">Dokumen RTL</label>
                                 <input type="file" class="form-control" id="formFileMultiple" multiple
-                                    name="laporan_rtl[]" />
+                                    name="file_rtl[]" />
                                 <p class="form-text" style="color: #7ebcfe">Maksimum 5120 KB (5 MB)</p>
                             </div>
                             <div>

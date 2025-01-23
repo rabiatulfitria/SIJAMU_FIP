@@ -7,22 +7,28 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pengendalian extends Model
 {
-    use HasFactory;
+  use HasFactory;
 
-    protected $table = 'pengendalians';
-    protected $primaryKey = 'id_pengendalians';
+  protected $table = 'pengendalians';
+  protected $primaryKey = 'id_pengendalian';
 
-    /**
-     * Atribut diisi secara massal
-     *
-     * @var array<int, string>
-     */
+  /**
+   * Atribut diisi secara massal
+   *
+   * @var array<int, string>
+   */
 
-     protected $fillable = [
-        'id_pengendalians',
-        'bidang_standar',
-        'program_studi',
-        'laporan_rtm',
-        'laporan_rtl',
-     ];
+  protected $fillable = [
+    'id_pengendalian',
+    'nama_dokumen',
+    'tahun',
+    'file_rtm',
+    'file_rtl',
+    'id_prodi',
+  ];
+
+  public function prodi()
+  {
+    return $this->belongsTo(Prodi::class, 'id_prodi', 'id_prodi');
+  }
 }
