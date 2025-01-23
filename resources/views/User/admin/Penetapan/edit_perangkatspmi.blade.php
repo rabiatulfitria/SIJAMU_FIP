@@ -15,14 +15,13 @@
 
     @section('content')
         <div class="row">
-
             <div class="col-xl">
                 <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h5 class="mb-0"></h5>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('updateDokumenPerangkat', $oldData->id) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('updateDokumenPerangkat', $oldData->id_dokspmi) }}" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
@@ -31,8 +30,8 @@
                                 <label class="form-label" for="bx bx-file">Nama Dokumen</label>
                                 <div class="input-group input-group-merge">
                                     <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-file"></i></span>
-                                    <input type="text" class="form-control" id="bx bx-file" name="nama_filep1" placeholder="Nama Dokumen" required
-                                        value="{{ old('nama_filep1', $oldData->namafile) }}" />
+                                    <input type="text" class="form-control" id="bx bx-file" name="nama_dokumenspmi" placeholder="Nama Dokumen" required
+                                        value="{{ old('namafile', $oldData->nama_dokumenspmi) }}" />
                                 </div>
                             </div>
 
@@ -51,13 +50,13 @@
 
                             <!-- Tahun -->
                             <div class="mb-3">
-                                <label for="tahun" class="form-label">Tahun</label>
-                                <input type="number" class="form-control" id="tahun" name="tahun" placeholder="Tahun" required min="1900" max="2099"
-                                    value="{{ old('tahun', $oldData->tahun) }}" />
+                                <label for="tahun" class="form-label">Tanggal Ditetapkan</label>
+                                <input type="date" class="form-control" id="tanggal_ditetapkan" name="tanggal_ditetapkan" placeholder="Tanggal Ditetapkan" required
+                                    value="{{ old('tanggal_ditetapkan', $oldData->tanggal_ditetapkan) }}" />
                             </div>
 
                             <!-- Nama Program Studi -->
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 <label for="nama_prodi" class="form-label">Nama Program Studi</label>
                                 <select class="form-select" id="nama_prodi" name="nama_prodi" required>
                                     <option value="">Pilih Program Studi</option>
@@ -67,7 +66,7 @@
                                         </option>
                                     @endforeach
                                 </select>
-                            </div>
+                            </div> --}}
 
                             <!-- Pilih Dokumen -->
                             <div class="mb-3">

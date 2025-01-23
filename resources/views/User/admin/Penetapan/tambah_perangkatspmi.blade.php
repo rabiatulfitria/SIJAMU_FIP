@@ -29,7 +29,7 @@
                                 <label class="form-label" for="bx bx-file">Nama Dokumen</label>
                                 <div class="input-group input-group-merge">
                                     <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-file"></i></span>
-                                    <input type="text" class="form-control" id="bx bx-file" name="nama_filep1" placeholder="Nama Dokumen" required />
+                                    <input type="text" class="form-control" id="bx bx-file" name="nama_dokumenspmi" placeholder="Nama Dokumen" required />
                                 </div>
                             </div>
 
@@ -46,14 +46,14 @@
                                 </select>
                             </div>
 
-                            <!-- Tahun -->
+                            <!-- Tanggal Ditetapkan -->
                             <div class="mb-3">
-                                <label for="tahun" class="form-label">Tahun</label>
-                                <input type="number" class="form-control" id="tahun" name="tahun" placeholder="Tahun" required min="1900" max="2099" />
+                                <label for="tahun" class="form-label">Tanggal Ditetapkan</label>
+                                <input type="date" class="form-control" id="tanggal_ditetapkan" name="tanggal_ditetapkan" required />
                             </div>
 
                             <!-- Nama Program Studi -->
-                            <div class="mb-3">
+                            {{-- <div class="mb-3">
                                 <label for="nama_prodi" class="form-label">Nama Program Studi</label>
                                 <select class="form-select" id="nama_prodi" name="nama_prodi" required>
                                     <option value="">Pilih Program Studi</option>
@@ -61,7 +61,7 @@
                                         <option value="{{ $item->id_prodi }}">{{ $item->nama_prodi }}</option>
                                     @endforeach
                                 </select>
-                            </div>
+                            </div> --}}
 
                             <!-- Pilih Dokumen -->
                             <div class="mb-3">
