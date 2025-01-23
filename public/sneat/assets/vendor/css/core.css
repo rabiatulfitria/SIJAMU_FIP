@@ -15048,6 +15048,55 @@ html:not(.layout-menu-fixed) .menu-inner-shadow {
   list-style: none;
 }
 
+/*tambahan css untuk menu pelaksanaan*/
+.card.shadow-lg {
+  box-shadow: 0px 4px 12px rgba(0, 0, 255, 0.15); /* Bayangan biru halus */
+  border-radius: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card.shadow-lg:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 15px rgba(0, 0, 255, 0.25); /* Bayangan lebih tebal saat hover */
+}
+/* Gaya untuk menu */
+.menu-innner {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.menu-itemm {
+  margin-bottom: 5px;
+}
+.menu-itemm a {
+  text-decoration: none;
+  color: #555;
+  font-size: 12px;
+  padding: 5px 5px;
+  display: block;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+.menu-itemm a:hover {
+  background-color: rgba(0, 0, 255, 0.1); /* Biru muda saat hover */
+  color: #6b4985;
+}
+.menu-itemm.active a,
+.menu-itemm a.active {
+    background-color: rgba(100, 149, 237); /* Biru saat diklik/aktif */
+    color: white; /* Font putih */
+    font-weight: thin;
+}
+/* Gaya untuk judul bagian menu */
+.section-title {
+  margin-top: 3px;
+  margin-bottom: 3px;
+  color:#03b0d4;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+/*akhir tambahan css untuk menu pelaksanaan*/
+
+
 .menu-header {
   opacity: 1;
   transition: opacity 0.3s ease-in-out;

@@ -9,7 +9,7 @@
 
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
         <div class="navbar-nav align-items-center">
-            <div class="nav-items d-flex align-item-center">Tambah Dokumen Pelaksanaan</div>
+            <div id="form-title" class="nav-items d-flex align-item-center"></div>
         </div>
     @endsection
 
@@ -28,35 +28,30 @@
                             <div class="mb-3">
                                 <label class="form-label" for="bx bx-file">Nama Dokumen</label>
                                 <div class="input-group input-group-merge">
-                                    <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-file"></i></span>
-                                    <input type="text" class="form-control" id="bx bx-file" name="nama_filep1" placeholder="Nama Dokumen" required />
+                                    <span id="basic-icon-default-fullname2" class="input-group-text"><i
+                                            class="bx bx-file"></i></span>
+                                    <input type="text" class="form-control" id="bx bx-file" name="namafile"
+                                        placeholder="Nama Dokumen" required />
                                 </div>
                             </div>
 
                             <!-- Kategori -->
                             <div class="mb-3">
-                                <label for="kategori" class="form-label">Kategori</label>
-                                <select class="form-select" id="kategori" name="kategori" required>
+                                <label for="nama_kategori" class="form-label">Kategori</label>
+                                <select class="form-select" id="nama_kategori" name="nama_kategori" required>
                                     <option value="">Pilih Kategori</option>
-                                    <option value="Renstra Program Studi">Renstra Program Studi</option>
-                                    <option value="Laporan Kinerja Program Studi">Laporan Kinerja Program Studi</option>
-                                    <option value="Dokumen Kurikulum">Dokumen Kurikulum</option>
-                                    <option value="Rencana Pembelajaran Semester (RPS)">Rencana Pembelajaran Semester (RPS)</option>
-                                    <option value="Dokumen Monitoring dan Evaluasi Kegiatan Program MBKM">Dokumen Monitoring dan Evaluasi Kegiatan Program MBKM</option>
-                                    <option value="Capaian Pembelajaran Lulusan (CPL)">Capaian Pembelajaran Lulusan (CPL)</option>
-                                    <option value="Panduan RPS">Panduan RPS</option>
-                                    <option value="Panduan Mutu Soal">Panduan Mutu Soal</option>
-                                    <option value="Panduan Kisi Kisi Soal">Panduan Kisi Kisi Soal</option>
-                                    <option value="Formulir Kepuasan Mahasiswa">Formulir Kepuasan Mahasiswa</option>
-                                    <option value="Dokumen Monitoring dan Evaluasi Ketercapaian Standar Layanan Kemahasiswaan">Dokumen Monitoring dan Evaluasi Ketercapaian Standar Layanan Kemahasiswaan</option>
+                                    @foreach ($kategori as $item)
+                                        <option value="{{ $item->id_kategori }}">{{ $item->nama_kategori }}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
 
                             <!-- Tahun -->
                             <div class="mb-3">
-                                <label for="tahun" class="form-label">Tahun</label>
-                                <input type="number" class="form-control" id="tahun" name="tahun" placeholder="Tahun" required min="1900" max="2099" />
+                                <label for="periode_ta" class="form-label">Periode/Tahun Akademik</label>
+                                <input type="text" class="form-control" id="periode_ta" name="periode_ta"
+                                    placeholder="isi periode atau tahun akademik" required />
                             </div>
 
                             <!-- Nama Program Studi -->
@@ -64,7 +59,7 @@
                                 <label for="nama_prodi" class="form-label">Nama Program Studi</label>
                                 <select class="form-select" id="nama_prodi" name="nama_prodi" required>
                                     <option value="">Pilih Program Studi</option>
-                                    @foreach($prodi as $item)
+                                    @foreach ($prodi as $item)
                                         <option value="{{ $item->id_prodi }}">{{ $item->nama_prodi }}</option>
                                     @endforeach
                                 </select>
@@ -85,4 +80,19 @@
             </div>
         </div>
     </div>
+
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    document.body.addEventListener("click", function (event) {
+        // Periksa apakah elemen yang diklik adalah menu-itemm
+        if (event.target.matches(".menu-itemm a")) {
+            const newTitle = event.target.getAttribute("data-title"); // Ambil data-title
+            const formTitle = document.getElementById("form-title"); // Ambil elemen form-title
+            if (formTitle && newTitle) {
+                formTitle.innerText = newTitle; // Ubah teks form-title
+            }
+        }
+    });
+});
+    </script>
 @endsection

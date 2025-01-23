@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\pelaksanaan_prodi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -11,71 +12,38 @@ class pelaksanaan1Controller extends Controller
 {
     public function index()
     {
-        $renstraProgramStudi = DB::table('pelaksanaan_prodi')
-                        ->join('tabel_prodi', 'pelaksanaan_prodi.namaprodi', '=', 'tabel_prodi.id_prodi')
-                        ->where('pelaksanaan_prodi.kategori', 'Renstra Program Studi')
-                        ->select('pelaksanaan_prodi.*', 'tabel_prodi.nama_prodi')
-                        ->get();
+        $plks_prodi = DB::table('pelaksanaan_prodi')
+            ->join('tabel_prodi', 'pelaksanaan_prodi.namaprodi', '=', 'tabel_prodi.id_prodi')
+            ->join('kategori', 'pelaksanaan_prodi.nama_kategori', '=', 'kategori.id_kategori')
+            ->join('pelaksanaans', 'pelaksanaan_prodi.periode_tahunakademik', '=', 'pelaksanaans.id_plks')
+            ->select('pelaksanaan_prodi.*', 'tabel_prodi.nama_prodi', 'kategori.nama_kategori', 'pelaksanaans.periode_tahunakademik as periode_ta')
+            ->where(function ($query) {
+                $query->where('pelaksanaan_prodi.nama_kategori', 'Renstra Program Studi')
+                    ->orWhere('pelaksanaan_prodi.nama_kategori', 'Laporan Kinerja Program Studi')
+                    ->orWhere('pelaksanaan_prodi.nama_kategori', 'Dokumen Kurikulum')
+                    ->orWhere('pelaksanaan_prodi.nama_kategori', 'Rencana Pembelajaran Semester (RPS)')
+                    ->orWhere('pelaksanaan_prodi.nama_kategori', 'Dokumen Monitoring dan Evaluasi Kegiatan Program MBKM')
+                    ->orWhere('pelaksanaan_prodi.nama_kategori', 'Capaian Pembelajaran Lulusan (CPL)')
+                    ->orWhere('pelaksanaan_prodi.nama_kategori', 'Panduan RPS')
+                    ->orWhere('pelaksanaan_prodi.nama_kategori', 'Panduan Mutu Soal')
+                    ->orWhere('pelaksanaan_prodi.nama_kategori', 'Panduan Kisi Kisi Soal')
+                    ->orWhere('pelaksanaan_prodi.nama_kategori', 'Formulir Kepuasan Mahasiswa')
+                    ->orWhere('pelaksanaan_prodi.nama_kategori', 'Dokumen Monitoring dan Evaluasi Ketercapaian Standar Layanan Kemahasiswaan');
+            })
+            ->get();
 
-        $laporanKinerjaProgramStudi = DB::table('pelaksanaan_prodi')
-                        ->join('tabel_prodi', 'pelaksanaan_prodi.namaprodi', '=', 'tabel_prodi.id_prodi')
-                        ->where('pelaksanaan_prodi.kategori', 'Laporan Kinerja Program Studi')
-                        ->select('pelaksanaan_prodi.*', 'tabel_prodi.nama_prodi')
-                        ->get();
-
-        $dokumenKurikulum = DB::table('pelaksanaan_prodi')
-                        ->join('tabel_prodi', 'pelaksanaan_prodi.namaprodi', '=', 'tabel_prodi.id_prodi')
-                        ->where('pelaksanaan_prodi.kategori', 'Dokumen Kurikulum')
-                        ->select('pelaksanaan_prodi.*', 'tabel_prodi.nama_prodi')
-                        ->get();
-
-        $rps = DB::table('pelaksanaan_prodi')
-                        ->join('tabel_prodi', 'pelaksanaan_prodi.namaprodi', '=', 'tabel_prodi.id_prodi')
-                        ->where('pelaksanaan_prodi.kategori', 'Rencana Pembelajaran Semester (RPS)')
-                        ->select('pelaksanaan_prodi.*', 'tabel_prodi.nama_prodi')
-                        ->get();
-
-        $monitoringMbkm = DB::table('pelaksanaan_prodi')
-                        ->join('tabel_prodi', 'pelaksanaan_prodi.namaprodi', '=', 'tabel_prodi.id_prodi')
-                        ->where('pelaksanaan_prodi.kategori', 'Dokumen Monitoring dan Evaluasi Kegiatan Program MBKM')
-                        ->select('pelaksanaan_prodi.*', 'tabel_prodi.nama_prodi')
-                        ->get();
-
-        $cpl = DB::table('pelaksanaan_prodi')
-                        ->join('tabel_prodi', 'pelaksanaan_prodi.namaprodi', '=', 'tabel_prodi.id_prodi')
-                        ->where('pelaksanaan_prodi.kategori', 'Capaian Pembelajaran Lulusan (CPL)')
-                        ->select('pelaksanaan_prodi.*', 'tabel_prodi.nama_prodi')
-                        ->get();
-
-        $panduanRps = DB::table('pelaksanaan_prodi')
-                        ->join('tabel_prodi', 'pelaksanaan_prodi.namaprodi', '=', 'tabel_prodi.id_prodi')
-                        ->where('pelaksanaan_prodi.kategori', 'Panduan RPS')
-                        ->select('pelaksanaan_prodi.*', 'tabel_prodi.nama_prodi')
-                        ->get();
-
-        $panduanMutuSoal = DB::table('pelaksanaan_prodi')
-                        ->join('tabel_prodi', 'pelaksanaan_prodi.namaprodi', '=', 'tabel_prodi.id_prodi')
-                        ->where('pelaksanaan_prodi.kategori', 'Panduan Mutu Soal')
-                        ->select('pelaksanaan_prodi.*', 'tabel_prodi.nama_prodi')
-                        ->get();
-
-        $panduanKisiKisi = DB::table('pelaksanaan_prodi')
-                        ->join('tabel_prodi', 'pelaksanaan_prodi.namaprodi', '=', 'tabel_prodi.id_prodi')
-                        ->where('pelaksanaan_prodi.kategori', 'Panduan Kisi Kisi Soal')
-                        ->select('pelaksanaan_prodi.*', 'tabel_prodi.nama_prodi')
-                        ->get();
-
-        $formulirKepuasan = DB::table('pelaksanaan_prodi')
-                        ->join('tabel_prodi', 'pelaksanaan_prodi.namaprodi', '=', 'tabel_prodi.id_prodi')
-                        ->where('pelaksanaan_prodi.kategori', 'Formulir Kepuasan Mahasiswa')
-                        ->select('pelaksanaan_prodi.*', 'tabel_prodi.nama_prodi')
-                        ->get();
-
-        $monitoringKemahasiswaan = DB::table('pelaksanaan_prodi')
-                        ->join('tabel_prodi', 'pelaksanaan_prodi.namaprodi', '=', 'tabel_prodi.id_prodi')
-                        ->where('pelaksanaan_prodi.kategori', 'Dokumen Monitoring dan Evaluasi Ketercapaian Standar Layanan Kemahasiswaan')
-                        ->select('pelaksanaan_prodi.*', 'tabel_prodi.nama_prodi')
-                        ->get();
+        // Memisahkan hasil berdasarkan kategori
+        $renstraProgramStudi = $plks_prodi->where('nama_kategori', 'Renstra Program Studi');
+        $laporanKinerjaProgramStudi = $plks_prodi->where('nama_kategori', 'Laporan Kinerja Program Studi');
+        $dokumenKurikulum = $plks_prodi->where('nama_kategori', 'Dokumen Kurikulum');
+        $rps = $plks_prodi->where('nama_kategori', 'Rencana Pembelajaran Semester (RPS)');
+        $monitoringMbkm = $plks_prodi->where('nama_kategori', 'Dokumen Monitoring dan Evaluasi Kegiatan Program MBKM');
+        $cpl = $plks_prodi->where('nama_kategori', 'Capaian Pembelajaran Lulusan (CPL)');
+        $panduanRps = $plks_prodi->where('nama_kategori', 'Panduan RPS');
+        $panduanMutuSoal = $plks_prodi->where('nama_kategori', 'Panduan Mutu Soal');
+        $panduanKisiKisi = $plks_prodi->where('nama_kategori', 'Panduan Kisi Kisi Soal');
+        $formulirKepuasan = $plks_prodi->where('nama_kategori', 'Formulir Kepuasan Mahasiswa');
+        $monitoringKemahasiswaan = $plks_prodi->where('nama_kategori', 'Dokumen Monitoring dan Evaluasi Ketercapaian Standar Layanan Kemahasiswaan');
 
         return view('User.admin.Pelaksanaan.index_prodi', compact(
             'renstraProgramStudi',
@@ -88,27 +56,36 @@ class pelaksanaan1Controller extends Controller
             'panduanMutuSoal',
             'panduanKisiKisi',
             'formulirKepuasan',
-            'monitoringKemahasiswaan'
+            'monitoringKemahasiswaan',
         ));
     }
 
-
-    public function tambahPelaksanaan() {
+    public function tambahPelaksanaan()
+    {
         $prodi = DB::table('tabel_prodi')->select('id_prodi', 'nama_prodi')->get();
+        $kategori = DB::table('kategori')->select('id_kategori', 'nama_kategori')->get();
+        $periode = DB::table('pelaksanaans')->select('id_plks', 'periode_tahunakademik')->get();
 
-        return view('User.admin.Pelaksanaan.tambah_dokumen_pelaksanaan', compact('prodi'));
+        return view('User.admin.Pelaksanaan.tambah_dokumen_pelaksanaan', compact('prodi', 'kategori', 'periode'));
     }
 
     public function simpanPelaksanaan(Request $request)
-    {
-        {
-            $request->validate([
-                'nama_filep1' => 'required|string|max:255',
-                'kategori' => 'required|string',
-                'tahun' => 'required|numeric|min:1900|max:2099',
+    { {
+            // Validasi input
+            $validatedData = $request->validate([
+                'namafile' => 'required|string|max:255',
+                'nama_kategori' => 'required|exists:kategori,id_kategori',
                 'nama_prodi' => 'required|exists:tabel_prodi,id_prodi',
+                'periode_ta' => 'required|string|max:255',
                 'files' => 'required',
-                'files.*' => 'file|mimes:pdf,doc,docx,xlsx,png,jpg,jpeg|max:5120' //Maksimum 5120 KB (5 MB)
+                'files.*' => 'file|mimes:pdf,doc,docx,xlsx,url|max:5120' //Maksimum 5120 KB (5 MB)
+            ]);
+
+            // Simpan data ke tabel pelaksanaans menggunakan query builder
+            $Pelaksanaan = DB::table('pelaksanaans')->insertGetId([
+                'periode_tahunakademik' => $validatedData['periode_ta'],
+                'created_at' => now(),
+                'updated_at' => now(),
             ]);
 
             try {
@@ -116,17 +93,17 @@ class pelaksanaan1Controller extends Controller
 
                 foreach ($request->file('files') as $file) {
                     // Generate unique file name
-                    $namaDokumen = time() . '-' . $file->getClientOriginalName();
+                    $namaFile = time() . '-' . $file->getClientOriginalName();
 
-                    // Store file in the 'public/pelaksanaan' directory
-                    $path = $file->storeAs('pelaksanaan', $namaDokumen, 'public');
+                    // Store file in the 'public/pelaksaan/prodi' directory
+                    $path = $file->storeAs('pelaksanaan/prodi', $namaFile, 'public');
 
                     // Insert data into 'pelaksanaan_prodi' table
                     DB::table('pelaksanaan_prodi')->insert([
-                        'namafile' => $request->nama_filep1,
-                        'kategori' => $request->kategori,
-                        'tahun' => $request->tahun,
-                        'namaprodi' => $request->nama_prodi,
+                        'namafile' => $validatedData['namafile'],
+                        'periode_tahunakademik' => $Pelaksanaan,
+                        'nama_kategori' => $validatedData['nama_kategori'],
+                        'namaprodi' => $validatedData['nama_prodi'],
                         'file' => $path,
                         'created_at' => now(),
                         'updated_at' => now()
@@ -144,46 +121,73 @@ class pelaksanaan1Controller extends Controller
         }
     }
 
-    public function editPelaksanaan(Request $request, $id){
+    public function lihatdokumenPlksprodi($id_plks_prodi)
+    {
+        $plks_prodi = pelaksanaan_prodi::findOrFail($id_plks_prodi);
+        $filePaths = json_decode($plks_prodi->files, true);
+
+        if (is_array($filePaths) && !empty($filePaths)) {
+            $file = $filePaths[0];
+
+            if (Storage::disk('local')->exists($file)) {
+                return response()->file(storage_path('app' . $file));
+            } else {
+                abort(404, 'File not found.');
+            }
+        }
+    }
+
+    public function editPelaksanaan(Request $request, $id)
+    {
         // Ambil data pelaksanaan_prodi yang ingin diedit
-        $pelaksanaan = DB::table('pelaksanaan_prodi')
-        ->join('tabel_prodi', 'pelaksanaan_prodi.namaprodi', '=', 'tabel_prodi.id_prodi')
-        ->select('pelaksanaan_prodi.*', 'tabel_prodi.nama_prodi')
-        ->where('pelaksanaan_prodi.id_plks_prodi', '=', $id)
-        ->first();
+        $pelaksanaanprodi = DB::table('pelaksanaan_prodi')
+            ->join('tabel_prodi', 'pelaksanaan_prodi.namaprodi', '=', 'tabel_prodi.id_prodi')
+            ->join('kategori', 'pelaksanaan_prodi.nama_kategori', '=', 'kategori.id_kategori')
+            ->join('pelaksanaans', 'pelaksanaan_prodi.periode_tahunakademik', '=', 'pelaksanaans.id_plks')
+            ->select('pelaksanaan_prodi.*', 'tabel_prodi.nama_prodi', 'kategori.nama_kategori', 'pelaksanaans.periode_tahunakademik as periode_ta')
+            ->where('pelaksanaan_prodi.id_plks_prodi', '=', $id)
+            ->first();
 
         $prodi = DB::table('tabel_prodi')->select('id_prodi', 'nama_prodi')->get();
+        $kategori = DB::table('kategori')->select('id_kategori', 'nama_kategori')->get();
+        $periode = DB::table('pelaksanaans')->select('id_plks', 'periode_tahunakademik');
 
-        return view('User.admin.Pelaksanaan.edit_dokumen_pelaksanaan', compact('pelaksanaan','prodi'));
+        return view('User.admin.Pelaksanaan.edit_dokumen_pelaksanaan', compact('pelaksanaanprodi', 'prodi', 'kategori', 'periode'));
     }
 
     public function updatePelaksanaan(Request $request, $id)
     {
         // Validasi input
-        $request->validate([
-            'nama_filep1' => 'required|string|max:255',
-            'kategori' => 'required|string',
-            'tahun' => 'required|numeric|min:1900|max:2099',
+        $validatedData = $request->validate([
+            'namafile' => 'required|string|max:255',
+            'nama_kategori' => 'required|exists:kategori,id_kategori',
             'nama_prodi' => 'required|exists:tabel_prodi,id_prodi',
-            'files.*' => 'file|mimes:pdf,doc,docx,xlsx,png,jpg,jpeg|max:5120' //Maksimum 5120 KB (5 MB)
+            'periode_ta' => 'required|string|max:255',
+            'files' => 'required',
+            'files.*' => 'file|mimes:pdf,doc,docx,xlsx,url|max:5120' //Maksimum 5120 KB (5 MB)
         ]);
 
         try {
             DB::beginTransaction();
 
             // Ambil data lama dari tabel
-            $dokumen = DB::table('pelaksanaan_prodi')->where('id', $id)->first();
+            $dokumen = DB::table('pelaksanaan_prodi')->where('id_plks_prodi', $id)->first();
 
-            // Update data di database
+            // Update tabel standar_institusi
             DB::table('pelaksanaan_prodi')
-                ->where('id', $id)
+                ->where('id_plks_prodi', $id)
                 ->update([
-                    'namafile' => $request->nama_filep1,
-                    'kategori' => $request->kategori,
-                    'tahun' => $request->tahun,
-                    'namaprodi' => $request->nama_prodi,
+                    'namafile' => $validatedData['namafile'],
+                    'nama_kategori' => $validatedData['nama_kategori'],
+                    'namaprodi' => $validatedData['nama_prodi'],
                     'updated_at' => now()
                 ]);
+
+            // Update tabel penetapans
+            DB::table('pelaksanaans')->where('id_plks', $dokumen->id_plks)->update([
+                'periode_tahunakademik' => $validatedData['periode_ta'],
+                'updated_at' => now(),
+            ]);
 
             // Jika ada file baru diunggah, hapus file lama dan simpan file baru
             if ($request->hasFile('files')) {
@@ -195,11 +199,11 @@ class pelaksanaan1Controller extends Controller
 
                     // Generate unique file name
                     $namaFile = time() . '-' . $file->getClientOriginalName();
-                    $path = $file->storeAs('pelaksanaan', $namaFile, 'public');
+                    $path = $file->storeAs('pelaksanaan/prodi', $namaFile, 'public');
 
                     // Update path file baru di database
                     DB::table('pelaksanaan_prodi')
-                        ->where('id', $id)
+                        ->where('id_plks_prodi', $id)
                         ->update(['file' => $path]);
                 }
             }
@@ -218,7 +222,7 @@ class pelaksanaan1Controller extends Controller
     {
         try {
             // Ambil data dokumen berdasarkan id
-            $dokumen = DB::table('pelaksanaan_prodi')->where('id', $id)->first();
+            $dokumen = DB::table('pelaksanaan_prodi')->where('id_plks_prodi', $id)->first();
 
             // Pastikan data dokumen ditemukan
             if ($dokumen) {
@@ -228,7 +232,7 @@ class pelaksanaan1Controller extends Controller
                 }
 
                 // Hapus data dari tabel pelaksanaan_prodi
-                DB::table('pelaksanaan_prodi')->where('id', $id)->delete();
+                DB::table('pelaksanaan_prodi')->where('id_plks_prodi', $id)->delete();
 
 
                 Alert::success('success', 'Dokumen berhasil dihapus.');
@@ -248,12 +252,18 @@ class pelaksanaan1Controller extends Controller
     public function indexFakultas()
     {
         $renstraFakultas = DB::table('pelaksanaan_fakultas')
-                        ->where('kategori', 'Renstra Fakultas')
-                        ->get();
+            ->join('kategori', 'pelaksanaan_fakultas.nama_kategori', '=', 'kategori.id_kategori')
+            ->join('pelaksanaans', 'pelaksanaan_fakultas.periode_tahunakademik', '=', 'pelaksanaans.id_plks')
+            ->select('pelaksanaan_fakultas.*', 'kategori.nama_kategori', 'pelaksanaans.periode_tahunakademik as periode_ta')
+            ->where('pelaksanaan_fakultas.nama_kategori', 'Renstra Fakultas')
+            ->get();
 
         $laporanKinerjaFakultas = DB::table('pelaksanaan_fakultas')
-                        ->where('kategori', 'Laporan Kinerja Fakultas')
-                        ->get();
+            ->join('kategori', 'pelaksanaan_fakultas.nama_kategori', '=', 'kategori.id_kategori')
+            ->join('pelaksanaans', 'pelaksanaan_fakultas.periode_tahunakademik', '=', 'pelaksanaans.id_plks')
+            ->select('pelaksanaan_fakultas.*', 'kategori.nama_kategori', 'pelaksanaans.periode_tahunakademik as periode_ta')
+            ->where('pelaksanaan_fakultas.nama_kategori', 'Laporan Kinerja Fakultas')
+            ->get();
 
         return view('User.admin.Pelaksanaan.index_fakultas', compact(
             'renstraFakultas',
@@ -261,22 +271,33 @@ class pelaksanaan1Controller extends Controller
         ));
     }
 
-    public function tambahPelaksanaanFakultas() {
+    public function tambahPelaksanaanFakultas()
+    {
         $prodi = DB::table('tabel_prodi')->select('id_prodi', 'nama_prodi')->get();
+        $kategori = DB::table('kategori')->select('id_kategori', 'nama_kategori')->get();
+        $periode = DB::table('pelaksanaans')->select('id_plks', 'periode_tahunakademik');
 
-        return view('User.admin.Pelaksanaan.tambah_dokumen_pelaksanaan_fakultas', compact('prodi'));
+        return view('User.admin.Pelaksanaan.tambah_dokumen_pelaksanaan_fakultas', compact('prodi', 'kategori', 'periode'));
     }
 
     public function simpanPelaksanaanFakultas(Request $request)
-    {
-        {
-            $request->validate([
-                'nama_filep1' => 'required|string|max:255',
-                'kategori' => 'required|string',
-                'tahun' => 'required|numeric|min:1900|max:2099',
+    { {
+            // Validasi input
+            $validatedData = $request->validate([
+                'namafile' => 'required|string|max:255',
+                'nama_kategori' => 'required|exists:kategori,id_kategori',
+                'periode_ta' => 'required|string|max:255',
                 'files' => 'required',
-                'files.*' => 'file|mimes:pdf,doc,docx,xlsx,png,jpg,jpeg|max:5120' //Maksimum 5120 KB (5 MB)
+                'files.*' => 'file|mimes:pdf,doc,docx,xlsx,url|max:5120' //Maksimum 5120 KB (5 MB)
             ]);
+
+            // Simpan data ke tabel pelaksanaans menggunakan query builder
+            $Pelaksanaan = DB::table('pelaksanaans')->insertGetId([
+                'periode_tahunakademik' => $validatedData['periode_ta'],
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+
 
             try {
                 DB::beginTransaction();
@@ -286,13 +307,13 @@ class pelaksanaan1Controller extends Controller
                     $namaDokumen = time() . '-' . $file->getClientOriginalName();
 
                     // Store file in the 'public/pelaksanaan' directory
-                    $path = $file->storeAs('pelaksanaan', $namaDokumen, 'public');
+                    $path = $file->storeAs('pelaksanaan/fakultas', $namaDokumen, 'public');
 
                     // Insert data into 'pelaksanaan_fakultas' table
                     DB::table('pelaksanaan_fakultas')->insert([
-                        'namafile' => $request->nama_filep1,
-                        'kategori' => $request->kategori,
-                        'tahun' => $request->tahun,
+                        'namafile' => $validatedData['namafile'],
+                        'periode_tahunakademik' => $Pelaksanaan,
+                        'nama_kategori' => $validatedData['nama_kategori'],
                         'file' => $path,
                         'created_at' => now(),
                         'updated_at' => now()
@@ -310,42 +331,50 @@ class pelaksanaan1Controller extends Controller
         }
     }
 
-    public function editPelaksanaanFakultas(Request $request, $id){
+    public function editPelaksanaanFakultas(Request $request, $id)
+    {
         // Ambil data pelaksanaan_fakultas yang ingin diedit
-        $pelaksanaan = DB::table('pelaksanaan_fakultas')
-        ->where('id_plks_fklts', '=', $id)
-        ->first();
+        $pelaksanaanfakultas = DB::table('pelaksanaan_fakultas')
+            ->where('id_plks_fklts', '=', $id)
+            ->first();
 
-        $prodi = DB::table('tabel_prodi')->select('id_prodi', 'nama_prodi')->get();
+        $kategori = DB::table('kategori')->select('id_kategori', 'nama_kategori')->get();
+        $periode = DB::table('pelaksanaans')->select('id_plks', 'periode_tahunakademik');
 
-        return view('User.admin.Pelaksanaan.edit_dokumen_pelaksanaan_fakultas', compact('pelaksanaan','prodi'));
+        return view('User.admin.Pelaksanaan.edit_dokumen_pelaksanaan_fakultas', compact('pelaksanaanfakultas', 'kategori', 'periode'));
     }
 
     public function updatePelaksanaanFakultas(Request $request, $id)
     {
         // Validasi input
-        $request->validate([
-            'nama_filep1' => 'required|string|max:255',
-            'kategori' => 'required|string',
-            'tahun' => 'required|numeric|min:1900|max:2099',
-            'files.*' => 'file|mimes:pdf,doc,docx,xlsx,png,jpg,jpeg|max:5120' //Maksimum 5120 KB (5 MB)
+        $validatedData = $request->validate([
+            'namafile' => 'required|string|max:255',
+            'nama_kategori' => 'required|exists:kategori,id_kategori',
+            'periode_ta' => 'required|string|max:255',
+            'files' => 'required',
+            'files.*' => 'file|mimes:pdf,doc,docx,xlsx,url|max:5120' //Maksimum 5120 KB (5 MB)
         ]);
 
         try {
             DB::beginTransaction();
 
             // Ambil data lama dari tabel
-            $dokumen = DB::table('pelaksanaan_fakultas')->where('id', $id)->first();
+            $dokumen = DB::table('pelaksanaan_fakultas')->where('id_plks_fklts', $id)->first();
 
-            // Update data di database
+            // Update tabel standar_institusi
             DB::table('pelaksanaan_fakultas')
-                ->where('id', $id)
+                ->where('id_plks_fklts', $id)
                 ->update([
-                    'namafile' => $request->nama_filep1,
-                    'kategori' => $request->kategori,
-                    'tahun' => $request->tahun,
+                    'namafile' => $validatedData['namafile'],
+                    'nama_kategori' => $validatedData['nama_kategori'],
                     'updated_at' => now()
                 ]);
+
+            // Update tabel penetapans
+            DB::table('pelaksanaans')->where('id_plks', $dokumen->id_plks)->update([
+                'periode_tahunakademik' => $validatedData['periode_ta'],
+                'updated_at' => now(),
+            ]);
 
             // Jika ada file baru diunggah, hapus file lama dan simpan file baru
             if ($request->hasFile('files')) {
@@ -357,11 +386,11 @@ class pelaksanaan1Controller extends Controller
 
                     // Generate unique file name
                     $namaFile = time() . '-' . $file->getClientOriginalName();
-                    $path = $file->storeAs('pelaksanaan', $namaFile, 'public');
+                    $path = $file->storeAs('pelaksanaan/fakultas', $namaFile, 'public');
 
                     // Update path file baru di database
                     DB::table('pelaksanaan_fakultas')
-                        ->where('id', $id)
+                        ->where('id_plks_fklts', $id)
                         ->update(['file' => $path]);
                 }
             }
@@ -380,7 +409,7 @@ class pelaksanaan1Controller extends Controller
     {
         try {
             // Ambil data dokumen berdasarkan id
-            $dokumen = DB::table('pelaksanaan_fakultas')->where('id', $id)->first();
+            $dokumen = DB::table('pelaksanaan_fakultas')->where('id_plks_fklts', $id)->first();
 
             // Pastikan data dokumen ditemukan
             if ($dokumen) {
@@ -390,7 +419,7 @@ class pelaksanaan1Controller extends Controller
                 }
 
                 // Hapus data dari tabel pelaksanaan_fakultas
-                DB::table('pelaksanaan_fakultas')->where('id', $id)->delete();
+                DB::table('pelaksanaan_fakultas')->where('id_plks_fklts', $id)->delete();
 
 
                 Alert::success('success', 'Dokumen berhasil dihapus.');

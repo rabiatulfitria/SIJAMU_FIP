@@ -29,15 +29,15 @@
                                 <label class="form-label" for="bx bx-file">Nama Dokumen</label>
                                 <div class="input-group input-group-merge">
                                     <span id="basic-icon-default-fullname2" class="input-group-text"><i class="bx bx-file"></i></span>
-                                    <input type="text" class="form-control" id="bx bx-file" name="nama_filep1" placeholder="Nama Dokumen" required
+                                    <input type="text" class="form-control" id="bx bx-file" name="namafile" placeholder="Nama Dokumen" required
                                            value="{{ $pelaksanaan->namafile }}" />
                                 </div>
                             </div>
 
                             <!-- Kategori -->
                             <div class="mb-3">
-                                <label for="kategori" class="form-label">Kategori</label>
-                                <select class="form-select" id="kategori" name="kategori" required>
+                                <label for="nama_kategori" class="form-label">Kategori</label>
+                                <select class="form-select" id="nama_kategori" name="nama_kategori" required>
                                     <option value="">Pilih Kategori</option>
                                     <option value="Renstra Fakultas" {{ $pelaksanaan->kategori == 'Renstra Fakultas' ? 'selected' : '' }}>Renstra Fakultas</option>
                                     <option value="Laporan Kinerja Fakultas" {{ $pelaksanaan->kategori == 'Laporan Kinerja Fakultas' ? 'selected' : '' }}>Laporan Kinerja Fakultas</option>
@@ -45,11 +45,11 @@
                             </div>
 
                             <!-- Tahun -->
-                            <div class="mb-3">
+                            <!-- <div class="mb-3">
                                 <label for="tahun" class="form-label">Tahun</label>
                                 <input type="number" class="form-control" id="tahun" name="tahun" placeholder="Tahun" required min="1900" max="2099"
-                                       value="{{ $pelaksanaan->tahun }}" />
-                            </div>
+                                       {{-- value="{{ $pelaksanaan->tahun }}" /> --}}
+                            </div> -->
 
                             <!-- Pilih Dokumen -->
                             <div class="mb-3">

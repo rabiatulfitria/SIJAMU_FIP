@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pelaksanaan;
-use Illuminate\Http\Request;
+use App\Models\pelaksanaan_fakultas;
+
+// use Illuminate\Http\Request;
 
 class pelaksanaan2Controller extends Controller
 {
     public function index()
     {
-        // $jamutims = Timjamu::all();
         return view('User.admin.Pelaksanaan.index_fakultas');
     }
 
     public function fakultas(){
-        $data=Pelaksanaan::all();
-        return response()->json(['pelaksanaan'=>$data]);
+        //mengambil data dari database melalui model Pelaksanaan dan mengembalikannya dalam format JSON(teks).
+        $data=pelaksanaan_fakultas::all();
+        return response()->json(['pelaksanaan_fakultas'=>$data]);
     }
 
 }

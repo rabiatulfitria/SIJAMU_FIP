@@ -22,7 +22,7 @@
                         <h5 class="mb-0"></h5>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ url('update-dokumen-pelaksanaan/' . $pelaksanaan->id_plks_prodi) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('updateDokumenPerangkat', $oldData->id_dokspmi) }}" enctype="multipart/form-data">
                             @csrf
                             <!-- Nama Dokumen -->
                             <div class="mb-3">
@@ -54,11 +54,11 @@
                             </div>
 
                             <!-- Tahun -->
-                            <div class="mb-3">
+                            <!-- <div class="mb-3">
                                 <label for="tahun" class="form-label">Tahun</label>
                                 <input type="number" class="form-control" id="tahun" name="tahun" placeholder="Tahun" required min="1900" max="2099"
-                                       value="{{ $pelaksanaan->tahun }}" />
-                            </div>
+                                       {{-- value="{{ $pelaksanaan->tahun }}" /> --}}
+                            </div> -->
 
                             <!-- Nama Program Studi -->
                             <div class="mb-3">

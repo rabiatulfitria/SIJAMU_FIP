@@ -30,32 +30,28 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <span class="fw-semibold d-block">John Doe</span>
-                                    <small class="text-muted">Admin</small>
+                                    <!-- Tampilkan nama pengguna -->
+                                    <span class="fw-semibold d-block">{{ Auth::User()->nama }}</span>
+                                    <!-- Tampilkan role atau informasi tambahan jika perlu -->
+                                    <small class="text-muted">{{ Auth::User()->role->role_name }}</small>
                                 </div>
                             </div>
                         </a>
                     </li>
+                    <!--<li>-->
+                    <!--    <div class="dropdown-divider"></div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--    <a class="dropdown-item" href="#">-->
+                    <!--        <i class="bx bx-user me-2"></i>-->
+                    <!--        <span class="align-middle">Profil Pengguna</span>-->
+                    <!--    </a>-->
+                    <!--</li>-->
                     <li>
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="#">
-                            <i class="bx bx-user me-2"></i>
-                            <span class="align-middle">My Profile</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#">
-                            <i class="bx bx-cog me-2"></i>
-                            <span class="align-middle">Settings</span>
-                        </a>
-                    </li>
-                    <li>
-                        <div class="dropdown-divider"></div>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="{{route('logout')}}">
+                        <a class="dropdown-item" href="{{ route('logout') }}">
                             <i class="bx bx-power-off me-2"></i>
                             <span class="align-middle">Log Out</span>
                         </a>
@@ -88,30 +84,30 @@
                         <!-- Sub Standar -->
                         <div class="col-lg-4">
                             <div class="card overflow-hidden mb-4" style="height: 300px;">
-                                <div class="card-body left" id="vertical-example">
-                                    <div><b>Strategi Pencapaian</b></div>
+                                <div class="card-body left shadow-lg" id="vertical-example">
+                                    <div class="section-title"><b>Strategi Pencapaian</b></div>
                                     <ul>
-                                        <li style="font-size: 12px">
-                                            <a href="javascript:void(0);" onclick="showTable('DatatablesRenstraProgramStudinya')">Renstra Program Studi</a>
+                                        <li class="menu-itemm active" style="font-size: 12px">
+                                            <a href="javascript:void(0);" data-title="Tambah Dokumen Renstra Program Studi" onclick="showTable('DatatablesRenstraProgramStudinya')">Renstra Program Studi</a>
                                         </li>
-                                        <li style="font-size: 12px">
-                                            <a href="javascript:void(0);" onclick="showTable('DatatablesKinerjaProgramStudinya')">Laporan Kinerja Program Studi</a>
+                                        <li class="menu-itemm" style="font-size: 12px">
+                                            <a href="javascript:void(0);" data-title="Tambah Dokumen Laporan Kinerja Program Studi" onclick="showTable('DatatablesKinerjaProgramStudinya')">Laporan Kinerja Program Studi</a>
                                         </li>
                                     </ul>
-                                    <div><b>Standar Proses Pembelajaran</b></div>
+                                    <div class="section-title"><b>Standar Proses Pembelajaran</b></div>
                                     <ul>
-                                        <li style="font-size: 12px"><a href="javascript:void(0);" onclick="showTable('DatatablesKurikulum')">Dokumen Kurikulum</a></li>
-                                        <li style="font-size: 12px"><a href="javascript:void(0);" onclick="showTable('DatatablesRPS')">Rencana Pembelajaran Semester (RPS)</a></li>
-                                        <li style="font-size: 12px"><a href="javascript:void(0);" onclick="showTable('DatatablesMonitoring')">Dokumen Monitoring dan Evaluasi Kegiatan Program MBKM</a></li>
-                                        <li style="font-size: 12px"><a href="javascript:void(0);" onclick="showTable('DatatablesCPL')">Capaian Pembelajaran Lulusan (CPL)</a></li>
-                                        <li style="font-size: 12px"><a href="javascript:void(0);" onclick="showTable('DatatablesPanduanRPS')">Panduan RPS</a></li>
-                                        <li style="font-size: 12px"><a href="javascript:void(0);" onclick="showTable('DatatablesPanduanMutuSoal')">Panduan Mutu Soal</a></li>
-                                        <li style="font-size: 12px"><a href="javascript:void(0);" onclick="showTable('DatatablesPanduanKisi')">Panduan Kisi Kisi Soal</a></li>
+                                        <li class="menu-itemm" style="font-size: 12px"><a href="javascript:void(0);" data-title="Tambah Dokumen Kurikulum" onclick="showTable('DatatablesKurikulum')">Dokumen Kurikulum</a></li>
+                                        <li class="menu-itemm" style="font-size: 12px"><a href="javascript:void(0);" data-title="Tambah Dokumen RPS" onclick="showTable('DatatablesRPS')">Rencana Pembelajaran Semester (RPS)</a></li>
+                                        <li class="menu-itemm" style="font-size: 12px"><a href="javascript:void(0);" data-title="Tambah Dokumen Monev Kegiatan Program MBKM" onclick="showTable('DatatablesMonitoring')">Dokumen Monitoring dan Evaluasi Kegiatan Program MBKM</a></li>
+                                        <li class="menu-itemm" style="font-size: 12px"><a href="javascript:void(0);" data-title="Tambah Dokumen CPL" onclick="showTable('DatatablesCPL')">Capaian Pembelajaran Lulusan (CPL)</a></li>
+                                        <li class="menu-itemm" style="font-size: 12px"><a href="javascript:void(0);" data-title="Tambah Dokumen Panduan RPS" onclick="showTable('DatatablesPanduanRPS')">Panduan RPS</a></li>
+                                        <li class="menu-itemm" style="font-size: 12px"><a href="javascript:void(0);" data-title="Tambah Dokumen Panduan Mutu Soal" onclick="showTable('DatatablesPanduanMutuSoal')">Panduan Mutu Soal</a></li>
+                                        <li class="menu-itemm" style="font-size: 12px"><a href="javascript:void(0);" data-title="Tambah Dokumen Panduan Kisi Kisi Soal" onclick="showTable('DatatablesPanduanKisi')">Panduan Kisi Kisi Soal</a></li>
                                     </ul>
-                                    <div><b>Standar Layanan Kemahasiswaan</b></div>
+                                    <div class="section-title"><b>Standar Layanan Kemahasiswaan</b></div>
                                     <ul>
-                                        <li style="font-size: 12px"><a href="javascript:void(0);" onclick="showTable('DatatablesFormulirKepuasan')">Formulir Kepuasan Mahasiswa</a></li>
-                                        <li style="font-size: 12px"><a href="javascript:void(0);" onclick="showTable('DatatablesMonitoringLayanan')">Dokumen Monitoring dan Evaluasi Ketercapaian Standar Layanan Kemahasiswaan</a></li>
+                                        <li class="menu-itemm" style="font-size: 12px"><a href="javascript:void(0);" data-title="Tambah Tautan Formulir Kepuasan Mahasiswa" onclick="showTable('DatatablesFormulirKepuasan')">Formulir Kepuasan Mahasiswa</a></li>
+                                        <li class="menu-itemm" style="font-size: 12px"><a href="javascript:void(0);" data-title="Tambah Dokumen Monev Ketercapaian Standar Layanan Kemahasiswaan" onclick="showTable('DatatablesMonitoringLayanan')">Dokumen Monitoring dan Evaluasi Ketercapaian Standar Layanan Kemahasiswaan</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -133,4 +129,19 @@
         </div>
     </div>
     </div>
+    <script>
+        //fungsi menu aktif
+        document.addEventListener("DOMContentLoaded", function() {
+            const menuItems = document.querySelectorAll(".menu-itemm a");
+
+            menuItems.forEach((item) => {
+                item.addEventListener("click", function() {
+                    menuItems.forEach((el) => el.parentElement.classList.remove("active"));
+
+                    // class 'active' untuk item yang di klik
+                    this.parentElement.classList.add("active");
+                });
+            });
+        });
+    </script>
 @endsection
