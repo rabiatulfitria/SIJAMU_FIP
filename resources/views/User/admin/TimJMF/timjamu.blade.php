@@ -32,27 +32,23 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                    <span class="fw-semibold d-block">John Doe</span>
-                                    <small class="text-muted">Admin</small>
+                                    <!-- Tampilkan nama pengguna -->
+                                    <span class="fw-semibold d-block">{{ Auth::User()->nama }}</span>
+                                    <!-- Tampilkan role atau informasi tambahan jika perlu -->
+                                    <small class="text-muted">{{ Auth::User()->role->role_name }}</small>
                                 </div>
                             </div>
                         </a>
                     </li>
-                    <li>
-                        <div class="dropdown-divider"></div>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#">
-                            <i class="bx bx-user me-2"></i>
-                            <span class="align-middle">My Profile</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="#">
-                            <i class="bx bx-cog me-2"></i>
-                            <span class="align-middle">Settings</span>
-                        </a>
-                    </li>
+                    <!--<li>-->
+                    <!--    <div class="dropdown-divider"></div>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--    <a class="dropdown-item" href="#">-->
+                    <!--        <i class="bx bx-user me-2"></i>-->
+                    <!--        <span class="align-middle">Profil Pengguna</span>-->
+                    <!--    </a>-->
+                    <!--</li>-->
                     <li>
                         <div class="dropdown-divider"></div>
                     </li>
@@ -80,8 +76,8 @@
                         <th>NIP</th>
                         <th>Nama</th>
                         <th>Email</th>
-                        <th>Penanggung Jawab</th>
-                        @if (Auth::user() && (Auth::user()->level == 'Admin' || Auth::user()->level == 'Jaminan Mutu'))
+                        <th>Jabatan</th>
+                        @if (Auth::user() && (Auth::user()->role->role_name == 'Admin' || Auth::user()->role->role_name == 'JMF'))
                             <th>Aksi</th>
                         @endif
                     </tr>
@@ -94,8 +90,8 @@
                             <td>{{ $row->nip }}</td>
                             <td>{{ $row->nama }}</td>
                             <td><span class="badge bg-label-primary me-1">{{ $row->email }}</span></td>
-                            <td>{{ $row->PJ }}</td>
-                            @if (Auth::user() && (Auth::user()->level == 'Admin' || Auth::user()->level == 'Jaminan Mutu'))
+                            <td>{{ $row->jabatan }}</td>
+                            @if (Auth::user() && (Auth::user()->role->role_name == 'Admin' || Auth::user()->role->role_name == 'JMF'))
                                 <td>
                                     <div class="dropdown">
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
@@ -108,12 +104,12 @@
                                                     <i class="bx bx-edit-alt me-1"></i> Ubah</a>
                                             </div>
                                             <div>
-                                                <form method="POST" action="/TimPenjaminanMutu/{{ $row->id }}">
+                                                {{-- <form method="POST" action="/TimPenjaminanMutu/{{ $row->id }}">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button class="dropdown-item"><i class="bx bx-trash me-1"></i>
                                                         Hapus</button>
-                                                </form>
+                                                </form> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -125,7 +121,7 @@
             </table>
         </div>
     </div>
-    @if (Auth::user() && (Auth::user()->level == 'Admin' || Auth::user()->level == 'Jaminan Mutu'))
+    @if (Auth::user() && (Auth::user()->role->role_name == 'Admin' || Auth::user()->role->role_name == 'JMF'))
         <div class="row">
             <div class="col-md-6 col-sm-2 demo-inline-spacing">
                 <button type="button" class="btn btn-primary" style="padding-left: 50px; padding-right: 50px"
@@ -140,15 +136,19 @@
 
 <style>
     /* Custom CSS for DataTable */
-    table.dataTable td,
+    /* table.dataTable td,
     table.dataTable th {
         padding: 12px 15px;
-    }
+    } */
 
     /* Pastikan semua teks di tabel DataTable rata kiri */
     .dataTable th,
     .dataTable td {
         text-align: left !important;
+        padding: 12px 15px !important;
+        /* Padding header dan data */
+        vertical-align: middle;
+        /* Teks sejajar secara vertikal */
     }
 
 

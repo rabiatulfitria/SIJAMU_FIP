@@ -58,12 +58,12 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label" for="box-icon-id-card">Penanggung Jawab</label>
+                            <label class="form-label" for="box-icon-id-card">Jabatan</label>
                             <div class="input-group input-group-merge">
                                 <span id="" class="input-group-text"><i
                                         class="bx bx-id-card"></i></span>
                                 <input type="text" id="basic-icon-default-fullname2" class="form-control"
-                                    name="PJ"
+                                    name="jabatan"
                                     placeholder="Selaku" aria-label=""
                                     aria-describedby="basic-icon-default-fullname2" />
                             </div>

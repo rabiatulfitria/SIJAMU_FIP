@@ -26,14 +26,14 @@ class timjamuController extends Controller
             'nip' => 'required',
             'nama' => 'required',
             'email' => 'required|email|unique:jamutims',
-            'PJ' => 'required',
+            'jabatan' => 'required',
         ]);
         
         $dataBaru = new TimJamu;
         $dataBaru->nip = $request['nip'];
         $dataBaru->nama = $request['nama'];
         $dataBaru->email = $request['email'];
-        $dataBaru->PJ = $request['PJ'];
+        $dataBaru->jabatan = $request['jabatan'];
         $dataBaru->save();
 
         Alert::success('success', 'Tim JAMU berhasil ditambahkan.');
@@ -56,13 +56,13 @@ class timjamuController extends Controller
             'nip' => 'required',
             'nama' => 'required',
             'email' => 'required|email',
-            'PJ' => 'required',
+            'jabatan' => 'required',
         ]);
 
         $dataUpdate->nip = $request['nip'];
         $dataUpdate->nama = $request['nama'];
         $dataUpdate->email = $request['email'];
-        $dataUpdate->PJ = $request['PJ'];
+        $dataUpdate->jabatan = $request['jabatan'];
         $dataUpdate->save();
 
         Alert::success('success', 'Tim JAMU berhasil diperbarui.');
