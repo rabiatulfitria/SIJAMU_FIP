@@ -18,7 +18,7 @@ class CreateJamutimsTable extends Migration
             $table->bigInteger('nip');
             $table->string('nama', 100);
             $table->string('email', 100)->unique();
-            $table->string('PJ', 50);
+            $table->string('jabatan', 50);
             $table->timestamps();
         });
     }
