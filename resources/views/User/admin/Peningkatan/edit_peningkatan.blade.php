@@ -29,11 +29,11 @@
                             <div class="mb-3">
                                 <label class="form-label" for="formFileMultiple">Pilih Dokumen</label>
                                 <input type="file" class="form-control" value="" id="formFileMultiple" multiple
-                                    name="unggahan_dokumen[]" />
+                                    name="file_peningkatan[]" />
                                 <p class="form-text" style="color: #7ebcfe">Maksimum 5120 KB (5 MB)</p>
                             </div>
                             <div>
-                                <button type="submit" class="btn btn-primary">{{ isset($evaluasi) }}Kirim</button>
+                                <button type="submit" class="btn btn-primary">{{ isset($peningkatan) }}Kirim</button>
                         </form>
                     </div>
                 </div>
@@ -42,18 +42,3 @@
     </div>
     </div>
 @endsection
-
-<script>
-    function toggleManualInput() {
-        var namaDokumenSelect = document.getElementById("nama_fileeval");
-        var manualInputDiv = document.getElementById("manualNamaDokumen");
-
-        if (namaDokumenSelect.value === "Dokumen Lainnya") {
-            manualInputDiv.style.display = "block";
-            document.getElementById("manual_namaDokumen").required = true;
-        } else {
-            manualInputDiv.style.display = "none";
-            document.getElementById("manual_namaDokumen").required = false;
-        }
-    }
-</script>
