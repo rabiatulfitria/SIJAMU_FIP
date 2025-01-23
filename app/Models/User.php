@@ -18,7 +18,7 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'nama',
         'email',
         'password',
     ];
@@ -41,4 +41,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //fungsi 'role' ini untuk auth--> misal: Auth::user()->role->role_name == 'Admin'
+    public function role()
+    {
+        return $this->belongsTo(role::class, 'role_id');
+    }
+
 }

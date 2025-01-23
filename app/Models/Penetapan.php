@@ -7,9 +7,9 @@ class Penetapan extends Model
 {
     protected $table = 'penetapans';
     protected $primaryKey = 'id_penetapan';
-    protected $fillable = [
-        'submenu_penetapan',
-    ];
+    // protected $fillable = [
+    //     'submenu_penetapan',
+    // ];
 
     // public function fileP1()
     // {
