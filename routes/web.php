@@ -83,8 +83,10 @@ Route::middleware(['cekLogin'])->group(function () {
 
     // route untuk halaman menu Pelaksanaan CRUD
     Route::get('/Pelaksanaan/Prodi', [pelaksanaan1Controller::class, 'index'])->name('pelaksanaan.prodi');
-    Route::get('/tambah-dokumen-pelaksanaan', [pelaksanaan1Controller::class, 'tambahPelaksanaan'])->name('tambahPelaksanaan');
-    Route::post('/simpan-dokumen-pelaksanaan', [pelaksanaan1Controller::class, 'simpanPelaksanaan'])->name('simpanPelaksanaan');;
+    Route::get('/tambah-dokumen-pelaksanaan-prodi', [pelaksanaan1Controller::class, 'tambahPelaksanaan'])->name('tambahPelaksanaan');
+    Route::resource('/simpan-dokumen-pelaksanaan', pelaksanaan1Controller::class)->except('store');
+    Route::post('/simpan-dokumen-pelaksanaan/prodi', [pelaksanaan1Controller::class, 'simpanPelaksanaan'])->name('/simpan-dokumen-pelaksanaan.simpanPelaksanaan');
+
     Route::get('/edit-dokumen-pelaksanaan/{id_plks_prodi}', [pelaksanaan1Controller::class, 'editPelaksanaan'])->name('editPelaksanaan');;
     Route::post('/update-dokumen-pelaksanaan/{id_plks_prodi}', [pelaksanaan1Controller::class, 'updatePelaksanaan'])->name('updatePelaksanaan');;
     Route::delete('/hapus-dokumen-pelaksanaan{id_plks_prodi}', [pelaksanaan1Controller::class, 'deletePelaksanaan'])->name('deletePelaksanaan');;
@@ -108,13 +110,16 @@ Route::middleware(['cekLogin'])->group(function () {
     Route::get('/Pengendalian/Standar/RTM',[pengendalianController::class, 'index'])->name('pengendalian');
     Route::get('/Pengendalian/tambahDokumenPengendalian',[pengendalianController::class, 'create'])->name('tambahDokumenPengendalian');
     Route::resource('/tambahDokumenPengendalian-2', pengendalianController::class);
-    Route::get('/dokumenPengendalian({id_pengendalian})', [pengendalianController::class, 'lihatdokumenpengendalian'])->name('dokumenpengendalian');
+    Route::get('/dokumenPengendalian({id_pengendalian}/lihat/{jenis_file})', [pengendalianController::class, 'lihatdokumenpengendalian'])->name('lihatdokumenpengendalian');
     Route::delete('/Pengendalian/hapusPengendalian{id_pengendalian}', [pengendalianController::class, 'destroy'])->name('hapusDokumenPengendalian');
     Route::get('/Pengendalian/editDokumenPengendalian/{id_pengendalian}', [pengendalianController::class, 'edit'])->name('editDokumenPengendalian');
     Route::put('Pengendalian/updateDokumenPengendalian/{id_pengendalian}', [pengendalianController::class, 'update'])->name('updateDokumenPengendalian');
 
     // route untuk halaman menu Peningkatan CRUD
     Route::get('Peningkatan/StandarInstitusi',[peningkatanController::class, 'index'])->name('peningkatan');
+    Route::get('/Peningkatan/tambahDokumenPeningkatan',[peningkatanController::class, 'create'])->name('tambahDokumenPeningkatan');
+    Route::resource('/tambahDokumenPeningkatan-2', peningkatanController::class);
+    Route::get('/dokumenPeningkatan({id_peningkatan})',[peningkatanController::class, 'lihatdokumenpeningkatan'])->name('lihatdokumenpeningkatan');
     Route::delete('/Peningkatan/hapusPeningkatan{id_peningkatan}', [peningkatanController::class, 'destroy'])->name('hapusDokumenPeningkatan');
     Route::get('/Peningkatan/editDokumenPeningkatan/{id_peningkatan}', [peningkatanController::class, 'edit'])->name('editDokumenPeningkatan');
     Route::put('Peningkatan/updateDokumenPeningkatan/{id_peningkatan}', [peningkatanController::class, 'update'])->name('updateDokumenPeningkatan');
