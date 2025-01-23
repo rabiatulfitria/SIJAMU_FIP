@@ -28,7 +28,7 @@
                                 onchange="toggleManualInput()">
                                 <option value="" disabled selected>Pilih Nama Dokumen</option>
                                 <option value="Laporan Isian AMI">Isian Laporan AMI</option>
-                                <option value="Laporan Evaluasi AMI">Berkas Audit AMI</option>
+                                <option value="Berkas Audit (AMI)">Berkas Audit (AMI)</option>
                                 <option value="Dokumen Lainnya">Dokumen Lainnya</option>
                             </select>
                             <div class="mb-3" id="manualNamaDokumen" style="display: none; padding-top:8px">

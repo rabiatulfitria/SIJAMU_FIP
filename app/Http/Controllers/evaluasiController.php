@@ -35,7 +35,7 @@ class evaluasiController extends Controller
     public function create()
     {
         // Mengambil data nama_prodi dari tabel_prodi
-        $prodi = DB::table('tabel_prodi')->select('id_prodi', 'nama_prodi')->get();
+        $prodi = DB::table('tabel_prodi')->select('id_prodi', 'nama_prodi')->get(); //bisa pakai Prodi::all();
         return view('User.admin.Evaluasi.tambah_evaluasi', compact('prodi'));
     }
 
