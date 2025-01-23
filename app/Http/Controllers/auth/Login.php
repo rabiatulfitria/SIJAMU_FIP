@@ -51,8 +51,7 @@ class Login extends Controller
         // Logout user
         Auth::logout();
 
-        // Redirect ke halaman login dengan pesan sukses
-        Alert::success('success', 'Logout berhasil.');
+        // Redirect ke halaman login
         return redirect()->route('auth.login');
     }
 
