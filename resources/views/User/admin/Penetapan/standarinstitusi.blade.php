@@ -30,10 +30,10 @@
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                <!-- Tampilkan nama pengguna -->
-                                     <span class="fw-semibold d-block">{{ Auth::User()->nama }}</span>
-                                <!-- Tampilkan role atau informasi tambahan jika perlu -->
-                                     <small class="text-muted">{{ Auth::User()->level }}</small>
+                                    <!-- Tampilkan nama pengguna -->
+                                    <span class="fw-semibold d-block">{{ Auth::User()->nama }}</span>
+                                    <!-- Tampilkan role atau informasi tambahan jika perlu -->
+                                    <small class="text-muted">{{ Auth::User()->role->role_name }}</small>
                                 </div>
                             </div>
                         </a>
@@ -51,7 +51,7 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="{{route('logout')}}">
+                        <a class="dropdown-item" href="{{ route('logout') }}">
                             <i class="bx bx-power-off me-2"></i>
                             <span class="align-middle">Log Out</span>
                         </a>
@@ -76,14 +76,17 @@
                         <th>Program Studi</th>
                         <th>Unggahan</th>
                         @if (Auth::user() &&
-                                (Auth::user()->level == 'Admin' || Auth::user()->level == 'Jaminan Mutu' || Auth::user()->level == 'Koorprodi'))
+                                (Auth::user()->role->role_name == 'Admin' ||
+                                    Auth::user()->role->role_name == 'JMF' ||
+                                    Auth::user()->role->role_name == 'Ketua Jurusan' ||
+                                    Auth::user()->role->role_name == 'Koordinator Prodi'))
                             <th>Aksi</th>
                         @endif
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
                     @foreach ($dokumenp1 as $row)
-                    {{-- @php
+                        {{-- @php
                         dd($row);
                     @endphp --}}
                         <tr>
@@ -94,16 +97,19 @@
                             <td>
                                 @if ($row->unggahan_dokumen)
                                     <!-- Link ke dokumen -->
-                                    <a href="{{ asset('storage/' . $row->unggahan_dokumen) }}" class="badge bg-label-info me-1"
-                                        target="_blank">
+                                    <a href="{{ asset('storage/' . $row->unggahan_dokumen) }}"
+                                        class="badge bg-label-info me-1" target="_blank">
                                         <i class="bi bi-link-45deg">Dokumen</i>
                                     </a>
                                 @else
                                     <p>Masih dalam proses</p>
                                 @endif
                             </td>
-                            @if (Auth::user() &&
-                                    (Auth::user()->level == 'Admin' || Auth::user()->level == 'Jaminan Mutu' || Auth::user()->level == 'Koorprodi'))
+                            @if (
+                                (Auth::user() && Auth::user()->role->role_name == 'Admin') ||
+                                    Auth::user()->role->role_name == 'JMF' ||
+                                    Auth::user()->role->role_name == 'Ketua Jurusan' ||
+                                    Auth::user()->role->role_name == 'Koordinator Prodi')
                                 <td>
                                     <div class="dropdown">
                                         <button type="button" class="btn dropdown-toggle hide-arrow p-0"
@@ -119,11 +125,12 @@
                                                 <i class="bx bx-edit-alt me-1"></i> Ubah Data
                                             </a>
                                             <div>
-                                                <form method="POST"
+                                                <form id="delete-form-{{ $row->id_standarinstitut }}" method="POST"
                                                     action="{{ route('hapusDokumenStandar', $row->id_standarinstitut) }}">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button class="dropdown-item btn btn-outline-danger"><i
+                                                    <button type="button" class="dropdown-item btn btn-outline-danger"
+                                                        onclick="confirmDelete({{ $row->id_standarinstitut }})"><i
                                                             class="bx bx-trash me-1"></i>
                                                         Hapus</button>
                                                 </form>
@@ -139,7 +146,10 @@
         </div>
     </div>
     @if (Auth::user() &&
-            (Auth::user()->level == 'Admin' || Auth::user()->level == 'Jaminan Mutu' || Auth::user()->level == 'Koorprodi'))
+            (Auth::user()->role->role_name == 'Admin' ||
+                Auth::user()->role->role_name == 'JMF' ||
+                Auth::user()->role->role_name == 'Ketua Jurusan' ||
+                Auth::user()->role->role_name == 'Koordinator Prodi'))
         <div class="demo-inline-spacing">
             <button type="button" class="btn btn-light" onclick="window.location.href='{{ route('tambahStandar') }}'">
                 + Tambah Standar
@@ -179,8 +189,10 @@
     .dataTable th,
     .dataTable td {
         text-align: left !important;
-        padding: 12px 15px !important; /* Padding header dan data */
-        vertical-align: middle; /* Teks sejajar secara vertikal */
+        padding: 12px 15px !important;
+        /* Padding header dan data */
+        vertical-align: middle;
+        /* Teks sejajar secara vertikal */
     }
 
     .dataTables_wrapper {
