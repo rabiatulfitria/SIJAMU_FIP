@@ -100,6 +100,15 @@
                         </a>
                     </li>
 
+                    @if(Auth::user() && Auth::user()->role->role_name == 'Admin')
+                    <li class="menu-item {{ \Route::is('DataPengguna') ? 'active' : '' }}">
+                        <a href="{{ route('DataPengguna') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bxs-group bx-flip-horizontal bx-border-circle bx-xs"></i>
+                            <div data-i18n="Data Pengguna">Data Pengguna</div>
+                        </a>
+                    </li>
+                    @endif
+
                     <!-- Tim Penjaminan Mutu -->
                     <li class="menu-item {{ \Route::is('TimJAMU') ? 'active' : '' }}">
                         <a href="{{ route('TimJAMU') }}" class="menu-link">
