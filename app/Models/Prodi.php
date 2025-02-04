@@ -27,4 +27,14 @@ class Prodi extends Model
    {
       return $this->hasMany(Pengendalian::class, 'id_prodi');
    }
+
+   public function pelaksanaan_prodi()
+   {
+      return $this->hasMany(pelaksanaan_prodi::class, 'id_prodi');
+   }
+
+   public function peningkatans()
+   {
+      return $this->hasMany(Peningkatan::class, 'id_prodi');
+   }
 }
