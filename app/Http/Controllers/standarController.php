@@ -140,7 +140,7 @@ class standarController extends Controller
             }
 
             DB::commit();
-            Alert::success('success', 'Dokumen berhasil ditambahkan.');
+            Alert::success('Selesai', 'Dokumen berhasil ditambahkan.');
             return redirect()->route('penetapan.standar');
         } catch (\Exception $e) {
             DB::rollBack();
@@ -160,7 +160,7 @@ class standarController extends Controller
             if (Storage::disk('local')->exists($file)) {
                 return response()->file(storage_path('app' . $file)); //mengarahkan ke file
             } else {
-                abort(404, 'File not found.');
+                abort(404, 'File tidak ditemukan.');
             }
         }
     }
@@ -244,7 +244,7 @@ class standarController extends Controller
             }
 
             DB::commit();
-            Alert::success('success', 'Dokumen berhasil diperbarui.');
+            Alert::success('Selesai', 'Dokumen berhasil diperbarui.');
             return redirect()->route('penetapan.standar');
         } catch (\Exception $e) {
             DB::rollBack();
@@ -272,16 +272,16 @@ class standarController extends Controller
                 DB::table('standar_institusi')->where('id_standarinstitut', $id)->delete();
 
 
-                Alert::success('success', 'Dokumen berhasil dihapus.');
+                Alert::success('Selesai', 'Dokumen berhasil dihapus.');
                 return redirect()->route('penetapan.standar');
             } else {
 
-                Alert::success('error', 'Dokumen gagal dihapus.');
+                Alert::error('error', 'Dokumen gagal dihapus.');
                 return redirect()->route('penetapan.standar');
             }
         } catch (\Exception $e) {
 
-            Alert::success('error', 'Dokumen gagal dihapus.');
+            Alert::error('error', 'Dokumen gagal dihapus.');
             return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
     }

@@ -81,7 +81,7 @@ class perangkatController extends Controller
             DB::commit();
             //di web hosting ditambah baris kode untuk email notifikasi ke pengguna
 
-            Alert::success('success', 'Dokumen berhasil ditambahkan.');
+            Alert::success('Selesai', 'Dokumen berhasil ditambahkan.');
             return redirect()->route('penetapan.perangkat');
         } catch (\Exception $e) {
             DB::rollBack();
@@ -89,7 +89,7 @@ class perangkatController extends Controller
             return redirect()->back()->withInput();
 
             // Tampilkan pesan sukses
-            Alert::success('success', 'Dokumen berhasil ditambahkan.');
+            Alert::success('Selesai', 'Dokumen berhasil ditambahkan.');
             return redirect()->route('penetapan.perangkat');
         } catch (\Exception $e) {
             // Menangkap semua error dan menampilkan pesan kesalahan
@@ -110,7 +110,7 @@ class perangkatController extends Controller
             if (Storage::disk('local')->exists($file)) {
                 return response()->file(storage_path('app' . $file));
             } else {
-                abort(404, 'File not found.');
+                abort(404, 'File tidak ditemukan.');
             }
         }
     }
@@ -248,7 +248,7 @@ class perangkatController extends Controller
             }
 
             DB::commit();
-            Alert::success('success', 'Dokumen berhasil diperbarui.');
+            Alert::success('Selesai', 'Dokumen berhasil diperbarui.');
             return redirect()->route('penetapan.perangkat');
         } catch (\Exception $e) {
             DB::rollBack();
@@ -275,7 +275,7 @@ class perangkatController extends Controller
                 DB::table('dokumen_spmi')->where('id_dokspmi', $id_dokspmi)->delete();
 
 
-                Alert::success('success', 'Dokumen berhasil dihapus.');
+                Alert::success('Selesai', 'Dokumen berhasil dihapus.');
                 return redirect()->route('penetapan.perangkat');
             } else {
 
