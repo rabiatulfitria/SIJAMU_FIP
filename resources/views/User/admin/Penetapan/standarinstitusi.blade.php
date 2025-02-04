@@ -122,7 +122,7 @@
                                             @endif
                                             <a class="dropdown-item"
                                                 onclick="window.location.href='{{ route('editDataStandar', $row->id_standarinstitut) }}'">
-                                                <i class="bx bx-edit-alt me-1"></i> Ubah Data
+                                                <i class="bx bx-edit-alt me-1"></i> Edit
                                             </a>
                                             <div>
                                                 <form id="delete-form-{{ $row->id_standarinstitut }}" method="POST"

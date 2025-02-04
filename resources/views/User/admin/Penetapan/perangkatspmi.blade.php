@@ -118,7 +118,7 @@
                                             <div>
                                                 <a class="dropdown-item"
                                                     href="{{ route('editDokumenPerangkat', $row->id_dokspmi) }}"><i
-                                                        class="bx bx-edit-alt me-1"></i> Ubah</a>
+                                                        class="bx bx-edit-alt me-1"></i>Edit</a>
                                             </div>
                                             <div>
                                                 <form id="delete-form-{{ $row->id_dokspmi }}" method="POST"
