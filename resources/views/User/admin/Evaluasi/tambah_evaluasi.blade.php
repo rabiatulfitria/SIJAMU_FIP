@@ -42,7 +42,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label" for="">Program Studi</label>
+                                <label class="form-label" for="">Nama Program Studi</label>
                                 <select class="form-select" id="namaprodi" name="namaprodi" required>
                                     <option value="">Pilih Program Studi</option>
                                     @foreach($prodi as $item)

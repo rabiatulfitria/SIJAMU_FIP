@@ -58,7 +58,6 @@
                                 <label class="form-label" for="">Program Studi</label>
                                 <select class="form-select" id="namaprodi" name="namaprodi" required>
                                     <option value="" disabled>Pilih Program Studi</option>
-                                    <option value="">Pilih Program Studi</option>
                                     <!-- ambil data sebelumnya di tabel nama_file_eval yang terdapat kolom id_evaluasi dan namaprodi -->
                                     @foreach($prodi as $item) 
                                         <option value="{{ $item->id_prodi }}" {{ $oldData->id_evaluasi == $item->id_prodi ? 'selected' : '' }}>

@@ -101,7 +101,7 @@ class evaluasiController extends Controller
             }
 
             // Tampilkan pesan sukses
-            Alert::success('success', 'Data evaluasi dan dokumen berhasil ditambahkan.');
+            Alert::success('Selesai', 'Data evaluasi dan dokumen berhasil ditambahkan.');
             return redirect()->route('evaluasi');
 
         } catch (\Exception $e) {
@@ -123,7 +123,7 @@ class evaluasiController extends Controller
             if (Storage::disk('local')->exists($file)) {
                 return response()->file(storage_path('app' . $file));
             } else {
-                abort(404, 'File not found.');
+                abort(404, 'File tidak ditemukan.');
             }
         }
     }
@@ -259,7 +259,7 @@ class evaluasiController extends Controller
             }
 
             // Jika update berhasil
-            Alert::success('success', 'Data evaluasi dan dokumen berhasil diperbarui.');
+            Alert::success('Selesai', 'Data evaluasi dan dokumen berhasil diperbarui.');
             return redirect()->route('evaluasi');  // Ubah dengan route yang sesuai
 
         } catch (\Exception $e) {
@@ -298,7 +298,7 @@ class evaluasiController extends Controller
             DB::table('evaluasis')->where('id_evaluasi', $id_evaluasi)->delete();
 
             // Tampilkan pesan sukses
-            Alert::success('success', 'Data evaluasi dan dokumen berhasil dihapus.');
+            Alert::success('Selesai', 'Data evaluasi dan dokumen berhasil dihapus.');
             return redirect()->route('evaluasi');  // Ubah dengan route yang sesuai
 
         } catch (\Exception $e) {
