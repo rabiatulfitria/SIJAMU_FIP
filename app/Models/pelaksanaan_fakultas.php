@@ -21,7 +21,13 @@ class pelaksanaan_fakultas extends Model
     protected $fillable = [
         'id_plks_fklts',
         'namafile',
-        'nama_kategori',
-        'files'
+        'periode_tahunakademik',
+        'id_kategori',
+        'file'
     ];
+
+    public function kategori()
+    {
+      return $this->belongsTo(kategori::class, 'id_kategori', 'id_kategori');
+    }
 }

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('periode_tahunakademik')->references('id_plks')->on('pelaksanaans')->onDelete('restrict');
             $table->string('namafile');
             $table->foreignId('nama_kategori')->references('id_kategori')->on('kategori')->onDelete('restrict');
-            $table->text('file');
+            $table->string('file');
             $table->timestamps();
         });
     }

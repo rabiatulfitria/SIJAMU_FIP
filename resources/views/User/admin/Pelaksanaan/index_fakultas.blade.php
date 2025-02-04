@@ -12,7 +12,7 @@
         <table class="table table-bordered custom-table-sm">
             <thead class="table-purple">
                 <tr>
-                    <th>No</th>
+                    <th>No.</th>
                     <th>Nama Dokumen</th>
                     <th>Dokumen Renstra Fakultas</th>
                     @if (Auth::user() &&
@@ -27,17 +27,16 @@
                 @foreach ($renstraFakultas as $index => $document)
                     <tr>
                         <td>{{ $index + 1 }}</td>
-                        <td>{{ $document->namafile }}</td>
-                        <td><a href="{{ asset('storage/' . $document->file) }}" target="_blank">Buka Dokumen</a>
-                        </td>
-                        <td>{{ $document->periode_ta }}</td>
+                        <td><a href="{{ asset('storage/' . $document->files) }}"
+                            target="_blank">{{ $document->namafile }}</a> 
+                        <td>{{ $document->periode_tahunakademik }}</td>
                         
                         @if (Auth::user() &&
                                 (Auth::user()->role->role_name == 'Admin' ||
                                     Auth::user()->role->role_name == 'JMF' ||
                                     Auth::user()->role->role_name == 'Koordinator Prodi'))
                             <td>
-                                <a href="{{ url('/edit-dokumen-pelaksanaan-fakultas/' . $document->id_plks_fklts) }}"
+                                <a href="{{ route('editPelaksanaanFakultas', $document->id_plks_fklts) }}"
                                     class="btn btn-warning btn-sm">Edit</a>
                                 <form action="{{ route('deletePelaksanaanFakultas', $document->id_plks_fklts) }}"
                                     method="POST" style="display: inline;">
@@ -58,7 +57,7 @@
         <table class="table table-bordered custom-table-sm">
             <thead class="table-purple">
                 <tr>
-                    <th>No</th>
+                    <th>No.</th>
                     <th>Nama Dokumen</th>
                     <th>Dokumen Laporan Kinerja Fakultas</th>
                     @if (Auth::user() &&
@@ -75,14 +74,14 @@
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $document->namafile }}</td>
                         <td><a href="{{ asset('storage/' . $document->file) }}" target="_blank">Buka Dokumen</a></td>
-                        <td>{{ $document->periode_ta }}</td>
+                        <td>{{ $document->periode_tahunakademik }}</td>
 
                         @if (Auth::user() &&
                                 (Auth::user()->role->role_name == 'Admin' ||
                                     Auth::user()->role->role_name == 'JMF' ||
                                     Auth::user()->role->role_name == 'Koordinator Prodi'))
                             <td>
-                                <a href="{{ url('/edit-dokumen-pelaksanaan-fakultas/' . $document->id_plks_fklts) }}"
+                                <a href="{{ route('editPelaksanaanFakultas', $document->id_plks_fklts) }}"
                                     class="btn btn-warning btn-sm">Edit</a>
                                 <form id="delete-form-{{ $document->id_plks_fklts }}"
                                     action="{{ route('deletePelaksanaanFakultas', $document->id_plks_fklts) }}"

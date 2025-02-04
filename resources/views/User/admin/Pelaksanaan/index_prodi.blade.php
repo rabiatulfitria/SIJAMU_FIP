@@ -8,12 +8,13 @@
         <a href="/tambah-dokumen-pelaksanaan-prodi" class="btn btn-primary mb-3">Tambah Dokumen</a>
     @endif
     <!-- Tabel yang akan ditampilkan -->
+    <!-- id="DatatablesRenstraProgramStudinya" dipanggil di sidebar_prodi-->
     <div id="DatatablesRenstraProgramStudinya">
-        <!-- Tabel Kinerja Program Studi di sini -->
+        <!-- Tabel Renstra Program Studi di sini -->
         <table class="table table-bordered custom-table-sm">
             <thead class="table-purple">
                 <tr>
-                    <th>No</th>
+                    <th>No.</th>
                     <th>Program Studi</th>
                     <th>Dokumen Renstra</th>
                     <th>Periode</th>
@@ -29,21 +30,22 @@
             <tbody>
                 @foreach ($renstraProgramStudi as $index => $document)
                     <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ $document->nama_prodi }}</td>
-                        <td><a href="{{ asset('storage/' . $document->files) }}" target="_blank">{{ $document->namafile }}</a>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $document->prodi->nama_prodi }}</td>
+                        <td><a href="{{ asset('storage/' . $document->file) }}" class="badge bg-label-info me-1"
+                                target="_blank"><i class="bi bi-link-45deg">{{ $document->namafile }}</i></a>
                         </td>
-                        <td>{{ $document->periode_ta }}</td>
+                        <td>{{ $document->periode_tahunakademik }}</td>
                         @if (Auth::user() &&
                                 (Auth::user()->role->role_name == 'Admin' ||
                                     Auth::user()->role->role_name == 'JMF' ||
                                     Auth::user()->role->role_name == 'Dosen' ||
                                     Auth::user()->role->role_name == 'Koordinator Prodi'))
                             <td>
-                                <a href="{{ url('/edit-dokumen-pelaksanaan/' . $document->id_plks_prodi) }}"
+                                <a href="{{ route('editPelaksanaanProdi', $document->id_plks_prodi) }}"
                                     class="btn btn-warning btn-sm">Edit</a>
-                                <form action="{{ route('deletePelaksanaan', $document->id_plks_prodi) }}" method="POST"
-                                    style="display: inline;">
+                                <form id="delete-form-{{ $document->id_plks_prodi }}" action="{{ route('deletePelaksanaanProdi', $document->id_plks_prodi) }}"
+                                    method="POST" style="display: inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" class="btn btn-danger btn-sm"
@@ -62,9 +64,10 @@
         <table class="table table-bordered custom-table-sm">
             <thead class="table-purple">
                 <tr>
-                    <th>No</th>
+                    <th>No.</th>
                     <th>Program Studi</th>
                     <th>Dokumen Laporan Kinerja</th>
+                    <th>Periode</th>
                     @if (Auth::user() &&
                             (Auth::user()->role->role_name == 'Admin' ||
                                 Auth::user()->role->role_name == 'JMF' ||
@@ -77,22 +80,22 @@
             <tbody>
                 @foreach ($laporanKinerjaProgramStudi as $index => $document)
                     <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ $document->nama_prodi }}</td>
-                        <td><a href="{{ asset('storage/' . $document->files) }}"
-                                target="_blank">{{ $document->namafile }}</a>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $document->prodi->nama_prodi }}</td>
+                        <td><a href="{{ asset('storage/' . $document->file) }}" class="badge bg-label-info me-1"
+                                target="_blank"><i class="bi bi-link-45deg">{{ $document->namafile }}</i></a>
                         </td>
-                        <td>{{ $document->periode_ta }}</td>
+                        <td>{{ $document->periode_tahunakademik }}</td>
                         @if (Auth::user() &&
                                 (Auth::user()->role->role_name == 'Admin' ||
                                     Auth::user()->role->role_name == 'JMF' ||
                                     Auth::user()->role->role_name == 'Dosen' ||
                                     Auth::user()->role->role_name == 'Koordinator Prodi'))
                             <td>
-                                <a href="{{ url('/edit-dokumen-pelaksanaan/' . $document->id_plks_prodi) }}"
+                                <a href="{{ route('editPelaksanaanProdi', $document->id_plks_prodi) }}"
                                     class="btn btn-warning btn-sm">Edit</a>
-                                <form action="{{ route('deletePelaksanaan', $document->id_plks_prodi) }}" method="POST"
-                                    style="display: inline;">
+                                <form id="delete-form-{{ $document->id_plks_prodi }}" action="{{ route('deletePelaksanaanProdi', $document->id_plks_prodi) }}"
+                                    method="POST" style="display: inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" class="btn btn-danger btn-sm"
@@ -111,9 +114,10 @@
         <table class="table table-bordered custom-table-sm">
             <thead class="table-purple">
                 <tr>
-                    <th>No</th>
+                    <th>No.</th>
                     <th>Program Studi</th>
                     <th>Dokumen Kurikulum</th>
+                    <th>Periode</th>
                     @if (Auth::user() &&
                             (Auth::user()->role->role_name == 'Admin' ||
                                 Auth::user()->role->role_name == 'JMF' ||
@@ -126,22 +130,22 @@
             <tbody>
                 @foreach ($dokumenKurikulum as $index => $document)
                     <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ $document->nama_prodi }}</td>
-                        <td><a href="{{ asset('storage/' . $document->files) }}"
-                                target="_blank">{{ $document->namafile }}</a>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $document->prodi->nama_prodi }}</td>
+                        <td><a href="{{ asset('storage/' . $document->file) }}" class="badge bg-label-info me-1"
+                                target="_blank"><i class="bi bi-link-45deg">{{ $document->namafile }}</i></a>
                         </td>
-                        <td>{{ $document->periode_ta }}</td>
+                        <td>{{ $document->periode_tahunakademik }}</td>
                         @if (Auth::user() &&
                                 (Auth::user()->role->role_name == 'Admin' ||
                                     Auth::user()->role->role_name == 'JMF' ||
                                     Auth::user()->role->role_name == 'Dosen' ||
                                     Auth::user()->role->role_name == 'Koordinator Prodi'))
                             <td>
-                                <a href="{{ url('/edit-dokumen-pelaksanaan/' . $document->id_plks_prodi) }}"
+                                <a href="{{ route('editPelaksanaanProdi', $document->id_plks_prodi) }}"
                                     class="btn btn-warning btn-sm">Edit</a>
-                                <form action="{{ route('deletePelaksanaan', $document->id_plks_prodi) }}" method="POST"
-                                    style="display: inline;">
+                                <form id="delete-form-{{ $document->id_plks_prodi }}" action="{{ route('deletePelaksanaanProdi', $document->id_plks_prodi) }}"
+                                    method="POST" style="display: inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" class="btn btn-danger btn-sm"
@@ -160,9 +164,10 @@
         <table class="table table-bordered custom-table-sm">
             <thead class="table-purple">
                 <tr>
-                    <th>No</th>
+                    <th>No.</th>
                     <th>Program Studi</th>
                     <th>Dokumen RPS</th>
+                    <th>Periode</th>
                     @if (Auth::user() &&
                             (Auth::user()->role->role_name == 'Admin' ||
                                 Auth::user()->role->role_name == 'JMF' ||
@@ -175,22 +180,22 @@
             <tbody>
                 @foreach ($rps as $index => $document)
                     <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ $document->nama_prodi }}</td>
-                        <td><a href="{{ asset('storage/' . $document->files) }}"
-                                target="_blank">{{ $document->namafile }}</a>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $document->prodi->nama_prodi }}</td>
+                        <td><a href="{{ asset('storage/' . $document->file) }}" class="badge bg-label-info me-1"
+                                target="_blank"><i class="bi bi-link-45deg">{{ $document->namafile }}</i></a>
                         </td>
-                        <td>{{ $document->periode_ta }}</td>
+                        <td>{{ $document->periode_tahunakademik }}</td>
                         @if (Auth::user() &&
                                 (Auth::user()->role->role_name == 'Admin' ||
                                     Auth::user()->role->role_name == 'JMF' ||
                                     Auth::user()->role->role_name == 'Dosen' ||
                                     Auth::user()->role->role_name == 'Koordinator Prodi'))
                             <td>
-                                <a href="{{ url('/edit-dokumen-pelaksanaan/' . $document->id_plks_prodi) }}"
+                                <a href="{{ route('editPelaksanaanProdi', $document->id_plks_prodi) }}"
                                     class="btn btn-warning btn-sm">Edit</a>
-                                <form action="{{ route('deletePelaksanaan', $document->id_plks_prodi) }}" method="POST"
-                                    style="display: inline;">
+                                <form id="delete-form-{{ $document->id_plks_prodi }}" action="{{ route('deletePelaksanaanProdi', $document->id_plks_prodi) }}"
+                                    method="POST" style="display: inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" class="btn btn-danger btn-sm"
@@ -209,9 +214,10 @@
         <table class="table table-bordered custom-table-sm">
             <thead class="table-purple">
                 <tr>
-                    <th>No</th>
+                    <th>No.</th>
                     <th>Program Studi</th>
                     <th>Dokumen Monev MBKM</th>
+                    <th>Periode</th>
                     @if (Auth::user() &&
                             (Auth::user()->role->role_name == 'Admin' ||
                                 Auth::user()->role->role_name == 'JMF' ||
@@ -224,22 +230,22 @@
             <tbody>
                 @foreach ($monitoringMbkm as $index => $document)
                     <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ $document->nama_prodi }}</td>
-                        <td><a href="{{ asset('storage/' . $document->files) }}"
-                                target="_blank">{{ $document->namafile }}</a>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $document->prodi->nama_prodi }}</td>
+                        <td><a href="{{ asset('storage/' . $document->file) }}" class="badge bg-label-info me-1"
+                                target="_blank"><i class="bi bi-link-45deg">{{ $document->namafile }}</i></a>
                         </td>
-                        <td>{{ $document->periode_ta }}</td>
+                        <td>{{ $document->periode_tahunakademik }}</td>
                         @if (Auth::user() &&
                                 (Auth::user()->role->role_name == 'Admin' ||
                                     Auth::user()->role->role_name == 'JMF' ||
                                     Auth::user()->role->role_name == 'Dosen' ||
                                     Auth::user()->role->role_name == 'Koordinator Prodi'))
                             <td>
-                                <a href="{{ url('/edit-dokumen-pelaksanaan/' . $document->id_plks_prodi) }}"
+                                <a href="{{ route('editPelaksanaanProdi', $document->id_plks_prodi) }}"
                                     class="btn btn-warning btn-sm">Edit</a>
-                                <form action="{{ route('deletePelaksanaan', $document->id_plks_prodi) }}" method="POST"
-                                    style="display: inline;">
+                                <form id="delete-form-{{ $document->id_plks_prodi }}" action="{{ route('deletePelaksanaanProdi', $document->id_plks_prodi) }}"
+                                    method="POST" style="display: inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" class="btn btn-danger btn-sm"
@@ -257,9 +263,10 @@
         <table class="table table-bordered custom-table-sm">
             <thead class="table-purple">
                 <tr>
-                    <th>No</th>
+                    <th>No.</th>
                     <th>Program Studi</th>
                     <th>Dokumen CPL</th>
+                    <th>Periode</th>
                     @if (Auth::user() &&
                             (Auth::user()->role->role_name == 'Admin' ||
                                 Auth::user()->role->role_name == 'JMF' ||
@@ -272,22 +279,22 @@
             <tbody>
                 @foreach ($cpl as $index => $document)
                     <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ $document->nama_prodi }}</td>
-                        <td><a href="{{ asset('storage/' . $document->files) }}"
-                                target="_blank">{{ $document->namafile }}</a>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $document->prodi->nama_prodi }}</td>
+                        <td><a href="{{ asset('storage/' . $document->file) }}" class="badge bg-label-info me-1"
+                                target="_blank"><i class="bi bi-link-45deg">{{ $document->namafile }}</i></a>
                         </td>
-                        <td>{{ $document->periode_ta }}</td>
+                        <td>{{ $document->periode_tahunakademik }}</td>
                         @if (Auth::user() &&
                                 (Auth::user()->role->role_name == 'Admin' ||
                                     Auth::user()->role->role_name == 'JMF' ||
                                     Auth::user()->role->role_name == 'Dosen' ||
                                     Auth::user()->role->role_name == 'Koordinator Prodi'))
                             <td>
-                                <a href="{{ url('/edit-dokumen-pelaksanaan/' . $document->id_plks_prodi) }}"
+                                <a href="{{ route('editPelaksanaanProdi', $document->id_plks_prodi) }}"
                                     class="btn btn-warning btn-sm">Edit</a>
-                                <form action="{{ route('deletePelaksanaan', $document->id_plks_prodi) }}" method="POST"
-                                    style="display: inline;">
+                                <form id="delete-form-{{ $document->id_plks_prodi }}" action="{{ route('deletePelaksanaanProdi', $document->id_plks_prodi) }}"
+                                    method="POST" style="display: inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" class="btn btn-danger btn-sm"
@@ -305,9 +312,10 @@
         <table class="table table-bordered custom-table-sm">
             <thead class="table-purple">
                 <tr>
-                    <th>No</th>
+                    <th>No.</th>
                     <th>Program Studi</th>
                     <th>Dokumen Panduan RPS</th>
+                    <th>Periode</th>
                     @if (Auth::user() &&
                             (Auth::user()->role->role_name == 'Admin' ||
                                 Auth::user()->role->role_name == 'JMF' ||
@@ -320,22 +328,22 @@
             <tbody>
                 @foreach ($panduanRps as $index => $document)
                     <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ $document->nama_prodi }}</td>
-                        <td><a href="{{ asset('storage/' . $document->files) }}"
-                                target="_blank">{{ $document->namafile }}</a>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $document->prodi->nama_prodi }}</td>
+                        <td><a href="{{ asset('storage/' . $document->file) }}" class="badge bg-label-info me-1"
+                                target="_blank"><i class="bi bi-link-45deg">{{ $document->namafile }}</i></a>
                         </td>
-                        <td>{{ $document->periode_ta }}</td>
+                        <td>{{ $document->periode_tahunakademik }}</td>
                         @if (Auth::user() &&
                                 (Auth::user()->role->role_name == 'Admin' ||
                                     Auth::user()->role->role_name == 'JMF' ||
                                     Auth::user()->role->role_name == 'Dosen' ||
                                     Auth::user()->role->role_name == 'Koordinator Prodi'))
                             <td>
-                                <a href="{{ url('/edit-dokumen-pelaksanaan/' . $document->id_plks_prodi) }}"
+                                <a href="{{ route('editPelaksanaanProdi', $document->id_plks_prodi) }}"
                                     class="btn btn-warning btn-sm">Edit</a>
-                                <form action="{{ route('deletePelaksanaan', $document->id_plks_prodi) }}" method="POST"
-                                    style="display: inline;">
+                                <form id="delete-form-{{ $document->id_plks_prodi }}" action="{{ route('deletePelaksanaanProdi', $document->id_plks_prodi) }}"
+                                    method="POST" style="display: inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" class="btn btn-danger btn-sm"
@@ -353,9 +361,10 @@
         <table class="table table-bordered custom-table-sm">
             <thead class="table-purple">
                 <tr>
-                    <th>No</th>
+                    <th>No.</th>
                     <th>Program Studi</th>
                     <th>Dokumen Panduan Mutu Soal</th>
+                    <th>Periode</th>
                     @if (Auth::user() &&
                             (Auth::user()->role->role_name == 'Admin' ||
                                 Auth::user()->role->role_name == 'JMF' ||
@@ -368,22 +377,22 @@
             <tbody>
                 @foreach ($panduanMutuSoal as $index => $document)
                     <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ $document->nama_prodi }}</td>
-                        <td><a href="{{ asset('storage/' . $document->files) }}"
-                                target="_blank">{{ $document->namafile }}</a>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $document->prodi->nama_prodi }}</td>
+                        <td><a href="{{ asset('storage/' . $document->file) }}" class="badge bg-label-info me-1"
+                                target="_blank"><i class="bi bi-link-45deg">{{ $document->namafile }}</i></a>
                         </td>
-                        <td>{{ $document->periode_ta }}</td>
+                        <td>{{ $document->periode_tahunakademik }}</td>
                         @if (Auth::user() &&
                                 (Auth::user()->role->role_name == 'Admin' ||
                                     Auth::user()->role->role_name == 'JMF' ||
                                     Auth::user()->role->role_name == 'Dosen' ||
                                     Auth::user()->role->role_name == 'Koordinator Prodi'))
                             <td>
-                                <a href="{{ url('/edit-dokumen-pelaksanaan/' . $document->id_plks_prodi) }}"
+                                <a href="{{ route('editPelaksanaanProdi', $document->id_plks_prodi) }}"
                                     class="btn btn-warning btn-sm">Edit</a>
-                                <form action="{{ route('deletePelaksanaan', $document->id_plks_prodi) }}" method="POST"
-                                    style="display: inline;">
+                                <form id="delete-form-{{ $document->id_plks_prodi }}" action="{{ route('deletePelaksanaanProdi', $document->id_plks_prodi) }}"
+                                    method="POST" style="display: inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" class="btn btn-danger btn-sm"
@@ -401,9 +410,10 @@
         <table class="table table-bordered custom-table-sm">
             <thead class="table-purple">
                 <tr>
-                    <th>No</th>
+                    <th>No.</th>
                     <th>Program Studi</th>
                     <th>Dokumen Panduan Kisi Kisi Soal</th>
+                    <th>Periode</th>
                     @if (Auth::user() &&
                             (Auth::user()->role->role_name == 'Admin' ||
                                 Auth::user()->role->role_name == 'JMF' ||
@@ -416,22 +426,22 @@
             <tbody>
                 @foreach ($panduanKisiKisi as $index => $document)
                     <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ $document->nama_prodi }}</td>
-                        <td><a href="{{ asset('storage/' . $document->files) }}"
-                                target="_blank">{{ $document->namafile }}</a>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $document->prodi->nama_prodi }}</td>
+                        <td><a href="{{ asset('storage/' . $document->file) }}" class="badge bg-label-info me-1"
+                                target="_blank"><i class="bi bi-link-45deg">{{ $document->namafile }}</i></a>
                         </td>
-                        <td>{{ $document->periode_ta }}</td>
+                        <td>{{ $document->periode_tahunakademik }}</td>
                         @if (Auth::user() &&
                                 (Auth::user()->role->role_name == 'Admin' ||
                                     Auth::user()->role->role_name == 'JMF' ||
                                     Auth::user()->role->role_name == 'Dosen' ||
                                     Auth::user()->role->role_name == 'Koordinator Prodi'))
                             <td>
-                                <a href="{{ url('/edit-dokumen-pelaksanaan/' . $document->id_plks_prodi) }}"
+                                <a href="{{ route('editPelaksanaanProdi', $document->id_plks_prodi) }}"
                                     class="btn btn-warning btn-sm">Edit</a>
-                                <form action="{{ route('deletePelaksanaan', $document->id_plks_prodi) }}" method="POST"
-                                    style="display: inline;">
+                                <form id="delete-form-{{ $document->id_plks_prodi }}" action="{{ route('deletePelaksanaanProdi', $document->id_plks_prodi) }}"
+                                    method="POST" style="display: inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" class="btn btn-danger btn-sm"
@@ -449,9 +459,10 @@
         <table class="table table-bordered custom-table-sm">
             <thead class="table-purple">
                 <tr>
-                    <th>No</th>
+                    <th>No.</th>
                     <th>Program Studi</th>
                     <th>Tautan Formulir Kepuasan</th>
+                    <th>Periode</th>
                     @if (Auth::user() &&
                             (Auth::user()->role->role_name == 'Admin' ||
                                 Auth::user()->role->role_name == 'JMF' ||
@@ -464,22 +475,22 @@
             <tbody>
                 @foreach ($formulirKepuasan as $index => $document)
                     <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ $document->nama_prodi }}</td>
-                        <td><a href="{{ asset('storage/' . $document->files) }}"
-                                target="_blank">{{ $document->namafile }}</a>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $document->prodi->nama_prodi }}</td>
+                        <td><a href="{{ asset('storage/' . $document->file) }}" class="badge bg-label-info me-1"
+                                target="_blank"><i class="bi bi-link-45deg">{{ $document->namafile }}</i></a>
                         </td>
-                        <td>{{ $document->periode_ta }}</td>
+                        <td>{{ $document->periode_tahunakademik }}</td>
                         @if (Auth::user() &&
                                 (Auth::user()->role->role_name == 'Admin' ||
                                     Auth::user()->role->role_name == 'JMF' ||
                                     Auth::user()->role->role_name == 'Dosen' ||
                                     Auth::user()->role->role_name == 'Koordinator Prodi'))
                             <td>
-                                <a href="{{ url('/edit-dokumen-pelaksanaan/' . $document->id_plks_prodi) }}"
+                                <a href="{{ route('editPelaksanaanProdi', $document->id_plks_prodi) }}"
                                     class="btn btn-warning btn-sm">Edit</a>
-                                <form action="{{ route('deletePelaksanaan', $document->id_plks_prodi) }}" method="POST"
-                                    style="display: inline;">
+                                <form id="delete-form-{{ $document->id_plks_prodi }}" action="{{ route('deletePelaksanaanProdi', $document->id_plks_prodi) }}"
+                                    method="POST" style="display: inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" class="btn btn-danger btn-sm"
@@ -497,9 +508,10 @@
         <table class="table table-bordered custom-table-sm">
             <thead class="table-purple">
                 <tr>
-                    <th>No</th>
+                    <th>No.</th>
                     <th>Program Studi</th>
                     <th>Dokumen Monev Standar Layanan Kemahasiswaan</th>
+                    <th>Periode</th>
                     @if (Auth::user() &&
                             (Auth::user()->role->role_name == 'Admin' ||
                                 Auth::user()->role->role_name == 'JMF' ||
@@ -512,23 +524,23 @@
             <tbody>
                 @foreach ($monitoringKemahasiswaan as $index => $document)
                     <tr>
-                        <td>{{ $index + 1 }}</td>
-                        <td>{{ $document->nama_prodi }}</td>
-                        <td><a href="{{ asset('storage/' . $document->files) }}"
-                                target="_blank">{{ $document->namafile }}</a>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $document->prodi->nama_prodi }}</td>
+                        <td><a href="{{ asset('storage/' . $document->file) }}" class="badge bg-label-info me-1"
+                                target="_blank"><i class="bi bi-link-45deg">{{ $document->namafile }}</i></a>
                         </td>
-                        <td>{{ $document->periode_ta }}</td>
+                        <td>{{ $document->periode_tahunakademik }}</td>
                         @if (Auth::user() &&
                                 (Auth::user()->role->role_name == 'Admin' ||
                                     Auth::user()->role->role_name == 'JMF' ||
                                     Auth::user()->role->role_name == 'Dosen' ||
                                     Auth::user()->role->role_name == 'Koordinator Prodi'))
                             <td>
-                                <a href="{{ url('/edit-dokumen-pelaksanaan/' . $document->id_plks_prodi) }}"
+                                <a href="{{ route('editPelaksanaanProdi', $document->id_plks_prodi) }}"
                                     class="btn btn-warning btn-sm">Edit</a>
                                 <form id="delete-form-{{ $document->id_plks_prodi }}"
-                                    action="{{ route('deletePelaksanaan', $document->id_plks_prodi) }}" method="POST"
-                                    style="display: inline;">
+                                    action="{{ route('deletePelaksanaanProdi', $document->id_plks_prodi) }}"
+                                    method="POST" style="display: inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" class="btn btn-danger btn-sm"

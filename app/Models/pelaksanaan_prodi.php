@@ -21,8 +21,19 @@ class pelaksanaan_prodi extends Model
     protected $fillable = [
         'id_plks_prodi',
         'namafile',
-        'nama_kategori',
-        'nama_prodi',
-        'files'
+        'periode_tahunakademik',
+        'id_kategori',
+        'id_prodi',
+        'file',
     ];
+
+    public function prodi()
+    {
+      return $this->belongsTo(Prodi::class, 'id_prodi', 'id_prodi');
+    }
+
+    public function kategori()
+    {
+      return $this->belongsTo(kategori::class, 'id_kategori', 'id_kategori');
+    }
 }
