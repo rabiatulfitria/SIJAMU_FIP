@@ -23,7 +23,7 @@ return new class extends Migration
             //foreign key
             $table->foreignId('namaprodi')->references('id_prodi')->on('tabel_prodi')->onDelete('restrict');
 
-            $table->text('file');
+            $table->string('file');
             $table->timestamps();
         });
     }

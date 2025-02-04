@@ -20,7 +20,7 @@ return new class extends Migration
 
             $table->string('namafile');
             $table->string('kategori');
-            $table->text('file');
+            $table->string('file');
             $table->timestamps();
         });
     }
