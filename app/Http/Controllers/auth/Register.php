@@ -30,6 +30,6 @@ class Register extends Controller
             'level' => $request->level,
         ]);
 
-        return redirect()->route('auth.login')->with('success', 'Akun berhasil dibuat.');
+        return redirect()->route('auth.login')->with('Selesai', 'Akun berhasil dibuat.');
     }
 }

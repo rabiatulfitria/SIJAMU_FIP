@@ -36,7 +36,7 @@ class Login extends Controller
             Auth::loginUsingId($user->id);
 
             // Redirect ke halaman sijamufip
-            Alert::success('success', 'Login berhasil.');
+            Alert::success('Selesai', 'Login berhasil.');
             return redirect()->route('BerandaSIJAMUFIP');
         } else {
             // Jika email atau password salah, kembali ke halaman login dengan pesan error
