@@ -23,9 +23,9 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('updateDokumenPengendalian', $oldData->id_pengendalian) }}"
                             enctype="multipart/form-data">
+                            @csrf
                             @method('PUT')
                             <div class="mb-3">
-                                @csrf
                                 <label class="form-label" for="bx bx-file">Nama Dokumen</label>
                                 <div class="input-group input-group-merge">
                                     <span id="basic-icon-default-fullname2" class="input-group-text"><i
@@ -42,7 +42,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label" for="nama_prodi">Program Studi</label>
+                                <label class="form-label" for="nama_prodi">Nama Program Studi</label>
                                 <select class="form-select" id="id_prodi" name="id_prodi" required>
                                     <option value="" disabled
                                         {{ old('id_prodi', $id_prodi ?? null) === null ? 'selected' : '' }}>
@@ -80,6 +80,7 @@
                             </div>
                             <div>
                                 <button type="submit" class="btn btn-primary">Ubah</button>
+                            </div>
                         </form>
                     </div>
                 </div>

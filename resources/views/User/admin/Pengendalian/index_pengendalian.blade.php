@@ -143,14 +143,14 @@
                                                 <a class="dropdown-item"
                                                     href="{{ route('editDokumenPengendalian', $row->id_pengendalian) }}"><i
                                                         class="bx bx-edit-alt me-1"></i>
-                                                    Ubah</a>
+                                                    Edit</a>
                                             </div>
                                             <div>
                                                 <form id="delete-form-{{ $row->id_pengendalian }}" method="POST"
                                                     action="{{ route('hapusDokumenPengendalian', $row->id_pengendalian) }}">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button class="dropdown-item btn btn-outline-danger"
+                                                    <button type="button" class="dropdown-item btn btn-outline-danger"
                                                         onclick="confirmDelete({{ $row->id_pengendalian }})"><i
                                                             class="bx bx-trash me-1"></i>
                                                         Hapus</button>

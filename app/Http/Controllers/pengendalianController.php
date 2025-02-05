@@ -8,12 +8,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
-
+ 
 class pengendalianController extends Controller
 {
     public function index()
     {
-        // Ambil data pengendalian beserta prodi terkait menggunakan Eloquent ORM
+        // Ambil data pengendalian beserta function prodi terkait menggunakan Eloquent ORM
         $pengendalian = Pengendalian::with('prodi')
             ->select('id_pengendalian', 'nama_dokumen', 'tahun', 'id_prodi', 'file_rtm', 'file_rtl')
             ->get();
@@ -23,7 +23,7 @@ class pengendalianController extends Controller
 
     public function create()
     {
-        $prodi= Prodi::all();
+        $prodi = Prodi::all();
         return view('User.admin.Pengendalian.tambah_pengendalian', compact('prodi'));
     }
 
@@ -34,8 +34,8 @@ class pengendalianController extends Controller
             $request->validate([
                 'nama_dokumen' => 'required|string',
                 'tahun' => 'required|string',
-                'file_rtm' => 'nullable|mimes:doc,docx,xls,xlsx,pdf|max:5120',
-                'file_rtl' => 'nullable|mimes:doc,docx,xls,xlsx,pdf|max:5120',
+                'file_rtm' => 'file|mimes:doc,docx,xls,xlsx,pdf|max:5120',
+                'file_rtl' => 'file|mimes:doc,docx,xls,xlsx,pdf|max:5120',
                 'id_prodi' => 'required|exists:tabel_prodi,id_prodi',
             ]);
 
@@ -57,14 +57,14 @@ class pengendalianController extends Controller
             Pengendalian::create([
                 'nama_dokumen' => $data['nama_dokumen'],
                 'tahun' => $data['tahun'],
-                'file_rtm' => $data['file_rtm'] ?? null,
-                'file_rtl' => $data['file_rtl'] ?? null,
+                'file_rtm' => $data['file_rtm'],
+                'file_rtl' => $data['file_rtl'],
                 'id_prodi' => $data['id_prodi'],
             ]);
 
 
             // Tampilkan pesan sukses
-            Alert::success('success', 'Data pengendalian dan dokumen berhasil ditambahkan.');
+            Alert::success('Selesai', 'Data pengendalian dan dokumen berhasil ditambahkan.');
             return redirect()->route('pengendalian');
         } catch (\Exception $e) {
             // Menangkap semua error dan menampilkan pesan kesalahan
@@ -107,6 +107,9 @@ class pengendalianController extends Controller
 
     public function edit(String $id_pengendalian)
     {
+
+        $prodi = Prodi::select('id_prodi', 'nama_prodi')->get();
+
         try {
             // Cari data pengendalian berdasarkan ID
             $pengendalian = Pengendalian::with('prodi') // Mengambil relasi dengan tabel prodi jika ada
@@ -114,7 +117,8 @@ class pengendalianController extends Controller
 
             // Kembalikan data ke view edit_pengendalian
             return view('User.admin.Pengendalian.edit_pengendalian', [
-                'oldData' => $pengendalian, // Data pengendalian
+                'oldData' => $pengendalian,
+                'prodi' => $prodi // Data pengendalian
             ]);
         } catch (\Exception $e) {
             // Menangkap error jika terjadi masalah
@@ -131,8 +135,8 @@ class pengendalianController extends Controller
                 'nama_dokumen' => 'required|string',
                 'tahun' => 'required|string',
                 'id_prodi' => 'required|exists:tabel_prodi,id_prodi', // Validasi bahwa ID Prodi harus ada di tabel prodi
-                'file_rtm' => 'nullable|mimes:doc,docx,xls,xlsx,pdf|max:5120', // Validasi file RTM
-                'file_rtl' => 'nullable|mimes:doc,docx,xls,xlsx,pdf|max:5120', // Validasi file RTL
+                'file_rtm' => 'file|mimes:doc,docx,xls,xlsx,pdf|max:5120', 
+                'file_rtl' => 'file|mimes:doc,docx,xls,xlsx,pdf|max:5120', 
             ]);
 
             // Ambil data pengendalian berdasarkan ID
@@ -167,7 +171,7 @@ class pengendalianController extends Controller
             ]);
 
             // Tampilkan pesan sukses
-            Alert::success('success', 'Data pengendalian berhasil diperbarui.');
+            Alert::success('Selesai', 'Data pengendalian berhasil diperbarui.');
             return redirect()->route('pengendalian'); // Ganti dengan route yang sesuai
         } catch (\Exception $e) {
             // Menangkap semua error dan menampilkan pesan kesalahan
@@ -196,7 +200,7 @@ class pengendalianController extends Controller
             $pengendalian->delete();
 
             // Tampilkan pesan sukses
-            Alert::success('success', 'Data pengendalian berhasil dihapus.');
+            Alert::success('Selesai', 'Data pengendalian berhasil dihapus.');
             return redirect()->route('pengendalian'); // Ganti dengan route yang sesuai
         } catch (\Exception $e) {
             // Menangkap semua error dan menampilkan pesan kesalahan

@@ -62,7 +62,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label" for="id_prodi">Program Studi</label>
+                                <label class="form-label" for="id_prodi">Nama Program Studi</label>
                                 <select class="form-select" id="id_prodi" name="id_prodi" required>
                                     <option value="" disabled selected>Pilih Program Studi</option>
                                     @foreach($prodi as $opsi)
@@ -74,14 +74,14 @@
                             <div class="mb-3">
                                 <label class="form-label" for="formFileMultiple">Dokumen RTM</label>
                                 <input type="file" class="form-control" id="formFileMultiple" multiple
-                                    name="file_rtm[]" />
+                                    name="file_rtm" />
                                 <p class="form-text" style="color: #7ebcfe">Maksimum 5120 KB (5 MB)</p>
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label" for="formFileMultiple">Dokumen RTL</label>
                                 <input type="file" class="form-control" id="formFileMultiple" multiple
-                                    name="file_rtl[]" />
+                                    name="file_rtl" />
                                 <p class="form-text" style="color: #7ebcfe">Maksimum 5120 KB (5 MB)</p>
                             </div>
                             <div>
