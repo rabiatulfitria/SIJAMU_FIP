@@ -8,7 +8,7 @@
     </div>
 
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-        <div class="navbar-nav align-items-center" style="color: #007bff; font-size: 20px; font-weight:bold">Pengendalian
+        <div class="navbar-nav align-items-center" style="color: #007bff; font-size: 20px; font-weight:bold">Peningkatan
         </div>
 
         <ul class="navbar-nav flex-row align-items-center ms-auto">
@@ -68,14 +68,15 @@
     <div class="card">
         <h5 class="card-header">Peningkatan Standar SPMI Perguruan Tinggi
         </h5>
-        <div class="table text-nowrap" id="horizontal-example">
+        <div class="table text-nowrap" id="horizontal-example" style="height: 200px;">
             <table class="table table-bordered">
                 <thead class="table-purple">
                     <tr>
                         <th>Nama Dokumen</th>
                         <th>Nama Bidang Pengaturan Standar</th>
-                        <th>Dokumen Peningkatan</th>
+                        <th>Program Studi</th>
                         <th>Tanggal Penetapan Baru</th>
+                        <th>Dokumen Peningkatan</th>
                         @if (Auth::user() &&
                                 (Auth::user()->role->role_name == 'Admin' ||
                                     Auth::user()->role->role_name == 'JMF' ||
@@ -88,24 +89,21 @@
                 <tbody class="table-border-bottom-0">
                     @foreach ($peningkatan as $row)
                         <tr>
-                            <td><i></i>{{ $row->nama_filep5 }}</td>
+                            <td><i></i>{{ $row->nama_dokumen }}</td>
                             <td><i></i>{{ $row->bidang_standar }}</td>
+                            <td><i></i>{{ $row->prodi->nama_prodi }}</td>
+                            <td><i></i>{{ $row->tanggal_penetapan_baru }}</td>
                             <td>
 
-                                @if ($row->unggahan_dokumen)
+                                @if ($row->file_peningkatan)
                                     <!-- Hanya berlaku jika dihosting-->
                                     {{-- <a href="https://docs.google.com/viewer?url=https://namadomain/storage/perangkatspmi/{{$row->files}}&embedded=true" --}}
-                                    <a href="../storage/laporan_rtm/{{ $row->unggahan_dokumen }}"
-                                        class="badge bg-label-info me-1" target="_blank">
-                                        <i class="bi bi-link-45deg">Buka Dokumen</i>
-                                    </a>
+                                    <a href="{{ asset('storage/' . $row->file_peningkatan) }}" class="badge bg-label-info me-1"
+                                        target="_blank"><i class="bi bi-link-45deg">Buka Dokumen</i></a>
                                 @else
                                     <p>Masih dalam proses</p>
                                 @endif
-
                             </td>
-                            <td><i></i>{{ $row->tanggal_penetapan_baru }}</td>
-
                             @if (
                                 (Auth::user() && Auth::user()->role->role_name == 'Admin') ||
                                     Auth::user()->role->role_name == 'JMF' ||
@@ -120,16 +118,16 @@
                                         <div class="dropdown-menu">
                                             <div>
                                                 <a class="dropdown-item"
-                                                    href="{{ route('', $row->id_peningkatan) }}"><i
+                                                    href="{{ route('editDokumenPeningkatan', $row->id_peningkatan) }}"><i
                                                         class="bx bx-edit-alt me-1"></i>
-                                                    Ubah</a>
+                                                    Edit</a>
                                             </div>
                                             <div>
                                                 <form id="delete-form-{{ $row->id_peningkatan }}" method="POST"
-                                                    action="{{ route('', $row->id_peningkatan) }}">
+                                                    action="{{ route('hapusDokumenPeningkatan', $row->id_peningkatan) }}">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button class="dropdown-item btn btn-outline-danger"
+                                                    <button type="button" class="dropdown-item btn btn-outline-danger"
                                                         onclick="confirmDelete({{ $row->id_peningkatan }})"><i
                                                             class="bx bx-trash me-1"></i>
                                                         Hapus</button>

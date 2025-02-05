@@ -24,6 +24,7 @@ class Peningkatan extends Model
         'bidang_standar',
         'tanggal_penetapan_baru',
         'file_peningkatan',
+        'id_prodi',
      ];
 
      public function prodi()

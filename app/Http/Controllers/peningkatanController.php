@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Prodi;
+// use App\Models\kategori;
 use App\Models\Peningkatan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -24,7 +25,7 @@ class peningkatanController extends Controller
 
     public function create()
     {
-        $prodi = Prodi::all();
+        $prodi = Prodi::select('id_prodi', 'nama_prodi')->get();
         return view('User.admin.Peningkatan.tambah_dokumen_peningkatan', compact('prodi'));
     }
 
@@ -44,8 +45,10 @@ class peningkatanController extends Controller
 
             // Proses upload file 
             if ($request->hasFile('file_peningkatan')) {
-                $peningkatanPath = $request->file('file_peningkatan')->store('peningkatan', 'public'); // simpan di storage/app/public/laporan_rtm
-                $data['file_peningkatan'] = $peningkatanPath;
+                $file = $request->file('file_peningkatan');
+                $fileName = $file->getClientOriginalName(); // Mendapatkan nama asli file
+                $path = $file->storeAs('peningkatan', $fileName, 'public'); // Simpan file dengan nama asli
+                $data['file_peningkatan'] = $path;
             }
 
             // Simpan data ke database
@@ -54,12 +57,12 @@ class peningkatanController extends Controller
                 'bidang_standar' => $data['bidang_standar'],
                 'tanggal_penetapan_baru' => $data['tanggal_penetapan_baru'],
                 'file_peningkatan' => $data['file_peningkatan'],
-                'id_prodi' => $data['id_prodi'],
+                'id_prodi' => $data[ 'id_prodi'],
             ]);
 
 
             // Tampilkan pesan sukses
-            Alert::success('success', 'Data peningkatan dan dokumen berhasil ditambahkan.');
+            Alert::success('Selesai', 'Data peningkatan dan dokumen berhasil ditambahkan.');
             return redirect()->route('peningkatan');
         } catch (\Exception $e) {
             // Menangkap semua error dan menampilkan pesan kesalahan
@@ -74,13 +77,9 @@ class peningkatanController extends Controller
             // Cari data peningkatan berdasarkan ID
             $peningkatan = Peningkatan::findOrFail($id_peningkatan);
 
-            // Pilih file berdasarkan jenis_file
-            $filePath = null;
-            if ($jenis_file === 'file_peningkatan') {
-                $filePath = $peningkatan->file_peningkatan;
-            } else {
-                abort(404, 'Jenis file tidak valid.');
-            }
+            // Ambil path file dari model
+            $filePath = $peningkatan->file_peningkatan;
+
 
             // Jika filePath kosong, abort dengan pesan error
             if (!$filePath) {
@@ -107,9 +106,14 @@ class peningkatanController extends Controller
             $peningkatan = Peningkatan::with('prodi') // Mengambil relasi dengan tabel prodi jika ada
                 ->findOrFail($id_peningkatan);
 
+            // Ambil daftar program studi
+            $prodi = Prodi::select('id_prodi', 'nama_prodi')->get();
+
             // Kembalikan data ke view edit_peningkatan
             return view('User.admin.Peningkatan.edit_peningkatan', [
                 'oldData' => $peningkatan, // Data peningkatan
+                'prodi' => $prodi,
+    
             ]);
         } catch (\Exception $e) {
             // Menangkap error jika terjadi masalah
@@ -154,7 +158,7 @@ class peningkatanController extends Controller
             ]);
 
             // Tampilkan pesan sukses
-            Alert::success('success', 'Data peningkatan berhasil diperbarui.');
+            Alert::success('Selesai', 'Data peningkatan berhasil diperbarui.');
             return redirect()->route('peningkatan'); // Ganti dengan route yang sesuai
         } catch (\Exception $e) {
             // Menangkap semua error dan menampilkan pesan kesalahan
@@ -179,7 +183,7 @@ class peningkatanController extends Controller
             $peningkatan->delete();
 
             // Tampilkan pesan sukses
-            Alert::success('success', 'Data peningkatan berhasil dihapus.');
+            Alert::success('Selesai', 'Data peningkatan berhasil dihapus.');
             return redirect()->route('peningkatan'); // Ganti dengan route yang sesuai
         } catch (\Exception $e) {
             // Menangkap semua error dan menampilkan pesan kesalahan
