@@ -7,6 +7,8 @@ use App\Http\Controllers\standarController;
 use App\Http\Controllers\timjamuController;
 use App\Http\Controllers\evaluasiController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DataPengguna;
+use App\Http\Controllers\DataPenggunaController;
 use App\Http\Controllers\Info;
 use App\Http\Controllers\Panduanpengguna;
 use App\Http\Controllers\perangkatController;
@@ -48,6 +50,15 @@ Route::middleware(['cekLogin'])->group(function () {
     // route untuk halaman menu Home atau dashboard
     Route::get('/Beranda', [DashboardController::class, 'index'])->name('BerandaSIJAMUFIP');
 
+    //route untuk halaman Data Pengguna
+    Route::get('/DataPengguna', [DataPenggunaController::class, 'index'])->name('DataPengguna');
+    Route::get('/DataPengguna/tambahDataPengguna', [DataPenggunaController::class, 'create'])->name('tambahDataPengguna');
+    Route::post('/DataPengguna', [DataPenggunaController::class, 'store'])->name('simpanDataPengguna');
+    Route::get('/DataPengguna/editDataPengguna/{id}', [DataPenggunaController::class, 'edit'])->name('editDataPengguna');
+    Route::delete('/DataPengguna/{id}', [DataPenggunaController::class, 'destroy'])->name('hapusDataPengguna');
+    Route::put('/DataPengguna/{id}/updateDataPengguna', [DataPenggunaController::class, 'update'])->name('updateDataPengguna');
+
+
     // route untuk halaman menu Tim Penjaminan Mutu CRUD
     Route::get('/TimPenjaminanMutu', [timjamuController::class, 'index'])->name('TimJAMU');
     Route::get('/TimPenjaminanMutu/tambahTimJAMU', [timjamuController::class, 'create'])->name('tambahTimJAMU');
@@ -83,19 +94,20 @@ Route::middleware(['cekLogin'])->group(function () {
 
     // route untuk halaman menu Pelaksanaan CRUD
     Route::get('/Pelaksanaan/Prodi', [pelaksanaan1Controller::class, 'index'])->name('pelaksanaan.prodi');
-    Route::get('/tambah-dokumen-pelaksanaan-prodi', [pelaksanaan1Controller::class, 'tambahPelaksanaan'])->name('tambahPelaksanaan');
-    Route::resource('/simpan-dokumen-pelaksanaan', pelaksanaan1Controller::class)->except('store');
-    Route::post('/simpan-dokumen-pelaksanaan/prodi', [pelaksanaan1Controller::class, 'simpanPelaksanaan'])->name('/simpan-dokumen-pelaksanaan.simpanPelaksanaan');
+    Route::get('/tambah-dokumen-pelaksanaan-prodi', [pelaksanaan1Controller::class, 'create'])->name('tambahPelaksanaanProdi');
+    Route::resource('/simpanPelaksanaanProdi', pelaksanaan1Controller::class);
+    Route::get('/Pelaksanaan/Prodi/editPelaksanaanProdi/{id_plks_prodi}', [pelaksanaan1Controller::class, 'edit'])->name('editPelaksanaanProdi');
+    Route::get('/dokumen{id_plks_prodi}', [pelaksanaan1Controller::class, 'lihatdokumenPlksProdi'])->name('lihatdokumenPlksProdi');
+    Route::put('Pelaksanaan/Prodi/update-dokumen-pelaksanaan/{id_plks_prodi}', [pelaksanaan1Controller::class, 'update'])->name('updatePelaksanaanProdi');
+    Route::delete('/hapus-dokumen-pelaksanaan{id_plks_prodi}', [pelaksanaan1Controller::class, 'destroy'])->name('deletePelaksanaanProdi');
 
-    Route::get('/edit-dokumen-pelaksanaan/{id_plks_prodi}', [pelaksanaan1Controller::class, 'editPelaksanaan'])->name('editPelaksanaan');;
-    Route::post('/update-dokumen-pelaksanaan/{id_plks_prodi}', [pelaksanaan1Controller::class, 'updatePelaksanaan'])->name('updatePelaksanaan');;
-    Route::delete('/hapus-dokumen-pelaksanaan{id_plks_prodi}', [pelaksanaan1Controller::class, 'deletePelaksanaan'])->name('deletePelaksanaan');;
-    Route::get('/Pelaksanaan/Fakultas', [pelaksanaan1Controller::class, 'indexFakultas'])->name('pelaksanaan.fakultas');
-    Route::get('/tambah-dokumen-pelaksanaan-fakultas', [pelaksanaan1Controller::class, 'tambahPelaksanaanFakultas'])->name('tambahPelaksanaanFakultas');
-    Route::post('/simpan-dokumen-pelaksanaan-fakultas', [pelaksanaan1Controller::class, 'simpanPelaksanaanFakultas'])->name('simpanPelaksanaanFakultas');;
-    Route::get('/edit-dokumen-pelaksanaan-fakultas/{id_plks_fklts}', [pelaksanaan1Controller::class, 'editPelaksanaanFakultas'])->name('editPelaksanaanFakultas');;
-    Route::post('/update-dokumen-pelaksanaan-fakultas/{id_plks_fklts}', [pelaksanaan1Controller::class, 'updatePelaksanaanFakultas'])->name('updatePelaksanaanFakultas');;
-    Route::delete('/hapus-dokumen-pelaksanaan-fakultas/{id_plks_fklts}', [pelaksanaan1Controller::class, 'deletePelaksanaanFakultas'])->name('deletePelaksanaanFakultas');;
+    Route::get('/Pelaksanaan/Fakultas', [pelaksanaan2Controller::class, 'indexFakultas'])->name('pelaksanaan.fakultas');
+    Route::get('/tambah-dokumen-pelaksanaan-fakultas', [pelaksanaan2Controller::class, 'tambahPelaksanaanFakultas'])->name('tambahPelaksanaanFakultas');
+    Route::resource('/simpanPelaksanaanFakultas', pelaksanaan2Controller::class);
+    Route::get('/Pelaksanaan/Fakultas/editPelaksanaanFakultas/{id_plks_fklts}', [pelaksanaan2Controller::class, 'editPelaksanaanFakultas'])->name('editPelaksanaanFakultas');
+    Route::get('/dokumen{id_plks_fklts}', [pelaksanaan2Controller::class, 'lihatdokumenPlksFakultas'])->name('lihatdokumenPlksFakultas');
+    Route::put('/update-dokumen-pelaksanaan-fakultas/{id_plks_fklts}', [pelaksanaan2Controller::class, 'updatePelaksanaanFakultas'])->name('updatePelaksanaanFakultas');
+    Route::delete('/hapus-dokumen-pelaksanaan-fakultas/{id_plks_fklts}', [pelaksanaan2Controller::class, 'deletePelaksanaanFakultas'])->name('deletePelaksanaanFakultas');
 
     // route untuk halaman menu Evaluasi CRUD
     Route::get('/Evaluasi/AuditMutuInternal',[evaluasiController::class, 'index'])->name('evaluasi');
