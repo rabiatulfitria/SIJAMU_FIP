@@ -7,7 +7,6 @@ use App\Http\Controllers\standarController;
 use App\Http\Controllers\timjamuController;
 use App\Http\Controllers\evaluasiController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DataPengguna;
 use App\Http\Controllers\DataPenggunaController;
 use App\Http\Controllers\Info;
 use App\Http\Controllers\Panduanpengguna;
